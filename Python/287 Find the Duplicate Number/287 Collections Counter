@@ -1,0 +1,26 @@
+"""
+287. Find the Duplicate Number
+https://leetcode.com/problems/find-the-duplicate-number/ 
+
+Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+
+There is only one repeated number in nums, return this repeated number.
+
+You must solve the problem without modifying the array nums and uses only constant extra space.
+"""
+
+from collections import Counter
+
+def findDuplicate(self, nums):
+	return Counter(nums).most_common(1)[0][0]
+	
+# nums = [1, 3, 4, 2, 2]
+# c = Counter(nums)
+# c.most_common(1) -> [(3, 2)]
+
+if __name__ == "__main__":
+    bs = Solution() 
+    print(bs.findDuplicate([1, 3, 4, 2, 2]))    # 2
+    print(bs.findDuplicate([3, 1, 3, 4, 2]))    # 3 
+    
+#Still wrong. Requires Floyd's Cycle Detection.
