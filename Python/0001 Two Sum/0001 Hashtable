@@ -1,0 +1,23 @@
+# Time: O(n)
+# Memory: O(n)
+
+class Solution:
+    def twoSum(self, nums, target):
+        valueMap = {} # Value: Index
+        
+        for idx, num in enumerate(nums):
+            diff = target - num
+            if diff in valueMap:
+                return [valueMap[diff], idx]
+            valueMap[num] = idx
+                    
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.twoSum([2,7,11,15], 9))        # [0,1]
+    print(lc.twoSum([3,2,4], 6))            # [1,2]
+    print(lc.twoSum([3,3], 6))              # [0,1]
+
+
+# Runtime: 52 ms, faster than 97.64% of Python3 online submissions for Two Sum.
+# Memory Usage: 15.5 MB, less than 19.05% of Python3 online submissions for Two Sum.
