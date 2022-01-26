@@ -1,7 +1,6 @@
 """
 1512. Number of Good Pairs
 https://leetcode.com/problems/number-of-good-pairs/
-Created on Wed Jan 26 04:49:46 2022
 
 Given an array of integers nums, return the number of good pairs.
 
