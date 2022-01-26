@@ -1,0 +1,24 @@
+"""
+1920. Build Array from Permutation
+https://leetcode.com/problems/build-array-from-permutation/
+Created on Fri Jan  7 05:42:12 2022
+
+Given a zero-based permutation nums (0-indexed), build an array ans of the same 
+length where ans[i] = nums[nums[i]] for each 0 <= i < nums.length and return it.
+
+A zero-based permutation nums is an array of distinct integers from 0 to nums.length - 1 (inclusive).
+"""
+
+class Solution:
+    def buildArray(self, nums):
+        return [nums[nums[i]] for i in range(len(nums))] 
+
+
+if __name__ == "__main__":
+    bs = Solution() 
+    print(bs.buildArray([0,2,1,5,3,4]))       # [0,1,2,4,5,3]
+    print(bs.buildArray([5,0,1,2,3,4]))       # [4,5,0,1,2,3]
+    
+    
+# Runtime: 138 ms, faster than 24.30% of Python3 online submissions for Build Array from Permutation.
+# Memory Usage: 14.5 MB, less than 39.81% of Python3 online submissions for Build Array from Permutation.
