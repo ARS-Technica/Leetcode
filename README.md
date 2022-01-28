@@ -7,7 +7,6 @@ Solutions to programming exercises on leetcode.com written in Python.
 | --- | --- | --- | --- | --- |--- |
 | 0001 | [Two Sum](https://leetcode.com/problems/two-sum) | Easy | [Python](https://github.com/ARS-Technica/Leetcode/tree/main/Python/0001%20Two%20Sum) | Hash Table |  |
 | 0007 | [Reverse Integer](https://leetcode.com/problems/reverse-integer) | Medium | [Python](https://github.com/ARS-Technica/Leetcode/tree/main/Python/0007%20Reverse%20Integer) | Slicing |  |
-
 | 0009 | [Palindrome Number](https://leetcode.com/problems/palindrome-number) | Easy | [Python](https://github.com/ARS-Technica/Leetcode/tree/main/Python/0009%20Palindrome%20Number) | Slicing | | |
 
 | 0026 | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array) | Easy | [Python](https://github.com/ARS-Technica/Leetcode/tree/main/Python/287%20Find%20the%20Duplicate%20Number) | Two Pointers | [0080](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
