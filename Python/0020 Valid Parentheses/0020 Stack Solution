@@ -1,0 +1,23 @@
+class Solution:
+    def isValid(self, s):
+        Map = { ")":"(", "]":"[", "}":"{" }
+        stack = []
+        
+        for char in s:
+            if char not in Map:
+                stack.append(char)
+                continue    
+            if not stack or stack[-1] != Map[char]:
+                return False
+            stack.pop()
+            
+        return not stack
+
+
+if __name__ == '__main__':
+    print(Solution().isValid('()'))        #true
+    print(Solution().isValid('()[]{}'))    #true
+    print(Solution().isValid('(]'))        #false
+    print(Solution().isValid('([)]'))      #false
+    print(Solution().isValid('{[]}'))      #true
+    print(Solution().isValid('([])'))      #true
