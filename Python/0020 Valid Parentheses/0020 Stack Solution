@@ -10,7 +10,8 @@ class Solution:
             if not stack or stack[-1] != Map[char]:
                 return False
             stack.pop()
-            
+        
+        # Stack should be empty
         return not stack
 
 
@@ -21,3 +22,7 @@ if __name__ == '__main__':
     print(Solution().isValid('([)]'))      #false
     print(Solution().isValid('{[]}'))      #true
     print(Solution().isValid('([])'))      #true
+
+
+# Runtime: 67 ms, faster than 5.72% of Python3 online submissions for Valid Parentheses.
+# Memory Usage: 13.9 MB, less than 98.48% of Python3 online submissions for Valid Parentheses.
