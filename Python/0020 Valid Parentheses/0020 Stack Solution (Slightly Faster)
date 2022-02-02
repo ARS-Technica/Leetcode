@@ -1,0 +1,31 @@
+
+# Better solution.  Not mine.
+# https://www.youtube.com/watch?v=lNYozout6FM
+
+class Solution:
+    def isValid(self, s):
+        lookup = { ")":"(", "]":"[", "}":"{" }
+        stack = []
+        
+        for p in s:
+            if p in lookup.values():
+                stack.append(p)
+            elif stack and lookup[p] == stack[-1]:
+                stack.pop()
+            else:
+                return False
+                        
+        return stack == []
+
+
+if __name__ == '__main__':
+    print(Solution().isValid('()'))        #true
+    print(Solution().isValid('()[]{}'))    #true
+    print(Solution().isValid('(]'))        #false
+    print(Solution().isValid('([)]'))      #false
+    print(Solution().isValid('{[]}'))      #true
+    print(Solution().isValid('([])'))      #true
+
+
+# Runtime: 53 ms, faster than 22.06% of Python3 online submissions for Valid Parentheses.
+# Memory Usage: 13.8 MB, less than 98.08% of Python3 online submissions for Valid Parentheses.
