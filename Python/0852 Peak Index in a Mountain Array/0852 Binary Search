@@ -1,0 +1,40 @@
+"""
+852. Peak Index in a Mountain Array 
+https://leetcode.com/problems/peak-index-in-a-mountain-array/
+
+Let's call an array arr a mountain if the following properties hold:
+
+arr.length >= 3
+There exists some i with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... arr[i-1] < arr[i]
+arr[i] > arr[i+1] > ... > arr[arr.length - 1]
+Given an integer array arr that is guaranteed to be a mountain, return any i such that arr[0] < arr[1] < ... arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1].
+"""
+
+# Just a variation on 0162
+
+class Solution:
+    def peakIndexInMountainArray(self, arr):
+        left = 0 
+        right = len(arr) - 2
+        
+        while left < right:
+            middle = (left + right) // 2
+            
+            if arr[middle] > arr[middle + 1]:
+                right = middle
+            else:
+                left = middle + 1
+
+        return left
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.peakIndexInMountainArray([0,1,0]))              # 1
+    print(lc.peakIndexInMountainArray([0,2,1,0]))            # 1 
+    print(lc.peakIndexInMountainArray([0,10,5,2]))           # 1    
+
+
+# Runtime: 72 ms, faster than 90.12% of Python3 online submissions for Peak Index in a Mountain Array.
+# Memory Usage: 15.2 MB, less than 85.43% of Python3 online submissions for Peak Index in a Mountain Array.
