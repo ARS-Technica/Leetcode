@@ -1,0 +1,28 @@
+"""
+268. Missing Number
+Easy 
+https://leetcode.com/problems/missing-number/
+
+Given an array nums containing n distinct numbers in the range [0, n], return 
+the only number in the range that is missing from the array.
+"""
+
+
+class Solution:
+    def missingNumber(self, nums):
+        numbers = [n for n in range(len(nums) + 1)]
+        for i in nums:
+            numbers.remove(i)
+        
+        return numbers.pop()
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.missingNumber([3,0,1]))                # 2
+    print(lc.missingNumber([0,1]))                  # 2
+    print(lc.missingNumber([9,6,4,2,3,5,7,0,1]))    # 8
+
+
+# Runtime: 2064 ms, faster than 13.76% of Python3 online submissions for Missing Number.
+# Memory Usage: 15.5 MB, less than 49.00% of Python3 online submissions for Missing Number.
