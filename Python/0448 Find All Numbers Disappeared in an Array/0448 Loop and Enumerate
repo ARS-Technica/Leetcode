@@ -1,0 +1,25 @@
+# Slower solution. 
+
+class Solution:
+    def findDisappearedNumbers(self, nums):
+        for n in nums:
+            i = abs(n) - 1
+            nums[i] = -1 * abs(nums[i])
+                    
+        #print(nums)
+        res = []
+        for i, n in enumerate(nums):
+            if n > 0:
+                res.append(i + 1)
+                
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findDisappearedNumbers([4,3,2,7,8,2,3,1]))         # [5,6]
+    print(lc.findDisappearedNumbers([1,1]))                     # [2]
+
+
+# Runtime: 376 ms, faster than 69.21% of Python3 online submissions for Find All Numbers Disappeared in an Array.
+# Memory Usage: 22.3 MB, less than 55.32% of Python3 online submissions for Find All Numbers Disappeared in an Array.
