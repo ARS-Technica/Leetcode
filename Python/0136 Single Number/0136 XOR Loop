@@ -1,0 +1,16 @@
+class Solution:
+    def singleNumber(self, nums):
+        res = 0
+        for num in nums:
+            res ^= num
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.singleNumber([2,2,1]))         # 1
+    print(lc.singleNumber([4,1,2,1,2]))     # 4
+    print(lc.singleNumber([1]))             # 1
+    
+# Runtime: 219 ms, faster than 36.05% of Python3 online submissions for Single Number.
+# Memory Usage: 16.8 MB, less than 7.98% of Python3 online submissions for Single Number.
