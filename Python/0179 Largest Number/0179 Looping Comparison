@@ -1,0 +1,32 @@
+
+# Not mine.
+# https://www.youtube.com/watch?v=us9kqeZiYYs
+
+class Solution:
+    def largestNumber(self, nums): 
+        
+        def largest(a,b):
+            if a+b > b+a:
+                return 0
+            elif a+b < b+a:
+                return 1
+            else:
+                return 0
+            
+        for x in range(len(nums)-1,-1,-1):
+            for y in range(x):
+                if largest(str(nums[y]), str(nums[y+1])):
+                    nums[y], nums[y+1] = nums[y+1], nums[y]
+                    
+        return str(int("".join(map(str,nums))))
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+    print(lc.largestNumber([0, 0]))             # "0"
+
+# Runtime: 92 ms, faster than 20.05% of Python3 online submissions for Largest Number.
+# Memory Usage: 14 MB, less than 77.27% of Python3 online submissions for Largest Number.
+
