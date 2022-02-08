@@ -1,0 +1,41 @@
+"""
+136. Single Number
+Easy
+Created on Thu Feb  3 08:58:38 2022
+https://leetcode.com/problems/single-number/
+
+Given a non-empty array of integers nums, every element appears twice except 
+for one. Find that single one.
+
+You must implement a solution with a linear runtime complexity and use only 
+constant extra space.
+"""
+
+
+class Solution:
+    def singleNumber(self, nums):
+        #print(sum(set(nums)), sum(nums),)
+        first = []
+        second = []
+        
+        for i in range(len(nums)):
+            if nums[i] not in first:
+                first.append(nums[i]) 
+            else:
+                second.append(nums[i])
+        
+        if second:
+            return sum(first) - sum(second)
+        else:
+            return sum(first)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.singleNumber([2,2,1]))         # 1
+    print(lc.singleNumber([4,1,2,1,2]))     # 4
+    print(lc.singleNumber([1]))             # 1
+
+
+# Runtime: 3356 ms, faster than 8.94% of Python3 online submissions for Single Number.
+# Memory Usage: 16.1 MB, less than 99.07% of Python3 online submissions for Single Number.
