@@ -1,0 +1,14 @@
+class Solution:
+    def largestNumber(self, nums):                                 
+        return str(int("".join(sorted(map(str,nums), key=cmp_to_key(lambda a,b: 1 if a+b < b+a else -1)))))
+        # str(int()) to remove double zeroes.
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+    print(lc.largestNumber([0, 0]))             # "0"
+
+# Runtime: 92 ms, faster than 20.05% of Python3 online submissions for Largest Number.
+# Memory Usage: 14 MB, less than 77.27% of Python3 online submissions for Largest Number.
+
