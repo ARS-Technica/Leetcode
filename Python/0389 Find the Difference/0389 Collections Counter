@@ -1,0 +1,22 @@
+# Collection docs       https://docs.python.org/3/library/collections.html
+
+from collections import Counter
+
+class Solution:
+    def findTheDifference(self, s, t):
+        counter = Counter(s)
+        for char in t:
+            if counter[char] <= 0:
+                return char
+            counter[char] -= 1
+        return None
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findTheDifference("abcd", "abcde"))        # "e"
+    print(lc.findTheDifference("", "y"))                # "y"
+    print(lc.findTheDifference("a", "aa"))              # "a"
+    
+# Runtime: 77 ms, faster than 7.16% of Python3 online submissions for Find the Difference.
+# Memory Usage: 14 MB, less than 87.37% of Python3 online submissions for Find the Difference.
