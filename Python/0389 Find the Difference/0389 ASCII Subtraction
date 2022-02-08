@@ -1,0 +1,24 @@
+# Better solution. Not mine.
+# https://www.youtube.com/watch?v=qsrmeOn7NrE
+
+
+class Solution:
+    def findTheDifference(self, s, t):
+        res = 0 
+        for i in t:
+            res += ord(i)
+        for i in s:
+            res -= ord(i)
+            
+        return chr(res)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findTheDifference("abcd", "abcde"))        # "e"
+    print(lc.findTheDifference("", "y"))                # "y"
+    print(lc.findTheDifference("a", "aa"))              # "a"
+
+
+# Runtime: 52 ms, faster than 37.01% of Python3 online submissions for Find the Difference.
+# Memory Usage: 13.8 MB, less than 96.75% of Python3 online submissions for Find the Difference.
