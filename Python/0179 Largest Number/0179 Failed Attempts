@@ -1,0 +1,100 @@
+"""
+179. Largest Number
+Medium
+Created on Tue Feb  8 04:05:03 2022
+https://leetcode.com/problems/largest-number/
+
+Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
+
+Since the result may be very large, so you need to return a string instead of an integer.
+"""
+
+
+class Solution:
+    def largestNumber(self, nums):
+        return ''.join(sorted([str(i) for i in nums], reverse=True))
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+
+# Failed attempt.  
+# 210
+# 9534303
+
+
+#%%
+
+class Solution:
+    def largestNumber(self, nums):
+        return ''.join(sorted([str(i) for i in nums], key=lambda x: (len(x)), reverse=True))
+
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+
+
+# 102
+# 3034359
+
+
+#%%
+
+class Solution:
+    def largestNumber(self, nums):
+        return ''.join(sorted([str(i) for i in nums], key=lambda l: len(l), reverse=True))
+
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+
+
+# 102
+# 3034359
+
+
+#%% 
+
+ 
+a=['a','b','zzz','ccc','ddd'] #before sorting
+a.sort(key=len)
+print(a)
+#a=['b','a','zzz','ddd','ccc'] #after sorting
+
+
+b=['a','b','zzz','ccc','ddd'] #before sorting
+b = list(reversed(sorted(a, key=lambda x: (-len(x), x))))
+print(b)
+#b=['b', 'a', 'zzz', 'ddd', 'ccc'] #after sorting
+
+#%%
+
+# sorting a list of lists from shortest to longest
+# https://stackoverflow.com/questions/57234053/sorting-a-list-of-lists-from-shortest-to-longest
+
+class Solution:
+    def largestNumber(self, nums):
+        b = list(reversed(sorted([str(i) for i in nums], key=lambda x: (-len(x), x))))
+        print(b)
+        #return ''.join(sorted([str(i) for i in nums], key=lambda l: len(l), reverse=True))
+
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.largestNumber([10,2]))             # "210"
+    print(lc.largestNumber([3,30,34,5,9]))      # "9534330"
+
+
+# 102
+# 3034359
+
+
+#%%
+
+ 
