@@ -1,0 +1,25 @@
+"""
+378. Kth Smallest Element in a Sorted Matrix
+Medium
+Created on Thu Feb  3 05:51:08 2022
+
+Given an n x n matrix where each of the rows and columns is sorted in ascending 
+order, return the kth smallest element in the matrix.
+
+Note that it is the kth smallest element in the sorted order, not the kth distinct element.
+
+You must find a solution with a memory complexity better than O(n2).
+"""
+
+
+class Solution:
+    def kthSmallest(self, matrix, k):
+        return sorted([n for sublist in matrix for n in sublist])[k-1] 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.kthSmallest([[1,5,9],[10,11,13],[12,13,15]], 8))       # 13
+    print(lc.kthSmallest([[-5]], 1))                                # 1 
+
+# Runtime: 172 ms, faster than 88.01% of Python3 online submissions for Kth Smallest Element in a Sorted Matrix.
+# Memory Usage: 18.9 MB, less than 10.45% of Python3 online submissions for Kth Smallest Element in a Sorted Matrix. 
