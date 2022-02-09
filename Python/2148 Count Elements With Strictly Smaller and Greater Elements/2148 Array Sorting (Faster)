@@ -1,0 +1,19 @@
+# Better solution. Not mine.
+# https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/discuss/1725969/O(n)-solution-faster-than-95-and-memory-less-than-99
+
+class Solution:
+    def countElements(self, nums):
+        if len(nums)==1 or len(nums)==2:
+            return 0
+        nums.sort()
+        count=0
+        for i in range(1,len(nums)-1):
+            if nums[i]>nums[0] and nums[i]<nums[len(nums)-1]:
+                count+=1
+        return count
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.countElements([11,7,2,15]))      # 2
+    print(lc.countElements([-3,3,3,90]))      # 2 
