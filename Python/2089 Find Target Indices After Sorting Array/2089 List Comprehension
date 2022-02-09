@@ -1,0 +1,15 @@
+class Solution:
+    def targetIndices(self, nums, target):
+        nums = sorted(nums)
+        return [i for i in range(len(nums)) if nums[i] == target]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.targetIndices([1,2,5,2,3], 2))    # [1,2]
+    print(lc.targetIndices([1,2,5,2,3], 3))    # [3]
+    print(lc.targetIndices([1,2,5,2,3], 5))    # [4]
+
+
+# Runtime: 68 ms, faster than 40.28% of Python3 online submissions for Find Target Indices After Sorting Array.
+# Memory Usage: 13.9 MB, less than 95.21% of Python3 online submissions for Find Target Indices After Sorting Array.
