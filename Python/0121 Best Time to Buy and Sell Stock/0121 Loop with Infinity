@@ -1,0 +1,24 @@
+
+# Use infinity to sort. Not mine.
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock/discuss/1697349/Python-3-Easy-to-Understand-(5-Lines)
+
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        mins,maxs=float('inf'),0
+        for i in range(len(prices)):
+            mins=min(mins,prices[i])
+            maxs=max(maxs,prices[i]-mins)
+        return maxs
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.maxProfit([7,1,5,3,6,4]))      # 5
+    print(lc.maxProfit([7,6,4,3,1]))        # 0 
+
+
+# Runtime: 1747 ms, faster than 24.18% of Python3 online submissions for Best Time to Buy and Sell Stock.
+# Memory Usage: 24.7 MB, less than 98.12% of Python3 online submissions for Best Time to Buy and Sell Stock.
+  
+ 
