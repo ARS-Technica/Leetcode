@@ -1,0 +1,22 @@
+# Brute Force
+# O(n^2) time
+# O(1) space
+
+class Solution:
+    def maxProfit(self, prices):
+        maxProfit = 0
+        for i in range(len(prices) - 1):
+            for j in range(i + 1, len(prices)):
+                temp = prices[j] - prices[i]
+                if temp > maxProfit:
+                    maxProfit = temp
+        return maxProfit
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.maxProfit([7,1,5,3,6,4]))      # 5
+    print(lc.maxProfit([7,6,4,3,1]))        # 0 
+
+
+# Time Limit Exceeded
