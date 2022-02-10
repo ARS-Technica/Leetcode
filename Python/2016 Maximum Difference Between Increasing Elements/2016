@@ -1,0 +1,39 @@
+"""
+2016. Maximum Difference Between Increasing Elements
+Easy
+Created on Thu Feb 10 05:31:49 2022
+https://leetcode.com/problems/maximum-difference-between-increasing-elements/
+
+Given a 0-indexed integer array nums of size n, find the maximum difference 
+between nums[i] and nums[j] (i.e., nums[j] - nums[i]), such that 0 <= i < j < n 
+and nums[i] < nums[j].
+
+Return the maximum difference. If no such i and j exists, return -1.
+"""
+
+# Kadane's Algorithm
+# Time complexity: O(n)
+# Space complexity: O(1)
+
+class Solution:
+    def maximumDifference(self, nums):
+        diff = 0
+        low = nums[0]
+        
+        for num in nums[1:]:
+            diff = max(diff, num - low)
+            low = min(low, num)                      
+                
+        return diff if diff > 0 else -1
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.maximumDifference([7,1,5,4]))      # 4
+    print(lc.maximumDifference([9,4,3,2]))      # -1
+    print(lc.maximumDifference([1,5,2,10]))     # 9
+
+
+# Runtime: 64 ms, faster than 57.55% of Python3 online submissions for Maximum Difference Between Increasing Elements.
+# Memory Usage: 14 MB, less than 95.58% of Python3 online submissions for Maximum Difference Between Increasing Elements.
+
