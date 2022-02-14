@@ -1,0 +1,38 @@
+"""
+442. Find All Duplicates in an Array
+Medium 
+https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+Given an integer array nums of length n where all the integers of nums are in 
+the range [1, n] and each integer appears once or twice, return an array of all 
+the integers that appears twice.
+
+You must write an algorithm that runs in O(n) time and uses only constant extra space.
+"""
+
+
+class Solution:
+    def findDuplicates(self, nums):
+        res = []
+        
+        for num in nums:
+            num = abs(num)
+            
+            if nums[num - 1] > 0:
+                nums[num - 1] *= -1
+            else:
+                res.append(num)
+                                     
+        return res 
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findDuplicates([4,3,2,7,8,2,3,1]))     # [2,3]
+    print(lc.findDuplicates([1,1,2]))               # [1]
+    print(lc.findDuplicates([1]))                   # []
+
+
+# Runtime: 426 ms, faster than 57.94% of Python3 online submissions for Find All Duplicates in an Array.
+# Memory Usage: 21.8 MB, less than 72.03% of Python3 online submissions for Find All Duplicates in an Array.
+
