@@ -1,0 +1,66 @@
+"""
+238. Product of Array Except Self
+Medium
+Created on Wed Feb 16 20:45:11 2022
+https://leetcode.com/problems/product-of-array-except-self/
+
+Given an integer array nums, return an array answer such that answer[i] is equal 
+to the product of all the elements of nums except nums[i].
+
+The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+You must write an algorithm that runs in O(n) time and without using the division operation.
+"""
+
+# Fails to meet the specifications of the problem
+# Doesn't run in O(n) time and without using the division operation.
+
+
+class Solution:
+    def productExceptSelf(self, nums):
+        res = []
+        total = 1
+        total_without_zero = 1
+        zeroes = 0
+        
+        if 0 in nums:
+            for i in nums:
+                if i != 0:
+                    total_without_zero *= i
+                else:
+                    zeroes += 1
+                    
+            #print("res ", res, "total ", total, "total_without_zero ", total_without_zero, "zeroes ", zeroes)
+            
+            if zeroes > 1:
+                for i in nums:
+                    res.append(0)
+            else:
+                for i in nums:
+                    if i != 0:
+                        res.append(0)
+                    else:
+                        res.append(total_without_zero)
+                
+            return res
+            
+        else:        
+            for i in nums:
+                total *= i
+                
+            
+            for i in nums:
+                res.append(int(total / i))
+                
+            return res
+       
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.productExceptSelf([1,2,3,4]))          # [24,12,8,6]
+    print(lc.productExceptSelf([-1,1,0,-3,3]))      # [0,0,9,0,0]
+
+
+# Runtime: 472 ms, faster than 9.09% of Python3 online submissions for Product of Array Except Self.
+# Memory Usage: 39.4 MB, less than 5.60% of Python3 online submissions for Product of Array Except Self.
+
