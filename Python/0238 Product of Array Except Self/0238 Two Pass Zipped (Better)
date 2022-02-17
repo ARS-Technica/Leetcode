@@ -1,0 +1,35 @@
+
+
+# Better Solution. Not mine.
+# https://leetcode.com/problems/product-of-array-except-self/discuss/1769030/Python-Two-passes-of-the-list-to-create-left-and-right-products
+
+
+class Solution:
+    def productExceptSelf(self, nums):
+        left_products = []
+        right_products = [] 
+        
+        left_prod = 1
+        for num in nums:
+            left_products.append(left_prod)
+            left_prod *= num
+        
+        right_prod = 1
+        for num in nums[::-1]:
+            right_products.append(right_prod)
+            right_prod *= num
+            
+        right_products = right_products[::-1]
+        
+        return [left * right for left, right in zip(left_products, right_products)]     
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.productExceptSelf([1,2,3,4]))          # [24,12,8,6]
+    print(lc.productExceptSelf([-1,1,0,-3,3]))      # [0,0,9,0,0]
+
+
+# Runtime: 247 ms, faster than 75.00% of Python3 online submissions for Product of Array Except Self.
+# Memory Usage: 22.4 MB, less than 23.86% of Python3 online submissions for Product of Array Except Self.
+
