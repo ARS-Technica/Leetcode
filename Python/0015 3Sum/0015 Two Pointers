@@ -1,0 +1,69 @@
+"""
+15. 3Sum
+Medium
+Created on Wed Feb 16 23:04:09 2022
+https://leetcode.com/problems/3sum/
+
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] 
+such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+"""
+
+
+# RunTime: O(n^2)
+# Space: O(n)
+
+
+class Solution:
+    def threeSum(self, nums):
+        nums.sort()
+        res = []
+        
+        if len(nums) < 3:
+            return res
+        
+        for i in range(len(nums) - 2):
+            # Remove Duplicates
+            if i > 0 and nums[i] == nums[i - 1]: continue
+            
+            left = i + 1
+            right = len(nums) - 1
+            
+            while left < right:
+                currentSum = nums[i] + nums[left] + nums[right]
+                
+                if currentSum == 0:
+                    res.append([nums[i], nums[left], nums[right]])
+                    
+                    # Remove Duplicates
+                    while left < right and nums[left] == nums[left + 1]:
+                        left += 1
+                    
+                    while left < right and nums[right] == nums[right - 1]:
+                        right -= 1                    
+                        
+                    left += 1
+                    right -= 1
+                    
+                elif currentSum < 0:
+                    left += 1
+                
+                else:
+                    right -= 1                    
+
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.threeSum([-1,0,1,2,-1,-4]))        # [[-1,-1,2],[-1,0,1]]
+    print(lc.threeSum([]))                      # [] 
+    print(lc.threeSum([1,2,-2,-1]))             # []
+    print(lc.threeSum([0,0,0]))                 # [0,0,0]
+    print(lc.threeSum([-1,0,1,0]))              # [[-1,0,1]]  
+
+
+# Runtime: 864 ms, faster than 79.83% of Python3 online submissions for 3Sum.
+# Memory Usage: 18.2 MB, less than 27.30% of Python3 online submissions for 3Sum.
+
