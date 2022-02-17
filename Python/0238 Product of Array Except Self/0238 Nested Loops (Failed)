@@ -1,0 +1,26 @@
+# Time Limit Exceeded
+
+
+class Solution:
+    def productExceptSelf(self, nums):       
+        res = []
+        
+        for num in range(len(nums)):
+            x = 1
+            
+            for n, i in enumerate(nums):
+                if n != num:
+                    x *= i
+                else:
+                    x *= 1
+
+            res.append(x)
+            
+        return res  
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.productExceptSelf([1,2,3,4]))          # [24,12,8,6]
+    print(lc.productExceptSelf([-1,1,0,-3,3]))      # [0,0,9,0,0]
+
