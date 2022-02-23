@@ -1,0 +1,88 @@
+"""
+11. Container With Most Water
+Medium
+Created on Thu Feb 17 08:49:42 2022
+https://leetcode.com/problems/container-with-most-water/
+
+You are given an integer array height of length n. There are n vertical lines 
+drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the 
+container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+"""
+
+
+class Solution:
+    def maxArea(self, height):
+        left = 0
+        right = len(height) - 1
+        res = 0
+        
+        
+        for l in range(len(height)-1):
+            print(l, height[l])
+            
+            """
+            0 1
+            1 8
+            2 6
+            3 2
+            4 5
+            5 4
+            6 8
+            7 3
+            """
+
+        
+        for r in range(len(height)-1, -1, -1):
+            print(r, height[r])        
+  
+            """
+            8 7
+            7 3
+            6 8
+            5 4
+            4 5
+            3 2
+            2 6
+            1 8
+            0 1
+            """
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.maxArea([1,8,6,2,5,4,8,3,7]))        # 49
+    #print(lc.maxArea([1,1]))                      # 1
+ 
+
+#%%
+
+
+class Solution:
+    def maxArea(self, height):
+        left = 0
+        right = len(height) - 1
+        res = 0
+           
+        for l in range(len(height)-1):
+            for r in range(len(height)-1, -1, -1):
+                if l < r:
+                    #print(height[l], height[r]) 
+                    volume = ((right - left) * min(height[left], height[right])) 
+                    res = max(res, volume)
+                    
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.maxArea([1,8,6,2,5,4,8,3,7]))        # 49
+    print(lc.maxArea([1,1]))                      # 1
+
+
+# 8, 1
