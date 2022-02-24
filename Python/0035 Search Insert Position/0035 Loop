@@ -10,6 +10,7 @@ You must write an algorithm with O(log n) runtime complexity.
 """
 
 # Not what they're looking for, but a simple loop works fine since the arrays are sorted.
+# Runtime: O(n), not O(log n)
 
 
 def searchInsert(nums, target):
