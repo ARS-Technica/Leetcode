@@ -1,0 +1,32 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/guess-number-higher-or-lower/discuss/1001510/Python%3A-Beats-99-solutions-O(log(n))-(w-comments-and-using-Walrus-Operator)
+
+
+class Solution:
+    def solve(self, n):
+    	lowerBound, upperBound = 1, n
+    	# Binary division faster than (lowerBound + upperBound) //2
+    	myGuess = (lowerBound+upperBound) >> 1
+    	# walrus operator ':=' - assigns value of the function to the variable 'res'
+    	# and then compare res with 0
+    	while (res := guess(myGuess)) != 0:
+    		if res == 1:
+    			lowerBound = myGuess+1
+    		else:
+    			upperBound = myGuess-1
+    		myGuess = (lowerBound+upperBound) >> 1
+    
+    	return myGuess
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.solve(10)) 
+    print(lc.solve(1)) 
+    print(lc.solve(2)) 
+
+
+# Runtime: 41 ms, faster than 53.98% of Python3 online submissions for Guess Number Higher or Lower.
+# Memory Usage: 13.8 MB, less than 85.61% of Python3 online submissions for Guess Number Higher or Lower.
+
