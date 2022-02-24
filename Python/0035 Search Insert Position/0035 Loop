@@ -9,6 +9,8 @@ if the target is found. If not, return the index where it would be if it were in
 You must write an algorithm with O(log n) runtime complexity.
 """
 
+# Not what they're looking for, but a simple loop works fine since the arrays are sorted.
+
 
 def searchInsert(nums, target):
         for idx in range(len(nums)):
