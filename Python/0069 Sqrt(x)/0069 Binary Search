@@ -1,0 +1,41 @@
+"""
+69. Sqrt(x)
+Easy
+https://leetcode.com/problems/sqrtx/submissions/
+Created on Thu Feb 24 04:24:52 2022
+
+Given a non-negative integer x, compute and return the square root of x.
+
+Since the return type is an integer, the decimal digits are truncated, and only 
+the integer part of the result is returned.
+
+Note: You are not allowed to use any built-in exponent function or operator, 
+such as pow(x, 0.5) or x ** 0.5.
+"""
+
+
+class Solution:
+    def mySqrt(self, x):
+        left = 0
+        right = x
+        
+        while left < right:
+            middle = (left + right + 1) // 2    # Round up by adding one
+
+            if middle <= x // middle:           # Instead of multipling, divide
+                left = middle
+            else:
+                right = middle - 1
+                
+        return left
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.solve(4))      # 2
+    print(lc.solve(8))      # 2
+
+
+# Runtime: 32 ms, faster than 95.65% of Python3 online submissions for Sqrt(x).
+# Memory Usage: 13.8 MB, less than 83.49% of Python3 online submissions for Sqrt(x).
+
