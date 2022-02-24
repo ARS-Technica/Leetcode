@@ -35,8 +35,8 @@ class Solution:
  
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.solve(4))      # 2
-    print(lc.solve(8))      # 2
+    print(lc.mySqrt(4))      # 2
+    print(lc.mySqrt(8))      # 2
 
 
 # Time Limit Exceeded
@@ -64,8 +64,8 @@ class Solution:
  
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.solve(4))      # 2
-    print(lc.solve(8))      # 2
+    print(lc.mySqrt(4))      # 2
+    print(lc.mySqrt(8))      # 2
 
 
 # Time Limit Exceeded
@@ -91,8 +91,8 @@ class Solution:
  
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.solve(4))      # 2
-    print(lc.solve(8))      # 2
+    print(lc.mySqrt(4))      # 2
+    print(lc.mySqrt(8))      # 2
 
 
 # Time Limit Exceeded
@@ -118,9 +118,8 @@ class Solution:
  
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.solve(4))      # 2
-    print(lc.solve(8))      # 2
+    print(lc.mySqrt(4))      # 2
+    print(lc.mySqrt(8))      # 2
 
 
 # Time Limit Exceeded
-
