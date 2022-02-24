@@ -1,0 +1,45 @@
+"""
+278. First Bad Version
+Easy
+https://leetcode.com/problems/first-bad-version/ 
+
+You are a product manager and currently leading a team to develop a new product. 
+Unfortunately, the latest version of your product fails the quality check. 
+Since each version is developed based on the previous version, all the versions 
+after a bad version are also bad.
+
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first 
+bad one, which causes all the following ones to be bad.
+
+You are given an API bool isBadVersion(version) which returns whether version is 
+bad. Implement a function to find the first bad version. You should minimize 
+the number of calls to the API.
+"""
+
+# This script works better if you skip the first element of the array
+
+
+class Solution:
+    def firstBadVersion(self, n):
+        left = 1
+        right = n
+        
+        while left < right:
+            middle  = (left + right) // 2
+            
+            if isBadVersion(middle):
+                right = middle
+            else:
+                left = middle + 1
+                
+        return left
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.firstBadVersion(5))        # 4
+    print(lc.firstBadVersion(1))        # 1
+
+
+# Runtime: 34 ms, faster than 66.40% of Python3 online submissions for First Bad Version.
+# Memory Usage: 13.8 MB, less than 86.07% of Python3 online submissions for First Bad Version.
