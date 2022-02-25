@@ -1,0 +1,44 @@
+"""
+1027. Longest Arithmetic Subsequence
+Medium
+https://leetcode.com/problems/longest-arithmetic-subsequence/ 
+
+Given an array nums of integers, return the length of the longest arithmetic subsequence in nums.
+
+Recall that a subsequence of an array nums is a list nums[i1], nums[i2], ..., 
+nums[ik] with 0 <= i1 < i2 < ... < ik <= nums.length - 1, and that a sequence 
+seq is arithmetic if seq[i+1] - seq[i] are all the same value (for 0 <= i < seq.length - 1).
+"""
+
+
+class Solution:
+    def longestArithSeqLength(self, nums):
+        n = len(nums)
+        dp = [{} for x in range(n)]
+        ans = 0
+
+        for i in range(n):
+            dp[i][0] = 1
+            for j in range(i):
+                diff = nums[i] - nums[j]
+                
+                if diff not in dp[j]:
+                    dp[i][diff] = 2
+                else:
+                    dp[i][diff] = dp[j][diff] + 1
+                    
+            ans = max(ans, max(dp[i].values()))
+            
+        return ans
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.longestArithSeqLength([3,6,9,12]))                     # 4
+    print(lc.longestArithSeqLength([9,4,7,2,10]))                   # 3
+    print(lc.longestArithSeqLength([20,1,15,3,10,5,8]))             # 4
+    print(lc.longestArithSeqLength([83,20,17,43,52,78,68,45]))      # 2
+
+
+# Runtime: 1832 ms, faster than 95.81% of Python3 online submissions for Longest Arithmetic Subsequence.
+# Memory Usage: 31.8 MB, less than 67.91% of Python3 online submissions for Longest Arithmetic Subsequence.
