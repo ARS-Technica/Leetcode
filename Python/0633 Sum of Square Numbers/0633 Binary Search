@@ -1,0 +1,41 @@
+"""
+633. Sum of Square Numbers
+Medium
+https://leetcode.com/problems/sum-of-square-numbers/ 
+
+Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.
+"""
+
+
+class Solution:
+    def judgeSquareSum(self, c):
+        left = 0
+        right = int(math.sqrt(c))
+
+        # right = c          # Time Limit Exceeded
+        # right = c // 2     # Doesn't work for 1        
+        # if c == 1: return True
+        
+        while left <= right:
+            #middle = (left + right) // 2
+            pythagorean = (left * left) + (right * right)
+            
+            if pythagorean < c:
+                left += 1
+            elif pythagorean > c:
+                right -= 1
+            else:
+                return True
+            
+        return False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.judgeSquareSum(5))      # true
+    print(lc.judgeSquareSum(3))      # false 
+    print(lc.judgeSquareSum(1))      # true
+
+
+# Runtime: 104 ms, faster than 98.39% of Python3 online submissions for Sum of Square Numbers.
+# Memory Usage: 13.9 MB, less than 65.88% of Python3 online submissions for Sum of Square Numbers.
