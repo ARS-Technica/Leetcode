@@ -1,8 +1,7 @@
 """
 33. Search in Rotated Sorted Array
 Medium
-https://leetcode.com/problems/search-in-rotated-sorted-array/
-Created on Mon Feb 28 22:46:12 2022
+https://leetcode.com/problems/search-in-rotated-sorted-array/ 
 
 There is an integer array nums sorted in ascending order (with distinct values).
 
@@ -84,7 +83,8 @@ if __name__ == "__main__":
     print(lc.search([1], 0))                    # -1
 
 
-# 
+# Runtime: 74 ms, faster than 23.80% of Python3 online submissions for Search in Rotated Sorted Array.
+# Memory Usage: 14.1 MB, less than 96.51% of Python3 online submissions for Search in Rotated Sorted Array.
 
 
 
