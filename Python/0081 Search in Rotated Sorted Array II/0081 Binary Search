@@ -1,11 +1,10 @@
 """
 81. Search in Rotated Sorted Array II
 Medium
-https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
-Created on Mon Feb 28 23:51:28 2022
+https://leetcode.com/problems/search-in-rotated-sorted-array-ii/ 
 
 There is an integer array nums sorted in non-decreasing order (not necessarily 
-                                                               with distinct values).
+with distinct values).
 
 Before being passed to your function, nums is rotated at an unknown pivot index 
 k (0 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., 
@@ -18,18 +17,45 @@ target is in nums, or false if it is not in nums.
 You must decrease the overall operation steps as much as possible.
 """
 
+# If you just take the solution to 33, search(self, [1,0,1,1,1], 0) 
+# doesn't work.  However, removing duplicates by converting the array
+# to a set solves the issue.
+
 
 class Solution:
-    def solve(self, nums):
+    def search(self, nums, target):
+        nums = list(set(nums))  # Remove duplicates
+        
+        left = 0
+        right = len(nums) - 1
+        
 
+        while left <= right:
+            middle = (left + right) // 2
+            
+            if target < nums[middle]: 
+                if nums[middle] >= nums[right] and target < nums[left]:
+                    left = middle + 1
+                else:
+                    right = middle -1 
+            
+            elif target > nums[middle]: 
+                if nums[middle] <= nums[left] and target > nums[right]:
+                    right = middle -1
+                else:
+                    left = middle + 1 
+                    
+            else:
+                return True
+            
+        return False
  
 
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.solve([5, 1, 7]))      # 35
-    print(lc.solve([7, 1, 7]))      # 49
-    print(lc.solve([-5, 1, -7]))    # 35
+    print(lc.search([2,5,6,0,0,1,2], 0))        # true
+    print(lc.search([2,5,6,0,0,1,2], 3))        # false
+    print(lc.search([1,0,1,1,1], 0))            # true
 
-
-# 
-
+# Runtime: 87 ms, faster than 35.84% of Python3 online submissions for Search in Rotated Sorted Array II.
+# Memory Usage: 14.5 MB, less than 60.69% of Python3 online submissions for Search in Rotated Sorted Array II.
