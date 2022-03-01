@@ -1,0 +1,41 @@
+class Solution:
+    def binarySearch(self, array, target):
+        left = 0
+        right = len(array) - 1
+        
+        while left <= right:
+            middle = (left + right) // 2
+            
+            if target < array[middle]:
+                right = middle - 1
+            elif target > array[middle]:
+                left = middle + 1
+            else:
+                return True
+            
+        return False
+    
+    
+    def search(self, nums, target):
+        if len(nums)<1: 
+            return False         
+               
+        index = len(nums)
+        for i in range(1,len(nums)):
+            if (nums[i] - nums[i-1]) <0:
+                index = i
+            
+        l1 = nums[:index]
+        l2 = nums[index:]
+
+        return lc.binarySearch(l1, target) or lc.binarySearch(l2, target)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.search([2,5,6,0,0,1,2], 0))        # true
+    print(lc.search([2,5,6,0,0,1,2], 3))        # false
+    print(lc.search([1,0,1,1,1], 0))            # true
+
+# Runtime: 129 ms, faster than 5.14% of Python3 online submissions for Search in Rotated Sorted Array II.
+# Memory Usage: 14.4 MB, less than 81.01% of Python3 online submissions for Search in Rotated Sorted Array II.
