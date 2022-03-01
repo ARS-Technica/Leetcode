@@ -1,0 +1,23 @@
+"""
+Obviously not the solution that they're looking for, 
+given that I arrived at this problem set through a series
+of links from a series of problems solved with a
+Binary Search algorithm.  However, I had to try, and
+it turns out that the simplest solution was the most
+efficent.
+"""
+
+
+class Solution:
+    def search(self, nums, target):
+        return target in nums
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.search([2,5,6,0,0,1,2], 0))        # true
+    print(lc.search([2,5,6,0,0,1,2], 3))        # false
+    print(lc.search([1,0,1,1,1], 0))            # true
+
+# Runtime: 48 ms, faster than 98.24% of Python3 online submissions for Search in Rotated Sorted Array II.
+# Memory Usage: 14.4 MB, less than 81.01% of Python3 online submissions for Search in Rotated Sorted Array II.
