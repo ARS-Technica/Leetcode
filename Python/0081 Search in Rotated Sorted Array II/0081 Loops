@@ -1,0 +1,42 @@
+"""
+Not the Binary Search algorithm that Leetcode clearly wants.
+Still a solid alternative if the Bools of a rotated array
+stump you.
+"""
+
+
+class Solution:
+    def search(self, nums, target):
+        #left = 0
+        right = len(nums) #- 1
+        
+        for i in range(len(nums)):
+            # Where do the numbers stop ascending?
+            if i < len(nums) - 1 and nums[i] > nums[i + 1]: 
+                right = i
+                break
+        
+        # If the target is in the second half of the rotated array
+        if target < nums[0]:
+            for i in nums[right : ]:
+                if target == i:
+                    return True
+            return False
+        
+        # Otherwise check the front half of the array
+        for i in nums[0 : right + 1]:
+            if target == i:
+                return True
+            
+        return False        
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.search([2,5,6,0,0,1,2], 0))        # true
+    print(lc.search([2,5,6,0,0,1,2], 3))        # false
+    print(lc.search([1,0,1,1,1], 0))            # true
+
+# Runtime: 60 ms, faster than 74.30% of Python3 online submissions for Search in Rotated Sorted Array II.
+# Memory Usage: 14.5 MB, less than 60.69% of Python3 online submissions for Search in Rotated Sorted Array II.
+
