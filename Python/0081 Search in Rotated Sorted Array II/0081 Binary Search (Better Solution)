@@ -1,1 +1,43 @@
 
+
+class Solution:
+    def search(self, nums, target):
+        left = 0
+        right = len(nums) - 1
+        
+        while left <= right:
+            middle = left + (right - left) // 2
+            
+            if nums[middle] == target:
+                return True
+            
+            while left < middle and nums[left] == nums[middle]: # tricky part
+                left += 1
+                
+            # the first half is ordered
+            if nums[left] <= nums[middle]:
+                # target is in the first half
+                if nums[left] <= target < nums[middle]:
+                    right = middle - 1
+                else:
+                    left = middle + 1
+                    
+            else:
+                # target is in the second half
+                if nums[middle] < target <= nums[right]:
+                    left = middle + 1
+                else:
+                    right = middle - 1
+                    
+        return False
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.search([2,5,6,0,0,1,2], 0))        # true
+    print(lc.search([2,5,6,0,0,1,2], 3))        # false
+    print(lc.search([1,0,1,1,1], 0))            # true
+
+# Runtime: 52 ms, faster than 93.98% of Python3 online submissions for Search in Rotated Sorted Array II.
+# Memory Usage: 14.4 MB, less than 81.01% of Python3 online submissions for Search in Rotated Sorted Array II.
+
