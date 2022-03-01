@@ -46,3 +46,45 @@ if __name__ == "__main__":
 """
 
 # Works fine on UNROTATED array, but always returns -1 on a rotated array
+
+
+#%%
+
+
+class Solution:
+    def search(self, nums, target):
+        left = 0
+        right = len(nums) - 1
+        
+        while left <= right:
+            middle = (left + right) // 2
+            
+            if target < nums[middle]: 
+                if nums[middle] >= nums[right] and target < nums[left]:
+                    left = middle + 1
+                else:
+                    right = middle -1 
+            
+            elif target > nums[middle]: 
+                if nums[middle] <= nums[left] and target > nums[right]:
+                    right = middle -1
+                else:
+                    left = middle + 1 
+                    
+            else:
+                return middle
+            
+        return -1
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.search([4,5,6,7,0,1,2], 0))        # 4
+    print(lc.search([4,5,6,7,0,1,2], 3))        # -1
+    print(lc.search([1], 0))                    # -1
+
+
+# 
+
+
+
