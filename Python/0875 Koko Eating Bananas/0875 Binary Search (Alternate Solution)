@@ -1,0 +1,94 @@
+ 
+
+import math
+ 
+class Solution:
+    def minEatingSpeed(self, piles, h):
+        left = 1
+        right = max(piles)
+        
+        while left <= right:
+            middle = left + (right - left) // 2
+            total_hours = 0
+            
+            for pile in piles:
+                total_hours += math.ceil(pile / middle)
+                
+            if total_hours > h:
+                left = middle + 1
+            else:
+                k = middle
+                right = middle - 1
+                
+        return k
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.minEatingSpeed([3,6,7,11], 8))              # 4
+    print(lc.minEatingSpeed([30,11,23,4,20], 5))         # 30
+    print(lc.minEatingSpeed([30,11,23,4,20], 6))         # 23
+
+
+# Runtime: 721 ms, faster than 37.19% of Python3 online submissions for Koko Eating Bananas.
+# Memory Usage: 15.4 MB, less than 86.53% of Python3 online submissions for Koko Eating Bananas.
+ 
+#%%
+
+
+class Solution:
+    def minEatingSpeed(self, piles, h):
+        left = 1
+        right = max(piles)
+        
+        while left < right:
+            middle = left  + (right - left) // 2
+            
+            if sum((pile - 1) // middle + 1 for pile in piles) <= h:
+                right = middle
+            else:
+                left = middle + 1
+        
+        return left
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.minEatingSpeed([3,6,7,11], 8))              # 4
+    print(lc.minEatingSpeed([30,11,23,4,20], 5))         # 30
+    print(lc.minEatingSpeed([30,11,23,4,20], 6))         # 23
+
+
+# Runtime: 837 ms, faster than 21.92% of Python3 online submissions for Koko Eating Bananas.
+# Memory Usage: 15.5 MB, less than 57.60% of Python3 online submissions for Koko Eating Bananas.
+
+#%%
+
+class Solution:
+    def minEatingSpeed(self, piles, h):
+        def possible(speed):   
+            return sum((pile - 1) // speed + 1 for pile in piles) <= h
+
+        left = 1
+        right = max(piles)
+        
+        while left < right:
+            middle = left  + (right - left) // 2
+            if possible(middle):
+                right = middle
+            else:
+                left = middle + 1
+        return left
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.minEatingSpeed([3,6,7,11], 8))              # 4
+    print(lc.minEatingSpeed([30,11,23,4,20], 5))         # 30
+    print(lc.minEatingSpeed([30,11,23,4,20], 6))         # 23
+
+
+# Runtime: 530 ms, faster than 71.13% of Python3 online submissions for Koko Eating Bananas.
+# Memory Usage: 15.6 MB, less than 18.63% of Python3 online submissions for Koko Eating Bananas.
+
+#%%
