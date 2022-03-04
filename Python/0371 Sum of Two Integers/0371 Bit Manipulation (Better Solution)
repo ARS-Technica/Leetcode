@@ -1,0 +1,29 @@
+
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/sum-of-two-integers/discuss/963706/Python-or-Recursive-solution-or-Thought-Process
+
+
+class Solution:
+    def getSum(self, a, b):
+        mask = 0b11111111111111111111111111111111       
+        MAX =  0b01111111111111111111111111111111
+        
+        if b == 0:
+            return a if a <= MAX else ~(a ^ mask)
+        
+        return self.getSum(
+            (a ^ b) & mask,
+            ((a & b) << 1) & mask
+        )
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.getSum(1, 2))      # 3
+    print(lc.getSum(2, 3))      # 5 
+    print(lc.getSum(-12, -8))   # -20
+    
+
+# Runtime: 44 ms, faster than 45.37% of Python3 online submissions for Sum of Two Integers.
+# Memory Usage: 13.9 MB, less than 53.45% of Python3 online submissions for Sum of Two Integers.
