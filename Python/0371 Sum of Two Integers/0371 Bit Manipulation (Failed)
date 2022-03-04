@@ -1,0 +1,31 @@
+"""
+371. Sum of Two Integers
+Medium
+https://leetcode.com/problems/sum-of-two-integers/
+Created on Thu Mar  3 23:03:28 2022
+
+Given two integers a and b, return the sum of the two integers without using the operators + and -.
+"""
+
+
+class Solution:
+    def getSum(self, a, b):
+        # while b != 0:
+        while b:
+            c = a & b    # And operator
+            a = a ^ b    # Xor operator
+            b = c << 1
+            
+        return a
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.getSum(1, 2))      # 3
+    print(lc.getSum(2, 3))      # 5 
+    print(lc.getSum(-12, -8))   # -20
+
+
+# Time Limit Exceeded
+
+
