@@ -5,3 +5,24 @@ https://leetcode.com/problems/number-of-1-bits/
 
 Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 """
+
+
+class Solution:
+    def hammingWeight(self, n):
+        res = 0
+        while n:
+            n &= n - 1
+            res += 1
+            
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.hammingWeight(00000000000000000000000000001011))       # 3
+    print(lc.hammingWeight(00000000000000000000000010000000))       # 1
+    print(lc.hammingWeight(11111111111111111111111111111101))       # 31
+
+
+# Runtime: 43 ms, faster than 57.41% of Python3 online submissions for Number of 1 Bits.
+# Memory Usage: 13.9 MB, less than 72.79% of Python3 online submissions for Number of 1 Bits.
