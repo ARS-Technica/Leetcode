@@ -1,0 +1,41 @@
+"""
+371. Sum of Two Integers
+Medium
+https://leetcode.com/problems/sum-of-two-integers/
+Created on Thu Mar  3 23:03:28 2022
+
+Given two integers a and b, return the sum of the two integers without using the operators + and -.
+"""
+ 
+class Solution:
+    def getSum(self, a, b):
+        a = a & 0xffffffff
+        b = b & 0xffffffff
+        
+        while b:
+            c = ((a & b) << 1) & 0xffffffff
+            a = a ^ b
+            b = c 
+            
+        return a if a < 0x80000000 else ~(a ^ 0xffffffff)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.getSum(1, 2))      # 3
+    print(lc.getSum(2, 3))      # 5 
+    print(lc.getSum(-12, -8))   # -20
+    
+
+# Runtime: 52 ms, faster than 22.57% of Python3 online submissions for Sum of Two Integers.
+# Memory Usage: 13.9 MB, less than 80.47% of Python3 online submissions for Sum of Two Integers.
+ 
+
+"""
+It turns out that my original solution doesn't work because Python integers can exceed 32 bits.
+
+I had to go looking for an answer to this problem, as I'm new to Bit Manipulation.  The mask 
+variable is equal to 0b11111111111111111111111111111111. This is simply 32 bits of ones. 
+That means that, if the integer overflows to more than 32 bits, the & mask sets any bit greater 
+than 32 back to zero, thus ensuring that intergers are 32 bits.
+"""
