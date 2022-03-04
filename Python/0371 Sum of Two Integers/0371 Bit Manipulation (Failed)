@@ -7,6 +7,12 @@ Created on Thu Mar  3 23:03:28 2022
 Given two integers a and b, return the sum of the two integers without using the operators + and -.
 """
 
+"""
+New to Bit Manipulation.  I had to do research.
+# BitWise Operators in Python   https://www.youtube.com/watch?v=Cg14XQ_DoIs&list=PLfBvKu3UPvnivl0D0otTpxJPV6iYciqkw
+# Chapter 5: Bit manipulation   https://high-python-ext-3-algorithms.readthedocs.io/ko/latest/chapter5.html
+# Sum Of Two Integer Using Bitwise Operator     https://code4coding.com/python-example-to-sum-of-two-integer-using-bitwise-operator/
+"""
 
 class Solution:
     def getSum(self, a, b):
