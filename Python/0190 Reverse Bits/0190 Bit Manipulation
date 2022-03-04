@@ -1,1 +1,73 @@
+"""
+190. Reverse Bits
+Easy
+https://leetcode.com/problems/reverse-bits/
+Created on Fri Mar  4 08:19:10 2022
 
+Reverse bits of a given 32 bits unsigned integer.
+"""
+
+
+class Solution:
+    def reverseBits(self, n):
+        res = []
+        #n = int(n)
+        
+        while n:
+            # print(n % 2, end='')
+            res.append(n % 2)
+            n = n // 2 
+            
+        
+        #print(res, len(res))
+        while len(res) < 32: res.append(0)
+        #print(res, len(res))
+        
+        
+        # convert digits of list into strings
+        # print(''.join([str(i) for i in res]))
+        # convert digits of list into strings, join list into a single string
+        # print(str(''.join([str(i) for i in res])))
+        # left pad with zeroes
+        # print(str(''.join([str(i) for i in res])).zfill(32))        
+        # convert string to base-2 (binary)
+        
+        #print(int(str(''.join([str(i) for i in res])), 2)) 
+        return int(str(''.join([str(i) for i in res])), 2)
+
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseBits(0b00000010100101000001111010011100))           # 964176192
+    print(lc.reverseBits(0b11111111111111111111111111111101))           # 3221225471 
+
+
+# Runtime: 77 ms, faster than 5.22% of Python3 online submissions for Reverse Bits.
+# Memory Usage: 13.8 MB, less than 73.97% of Python3 online submissions for Reverse Bits.
+ 
+#%%
+
+
+class Solution:
+    def reverseBits(self, n):
+        res = [] 
+        
+        while n: 
+            res.append(n % 2)
+            n = n // 2 
+            
+        while len(res) < 32: res.append(0)
+        return int(str(''.join([str(i) for i in res])), 2)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseBits(0b00000010100101000001111010011100))           # 964176192
+    print(lc.reverseBits(0b11111111111111111111111111111101))           # 3221225471 
+
+
+# Runtime: 77 ms, faster than 5.22% of Python3 online submissions for Reverse Bits.
+# Memory Usage: 13.8 MB, less than 73.97% of Python3 online submissions for Reverse Bits.
+ 
+#%%
