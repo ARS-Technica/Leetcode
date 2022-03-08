@@ -1,0 +1,24 @@
+
+# Better solution. Not mine.
+# https://github.com/neetcode-gh/leetcode/blob/main/268-Missing-Number.py
+
+
+class Solution:
+    def missingNumber(self, nums):
+        res = len(nums)
+        
+        for i in range(len(nums)):
+            res += (i - nums[i])
+        return res
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.missingNumber([3,0,1]))                # 2
+    print(lc.missingNumber([0,1]))                  # 2
+    print(lc.missingNumber([9,6,4,2,3,5,7,0,1]))    # 8
+
+
+# Runtime: 196 ms, faster than 54.18% of Python3 online submissions for Missing Number.
+# Memory Usage: 15.2 MB, less than 87.89% of Python3 online submissions for Missing Number.
+ 
