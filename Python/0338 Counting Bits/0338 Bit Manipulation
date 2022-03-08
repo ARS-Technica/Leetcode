@@ -1,0 +1,35 @@
+"""
+338. Counting Bits
+Easy
+https://leetcode.com/problems/counting-bits/ 
+
+Given an integer n, return an array ans of length n + 1 such that for each 
+i (0 <= i <= n), ans[i] is the number of 1's in the binary representation of i.
+"""
+
+
+class Solution:   
+    def countBits(self, n):
+        res = []
+        
+        for i in range(n+1):
+            # Solution to Problem 191: Number of 1 Bits
+            ham = 0
+            while i:
+                i &= i - 1
+                ham += 1
+                
+            res.append(ham)
+            
+        return res
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.countBits(2))          # [0,1,1]
+    print(lc.countBits(5))          # [0,1,1,2,1,2] 
+
+
+# Runtime: 180 ms, faster than 26.76% of Python3 online submissions for Counting Bits.
+# Memory Usage: 20.8 MB, less than 83.65% of Python3 online submissions for Counting Bits.
+
