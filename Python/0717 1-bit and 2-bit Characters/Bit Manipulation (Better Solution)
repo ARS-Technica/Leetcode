@@ -1,0 +1,20 @@
+
+# Better Solution. Not mine.
+# https://leetcode.com/problems/1-bit-and-2-bit-characters/discuss/440538/python-Time%3A-O(n)-99.7-Space%3A-O(1)-100.0-easy-understand-clean-full-comment
+
+
+class Solution:
+    def isOneBitCharacter(self, bits):
+        i = 0
+        n = len(bits)
+        
+        while i < n - 1:
+            i += bits[i] + 1
+        return i == n - 1
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isOneBitCharacter([1,0,0]))        # true
+    print(lc.isOneBitCharacter([1,1,1,0]))      # false
+
