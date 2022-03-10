@@ -1,0 +1,18 @@
+
+# Better Solution.  Not mine.
+# https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/discuss/381146/Solution-in-Python-3-(beats-~98)-(one-line)
+
+
+class Solution:
+    def countPrimeSetBits(self, left, right):
+        return sum(1 for i in range(left,right+1) if bin(i).count('1') in {2,3,5,7,11,13,17,19})
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.countPrimeSetBits(6, 10))    # 4
+    print(lc.countPrimeSetBits(10, 15))   # 5 
+
+# Runtime: 188 ms, faster than 92.46% of Python3 online submissions for Prime Number of Set Bits in Binary Representation.
+# Memory Usage: 13.8 MB, less than 83.83% of Python3 online submissions for Prime Number of Set Bits in Binary Representation.
+
