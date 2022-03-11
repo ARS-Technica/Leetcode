@@ -1,0 +1,24 @@
+"""
+
+"""
+
+
+
+class Solution:
+    def sortByBits(self, arr):
+        arr.sort(key=lambda x: (bin(x).count("1"), x))
+        return arr
+ 
+    
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortByBits([0,1,2,3,4,5,6,7,8]))                       # [0,1,2,4,8,3,5,6,7]
+    print(lc.sortByBits([1024,512,256,128,64,32,16,8,4,2,1]))       # [1,2,4,8,16,32,64,128,256,512,1024] 
+    print(lc.sortByBits([10,100,1000,10000]))                       # [10,100,1000,10000]
+
+# Runtime: 113 ms, faster than 39.84% of Python3 online submissions for Sort Integers by The Number of 1 Bits.
+# Memory Usage: 14.3 MB, less than 29.55% of Python3 online submissions for Sort Integers by The Number of 1 Bits.
+    
+
+#%%
