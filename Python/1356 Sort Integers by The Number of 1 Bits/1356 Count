@@ -1,5 +1,8 @@
 """
-
+Working my way through a list of Bit Manipulation problems, my first instinct was to a bit operator to check the Hamming Weight of each item in the array.  
+However, after problems 338, "Counting Bits," and 762, "Prime Number of Set Bits in Binary Representation," I've learned that Bit Manipulation doesn't improve
+perform much beyond a simple conversion and count.  The only question in my mind was how to sort the number after their conversion.  It turns out that my 
+instincts were exactly the reverse of what was most effective, and my answers became less efficent as they went.
 """
 
 
@@ -7,8 +10,7 @@ class Solution:
     def sortByBits(self, arr):
         arr.sort(key=lambda x: (bin(x).count("1"), x))
         return arr
- 
-    
+     
 
 if __name__ == "__main__":
     lc = Solution() 
