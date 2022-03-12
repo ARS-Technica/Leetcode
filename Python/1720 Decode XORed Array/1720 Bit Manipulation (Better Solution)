@@ -22,3 +22,31 @@ if __name__ == "__main__":
 # Runtime: 303 ms, faster than 50.74% of Python3 online submissions for Decode XORed Array.
 # Memory Usage: 15.5 MB, less than 97.65% of Python3 online submissions for Decode XORed Array.
 
+
+#%%
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/decode-xored-array/discuss/1556382/Python-Easy-Solution-or-Faster-than-96
+
+
+class Solution:
+    def decode(self, encoded, first):
+		arr = [first]
+        
+		for i in range(len(encoded)):
+			arr.append(arr[i] ^ encoded[i])
+            
+		return arr
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.decode([1,2,3], 1))            # [1,0,2,1]
+    print(lc.decode([6,2,7,3], 4))          # [4,2,0,7,4] 
+
+
+# Runtime: 295 ms, faster than 53.96% of Python3 online submissions for Decode XORed Array.
+# Memory Usage: 15.9 MB, less than 55.77% of Python3 online submissions for Decode XORed Array.
+
+
+#%%
