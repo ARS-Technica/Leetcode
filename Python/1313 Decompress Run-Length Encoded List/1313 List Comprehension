@@ -1,0 +1,16 @@
+
+
+class Solution:
+    def decompressRLElist(self, nums):
+        return [res for i in range(1, len(nums), 2) for res in [nums[i]] * nums[i - 1]]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.decompressRLElist([1,2,3,4]))          # [2,4,4,4]
+    print(lc.decompressRLElist([1,1,2,3]))          # [1,3,3] 
+
+
+# Runtime: 89 ms, faster than 55.24% of Python3 online submissions for Decompress Run-Length Encoded List.
+# Memory Usage: 14.3 MB, less than 86.75% of Python3 online submissions for Decompress Run-Length Encoded List.
+
