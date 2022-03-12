@@ -1,0 +1,24 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/decode-xored-array/discuss/1625442/Python-O(n)-TC-O(1)-space-complexity-(92-100)
+
+
+class Solution:
+    def decode(self, encoded, first):
+        encoded.insert(0, first)
+        
+        for i in range(1, len(encoded)):
+            encoded[i] = encoded[i]^encoded[i-1]
+            
+        return encoded
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.decode([1,2,3], 1))            # [1,0,2,1]
+    print(lc.decode([6,2,7,3], 4))          # [4,2,0,7,4] 
+
+
+# Runtime: 303 ms, faster than 50.74% of Python3 online submissions for Decode XORed Array.
+# Memory Usage: 15.5 MB, less than 97.65% of Python3 online submissions for Decode XORed Array.
+
