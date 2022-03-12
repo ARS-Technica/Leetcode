@@ -1,0 +1,28 @@
+"""
+771. Jewels and Stones
+Easy
+https://leetcode.com/problems/jewels-and-stones/ 
+
+You're given strings jewels representing the types of stones that are jewels, 
+and stones representing the stones you have. Each character in stones is a type
+ of stone you have. You want to know how many of the stones you have are also 
+ jewels.
+
+Letters are case sensitive, so "a" is considered a different type of stone from "A".
+"""
+ 
+
+class Solution:
+    def numJewelsInStones(self, jewels, stones):
+        return sum([1 for i in stones if i in set(jewels)])
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.numJewelsInStones("aA", "aAAbbbb"))        # 3
+    print(lc.numJewelsInStones("z", "ZZ"))              # 0
+
+
+# Runtime: 46 ms, faster than 46.99% of Python3 online submissions for Jewels and Stones.
+# Memory Usage: 13.9 MB, less than 74.09% of Python3 online submissions for Jewels and Stones.
+
