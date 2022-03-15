@@ -1,0 +1,16 @@
+import collections
+
+class Solution:
+    def majorityElement(self, nums): 
+        return collections.Counter(nums).most_common()[0][0]        
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([2,2,1,1,1,2,2]))      # 2 
+
+
+# Runtime: 168 ms, faster than 92.95% of Python3 online submissions for Majority Element.
+# Memory Usage: 15.5 MB, less than 31.44% of Python3 online submissions for Majority Element.
+
