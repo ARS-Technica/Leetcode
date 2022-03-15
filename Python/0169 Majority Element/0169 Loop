@@ -1,0 +1,25 @@
+class Solution:
+    def majorityElement(self, nums):
+        count = 0
+        n = nums[0]
+        
+        for num in nums:
+            if num == n:
+                count += 1
+            elif count == 0:
+                count = 1
+                n = num
+            else:
+                count -= 1
+                
+        return n
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([2,2,1,1,1,2,2]))      # 2 
+
+
+# Runtime: 366 ms, faster than 5.08% of Python3 online submissions for Majority Element.
+# Memory Usage: 15.6 MB, less than 31.44% of Python3 online submissions for Majority Element.
