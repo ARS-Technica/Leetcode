@@ -1,0 +1,15 @@
+class Solution:
+    def majorityElement(self, nums):
+        nums.sort()
+        return nums[len(nums)//2]
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([2,2,1,1,1,2,2]))      # 2 
+
+
+# Runtime: 233 ms, faster than 48.56% of Python3 online submissions for Majority Element.
+# Memory Usage: 15.6 MB, less than 31.44% of Python3 online submissions for Majority Element.
+
