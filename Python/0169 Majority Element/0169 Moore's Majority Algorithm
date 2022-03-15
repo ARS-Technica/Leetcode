@@ -1,0 +1,25 @@
+
+# Moore's Majority Voting algorithm
+# Better solution. Not mine.
+# https://leetcode.com/problems/majority-element/discuss/1788466/Python-3-Different-solutions-or-Explained-in-detail
+
+class Solution:
+    def majorityElement(self, nums): 
+        vote, majority = 0, None
+        
+        for n in nums:
+            if vote == 0: majority = n
+            vote += (1 if majority == n else -1)
+        
+        return majority
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([2,2,1,1,1,2,2]))      # 2 
+
+
+# Runtime: 222 ms, faster than 54.54% of Python3 online submissions for Majority Element.
+# Memory Usage: 15.5 MB, less than 31.44% of Python3 online submissions for Majority Element.
+
