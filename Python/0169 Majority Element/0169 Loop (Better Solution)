@@ -1,0 +1,26 @@
+
+
+# Better solution.  Not mine.
+# https://leetcode.com/problems/majority-element/discuss/1788112/Python-easy-solution-O(n)-or-O(1)-or-explained
+
+
+class Solution:
+    def majorityElement(self, nums): 
+        curr, count = nums[0], 1              # curr will store the current majority element, count will store the count of the majority
+        for i in range(1,len(nums)):
+            count += (1 if curr == nums[i] else -1)    # if i is equal to current majority, they're in same team, hence added, else one current majority and i both will be dead
+            if not count:                   # if count is 0 means King is de-throwned
+                curr = nums[i+1] if i + 1 < len(nums) else None        # the next element is the new King
+                count = 0         # starting it with 0 because we can't increment the i of the for loop, the count will be 1 in next iteration, and again the battle continues after next iteration
+        return curr
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([2,2,1,1,1,2,2]))      # 2 
+
+
+# Runtime: 245 ms, faster than 42.41% of Python3 online submissions for Majority Element.
+# Memory Usage: 15.6 MB, less than 31.44% of Python3 online submissions for Majority Element.
+
