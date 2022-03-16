@@ -2,19 +2,19 @@
 
 class Solution:
     def matrixReshape(self, mat, r, c): 
-        flat_list = []
-        matrix = []
+        flattened = []
+        res = []
     
-        for sublist in mat:
-            for item in sublist:
-                flat_list.append(item)
+        for i in mat:
+            for j in i:
+                flattened.append(j)
     
-        if len(flat_list) != r * c:
+        if len(flattened) != r * c:
             return mat
         else:
-            for i in range(0,len(flat_list),c):
-                matrix.append(flat_list[i:i+c])
-            return matrix
+            for i in range(0, len(flattened), c):
+                res.append(flattened[i : i + c])
+            return res
 
 
 if __name__ == "__main__":
