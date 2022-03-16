@@ -1,4 +1,4 @@
-
+# It's slower with slicing than iterating
 
 class Solution:
     def matrixReshape(self, mat, r, c): 
@@ -24,4 +24,5 @@ if __name__ == "__main__":
     print(lc.matrixReshape([[1,2],[3,4]], r = 4, c = 1))       # [[1],[2],[3],[4]] 
 
 
-# 
+# Runtime: 132 ms, faster than 46.67% of Python3 online submissions for Reshape the Matrix.
+# Memory Usage: 14.6 MB, less than 98.84% of Python3 online submissions for Reshape the Matrix.
