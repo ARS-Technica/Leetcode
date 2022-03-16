@@ -1,0 +1,55 @@
+"""
+566. Reshape the Matrix
+Easy
+Created on Tue Mar 15 22:38:03 2022
+https://leetcode.com/problems/reshape-the-matrix/
+
+In MATLAB, there is a handy function called reshape which can reshape an m x n 
+matrix into a new one with a different size r x c keeping its original data.
+
+You are given an m x n matrix mat and two integers r and c representing the 
+number of rows and the number of columns of the wanted reshaped matrix.
+
+The reshaped matrix should be filled with all the elements of the original 
+matrix in the same row-traversing order as they were.
+
+If the reshape operation with given parameters is possible and legal, output 
+the new reshaped matrix; Otherwise, output the original matrix.
+"""
+
+# Basically a re-implimentation of 2022.) Convert 1D Array Into 2D Array
+
+
+class Solution:
+    def matrixReshape(self, mat, r, c): 
+        columns = len(mat[0])
+        rows = len(mat)
+        
+        if rows * columns != r * c:
+            return mat
+            
+        res = [[]]
+        
+        for i in range(rows):
+            for j in range(columns):
+                
+                num = mat[i][j]
+                
+                if len(res[-1]) < c:
+                    res[-1].append(num)
+                else:
+                    res.append([num])
+                    
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.matrixReshape([[1,2],[3,4]], r = 1, c = 4))       # [[1,2,3,4]]
+    print(lc.matrixReshape([[1,2],[3,4]], r = 2, c = 4))       # [[1,2],[3,4]] 
+    print(lc.matrixReshape([[1,2],[3,4]], r = 4, c = 1))       # [[1],[2],[3],[4]] 
+
+
+# Runtime: 92 ms, faster than 86.18% of Python3 online submissions for Reshape the Matrix.
+# Memory Usage: 14.8 MB, less than 51.44% of Python3 online submissions for Reshape the Matrix.
+
