@@ -1,3 +1,5 @@
+# Thought it would clever to compact my answer into a list comprehension
+# Turns out, the more compact the solution, the worse the runtime
 
 
 class Solution:
@@ -15,6 +17,25 @@ if __name__ == "__main__":
 
 # Runtime: 113 ms, faster than 62.58% of Python3 online submissions for How Many Numbers Are Smaller Than the Current Number.
 # Memory Usage: 14 MB, less than 29.32% of Python3 online submissions for How Many Numbers Are Smaller Than the Current Number.
+
+
+#%%
+
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums):
+        return [sorted(nums).index(i) for i in nums]
+            
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.smallerNumbersThanCurrent([8,1,2,2,3]))            # [4,0,1,1,3]
+    print(lc.smallerNumbersThanCurrent([6,5,4,8]))              # [2,1,0,3]
+    print(lc.smallerNumbersThanCurrent([7,7,7,7]))              # [0,0,0,0]
+
+
+# Runtime: 351 ms, faster than 43.44% of Python3 online submissions for How Many Numbers Are Smaller Than the Current Number.
+# Memory Usage: 13.8 MB, less than 90.65% of Python3 online submissions for How Many Numbers Are Smaller Than the Current Number.
 
 
 #%%
