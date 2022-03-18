@@ -1,0 +1,19 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/shuffle-string/discuss/1557770/Python-one-line-simple-solution
+
+
+class Solution:
+    def restoreString(self, s, indices):
+        return "".join([i for (j, i) in sorted(zip(indices, s))])
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.restoreString(s = "codeleet", indices = [4,5,6,7,0,2,1,3]))        # "leetcode"
+    print(lc.restoreString(s = "abc", indices = [0,1,2]))                       # "abc" 
+
+
+# Runtime: 40 ms, faster than 99.97% of Python3 online submissions for Shuffle String.
+# Memory Usage: 13.7 MB, less than 97.72% of Python3 online submissions for Shuffle String.
+
