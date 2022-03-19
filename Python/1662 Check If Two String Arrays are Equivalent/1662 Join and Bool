@@ -1,0 +1,28 @@
+"""
+1662. Check If Two String Arrays are Equivalent
+Easy
+https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/ 
+
+Given two string arrays word1 and word2, return true if the two arrays represent
+the same string, and false otherwise.
+
+A string is represented by an array if the array elements concatenated in order
+forms the string.
+"""
+ 
+
+class Solution:
+    def arrayStringsAreEqual(self, word1, word2):
+        return ''.join(word1) == ''.join(word2)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))                    # true
+    print(lc.arrayStringsAreEqual(word1 = ["a", "cb"], word2 = ["ab", "c"]))                    # false
+    print(lc.arrayStringsAreEqual(word1 = ["abc", "d", "defg"], word2 = ["abcddefg"]))          # true
+
+
+# Runtime: 57 ms, faster than 24.72% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+# Memory Usage: 13.9 MB, less than 82.03% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+
