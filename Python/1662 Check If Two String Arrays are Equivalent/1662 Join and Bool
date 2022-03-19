@@ -9,7 +9,30 @@ the same string, and false otherwise.
 A string is represented by an array if the array elements concatenated in order
 forms the string.
 """
+
+
+class Solution:
+    def arrayStringsAreEqual(self, word1, word2):
+        w1 = ''.join(word1)
+        w2 = ''.join(word2)
+        return w1 == w2
  
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.arrayStringsAreEqual(word1 = ["ab", "c"], word2 = ["a", "bc"]))                    # true
+    print(lc.arrayStringsAreEqual(word1 = ["a", "cb"], word2 = ["ab", "c"]))                    # false
+    print(lc.arrayStringsAreEqual(word1 = ["abc", "d", "defg"], word2 = ["abcddefg"]))          # true
+
+
+# Runtime: 58 ms, faster than 22.85% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+# Memory Usage: 14 MB, less than 45.47% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+
+
+#%%
+
+# It's faster to join and test the bool value in a single line
+
 
 class Solution:
     def arrayStringsAreEqual(self, word1, word2):
@@ -25,4 +48,5 @@ if __name__ == "__main__":
 
 # Runtime: 57 ms, faster than 24.72% of Python3 online submissions for Check If Two String Arrays are Equivalent.
 # Memory Usage: 13.9 MB, less than 82.03% of Python3 online submissions for Check If Two String Arrays are Equivalent.
+
 
