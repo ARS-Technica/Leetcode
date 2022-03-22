@@ -1,0 +1,40 @@
+
+# Not mine.
+# https://www.youtube.com/watch?v=wQ8Qlc1iXps
+
+
+"""
+When I saw this solution in the discussion section, I thought that 
+it would work faster than sorting two words into lists. It didn't.
+"""
+
+class Solution:
+    def isAnagram(self, s, t): 
+        ht = {}
+        
+        for char in s:
+            if char not in ht:
+                ht[char] = 0
+            ht[char] += 1
+        
+        for char in t:
+            if char not in ht:
+                ht[char] = 0
+            ht[char] -= 1
+            
+        for key in ht.keys():
+            if ht[key] != 0:
+                return False
+            
+        return True
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isAnagram(s = "anagram", t = "nagaram"))           # true
+    print(lc.isAnagram(s = "rat", t = "car"))                   # false 
+
+
+# Runtime: 55 ms, faster than 75.87% of Python3 online submissions for Valid Anagram.
+# Memory Usage: 14.4 MB, less than 71.05% of Python3 online submissions for Valid Anagram.
+
