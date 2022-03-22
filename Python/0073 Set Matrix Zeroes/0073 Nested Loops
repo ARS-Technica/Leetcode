@@ -51,4 +51,8 @@ if __name__ == "__main__":
 # None
 
 
+# Runtime: 203 ms, faster than 37.22% of Python3 online submissions for Set Matrix Zeroes.
+# Memory Usage: 14.7 MB, less than 93.21% of Python3 online submissions for Set Matrix Zeroes.
+
+
 #%%
