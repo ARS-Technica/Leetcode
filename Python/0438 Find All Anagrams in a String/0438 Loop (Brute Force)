@@ -1,0 +1,120 @@
+"""
+438. Find All Anagrams in a String
+Medium
+https://leetcode.com/problems/find-all-anagrams-in-a-string/ 
+
+Given two strings s and p, return an array of all the start indices of p's 
+anagrams in s. You may return the answer in any order.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different 
+word or phrase, typically using all the original letters exactly once.
+"""
+
+
+class Solution:
+    def findAnagrams(self, s, p,):
+        # List comprehension from Leetcode problem 242
+        # return sorted(char for char in s) == sorted(char for char in p)
+        
+        anagram = sorted(char for char in p) 
+        interval = len(anagram)
+        letters = [char for char in s]
+        res = []
+        
+        for idx in range(len(letters) - (interval-1)): 
+            if set(letters[idx : (idx + interval)]) == set(anagram):
+                res.append(idx)
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findAnagrams(s = "cbaebabacd", p = "abc"))             # [0,6]
+    print(lc.findAnagrams(s = "abab", p = "ab"))                    # [0,1,2]
+    print(lc.findAnagrams(s = "ababababab", p = "aab"))             # [0,2,4,6]
+
+# Doesn't work for findAnagrams(s = "ababababab", p = "aab")
+
+
+#%%
+
+
+class Solution:
+    def findAnagrams(self, s, p,):
+        # List comprehension from Leetcode problem 242
+        # return sorted(char for char in s) == sorted(char for char in p)
+        
+        anagram = sorted(char for char in p) 
+        interval = len(anagram)
+        letters = [char for char in s]
+        letters_len = len(letters)
+        res = []
+        
+        for idx in range(letters_len - (interval-1)): 
+            if sorted(letters[idx : (idx + interval)]) == anagram:
+                res.append(idx)
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findAnagrams(s = "cbaebabacd", p = "abc"))             # [0,6]
+    print(lc.findAnagrams(s = "abab", p = "ab"))                    # [0,1,2] 
+    print(lc.findAnagrams(s = "ababababab", p = "aab"))             # [0,2,4,6]
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
+    def findAnagrams(self, s, p,):
+        # List comprehension from Leetcode problem 242
+        # return sorted(char for char in s) == sorted(char for char in p)
+        
+        anagram = sorted(char for char in p) 
+        interval = len(anagram)
+        letters = [char for char in s]
+        letters_len = len(letters)
+        res = []
+        
+        for idx in range(letters_len - (interval-1)): 
+            if sorted(letters[idx : (idx + interval)]) == anagram:
+                res.append(idx)
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findAnagrams(s = "cbaebabacd", p = "abc"))             # [0,6]
+    print(lc.findAnagrams(s = "abab", p = "ab"))                    # [0,1,2] 
+    print(lc.findAnagrams(s = "ababababab", p = "aab"))             # [0,2,4,6]
+
+# Time Limit Exceeded
+
+
+#%%
+
+class Solution:
+    def findAnagrams(self, s, p,):        
+        anagram = sorted(char for char in p) 
+        interval = len(anagram)
+        letters = [char for char in s]
+        letters_len = len(letters)
+        
+        return [idx for idx in range(letters_len - (interval-1)) if sorted(letters[idx : (idx + interval)]) == anagram]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findAnagrams(s = "cbaebabacd", p = "abc"))             # [0,6]
+    print(lc.findAnagrams(s = "abab", p = "ab"))                    # [0,1,2] 
+    print(lc.findAnagrams(s = "ababababab", p = "aab"))             # [0,2,4,6]
+
+# Runtime: 8216 ms, faster than 5.00% of Python3 online submissions for Find All Anagrams in a String.
+# Memory Usage: 15.6 MB, less than 6.64% of Python3 online submissions for Find All Anagrams in a String.
+
