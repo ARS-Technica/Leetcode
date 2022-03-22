@@ -9,6 +9,12 @@ and column to 0's.
 You must do it in place.
 """
 
+"""
+Solved the problem with a few minor changes.  
+First, I iterated over a range for each loop.  
+Second, I iterate over my arrays of columns and rows with zeroes, rather than over every column and row in the matrix.
+Third, I calculate lengths in a variable, rather than re-calculating them with each loop.
+"""
 
 class Solution:
     def setZeroes(self, matrix):
@@ -56,3 +62,40 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def setZeroes(self, matrix):
+        column = len(matrix[0])        
+        row = len(matrix)
+        
+        zero_columns = []
+        zero_rows = []
+
+        for i in range(row):
+            for j in range(column):
+                if matrix[i][j] == 0:
+                    zero_rows.append(i)
+                    zero_columns.append(j)
+        
+        for i in zero_rows:
+            for j in range(column):
+                matrix[i][j] = 0
+        
+        for i in range(row):
+            for j in zero_columns:
+                matrix[i][j] = 0
+
+        print(matrix)
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.setZeroes([[1,1,1],[1,0,1],[1,1,1]]))              # [[1,0,1],[0,0,0],[1,0,1]]
+    print(lc.setZeroes([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))        # [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
+    print(lc.setZeroes([[0],[1]]))                              # [[0],[0]]
+
+
+# Runtime: 136 ms, faster than 85.79% of Python3 online submissions for Set Matrix Zeroes.
+# Memory Usage: 14.7 MB, less than 63.16% of Python3 online submissions for Set Matrix Zeroes.
+
