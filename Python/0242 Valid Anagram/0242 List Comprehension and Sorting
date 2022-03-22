@@ -1,0 +1,27 @@
+"""
+242. Valid Anagram
+Easy
+https://leetcode.com/problems/valid-anagram/
+Created on Fri Mar 18 23:32:45 2022
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different 
+word or phrase, typically using all the original letters exactly once.
+"""
+
+
+class Solution:
+    def isAnagram(self, s, t): 
+        return sorted(char for char in s) == sorted(char for char in t)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isAnagram(s = "anagram", t = "nagaram"))           # true
+    print(lc.isAnagram(s = "rat", t = "car"))                   # false 
+
+
+# Runtime: 52 ms, faster than 82.81% of Python3 online submissions for Valid Anagram.
+# Memory Usage: 15.2 MB, less than 11.76% of Python3 online submissions for Valid Anagram.
+
