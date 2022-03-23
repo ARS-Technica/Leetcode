@@ -1,1 +1,25 @@
 
+
+from collections import defaultdict
+
+
+class Solution:
+    def groupAnagrams(self, strs):
+        anagram_dict = defaultdict(list)
+        
+        for word in strs:
+            anagram_dict[''.join(sorted(word))].append(word)
+        
+        return anagram_dict.values()
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))           # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                            # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                           # [["a"]]
+
+
+# Runtime: 198 ms, faster than 18.24% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.9 MB, less than 50.47% of Python3 online submissions for Group Anagrams.
+
