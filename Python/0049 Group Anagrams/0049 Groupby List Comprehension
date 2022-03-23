@@ -1,0 +1,20 @@
+
+
+import itertools
+
+
+class Solution:
+    def groupAnagrams(self, strs):     
+        return [list(group) for letters, group in itertools.groupby(sorted(strs, key=sorted), sorted)]
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))           # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                            # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                           # [["a"]]
+
+
+# Runtime: 100 ms, faster than 92.43% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.3 MB, less than 78.88% of Python3 online submissions for Group Anagrams.
+
