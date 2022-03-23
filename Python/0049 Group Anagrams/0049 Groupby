@@ -1,1 +1,31 @@
+'''
+Groupby appears to be a more efficent method of solving this problem than
+either Hash Tbale or Defaultdict.
+'''
+
+
+import itertools
+
+
+class Solution:
+    def groupAnagrams(self, strs):
+        #return [sorted(g) for _, g in itertools.groupby(sorted(strs, key=sorted), sorted)]
+        res = []
+        
+        for letters, group in itertools.groupby(sorted(strs, key=sorted), sorted):
+            #print(letters, list(group))
+            res.append(list(group))
+            
+        return res
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))           # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                            # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                           # [["a"]]
+
+
+# Runtime: 112 ms, faster than 81.08% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.1 MB, less than 88.68% of Python3 online submissions for Group Anagrams.
 
