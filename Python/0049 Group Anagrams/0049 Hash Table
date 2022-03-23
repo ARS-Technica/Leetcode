@@ -16,6 +16,36 @@ Impractical, but the most straightforward method for a beginner.
 
 
 class Solution:
+    def groupAnagrams(self, strs): 
+        anagrams = [(''.join(sorted(word)), word) for word in strs]
+        anagram_dict = {}
+        res = []
+
+        for tup in anagrams:
+            if tup[0] in anagram_dict:
+                anagram_dict[tup[0]].append(tup[1])
+            else:
+                anagram_dict[tup[0]] = [tup[1]]
+
+        for key, value in anagram_dict.items():
+            res.append(value)        
+        
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))           # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                            # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                           # [["a"]]
+
+
+# Runtime: 215 ms, faster than 12.79% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.8 MB, less than 63.49% of Python3 online submissions for Group Anagrams.
+
+
+#%%
+class Solution:
     def groupAnagrams(self, strs):
         # Sort into an alphabetical list
         # Make the list a series of tuples with the second element the original word
