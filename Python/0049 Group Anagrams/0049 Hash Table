@@ -45,6 +45,42 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def groupAnagrams(self, strs):
+        anagram_dict = {}
+        res = []
+        
+        for word in strs:
+            alphabetized = ''.join(sorted(word))
+            
+            if alphabetized not in anagram_dict:
+                anagram_dict[alphabetized] = [word]
+            else:
+                anagram_dict[alphabetized].append(word)
+            
+        for key in anagram_dict:
+            res.append(anagram_dict[key])
+            
+        #print(anagram_dict)
+        return res
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))           # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                            # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                           # [["a"]]
+
+
+# Runtime: 206 ms, faster than 15.28% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.2 MB, less than 88.68% of Python3 online submissions for Group Anagrams.
+
+
+#%%
+
+
 class Solution:
     def groupAnagrams(self, strs):
         # Sort into an alphabetical list
