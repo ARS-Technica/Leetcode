@@ -10,3 +10,42 @@ An Anagram is a word or phrase formed by rearranging the letters of a different
 word or phrase, typically using all the original letters exactly once.
 """
 
+'''
+Impractical, but the most straightforward method for a beginner.
+'''
+
+
+class Solution:
+    def groupAnagrams(self, strs):
+        # Sort into an alphabetical list
+        # Make the list a series of tuples with the second element the original word
+        anagrams = [(''.join(sorted(char for char in idx)), idx) for idx in strs]  
+        # print(anagrams)
+        # Sort tuples by first element: print(anagrams.sort(key=lambda x: x[0])) 
+        
+        anagram_dict = {}
+        res = []
+
+        for tup in anagrams:
+            #print(tup, tup[0], tup[1])
+            if tup[0] in anagram_dict:
+                anagram_dict[tup[0]].append(tup[1])
+            else:
+                anagram_dict[tup[0]] = [tup[1]]
+
+        for key, value in anagram_dict.items():
+            res.append(value)        
+        
+        return res             
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.groupAnagrams(strs = ["eat","tea","tan","ate","nat","bat"]))               # [["bat"],["nat","tan"],["ate","eat","tea"]]
+    print(lc.groupAnagrams(strs = [""]))                                                # [[""]]
+    print(lc.groupAnagrams(strs = ["a"]))                                               # [["a"]]
+
+
+# Runtime: 161 ms, faster than 39.60% of Python3 online submissions for Group Anagrams.
+# Memory Usage: 17.8 MB, less than 54.97% of Python3 online submissions for Group Anagrams.
+
