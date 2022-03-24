@@ -45,6 +45,6 @@ if __name__ == "__main__":
     print(lc.firstPalindrome(words = ["def","ghi"]))                                # ""
 
 
-# Runtime: 133 ms, faster than 29.82% of Python3 online submissions for Find First Palindromic String in the Array.
+# Runtime: 97 ms, faster than 67.10% of Python3 online submissions for Find First Palindromic String in the Array.
 # Memory Usage: 14 MB, less than 74.94% of Python3 online submissions for Find First Palindromic String in the Array.
 
