@@ -1,0 +1,50 @@
+"""
+2108. Find First Palindromic String in the Array
+Easy
+https://leetcode.com/problems/find-first-palindromic-string-in-the-array/ 
+
+Given an array of strings words, return the first palindromic string in the 
+array. If there is no such string, return an empty string "".
+
+A string is palindromic if it reads the same forward and backward.
+"""
+
+
+class Solution:
+    def firstPalindrome(self, words):
+        palindrome = [word for word in words if word == word[-1::-1]]
+        return palindrome[0] if palindrome else ""
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.firstPalindrome(words = ["abc","car","ada","racecar","cool"]))         # "ada"
+    print(lc.firstPalindrome(words = ["notapalindrome","racecar"]))                 # "racecar"
+    print(lc.firstPalindrome(words = ["def","ghi"]))                                # ""
+
+
+# Runtime: 134 ms, faster than 29.37% of Python3 online submissions for Find First Palindromic String in the Array.
+# Memory Usage: 14.1 MB, less than 37.10% of Python3 online submissions for Find First Palindromic String in the Array.
+
+
+#%%
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/find-first-palindromic-string-in-the-array/discuss/1676121/Python-simple-solution-andand-one-line
+
+
+class Solution:
+    def firstPalindrome(self, words):
+        return next((word for word in words if word == word[::-1]), "")
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.firstPalindrome(words = ["abc","car","ada","racecar","cool"]))         # "ada"
+    print(lc.firstPalindrome(words = ["notapalindrome","racecar"]))                 # "racecar"
+    print(lc.firstPalindrome(words = ["def","ghi"]))                                # ""
+
+
+# Runtime: 133 ms, faster than 29.82% of Python3 online submissions for Find First Palindromic String in the Array.
+# Memory Usage: 14 MB, less than 74.94% of Python3 online submissions for Find First Palindromic String in the Array.
+
