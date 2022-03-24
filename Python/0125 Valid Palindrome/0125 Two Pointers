@@ -1,0 +1,49 @@
+"""
+125. Valid Palindrome
+Easy
+https://leetcode.com/problems/valid-palindrome/
+
+A phrase is a palindrome if, after converting all uppercase letters into lowercase 
+letters and removing all non-alphanumeric characters, it reads the same forward 
+and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+"""
+
+
+class Solution:
+    def isPalindrome(self, s):
+        left = 0
+        right = len(s)-1
+        
+        while left < right:
+            if not s[left].isalnum():
+                left += 1
+            elif not s[right].isalnum():
+                right -= 1
+            else:
+                if s[left].lower() != s[right].lower():
+                    return False
+                else:
+                    left +=1
+                    right -= 1
+
+        return True
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isPalindrome(s = "A. man, a plan, a canal: Panama"))   # true
+    print(lc.isPalindrome(s = "race a car"))                        # false
+    print(lc.isPalindrome(s = " "))                                 # true
+
+
+# Runtime: 52 ms, faster than 79.94% of Python3 online submissions for Valid Palindrome.
+# Memory Usage: 14.5 MB, less than 51.19% of Python3 online submissions for Valid Palindrome.
+
+
+"""
+This problem was labeled a Two Pointer exercise.  Ironically, a simple list comprehension 
+worked far more efficently.  However, I started with a Two Pointer algorithm for the 
+practice.
+"""
