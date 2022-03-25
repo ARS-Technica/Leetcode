@@ -1,0 +1,41 @@
+
+"""
+Less efficent than the Two Pointer algorithm.
+More efficent than Brute Force. Less space than
+a Hashtable.
+"""
+
+
+class Solution:
+    def twoSum(self, numbers, target):
+        for idx in range(len(numbers)):
+            left = idx + 1
+            right = len(numbers) - 1
+            
+            #target -= numbers[idx]
+            new_target = target - numbers[idx]
+            
+            while left <= right: 
+                middle = left + (right - left) // 2
+                                
+                if numbers[middle] < new_target:
+                    left = middle + 1
+                elif numbers[middle] > new_target:
+                    right = middle - 1
+                else:
+                    return [idx + 1, middle + 1]                   
+    
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.twoSum([2,7,11,15], 9))        # [1, 2]
+    print(lc.twoSum([2,3,4], 6))            # [1, 3]
+    print(lc.twoSum([-1,0], -1))            # [1, 2]
+    print(lc.twoSum([5,25,75], 100))        # [2, 3]
+
+
+# Doesn't work for twoSum([5,25,75], 100) unless a new_target is created
+
+# Runtime: 246 ms, faster than 14.19% of Python3 online submissions for Two Sum II - Input Array Is Sorted.
+# Memory Usage: 14.9 MB, less than 73.08% of Python3 online submissions for Two Sum II - Input Array Is Sorted.
+
