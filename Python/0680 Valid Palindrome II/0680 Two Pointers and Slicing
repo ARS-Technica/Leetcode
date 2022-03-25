@@ -10,3 +10,27 @@ one character from it.
 
 class Solution:
     def validPalindrome(self, s): 
+        left = 0
+        right = len(s)-1
+        
+        while left < right:
+            if s[left] != s[right]:
+                return False
+
+            left += 1
+            right -= 1
+
+        return True
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.validPalindrome(s = "aba"))          # true
+    print(lc.validPalindrome(s = "abca"))         # true
+    print(lc.validPalindrome(s = "abc"))          # false
+
+
+# Checks for Palindrome
+
+
+#%%
