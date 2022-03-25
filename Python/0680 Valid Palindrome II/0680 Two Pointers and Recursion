@@ -1,0 +1,28 @@
+
+# Not mine.
+# https://leetcode.com/problems/valid-palindrome-ii/discuss/1170073/Python-Recursive-Solution-Easy-to-Understand
+
+
+class Solution:
+    def validPalindrome(self, s):
+        def isValid(l=0,r=len(s)-1, deleted=False):
+            while l < r:
+                if s[l] == s[r]:
+                    l, r = l+1, r-1
+                else:
+                    deleted = not deleted
+                    return deleted and (isValid(l+1, r, deleted) or isValid(l, r-1, deleted))
+            return True
+        return isValid()
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.validPalindrome(s = "aba"))          # true
+    print(lc.validPalindrome(s = "abca"))         # true
+    print(lc.validPalindrome(s = "abc"))          # false
+
+
+# Runtime: 389 ms, faster than 10.08% of Python3 online submissions for Valid Palindrome II.
+# Memory Usage: 17.3 MB, less than 8.30% of Python3 online submissions for Valid Palindrome II.
+
