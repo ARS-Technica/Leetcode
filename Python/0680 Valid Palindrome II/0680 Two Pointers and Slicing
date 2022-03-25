@@ -34,3 +34,35 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def validPalindrome(self, s): 
+        left = 0
+        right = len(s)-1
+        
+        while left <= right:
+            if s[left] != s[right]:
+                word1 = s[:left] + s[(left + 1):]
+                word2 = s[:right] + s[(right + 1):]
+                
+                return word1 == word1[::-1] or word2 == word2[::-1]
+            
+            left += 1
+            right -= 1
+            
+        return True
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.validPalindrome(s = "aba"))          # true
+    print(lc.validPalindrome(s = "abca"))         # true
+    print(lc.validPalindrome(s = "abc"))          # false
+
+
+# Runtime: 137 ms, faster than 78.94% of Python3 online submissions for Valid Palindrome II.
+# Memory Usage: 14.5 MB, less than 53.79% of Python3 online submissions for Valid Palindrome II.
+
+
+#%%
