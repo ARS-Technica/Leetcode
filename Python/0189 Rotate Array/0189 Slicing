@@ -1,0 +1,63 @@
+"""
+189. Rotate Array
+Medium
+https://leetcode.com/problems/rotate-array/
+Created on Wed Mar 23 23:39:28 2022
+
+Given an array, rotate the array to the right by k steps, where k is non-negative.
+"""
+
+
+class Solution:
+    def rotate(self, nums, k):
+        nums = nums[(-1 * k)::] + nums[0:(-1 * k):] 
+        print(nums)
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100]  
+
+
+# 
+
+
+#%%
+
+
+class Solution:
+    def rotate(self, nums, k):
+        nums[:] = nums[(-1 * k)::] + nums[0:(-1 * k):] 
+        print(nums)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100]  
+    print(lc.rotate(nums = [1,2], k = 3))                   # [2,1]
+    
+
+# Fails for rotate(nums = [1,2], k = 3)
+ 
+
+#%%
+
+
+class Solution:
+    def rotate(self, nums, k):
+        # For lengths of k longer than the array being sliced.
+        k = k % len(nums)
+        nums[:] = nums[(-1 * k)::] + nums[0:(-1 * k):] 
+        print(nums)
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100]  
+    print(lc.rotate(nums = [1,2], k = 3))                   # [2,1]
+    
+
+# Runtime: 216 ms, faster than 94.89% of Python3 online submissions for Rotate Array.
+# Memory Usage: 25.4 MB, less than 32.06% of Python3 online submissions for Rotate Array.
+ 
