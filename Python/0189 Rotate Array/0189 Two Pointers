@@ -6,4 +6,71 @@ https://leetcode.com/problems/rotate-array/
 Given an array, rotate the array to the right by k steps, where k is non-negative.
 """
 
+# This was labeled as a Two Pointer problem, but initially, I stuggled with how to impliment it.
+
+
+class Solution:
+    def rotate(self, nums, k):
+        left = 0
+        right = len(nums) - 1
+        
+        while k > 0:
+            nums.insert(left, nums.pop())
+            k -= 1
+
+        print(nums)          
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100] 
+
+
+# Runtime: 2791 ms, faster than 8.52% of Python3 online submissions for Rotate Array.
+# Memory Usage: 25.3 MB, less than 97.38% of Python3 online submissions for Rotate Array.
+
+
+#%%
+
+
+class Solution:
+    def rotate(self, nums, k):
+        k = k % len(nums)
+        
+        left = 0
+        right = len(nums) - 1
+        
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1                
+
+        left = 0
+        right = k - 1
+        
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1  
+
+        left = k
+        right = len(nums) - 1
+        
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1  
+            
+        print(nums)          
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100] 
+
+
+# Runtime: 228 ms, faster than 87.23% of Python3 online submissions for Rotate Array.
+# Memory Usage: 25.5 MB, less than 7.66% of Python3 online submissions for Rotate Array.
 
