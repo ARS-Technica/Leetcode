@@ -1,0 +1,29 @@
+
+
+# Not mine.
+# https://leetcode.com/problems/rotate-array/discuss/487529/py3-js-5-different-simple-solutions
+
+
+from collections import deque
+
+class Solution:
+    def rotate(self, nums, k):
+        d = deque(nums)
+        
+        for idx in range(k):
+            d.appendleft(d.pop())
+            
+        nums[:] = list(d)
+       
+        print(nums)
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotate(nums = [1,2,3,4,5,6,7], k = 3))         # [5,6,7,1,2,3,4]
+    print(lc.rotate(nums = [-1,-100,3,99], k = 2))          # [3,99,-1,-100] 
+
+
+# Runtime: 483 ms, faster than 22.06% of Python3 online submissions for Rotate Array.
+# Memory Usage: 25.9 MB, less than 7.66% of Python3 online submissions for Rotate Array.
+
