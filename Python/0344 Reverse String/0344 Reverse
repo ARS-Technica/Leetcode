@@ -1,0 +1,26 @@
+"""
+344. Reverse String
+Easy
+https://leetcode.com/problems/reverse-string/ 
+
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+"""
+
+
+class Solution:
+    def reverseString(self, s): 
+        s.reverse()
+        #print(s)        
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseString(s = ["h","e","l","l","o"]))          # ["o","l","l","e","h"]
+    print(lc.reverseString(s = ["H","a","n","n","a","h"]))      # ["h","a","n","n","a","H"] 
+
+
+# Runtime: 301 ms, faster than 37.30% of Python3 online submissions for Reverse String.
+# Memory Usage: 18.3 MB, less than 89.59% of Python3 online submissions for Reverse String.
+
