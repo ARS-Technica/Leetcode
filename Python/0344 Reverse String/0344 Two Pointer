@@ -1,8 +1,7 @@
 """
 344. Reverse String
 Easy
-https://leetcode.com/problems/reverse-string/
-Created on Wed Mar 30 05:45:40 2022
+https://leetcode.com/problems/reverse-string/ 
 
 Write a function that reverses a string. The input string is given as an array of characters s.
 
