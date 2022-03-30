@@ -1,0 +1,17 @@
+
+
+class Solution:
+    def reverseString(self, s): 
+        s[:] = s[-1::-1]
+        #print(s)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseString(s = ["h","e","l","l","o"]))          # ["o","l","l","e","h"]
+    print(lc.reverseString(s = ["H","a","n","n","a","h"]))      # ["h","a","n","n","a","H"] 
+
+
+# Runtime: 184 ms, faster than 99.91% of Python3 online submissions for Reverse String.
+# Memory Usage: 18.7 MB, less than 15.30% of Python3 online submissions for Reverse String.
+
