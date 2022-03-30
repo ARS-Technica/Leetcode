@@ -1,0 +1,20 @@
+ 
+
+class Solution:
+    def reverseString(self, s): 
+        length = len(s) 
+        for idx in range(length//2):
+            s[idx], s[-idx-1] = s[-idx-1], s[idx]
+            
+        print(s)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseString(s = ["h","e","l","l","o"]))          # ["o","l","l","e","h"]
+    print(lc.reverseString(s = ["H","a","n","n","a","h"]))      # ["h","a","n","n","a","H"] 
+
+
+# Runtime: 367 ms, faster than 15.56% of Python3 online submissions for Reverse String.
+# Memory Usage: 18.5 MB, less than 48.62% of Python3 online submissions for Reverse String.
+
