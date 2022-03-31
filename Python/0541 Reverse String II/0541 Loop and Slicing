@@ -31,3 +31,26 @@ if __name__ == "__main__":
 # Runtime: 60 ms, faster than 25.35% of Python3 online submissions for Reverse String II.
 # Memory Usage: 14 MB, less than 61.86% of Python3 online submissions for Reverse String II.
 
+
+#%%
+
+
+class Solution:
+    def reverseStr(self, s, k):
+        s = list(s)
+        
+        for idx in range(0, len(s), (k * 2)):
+            s[idx : idx + k] = s[idx : idx + k][::-1]
+            
+        return ''.join(s) 
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseStr(s = "abcdefg", k = 2))      # "bacdfeg"
+    print(lc.reverseStr(s = "abcd", k = 2))         # "bacd"
+
+
+# Runtime: 33 ms, faster than 87.83% of Python3 online submissions for Reverse String II.
+# Memory Usage: 14.1 MB, less than 61.86% of Python3 online submissions for Reverse String II.
+
