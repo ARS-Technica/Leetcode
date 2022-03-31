@@ -1,0 +1,30 @@
+"""
+345. Reverse Vowels of a String
+Easy
+https://leetcode.com/problems/reverse-vowels-of-a-string/
+
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
+"""
+
+
+import re
+
+
+class Solution:
+    def reverseVowels(self, s):
+        vowels = re.findall('(?i)[aeiou]', s)
+        return re.sub('(?i)[aeiou]', lambda x: vowels.pop(), s)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseVowels(s = "hello"))            # "holle"
+    print(lc.reverseVowels(s = "leetcode"))         # "leotcede"
+    print(lc.reverseVowels(s = "aA"))               # "Aa"
+    
+
+# Runtime: 66 ms, faster than 73.29% of Python3 online submissions for Reverse Vowels of a String.
+# Memory Usage: 16.1 MB, less than 17.58% of Python3 online submissions for Reverse Vowels of a String.
+
