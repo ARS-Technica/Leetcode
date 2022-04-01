@@ -1,0 +1,30 @@
+"""
+557. Reverse Words in a String III
+Easy
+https://leetcode.com/problems/reverse-words-in-a-string-iii/ 
+
+Given a string s, reverse the order of characters in each word within a sentence
+while still preserving whitespace and initial word order.
+"""
+
+
+class Solution:
+    def reverseWords(self, s):
+        s = s.split(' ')
+        res = []
+        
+        for word in s:
+            res.append(''.join(list(word)[::-1]))
+                      
+        return ' '.join(res)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseWords(s = "Let's take LeetCode contest"))       # "s'teL ekat edoCteeL tsetnoc"
+    print(lc.reverseWords(s = "God Ding"))                          # "doG gniD" 
+
+
+# Runtime: 71 ms, faster than 40.53% of Python3 online submissions for Reverse Words in a String III.
+# Memory Usage: 14.7 MB, less than 50.10% of Python3 online submissions for Reverse Words in a String III.
+
