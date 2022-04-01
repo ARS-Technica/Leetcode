@@ -28,3 +28,30 @@ if __name__ == "__main__":
 # Runtime: 71 ms, faster than 40.53% of Python3 online submissions for Reverse Words in a String III.
 # Memory Usage: 14.7 MB, less than 50.10% of Python3 online submissions for Reverse Words in a String III.
 
+
+#%%
+
+
+class Solution:
+    def reverseWords(self, s):
+        '''
+        s = s.split(' ')
+        print(s[0])
+        print(list(s[0])[::-1])
+        print(''.join(list(s[0])[::-1]))
+        '''
+        
+        return ' '.join([''.join(list(word)[::-1]) for word in s.split(' ')])
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseWords(s = "Let's take LeetCode contest"))       # "s'teL ekat edoCteeL tsetnoc"
+    print(lc.reverseWords(s = "God Ding"))                          # "doG gniD" 
+
+
+# Runtime: 75 ms, faster than 36.60% of Python3 online submissions for Reverse Words in a String III.
+# Memory Usage: 14.7 MB, less than 16.01% of Python3 online submissions for Reverse Words in a String III.
+
+
+#%%
