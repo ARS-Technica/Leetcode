@@ -131,3 +131,78 @@ if __name__ == "__main__":
 
 # 
 
+
+class Solution:
+    def isLongPressedName(self, name: str, typed: str) -> bool:
+        if set(name) !=  set(name):
+            return False
+        
+        name = list(name)
+        typed = list(typed) 
+        
+        letters_n = {}
+        letters_t = {}
+        
+        for keys in name:
+            letters_n[keys] = letters_n.get(keys, 0) + 1
+            
+        for keys in typed:
+            letters_t[keys] = letters_t.get(keys, 0) + 1    
+            
+        for key in letters_n:
+            if letters_n[key] > letters_t[key]:
+                return False
+        
+        return True
+                
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))            # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))          # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))          # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))              # false
+    
+
+# Doesn't work for (name = "xnhtq", typed = "xhhttqq")
+# KeyError: 'n': the 'n' in name doesn't occur in typed
+
+
+#%%
+
+
+class Solution:
+    def isLongPressedName(self, name, typed):
+        if set(name) !=  set(typed):
+            return False
+        
+        name = list(name)
+        typed = list(typed) 
+        
+        n = 0
+        t = 0
+        
+        while n < len(name):
+            if typed[t] == name[n]:
+                n += 1
+                t += 1
+            elif typed[t] == name[n-1]:
+                t += 1
+            else:
+                return False
+            
+        return True
+                
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))            # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))          # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))          # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))              # false
+    
+
+# Doesn't work for (name = "rick", typed = "kric")
+
+
+#%%
