@@ -11,3 +11,123 @@ You examine the typed characters of the keyboard. Return True if it is possible
 that it was your friends name, with some characters (possibly none) being long 
 pressed.
 """
+
+
+class Solution:
+    def isLongPressedName(self, name, typed):
+        name = list(name)
+        typed = list(typed)
+        
+        n = 0
+        t = 0
+        
+        letters_n = {}
+        letters_t = {}
+        
+        for keys in name:
+            letters_n[keys] = letters_n.get(keys, 0) + 1
+            
+        for keys in typed:
+            letters_t[keys] = letters_t.get(keys, 0) + 1    
+            
+        print(letters_n)
+        print(letters_t)  
+        
+        '''
+        for key in letters_t.items():
+            if letters_n[key] not in letters_t:
+                print('No')
+        '''
+            
+        
+        for key, value in letters_t.items():
+            if key in letters_n:
+                #print('True')
+                continue
+            else:
+                print('False')
+        
+        
+        for key1 in letters_n:
+            for key2 in letters_t:    
+                if key1 == key2: continue
+                if letters_n[key1] < letters_t[key2]:
+                    #print('True')
+                    continue
+                else:
+                    print('False')
+        
+        '''
+        while n < len(name) and t < len(typed): 
+            if typed[t] == name[n]:
+                print('Yes', typed[t], name[n])
+                t += 1
+            
+            elif typed[t] != name[n]:
+                print('No', typed[t], name[n])
+                n += 1
+                
+            else:
+                return False
+            
+        return True
+        '''
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))            # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))          # false
+
+
+# 
+
+#%%
+
+
+class Solution:
+    def isLongPressedName(self, name, typed):
+        if set(name) !=  set(typed):
+            return False
+        
+        name = list(name)
+        typed = list(typed) 
+        
+        letters_n = {}
+        letters_t = {}
+        
+        for keys in name:
+            letters_n[keys] = letters_n.get(keys, 0) + 1
+            
+        for keys in typed:
+            letters_t[keys] = letters_t.get(keys, 0) + 1    
+
+        print(letters_n)
+        print(letters_n.keys())
+        print('')
+        print(letters_t)  
+        print(letters_t.keys())
+        print('') 
+        print(letters_n.keys() == letters_t.keys())        
+        
+        '''
+        if letters_n.keys() != letters_t.keys():
+            return False
+        
+        else:
+            for key in letters_n: 
+                if letters_n[key] > letters_t[key]:
+                    return False
+        
+        return True
+ '''
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))            # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))          # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))          # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))              # false
+    
+
+# 
+
