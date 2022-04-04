@@ -250,3 +250,43 @@ if __name__ == "__main__":
 
 
 #%%
+ 
+
+class Solution:
+    def isLongPressedName(self, name, typed):
+        if set(name) !=  set(typed):
+            return False
+        
+        name = list(name)
+        typed = list(typed) 
+        
+        n = 0
+        t = 0
+        
+        while n < len(name):
+            if typed[t] == name[n]:
+                n += 1
+                t += 1
+            elif typed[t] != name[n]:
+                if typed[t] == typed[t-1]:
+                    t += 1
+                else:
+                    return False
+            else:
+                return False
+            
+        return True
+                
+ 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))            # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))          # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))          # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))              # false
+    
+
+# Doesn't work for (name = "alex", typed = "aaleexa")
+
+
+#%%
