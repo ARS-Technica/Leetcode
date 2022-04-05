@@ -1,0 +1,47 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/long-pressed-name/discuss/1284861/Python-Stack-Solution-Alternative
+
+import collections
+
+
+class Solution:
+    def isLongPressedName(self, name, typed): 
+        t = collections.deque(typed)
+        n = collections.deque(name)
+        
+        while t and n:
+            c = n.popleft()
+            tmp = [c]
+            
+            while n and n[0] == c:
+                tmp += [n.popleft()]
+                
+            while tmp and t and t[0] == c:
+                tmp.pop()
+                t.popleft()
+                
+            while t and t[0] == c:
+                t.popleft()
+                    
+            if len(tmp) > 0:
+                return False
+
+        return len(n) == 0 and len(t) == 0
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))                    # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))                  # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))                  # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))                      # false
+    print(lc.isLongPressedName(name = "alex", typed = "aaleexa"))                   # false 
+    print(lc.isLongPressedName(name = "vtkgn", typed = "vttkgnn"))                  # true
+    print(lc.isLongPressedName(name = "alexd", typed = "ale"))                      # false   
+    print(lc.isLongPressedName(name = "kikcxmvzi", typed = "kiikcxxmmvvzz"))        # false    
+
+
+# Runtime: 36 ms, faster than 81.44% of Python3 online submissions for Long Pressed Name.
+# Memory Usage: 14.1 MB, less than 11.77% of Python3 online submissions for Long Pressed Name.
+
