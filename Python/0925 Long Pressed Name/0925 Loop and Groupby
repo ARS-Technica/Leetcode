@@ -1,4 +1,41 @@
 
+
+import itertools
+
+class Solution:
+    def isLongPressedName(self, name, typed): 
+        n = [(k, len(list(grp))) for k, grp in itertools.groupby(name)]
+        t = [(k, len(list(grp))) for k, grp in itertools.groupby(typed)]
+        
+        if len(n) != len(t):
+            return False
+        
+        for i in range(len(n)):
+            if n[i][0] != t[i][0] or n[i][1] > t[i][1]:
+                return False
+            
+        return True
+        
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isLongPressedName(name = "alex", typed = "aaleex"))                    # true
+    print(lc.isLongPressedName(name = "saeed", typed = "ssaaedd"))                  # false
+    print(lc.isLongPressedName(name = "xnhtq", typed = "xhhttqq"))                  # false
+    print(lc.isLongPressedName(name = "rick", typed = "kric"))                      # false
+    print(lc.isLongPressedName(name = "alex", typed = "aaleexa"))                   # false 
+    print(lc.isLongPressedName(name = "vtkgn", typed = "vttkgnn"))                  # true
+    print(lc.isLongPressedName(name = "alexd", typed = "ale"))                      # false   
+    print(lc.isLongPressedName(name = "kikcxmvzi", typed = "kiikcxxmmvvzz"))        # false    
+
+
+# Runtime: 69 ms, faster than 8.33% of Python3 online submissions for Long Pressed Name.
+# Memory Usage: 14 MB, less than 38.66% of Python3 online submissions for Long Pressed Name.
+
+
+#%%
+
+
 # Not mine.
 # https://leetcode.com/problems/long-pressed-name/discuss/1331646/Python-Easy
 
