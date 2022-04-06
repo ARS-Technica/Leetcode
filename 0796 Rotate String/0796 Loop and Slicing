@@ -19,3 +19,23 @@ if __name__ == "__main__":
 # Runtime: 36 ms, faster than 73.15% of Python3 online submissions for Rotate String.
 # Memory Usage: 14 MB, less than 15.19% of Python3 online submissions for Rotate String.
 
+
+#%%
+
+
+class Solution:
+    def rotateString(self, s, goal): 
+        return goal in [s[idx:] + s[:idx] for idx in range(len(s))]
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotateString(s = "abcde", goal = "cdeab"))                 # true
+    print(lc.rotateString(s = "abcde", goal = "abced"))                 # false
+    print(lc.rotateString(s = "bbbacddceeb", goal = "ceebbbbacdd"))     # true  
+
+
+# Runtime: 46 ms, faster than 42.28% of Python3 online submissions for Rotate String.
+# Memory Usage: 13.8 MB, less than 97.46% of Python3 online submissions for Rotate String.
+
+
+#%%
