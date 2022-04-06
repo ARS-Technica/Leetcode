@@ -1,0 +1,21 @@
+
+
+class Solution:
+    def rotateString(self, s, goal):
+        for idx in range(len(s)):
+            if s[idx :] + s[: idx] == goal:
+                return True
+        
+        return False        
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotateString(s = "abcde", goal = "cdeab"))                 # true
+    print(lc.rotateString(s = "abcde", goal = "abced"))                 # false
+    print(lc.rotateString(s = "bbbacddceeb", goal = "ceebbbbacdd"))     # true  
+
+
+# Runtime: 36 ms, faster than 73.15% of Python3 online submissions for Rotate String.
+# Memory Usage: 14 MB, less than 15.19% of Python3 online submissions for Rotate String.
+
