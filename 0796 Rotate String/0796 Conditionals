@@ -26,3 +26,25 @@ if __name__ == "__main__":
 
 #  Doesn't work for (s = "aa", goal = "a")
 
+
+#%%
+
+
+class Solution:
+    def rotateString(self, s, goal):
+        if len(s) != len(goal) or set(s) != set(goal):
+            return False
+        else:
+            return goal in s + s
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rotateString(s = "abcde", goal = "cdeab"))                 # true
+    print(lc.rotateString(s = "abcde", goal = "abced"))                 # false
+    print(lc.rotateString(s = "bbbacddceeb", goal = "ceebbbbacdd"))     # true  
+
+
+# Runtime: 32 ms, faster than 87.15% of Python3 online submissions for Rotate String.
+# Memory Usage: 13.9 MB, less than 66.05% of Python3 online submissions for Rotate String.
+
