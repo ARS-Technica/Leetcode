@@ -23,6 +23,37 @@ haystack and needle consist of only lowercase English characters.
 """
 
 
+class Solution:
+    def strStr(self, haystack, needle):
+        if needle == "":
+            return 0 
+        
+        h = 0
+        n = 0
+        
+        while h + n < len(haystack):
+            if haystack[h+n] == needle[n]:  
+                if n == len(needle) - 1: 
+                    return h             
+                n += 1  
+            else:  
+                h += 1
+                if n > 0 and haystack[h:h+n] == needle[:n]:
+                    n = n - 1
+                else:
+                    n = 0
+                    
+        return -1
 
 
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.strStr(haystack = "hello", needle = "ll"))                 # 2
+    print(lc.strStr(haystack = "aaaaa", needle = "bba"))                # -1 
+    print(lc.strStr(haystack = "aaa", needle = "aaaa"))                 # -1 
+    print(lc.strStr(haystack = "mississippi", needle = "issip" ))       # 4   
+
+
+# Runtime: 54 ms, faster than 65.91% of Python3 online submissions for Implement strStr().
+# Memory Usage: 14 MB, less than 94.12% of Python3 online submissions for Implement strStr().
 
