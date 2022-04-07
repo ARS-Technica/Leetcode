@@ -76,3 +76,32 @@ if __name__ == "__main__":
 # Runtime: 50 ms, faster than 71.73% of Python3 online submissions for Implement strStr().
 # Memory Usage: 13.8 MB, less than 99.83% of Python3 online submissions for Implement strStr().
 
+
+#%%
+
+
+class Solution:
+    def strStr(self, haystack, needle):
+        try:
+            start = haystack.index(needle[0])
+        except:
+            return -1
+        
+        for i in range(start, (len(haystack) + 1 - len(needle))): 
+            if haystack[i: i + len(needle)] == needle:
+                return i
+                
+        return -1
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.strStr(haystack = "hello", needle = "ll"))                 # 2
+    print(lc.strStr(haystack = "aaaaa", needle = "bba"))                # -1 
+    print(lc.strStr(haystack = "aaa", needle = "aaaa"))                 # -1 
+    print(lc.strStr(haystack = "mississippi", needle = "issip" ))       # 4
+
+
+# Runtime: 31 ms, faster than 95.22% of Python3 online submissions for Implement strStr().
+# Memory Usage: 14 MB, less than 94.12% of Python3 online submissions for Implement strStr().
+
