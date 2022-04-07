@@ -1,0 +1,32 @@
+
+# Not mine.
+# https://leetcode.com/problems/implement-strstr/discuss/665448/AC-simply-readable-Python-KMP-Rabin-Karp
+
+"""
+Rabin Karp, built-in hash, constant time (tested)
+"""
+
+
+class Solution:
+    def strStr(self, haystack, needle):
+    	n, h = len(needle), len(haystack)
+    	hash_n = hash(needle)
+        
+    	for i in range(h-n+1):
+    		if hash(haystack[i:i+n]) == hash_n:
+    			return i
+            
+    	return -1        
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.strStr(haystack = "hello", needle = "ll"))                 # 2
+    print(lc.strStr(haystack = "aaaaa", needle = "bba"))                # -1 
+    print(lc.strStr(haystack = "aaa", needle = "aaaa"))                 # -1 
+    print(lc.strStr(haystack = "mississippi", needle = "issip" ))       # 4
+
+
+# Runtime: 29 ms, faster than 95.80% of Python3 online submissions for Implement strStr().
+# Memory Usage: 13.8 MB, less than 97.91% of Python3 online submissions for Implement strStr().
+
