@@ -1,0 +1,21 @@
+
+
+# Not mine.
+# https://leetcode.com/problems/merge-strings-alternately/discuss/1075607/Python-3-OneLiner
+
+
+class Solution:
+    def mergeAlternately(self, word1, word2):
+        return ''.join((a+b).strip() for a,b in zip(word1+' '*100,word2+' '*100))
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.mergeAlternately(word1 = "abc", word2 = "pqr"))       # "apbqcr"
+    print(lc.mergeAlternately(word1 = "ab", word2 = "pqrs"))       # "apbqrs"
+    print(lc.mergeAlternately(word1 = "abcd", word2 = "pq"))       # "apbqcd"
+
+
+# Runtime: 34 ms, faster than 78.84% of Python3 online submissions for Merge Strings Alternately.
+# Memory Usage: 13.8 MB, less than 97.85% of Python3 online submissions for Merge Strings Alternately.
+
