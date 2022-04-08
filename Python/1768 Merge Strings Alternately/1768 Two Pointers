@@ -1,7 +1,7 @@
 """
 1768. Merge Strings Alternately
 Easy
-https://leetcode.com/problems/merge-strings-alternately/
+https://leetcode.com/problems/merge-strings-alternately/ 
 
 You are given two strings word1 and word2. Merge the strings by adding letters 
 in alternating order, starting with word1. If a string is longer than the other, 
@@ -47,6 +47,76 @@ if __name__ == "__main__":
 
 # Runtime: 46 ms, faster than 44.77% of Python3 online submissions for Merge Strings Alternately.
 # Memory Usage: 13.9 MB, less than 19.91% of Python3 online submissions for Merge Strings Alternately.
+
+
+#%%
+
+
+class Solution:
+    def mergeAlternately(self, word1, word2):
+        i = 0
+        j = 0
+        res = ""
+        
+        while i < len(word1) or j < len(word2):
+            try:
+                res += word1[i]
+                i += 1
+            except:
+                pass
+                
+            try:
+                res += word2[j]
+                j += 1
+            except:
+                pass            
+       
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.mergeAlternately(word1 = "abc", word2 = "pqr"))       # "apbqcr"
+    print(lc.mergeAlternately(word1 = "ab", word2 = "pqrs"))       # "apbqrs"
+    print(lc.mergeAlternately(word1 = "abcd", word2 = "pq"))       # "apbqcd"
+
+
+# Runtime: 49 ms, faster than 36.61% of Python3 online submissions for Merge Strings Alternately.
+# Memory Usage: 13.8 MB, less than 73.07% of Python3 online submissions for Merge Strings Alternately.
+
+
+#%%
+
+
+class Solution:
+    def mergeAlternately(self, word1, word2):
+        i = 0
+        j = 0
+        res = ""
+        
+        while i < len(word1) and j < len(word2):
+                res += word1[i]
+                res += word2[j]
+                i += 1 
+                j += 1
+                
+        if i < len(word1):
+           res += word1[i:]
+        else:
+            res += word2[j:]
+       
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.mergeAlternately(word1 = "abc", word2 = "pqr"))       # "apbqcr"
+    print(lc.mergeAlternately(word1 = "ab", word2 = "pqrs"))       # "apbqrs"
+    print(lc.mergeAlternately(word1 = "abcd", word2 = "pq"))       # "apbqcd"
+
+
+# Runtime: 46 ms, faster than 44.77% of Python3 online submissions for Merge Strings Alternately.
+# Memory Usage: 13.7 MB, less than 97.85% of Python3 online submissions for Merge Strings Alternately.
 
 
 #%%
