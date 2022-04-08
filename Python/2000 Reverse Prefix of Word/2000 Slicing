@@ -31,4 +31,29 @@ if __name__ == "__main__":
 
 # Runtime: 39 ms, faster than 64.37% of Python3 online submissions for Reverse Prefix of Word.
 # Memory Usage: 13.8 MB, less than 67.88% of Python3 online submissions for Reverse Prefix of Word.
+ 
+ 
+#%%
 
+
+class Solution:
+    def reversePrefix(self, word, ch):
+        try:
+            idx = word.index(ch)
+            return word[0:idx+1][::-1] + word[idx+1:]
+        except:
+            return word
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reversePrefix(word = "abcdefd", ch = "d"))         # "dcbaefd"
+    print(lc.reversePrefix(word = "xyxzxe", ch = "z"))          # "zxyxxe"
+    print(lc.reversePrefix(word = "abcd", ch = "z"))            # "abcd"
+
+
+# Runtime: 24 ms, faster than 98.45% of Python3 online submissions for Reverse Prefix of Word.
+# Memory Usage: 13.9 MB, less than 67.88% of Python3 online submissions for Reverse Prefix of Word.
+
+
+#%%
