@@ -33,6 +33,28 @@ if __name__ == "__main__":
  
  
 #%%
+ 
+
+class Solution:
+    def reversePrefix(self, word, ch):
+        idx = word.find(ch)
+        if idx:
+            return word[:idx+1][::-1] + word[idx+1:]
+        return word
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reversePrefix(word = "abcdefd", ch = "d"))         # "dcbaefd"
+    print(lc.reversePrefix(word = "xyxzxe", ch = "z"))          # "zxyxxe"
+    print(lc.reversePrefix(word = "abcd", ch = "z"))            # "abcd"
+
+
+# Runtime: 38 ms, faster than 66.13% of Python3 online submissions for Reverse Prefix of Word.
+# Memory Usage: 13.8 MB, less than 67.88% of Python3 online submissions for Reverse Prefix of Word.
+
+
+#%%
 
 
 class Solution:
