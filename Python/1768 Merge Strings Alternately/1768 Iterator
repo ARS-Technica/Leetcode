@@ -1,0 +1,27 @@
+
+
+# Not mine.
+# https://leetcode.com/problems/merge-strings-alternately/discuss/1686715/Python3-Solution-With-Iterator
+
+
+class Solution:
+    def mergeAlternately(self, word1, word2):
+        iter1, iter2 = iter(word1), iter(word2)
+        res = ''
+        a, b = next(iter1, ''), next(iter2, '')
+        while a or b:
+            res += a + b
+            a, b = next(iter1, ''), next(iter2, '')            
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.mergeAlternately(word1 = "abc", word2 = "pqr"))       # "apbqcr"
+    print(lc.mergeAlternately(word1 = "ab", word2 = "pqrs"))       # "apbqrs"
+    print(lc.mergeAlternately(word1 = "abcd", word2 = "pq"))       # "apbqcd"
+
+
+# Runtime: 48 ms, faster than 39.19% of Python3 online submissions for Merge Strings Alternately.
+# Memory Usage: 13.9 MB, less than 73.07% of Python3 online submissions for Merge Strings Alternately.
+
