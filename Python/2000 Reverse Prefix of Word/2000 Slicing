@@ -1,8 +1,7 @@
 """
 2000. Reverse Prefix of Word
 Easy
-https://leetcode.com/problems/reverse-prefix-of-word/
-Created on Thu Apr  7 19:46:02 2022
+https://leetcode.com/problems/reverse-prefix-of-word/ 
 
 Given a 0-indexed string word and a character ch, reverse the segment of word 
 that starts at index 0 and ends at the index of the first occurrence of ch 
@@ -57,3 +56,21 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def reversePrefix(self, word, ch):
+        idx = word.find(ch)
+        return word if idx == -1 else word[idx::-1] + word[idx + 1:]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reversePrefix(word = "abcdefd", ch = "d"))         # "dcbaefd"
+    print(lc.reversePrefix(word = "xyxzxe", ch = "z"))          # "zxyxxe"
+    print(lc.reversePrefix(word = "abcd", ch = "z"))            # "abcd"
+
+
+# Runtime: 30 ms, faster than 89.79% of Python3 online submissions for Reverse Prefix of Word.
+# Memory Usage: 13.8 MB, less than 97.90% of Python3 online submissions for Reverse Prefix of Word.
+
