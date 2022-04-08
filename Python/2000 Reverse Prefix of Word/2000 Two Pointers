@@ -1,0 +1,41 @@
+"""
+2000. Reverse Prefix of Word
+Easy
+https://leetcode.com/problems/reverse-prefix-of-word/ 
+
+Given a 0-indexed string word and a character ch, reverse the segment of word 
+that starts at index 0 and ends at the index of the first occurrence of ch 
+(inclusive). If the character ch does not exist in word, do nothing.
+
+For example, if word = "abcdefd" and ch = "d", then you should reverse the 
+segment that starts at 0 and ends at 3 (inclusive). The resulting string will be "dcbaefd".
+Return the resulting string.
+"""
+
+
+class Solution:
+    def reversePrefix(self, word, ch):
+        if ch not in word: return word
+        
+        word = list(word)      
+        left = 0
+        right = word.index(ch)
+        
+        while left < right:
+            word[left], word[right] = word[right], word[left]
+            left += 1
+            right -= 1
+            
+        return ''.join(word)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reversePrefix(word = "abcdefd", ch = "d"))         # "dcbaefd"
+    print(lc.reversePrefix(word = "xyxzxe", ch = "z"))          # "zxyxxe"
+    print(lc.reversePrefix(word = "abcd", ch = "z"))            # "abcd"
+
+
+# Runtime: 34 ms, faster than 77.48% of Python3 online submissions for Reverse Prefix of Word.
+# Memory Usage: 13.9 MB, less than 15.35% of Python3 online submissions for Reverse Prefix of Word.
+
