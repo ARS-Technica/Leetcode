@@ -1,0 +1,82 @@
+"""
+917. Reverse Only Letters
+Easy
+https://leetcode.com/problems/reverse-only-letters/ 
+
+Given a string s, reverse the string according to the following rules:
+
+All the characters that are not English letters remain in the same position.
+All the English letters (lowercase or uppercase) should be reversed.
+Return s after reversing it.
+
+Constraints:
+
+1 <= s.length <= 100
+s consists of characters with ASCII values in the range [33, 122].
+s does not contain '\"' or '\\'.
+"""
+
+
+class Solution:
+    def reverseOnlyLetters(self, s):
+        left = 0
+        right = len(s) - 1
+        s = list(s)
+        
+        while left < right:
+            if s[left].isalpha() and s[right].isalpha():
+                s[left], s[right] = s[right], s[left]
+                left += 1
+                right -= 1               
+            elif s[left].isalpha() and not s[right].isalpha(): 
+                right -= 1               
+            elif not s[left].isalpha() and s[right].isalpha(): 
+                left += 1
+        
+        return ''.join(s)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseOnlyLetters(s = "ab-cd"))                   # "dc-ba"
+    print(lc.reverseOnlyLetters(s = "a-bC-dEf-ghIj"))           # "j-Ih-gfE-dCba"
+    print(lc.reverseOnlyLetters(s = "Test1ng-Leet=code-Q!"))    # "Qedo1ct-eeLg=ntse-T!"
+
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
+    def reverseOnlyLetters(self, s):
+        left = 0
+        right = len(s) - 1
+        s = list(s)
+        
+        while left < right:
+            if not s[left].isalpha(): 
+                left += 1
+            elif not s[right].isalpha(): 
+                right -= 1               
+            else:   #if s[left].isalpha() and s[right].isalpha():
+                s[left], s[right] = s[right], s[left]
+                left += 1
+                right -= 1
+         
+        return ''.join(s)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseOnlyLetters(s = "ab-cd"))                   # "dc-ba"
+    print(lc.reverseOnlyLetters(s = "a-bC-dEf-ghIj"))           # "j-Ih-gfE-dCba"
+    print(lc.reverseOnlyLetters(s = "Test1ng-Leet=code-Q!"))    # "Qedo1ct-eeLg=ntse-T!"
+
+
+# Runtime: 29 ms, faster than 88.80% of Python3 online submissions for Reverse Only Letters.
+# Memory Usage: 13.9 MB, less than 17.13% of Python3 online submissions for Reverse Only Letters.
+
+
+#%%
