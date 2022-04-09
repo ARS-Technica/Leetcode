@@ -1,0 +1,20 @@
+
+# Not mine.
+# https://leetcode.com/problems/move-zeroes/discuss/1431040/3-Solutions-in-Python%3A
+
+
+class Solution:
+    def moveZeroes(self, nums):
+        nums.sort(key=lambda i: i==0) #returns False (0) if not zero and True (1) if zero. Hence zero follows non-zero numbers
+        return nums
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.moveZeroes(nums = [0,1,0,3,12]))       # [1,3,12,0,0]
+    print(lc.moveZeroes(nums = [0]))                # [0] 
+
+
+# Runtime: 164 ms, faster than 96.60% of Python3 online submissions for Move Zeroes.
+# Memory Usage: 15.5 MB, less than 70.52% of Python3 online submissions for Move Zeroes.
+
