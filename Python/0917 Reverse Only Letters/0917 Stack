@@ -1,0 +1,50 @@
+"""
+917. Reverse Only Letters
+Easy
+https://leetcode.com/problems/reverse-only-letters/
+
+Given a string s, reverse the string according to the following rules:
+
+All the characters that are not English letters remain in the same position.
+All the English letters (lowercase or uppercase) should be reversed.
+Return s after reversing it.
+
+Constraints:
+
+1 <= s.length <= 100
+s consists of characters with ASCII values in the range [33, 122].
+s does not contain '\"' or '\\'.
+"""
+
+# Not mine.
+# https://leetcode.com/problems/reverse-only-letters/discuss/1698753/Stack-solution
+
+
+class Solution:
+    def reverseOnlyLetters(self, s):
+        s = list(s)
+        n = len(s)
+        stack = []
+        
+        for i in range(n):
+            if s[i].islower() or s[i].isupper():
+                stack.append(s[i])
+                s[i] = -1
+                
+        for i in range(n):
+            if s[i] == -1:
+                s[i] = stack.pop()
+                
+        return "".join(s)
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.reverseOnlyLetters(s = "ab-cd"))                   # "dc-ba"
+    print(lc.reverseOnlyLetters(s = "a-bC-dEf-ghIj"))           # "j-Ih-gfE-dCba"
+    print(lc.reverseOnlyLetters(s = "Test1ng-Leet=code-Q!"))    # "Qedo1ct-eeLg=ntse-T!"
+
+
+# Runtime: 43 ms, faster than 51.24% of Python3 online submissions for Reverse Only Letters.
+# Memory Usage: 13.9 MB, less than 17.13% of Python3 online submissions for Reverse Only Letters.
+
