@@ -1,0 +1,33 @@
+
+# Not mine. Deque.
+# https://leetcode.com/problems/squares-of-a-sorted-array/discuss/310865/Python%3A-A-comparison-of-lots-of-approaches!-Sorting-two-pointers-deque-iterator-generator
+
+import collections
+
+
+class Solution:
+    def sortedSquares(self, nums):
+        number_deque = collections.deque(nums)
+        reverse_sorted_squares = []
+        
+        while number_deque:
+            left_square = number_deque[0] ** 2
+            right_square = number_deque[-1] ** 2
+            if left_square > right_square:
+                reverse_sorted_squares.append(left_square)
+                number_deque.popleft()
+            else:
+                reverse_sorted_squares.append(right_square)
+                number_deque.pop()
+                
+        return reverse_sorted_squares[::-1]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortedSquares(nums = [-4,-1,0,3,10]))       # [0,1,9,16,100]
+    print(lc.sortedSquares(nums = [-7,-3,2,3,11]))       # [4,9,9,49,121] 
+
+
+# Runtime: 391 ms, faster than 24.25% of Python3 online submissions for Squares of a Sorted Array.
+# Memory Usage: 16.2 MB, less than 53.29% of Python3 online submissions for Squares of a Sorted Array.
