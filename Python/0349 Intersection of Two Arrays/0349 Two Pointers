@@ -40,3 +40,39 @@ if __name__ == "__main__":
 # Runtime: 80 ms, faster than 34.26% of Python3 online submissions for Intersection of Two Arrays.
 # Memory Usage: 14 MB, less than 70.96% of Python3 online submissions for Intersection of Two Arrays.
 
+
+#%%
+
+
+class Solution:
+    def intersection(self, nums1, nums2):
+        nums1, nums2 = sorted(nums1), sorted(nums2)
+        left = 0
+        right = 0
+        res = []
+        
+        while left < len(nums1) and right < len(nums2):
+            if nums1[left] < nums2[right]:
+                left += 1
+            elif  nums1[left] > nums2[right]:
+                right += 1
+            else:
+                nums1[left]
+                res.append(nums1[left])
+                left += 1
+                right += 1
+            
+        return list(set(res)) 
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.intersection(nums1 = [1,2,2,1], nums2 = [2,2]))                        # [2]
+    print(lc.intersection(nums1 = [4,9,5], nums2 = [9,4,9,8,4]))                    # [9,4] 
+    print(lc.intersection(nums1 = [4,7,9,7,6,7], nums2 = [5,0,0,6,1,6,2,2,4]))      # [6,4]
+
+
+# Runtime: 51 ms, faster than 81.81% of Python3 online submissions for Intersection of Two Arrays.
+# Memory Usage: 14.1 MB, less than 70.96% of Python3 online submissions for Intersection of Two Arrays.
+
+
