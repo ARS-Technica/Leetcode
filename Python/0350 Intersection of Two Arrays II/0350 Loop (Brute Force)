@@ -30,4 +30,30 @@ if __name__ == "__main__":
 # Doesn't work for (nums1 = [1,2,2,1], nums2 = [2])
 
 
-#%%
+#%% 
+
+
+class Solution:
+    def intersect(self, nums1, nums2):
+        i = nums1 if len(nums1) == min(len(nums1), len(nums2)) else nums2
+        j = nums2 if len(nums2) == max(len(nums1), len(nums2)) else nums1
+        
+        res = []
+        
+        for n in i:
+            if n in j:
+                res.append(n)
+                
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.intersect(nums1 = [1,2,2,1], nums2 = [2,2]))           # [2,2]
+    print(lc.intersect(nums1 = [4,9,5], nums2 = [9,4,9,8,4]))       # [4,9] 
+    print(lc.intersect(nums1 = [1,2,2,1], nums2 = [2]))             # [2]
+    print(lc.intersect(nums1 = [3,1,2], nums2 = [1,1]))             # [1]
+
+
+# Doesn't work for (nums1 = [3,1,2], nums2 = [1,1]) 
+
