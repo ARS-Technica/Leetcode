@@ -151,4 +151,56 @@ if __name__ == "__main__":
 
 #%%
 
+import collections
+
+
+class Solution:
+    def commonChars(self, words):
+        word_sets = []
+        
+        for word in words:
+            word_sets.append(set(word))
+
+
+        word_sets = set.intersection(*word_sets) 
+
+        res = []
+
+        for word in words:
+            res.append(collections.Counter(word)) 
+
+ 
+        letters = {} 
+        
+        for idx in res:
+            for key, value in idx.items():
+                if key in word_sets: 
+                    if key not in letters:
+                        letters[key] = value
+                    else:
+                        letters[key] = min(value, letters[key])  
+
+
+        sol = [] 
+
+        for key, value in letters.items():
+            #print(key, value)
+            while value > 0:
+                sol.append(key)
+                value -= 1
+
+        return sol
+
+      
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# Runtime: 54 ms, faster than 83.91% of Python3 online submissions for Find Common Characters.
+# Memory Usage: 14.2 MB, less than 5.88% of Python3 online submissions for Find Common Characters.
+
+
+#%%
 
