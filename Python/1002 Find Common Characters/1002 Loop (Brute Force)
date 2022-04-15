@@ -1,0 +1,42 @@
+"""
+1002. Find Common Characters
+Easy
+https://leetcode.com/problems/find-common-characters/ 
+
+Given a string array words, return an array of all characters that show up in 
+all strings within the words (including duplicates). You may return the answer 
+in any order.
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consists of lowercase English letters.
+"""
+
+
+class Solution:
+    def commonChars(self, words): 
+        chars = list(words[0])
+        
+        for word in words:
+            common = []
+            for letter in word:
+                if letter in chars:
+                    common.append(letter)
+                    chars.remove(letter)
+            chars = common
+            
+        return chars
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# Runtime: 53 ms, faster than 84.62% of Python3 online submissions for Find Common Characters.
+# Memory Usage: 14 MB, less than 30.97% of Python3 online submissions for Find Common Characters.
+
+
