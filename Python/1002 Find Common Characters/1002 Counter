@@ -14,37 +14,19 @@ Constraints:
 words[i] consists of lowercase English letters.
 """
 
+
 import collections
 
 
 class Solution:
-    def commonChars(self, words):
-        
-        # https://stackoverflow.com/questions/2541752/best-way-to-find-the-intersection-of-multiple-sets
-        def set_list_intersection(set_list):
-          if not set_list:
-            return set()
-          result = set_list[0]
-          for s in set_list[1:]:
-            result &= s
-          return result        
-         
-        word_sets = []
-        
-        for word in words:
-            word_sets.append(set(word))
-            
-        
-        print(set_list_intersection(word_sets))
-        
-        '''
-        res = []
-               
-        for word in words:
-            res.append(collections.Counter(word)) 
-            
-        common_keys_vals = [(key, [dict[key] for dict in res]) for key in common_keys]
-        '''
+    def commonChars(self, words): 
+        dict1 = words[0]
+
+        for idx in range(1, len(words)):
+            dict1 = collections.Counter(dict1) & collections.Counter(words[idx])
+
+        return list(dict1.elements())
+
 
 if __name__ == "__main__":
     lc = Solution() 
@@ -52,16 +34,7 @@ if __name__ == "__main__":
     print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
 
 
-# {'l', 'e'}
-# {'o', 'c'} 
+# Runtime: 60 ms, faster than 74.86% of Python3 online submissions for Find Common Characters.
+# Memory Usage: 13.9 MB, less than 96.20% of Python3 online submissions for Find Common Characters.
 
-
-#%%
-
-
-
-
-
-
-
-
+ 
