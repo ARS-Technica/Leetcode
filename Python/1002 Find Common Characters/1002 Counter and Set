@@ -1,0 +1,154 @@
+"""
+1002. Find Common Characters
+Easy
+https://leetcode.com/problems/find-common-characters/ 
+
+Given a string array words, return an array of all characters that show up in 
+all strings within the words (including duplicates). You may return the answer 
+in any order.
+
+Constraints:
+
+1 <= words.length <= 100
+1 <= words[i].length <= 100
+words[i] consists of lowercase English letters.
+"""
+
+
+import collections
+
+
+class Solution:
+    def commonChars(self, words): 
+        res = []
+               
+        for word in words:
+            res.append(collections.Counter(word)) 
+
+        #return res
+        
+        for idx in res:
+            for key, value in idx.items():
+                print(key, value)
+        
+            print(' ')
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# [Counter({'l': 2, 'b': 1, 'e': 1, 'a': 1}), Counter({'l': 2, 'a': 1, 'b': 1, 'e': 1}), Counter({'r': 2, 'l': 2, 'o': 1, 'e': 1})]
+# [Counter({'o': 2, 'c': 1, 'l': 1}), Counter({'l': 1, 'o': 1, 'c': 1, 'k': 1}), Counter({'o': 2, 'c': 1, 'k': 1})]
+
+
+#%%
+
+import collections
+
+
+class Solution:
+    def commonChars(self, words):
+        
+        # https://stackoverflow.com/questions/2541752/best-way-to-find-the-intersection-of-multiple-sets
+        def set_list_intersection(set_list):
+          if not set_list:
+            return set()
+          result = set_list[0]
+          for s in set_list[1:]:
+            result &= s
+          return result        
+        
+        
+        
+        word_sets = []
+        
+        for word in words:
+            word_sets.append(set(word))
+            
+        
+        print(set_list_intersection(word_sets))
+        
+        '''
+        res = []
+               
+        for word in words:
+            res.append(collections.Counter(word)) 
+            
+        common_keys_vals = [(key, [dict[key] for dict in res]) for key in common_keys]
+        '''
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# {'l', 'e'}
+# {'o', 'c'} 
+
+
+#%%
+
+import collections
+
+
+class Solution:
+    def commonChars(self, words):
+        word_sets = []
+        
+        for word in words:
+            word_sets.append(set(word))
+
+
+        print(word_sets)    # [{'l', 'a', 'b', 'e'}, {'l', 'a', 'b', 'e'}, {'l', 'o', 'e', 'r'}]
+        #print(set.intersection(*word_sets))     # {'l', 'e'}
+        word_sets = set.intersection(*word_sets)
+        print(word_sets)        
+
+        res = []
+
+        for word in words:
+            res.append(collections.Counter(word)) 
+
+        # https://stackoverflow.com/questions/31081587/comparing-multiple-dictionaries-with-specific-values
+        # common_keys_vals = [(key, [dict[key] for dict in res]) for key in common_keys]
+        #common_keys_vals = [(key, [dict[key] for dict in res]) for key in list(word_sets)]
+        #print(common_keys_vals)
+
+
+        #return res
+        
+        for idx in res:
+            for key, value in idx.items():
+                if key in word_sets:
+                    print(key, value)
+        
+            print(' ')
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# e 1
+# l 2
+ 
+# l 2
+# e 1
+ 
+# l 2
+# e 1
+
+
+#%%
+
+
