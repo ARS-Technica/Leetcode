@@ -40,3 +40,27 @@ if __name__ == "__main__":
 # Memory Usage: 14 MB, less than 30.97% of Python3 online submissions for Find Common Characters.
 
 
+#%%
+
+
+class Solution:
+    def commonChars(self, words): 
+        res = []
+        
+        for char in words[0]:
+            if all(char in word for word in words):
+                res.append(char)
+                words = [letters.replace(char, '', 1) for letters in words]
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# Runtime: 48 ms, faster than 94.31% of Python3 online submissions for Find Common Characters.
+# Memory Usage: 14.1 MB, less than 31.23% of Python3 online submissions for Find Common Characters.
+
