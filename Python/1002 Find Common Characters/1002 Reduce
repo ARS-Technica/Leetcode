@@ -37,3 +37,30 @@ if __name__ == "__main__":
 # Runtime: 56 ms, faster than 82.13% of Python3 online submissions for Find Common Characters.
 # Memory Usage: 14.1 MB, less than 5.83% of Python3 online submissions for Find Common Characters.
 
+
+#%%
+
+
+# Not mine.
+# https://leetcode.com/problems/find-common-characters/discuss/1028811/Clean-Python-one-liner
+
+ 
+import collections
+import functools
+import operator 
+
+
+class Solution:
+    def commonChars(self, words): 
+        return list(reduce(operator.and_, map(collections.Counter, words)).elements())
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.commonChars(words = ["bella","label","roller"]))       # ["e","l","l"]
+    print(lc.commonChars(words = ["cool","lock","cook"]))           # ["c","o"]
+
+
+# Runtime: 57 ms, faster than 78.62% of Python3 online submissions for Find Common Characters.
+# Memory Usage: 14 MB, less than 69.20% of Python3 online submissions for Find Common Characters.
+
