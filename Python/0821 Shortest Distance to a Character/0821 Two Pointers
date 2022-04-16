@@ -55,3 +55,47 @@ if __name__ == "__main__":
 
 
 #%%
+
+"""
+This time, I tried enumerating the indexes of c
+"""
+
+
+class Solution:
+    def shortestToChar(self, s, c):
+        i = 0
+        j = 0
+        res = []
+        targets = [idx for idx, elem in enumerate(s) if elem == c]
+        
+        while i < len(s):
+            if i < targets[j]:
+                res.append(abs(i - targets[j]))
+                i += 1
+            elif i == targets[j]: 
+                res.append(abs(i - targets[j]))
+                i += 1
+                if j < len(targets):
+                    j += 1
+            else:   #elif i > targets[j]
+                while left < len(s):
+                    res.append(abs(i - targets[j]))
+                    left += 1             
+                res.append(abs(i - targets[j]))
+                i += 1               
+            
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.shortestToChar(s = "loveleetcode", c = "e"))       # [3,2,1,0,1,0,0,1,2,2,1,0]
+    print(lc.shortestToChar(s = "aaab", c = "b"))               # [3,2,1,0] 
+
+
+# Failed again for left values to the right of final index of c
+# [3, 2, 1, 0, 1, 0, 0, 4, 3, 2, 1, 0]
+# [3, 2, 1, 0]
+
+
+#%%
