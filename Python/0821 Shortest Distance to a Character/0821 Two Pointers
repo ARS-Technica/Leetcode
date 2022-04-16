@@ -99,3 +99,59 @@ if __name__ == "__main__":
 
 
 #%%
+
+"""
+Used conditionals to check which side of J the index is on, 
+so that I can take the minimum value.
+
+Also remembered not to run J past the length of targets.
+"""
+
+
+class Solution:
+    def shortestToChar(self, s, c):
+        i = 0
+        j = 0
+        res = []
+        targets = [idx for idx, elem in enumerate(s) if elem == c]
+        
+        while i < len(s): 
+            if i < targets[j]:
+                if j > 0:
+                    res.append(min(abs(i - targets[j]), abs(i - targets[j-1])))
+                else:
+                    res.append(abs(i - targets[j]))
+                i += 1
+            elif i == targets[j]: 
+                if j > 0:
+                    res.append(min(abs(i - targets[j]), abs(i - targets[j-1])))
+                else:
+                    res.append(abs(i - targets[j]))
+                i += 1
+                if j < len(targets)-1:
+                    j += 1
+                else:
+                    pass
+            else:   #elif i > targets[j]
+                while i < len(s):
+                    if j > 0:
+                        res.append(min(abs(i - targets[j]), abs(i - targets[j-1])))
+                    else:
+                        res.append(abs(i - targets[j]))
+                    i += 1            
+           
+        return res
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.shortestToChar(s = "loveleetcode", c = "e"))       # [3,2,1,0,1,0,0,1,2,2,1,0]
+    print(lc.shortestToChar(s = "aaab", c = "b"))               # [3,2,1,0] 
+    print(lc.shortestToChar(s = "aaba", c = "b"))               # 
+
+
+# Runtime: 39 ms, faster than 95.59% of Python3 online submissions for Shortest Distance to a Character.
+# Memory Usage: 14 MB, less than 57.72% of Python3 online submissions for Shortest Distance to a Character.
+
+
+#%%
