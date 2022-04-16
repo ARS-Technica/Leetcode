@@ -38,3 +38,26 @@ if __name__ == "__main__":
 # Runtime: 68 ms, faster than 55.51% of Python3 online submissions for Shortest Distance to a Character.
 # Memory Usage: 13.8 MB, less than 92.68% of Python3 online submissions for Shortest Distance to a Character.
 
+
+#%%
+
+# Not mine.
+# https://leetcode.com/problems/shortest-distance-to-a-character/discuss/1064178/Python-2-Liner-Easy-to-Understand
+
+
+class Solution:
+    def shortestToChar(self, s, c):
+        presentIndexes = [ i for i, val in enumerate(s) if val == c ]
+        return [min(abs(i - x) for x in presentIndexes) for i in range(0, len(s))]      
+ 
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.shortestToChar(s = "loveleetcode", c = "e"))       # [3,2,1,0,1,0,0,1,2,2,1,0]
+    print(lc.shortestToChar(s = "aaab", c = "b"))               # [3,2,1,0] 
+    print(lc.shortestToChar(s = "aaba", c = "b"))               # 
+
+
+# Runtime: 73 ms, faster than 48.66% of Python3 online submissions for Shortest Distance to a Character.
+# Memory Usage: 13.8 MB, less than 92.68% of Python3 online submissions for Shortest Distance to a Character.
+
