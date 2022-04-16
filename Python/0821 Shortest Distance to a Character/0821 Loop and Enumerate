@@ -1,0 +1,53 @@
+"""
+821. Shortest Distance to a Character
+Easy
+https://leetcode.com/problems/shortest-distance-to-a-character/ 
+
+Given a string s and a character c that occurs in s, return an array of integers
+answer where answer.length == s.length and answer[i] is the distance from index
+i to the closest occurrence of character c in s.
+
+The distance between two indices i and j is abs(i - j), where abs is the absolute
+value function.
+
+Constraints:
+
+1 <= s.length <= 104
+s[i] and c are lowercase English letters.
+It is guaranteed that c occurs at least once in s.
+"""
+
+
+class Solution:
+    def shortestToChar(self, s, c):
+        res = []
+        size = len(s)
+        
+        if size == 1: 
+            return [0]
+        
+        for idx, char in enumerate(s):
+            if char == c:
+                res.append(0)
+            else:
+                if idx == 0:
+                    res.append(size)
+                else:
+                    res.append(res[-1] + 1)
+                
+        for idx in range(2, size+1):
+            res[-idx] = min(res[-idx], res[-idx + 1] + 1)
+               
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.shortestToChar(s = "loveleetcode", c = "e"))       # [3,2,1,0,1,0,0,1,2,2,1,0]
+    print(lc.shortestToChar(s = "aaab", c = "b"))               # [3,2,1,0] 
+    print(lc.shortestToChar(s = "aaba", c = "b"))               # 
+
+
+# Runtime: 43 ms, faster than 89.53% of Python3 online submissions for Shortest Distance to a Character.
+# Memory Usage: 14 MB, less than 19.92% of Python3 online submissions for Shortest Distance to a Character.
+
