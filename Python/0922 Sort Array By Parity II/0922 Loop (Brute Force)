@@ -1,0 +1,42 @@
+"""
+922. Sort Array By Parity II
+Easy
+https://leetcode.com/problems/sort-array-by-parity-ii/ 
+
+Given an array of integers nums, half of the integers in nums are odd, and the other half are even.
+
+Sort the array so that whenever nums[i] is odd, i is odd, and whenever nums[i] is even, i is even.
+
+Return any answer array that satisfies this condition.
+"""
+
+
+class Solution:
+    def sortArrayByParityII(self, nums):
+        res = [0] * len(nums)
+        odd = 1
+        even = 0
+        
+        for i in range(len(nums)):
+            n = nums[i]
+            
+            if n % 2:
+                res[odd] = n
+                odd += 2
+            else:
+                res[even] = n
+                even += 2
+            i += 1
+            
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortArrayByParityII(nums = [4,2,5,7]))         # [4,5,2,7]
+    print(lc.sortArrayByParityII(nums = [2,3]))             # [2,3] 
+
+
+# Runtime: 203 ms, faster than 97.90% of Python3 online submissions for Sort Array By Parity II.
+# Memory Usage: 16.7 MB, less than 21.24% of Python3 online submissions for Sort Array By Parity II.
+
