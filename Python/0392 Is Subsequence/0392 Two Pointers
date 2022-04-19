@@ -74,3 +74,38 @@ if __name__ == "__main__":
 # Runtime: 35 ms, faster than 82.01% of Python3 online submissions for Is Subsequence.
 # Memory Usage: 14 MB, less than 46.77% of Python3 online submissions for Is Subsequence.
 
+
+#%%
+
+
+class Solution:
+    def isSubsequence(self, s, t):
+        i = 0
+        j = 0 
+        
+        sl = len(s)
+        tl = len(t)
+        
+        if sl > tl: return False
+        if sl == 0: return True        
+        
+        while i < sl and j < tl:
+            if t[j] == s[i]:
+                i += 1
+                j += 1
+            elif t[j] != s[i]:
+                j += 1
+            
+        return True if i == len(s) else False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isSubsequence(s = "abc", t = "ahbgdc"))       # true
+    print(lc.isSubsequence(s = "axc", t = "ahbgdc"))       # false 
+    print(lc.isSubsequence(s = "",    t = "ahbgdc"))       # false 
+
+
+# Runtime: 30 ms, faster than 92.56% of Python3 online submissions for Is Subsequence.
+# Memory Usage: 13.8 MB, less than 99.00% of Python3 online submissions for Is Subsequence.
+
