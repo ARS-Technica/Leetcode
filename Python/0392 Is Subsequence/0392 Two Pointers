@@ -1,0 +1,76 @@
+"""
+392. Is Subsequence
+Easy
+https://leetcode.com/problems/is-subsequence/ 
+
+Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+
+A subsequence of a string is a new string that is formed from the original string 
+by deleting some (can be none) of the characters without disturbing the relative 
+positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" 
+while "aec" is not).
+
+Constraints:
+
+0 <= s.length <= 100
+0 <= t.length <= 104
+s and t consist only of lowercase English letters.
+"""
+
+
+class Solution:
+    def isSubsequence(self, s, t):
+        i = 0
+        j = 0 
+        
+        while j < len(t):
+            if t[j] == s[i]:
+                i += 1
+                j += 1
+            elif t[j] != s[i]:
+                j += 1
+            
+        return True if i == len(s) else False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isSubsequence(s = "abc", t = "ahbgdc"))       # true
+    print(lc.isSubsequence(s = "axc", t = "ahbgdc"))       # false 
+    print(lc.isSubsequence(s = "",    t = "ahbgdc"))       # false 
+
+
+# Doesn't work with s = "" t = "ahbgdc"
+
+
+#%%
+ 
+
+class Solution:
+    def isSubsequence(self, s, t):
+        i = 0
+        j = 0 
+        
+        sl = len(s)
+        tl = len(t)
+        
+        while i < sl and j < tl:
+            if t[j] == s[i]:
+                i += 1
+                j += 1
+            elif t[j] != s[i]:
+                j += 1
+            
+        return True if i == len(s) else False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isSubsequence(s = "abc", t = "ahbgdc"))       # true
+    print(lc.isSubsequence(s = "axc", t = "ahbgdc"))       # false 
+    print(lc.isSubsequence(s = "",    t = "ahbgdc"))       # false 
+
+
+# Runtime: 35 ms, faster than 82.01% of Python3 online submissions for Is Subsequence.
+# Memory Usage: 14 MB, less than 46.77% of Python3 online submissions for Is Subsequence.
+
