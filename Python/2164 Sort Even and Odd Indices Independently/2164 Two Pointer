@@ -1,0 +1,66 @@
+"""
+2164. Sort Even and Odd Indices Independently
+Easy
+https://leetcode.com/problems/sort-even-and-odd-indices-independently/ 
+
+You are given a 0-indexed integer array nums. Rearrange the values of nums 
+according to the following rules:
+
+Sort the values at odd indices of nums in non-increasing order.
+For example, if nums = [4,1,2,3] before this step, it becomes [4,3,2,1] after. 
+The values at odd indices 1 and 3 are sorted in non-increasing order.
+Sort the values at even indices of nums in non-decreasing order.
+For example, if nums = [4,1,2,3] before this step, it becomes [2,1,4,3] after. 
+The values at even indices 0 and 2 are sorted in non-decreasing order.
+Return the array formed after rearranging the values of nums.
+
+Constraints:
+
+1 <= nums.length <= 100
+1 <= nums[i] <= 100
+"""
+
+# Two Pointer
+
+
+class Solution:
+    def sortEvenOdd(self, nums): 
+        evens = [] 
+        odds = [] 
+        res = []
+        size = len(nums)
+
+        for i in range(size):
+            if i % 2 == 0:
+                evens.append(nums[i])
+            else:
+                odds.append(nums[i])
+
+        evens.sort()
+        odds.sort(reverse=True)
+
+        i = 0
+        j = 0
+
+        while i < len(evens) or j < len(odds):
+            if i < len(evens):
+                res.append(evens[i])
+                i += 1
+            if j < len(odds):
+                res.append(odds[j])
+                j += 1
+
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortEvenOdd(nums = [4,1,2,3]))         # [2,3,4,1]
+    print(lc.sortEvenOdd(nums = [2,1]))             # [2,1]
+    print(lc.sortEvenOdd(nums = [36,45,32,31,15,41,9,46,36,6,15,16,33,26,27,31,44,34]))             
+                                # [9,46,15,45,15,41,27,34,32,31,33,31,36,26,36,16,44,6]
+
+
+# Runtime: 75 ms, faster than 48.72% of Python3 online submissions for Sort Even and Odd Indices Independently.
+# Memory Usage: 13.9 MB, less than 23.55% of Python3 online submissions for Sort Even and Odd Indices Independently.
+
