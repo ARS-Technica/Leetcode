@@ -1,0 +1,22 @@
+
+# Not mine.
+# https://leetcode.com/problems/sort-even-and-odd-indices-independently/discuss/1752547/Python-two-lines-solution
+
+
+class Solution:
+    def sortEvenOdd(self, nums): 
+        nums[::2], nums[1::2] = sorted(nums[::2]), sorted(nums[1::2], reverse=True)
+        return nums       
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortEvenOdd(nums = [4,1,2,3]))         # [2,3,4,1]
+    print(lc.sortEvenOdd(nums = [2,1]))             # [2,1]
+    print(lc.sortEvenOdd(nums = [36,45,32,31,15,41,9,46,36,6,15,16,33,26,27,31,44,34]))             
+                                # [9,46,15,45,15,41,27,34,32,31,33,31,36,26,36,16,44,6]
+
+
+# Runtime: 85 ms, faster than 34.70% of Python3 online submissions for Sort Even and Odd Indices Independently.
+# Memory Usage: 13.9 MB, less than 73.90% of Python3 online submissions for Sort Even and Odd Indices Independently.
+
