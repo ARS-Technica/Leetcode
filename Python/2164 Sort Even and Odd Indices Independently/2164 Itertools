@@ -19,3 +19,28 @@ Constraints:
 1 <= nums.length <= 100
 1 <= nums[i] <= 100
 """
+
+# Basically the same answer as 922. Sort Array By Parity II
+
+
+class Solution:
+    def sortEvenOdd(self, nums):
+        evens = sorted([n for n in nums if n % 2 == 0])
+        odds = sorted([n for n in nums if n % 2 != 0], reverse=True) 
+        
+        res = [j for i in zip(evens, odds) for j in i]
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortEvenOdd(nums = [4,1,2,3]))         # [2,3,4,1]
+    print(lc.sortEvenOdd(nums = [2,1]))             # [2,1]
+    print(lc.sortEvenOdd(nums = [36,45,32,31,15,41,9,46,36,6,15,16,33,26,27,31,44,34]))             
+                                # [9,46,15,45,15,41,27,34,32,31,33,31,36,26,36,16,44,6]
+    
+
+# Doesn't work for [36,45,32,31,15,41,9,46,36,6,15,16,33,26,27,31,44,34]
+
+
+#%%
