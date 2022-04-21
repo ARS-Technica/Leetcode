@@ -85,3 +85,28 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def rearrangeArray(self, nums):
+        neg = [i for i in nums if i < 0]
+        pos = [i for i in nums if i >= 0]
+        
+        for idx in range(len(nums)):
+            if idx % 2 == 0:
+                nums[idx] = pos[idx//2]
+            else:
+                nums[idx] = neg[idx//2]
+        
+        return nums
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.rearrangeArray(nums = [3,1,-2,-5,2,-4]))       # [3,-2,1,-5,2,-4]
+    print(lc.rearrangeArray(nums = [-1,1]))                 # [1,-1] 
+
+
+# Runtime: 1911 ms, faster than 58.03% of Python3 online submissions for Rearrange Array Elements by Sign.
+# Memory Usage: 42.5 MB, less than 98.72% of Python3 online submissions for Rearrange Array Elements by Sign.
+
