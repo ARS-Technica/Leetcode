@@ -45,3 +45,29 @@ if __name__ == "__main__":
 # Runtime: 110 ms, faster than 52.55% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
 # Memory Usage: 15.5 MB, less than 53.03% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
 
+
+#%%
+
+
+class Solution:
+    def searchRange(self, nums, target):
+        positions = [i for i, n in enumerate(nums) if n == target]
+        if len(positions) > 0:
+            return [positions[0], positions[-1]] 
+        else:
+            return [-1, -1]
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.searchRange(nums = [5,7,7,8,8,10], target = 8))        # [3,4]
+    print(lc.searchRange(nums = [5,7,7,8,8,10], target = 6))        # [-1,-1]
+    print(lc.searchRange(nums = [], target = 0))                    # [-1,-1]
+    print(lc.searchRange(nums = [1], target = 1))                   # [0,0]
+
+
+# Runtime: 100 ms, faster than 63.97% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+# Memory Usage: 15.5 MB, less than 53.03% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+
+
+#%%
