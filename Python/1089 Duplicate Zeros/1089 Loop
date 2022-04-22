@@ -42,3 +42,30 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def duplicateZeros(self, arr):
+        #arr_len = len(arr)
+        
+        for i in range(len(arr)-1, -1, -1):
+            if arr[i] == 0:
+                arr.insert(i + 1, 0)
+                arr.pop()
+        
+        #print(arr, arr[0 : arr_len])
+        #arr = arr[0 : arr_len]
+        #print(arr, arr[0 : arr_len])
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.duplicateZeros(arr = [1,0,2,3,0,4,5,0]))       # [1,0,0,2,3,0,0,4]
+    print(lc.duplicateZeros(arr = [1,2,3]))                 # [1,2,3] 
+
+
+# Runtime: 75 ms, faster than 80.15% of Python3 online submissions for Duplicate Zeros.
+# Memory Usage: 15 MB, less than 28.17% of Python3 online submissions for Duplicate Zeros.
+
+
+#%%
