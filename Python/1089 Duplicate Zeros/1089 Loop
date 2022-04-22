@@ -1,0 +1,44 @@
+"""
+1089. Duplicate Zeros
+Easy
+https://leetcode.com/problems/duplicate-zeros/ 
+
+Given a fixed-length integer array arr, duplicate each occurrence of zero, 
+hifting the remaining elements to the right.
+
+Note that elements beyond the length of the original array are not written. 
+Do the above modifications to the input array in place and do not return anything.
+
+Constraints:
+
+1 <= arr.length <= 104
+0 <= arr[i] <= 9
+"""
+
+
+class Solution:
+    def duplicateZeros(self, arr):
+        idx = 0 
+
+        while idx < len(arr):
+            if arr[idx] == 0:
+                arr.insert(idx + 1, 0)
+                arr.pop()
+                idx += 2
+            else: 
+                idx += 1
+
+        return arr
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.duplicateZeros(arr = [1,0,2,3,0,4,5,0]))       # [1,0,0,2,3,0,0,4]
+    print(lc.duplicateZeros(arr = [1,2,3]))                 # [1,2,3] 
+
+
+# Runtime: 95 ms, faster than 55.76% of Python3 online submissions for Duplicate Zeros.
+# Memory Usage: 15 MB, less than 28.17% of Python3 online submissions for Duplicate Zeros.
+
+
+#%%
