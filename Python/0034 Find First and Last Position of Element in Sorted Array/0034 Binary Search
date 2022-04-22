@@ -77,3 +77,48 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def searchRange(self, nums, target):
+
+        def find_extremity(key):
+            left = 0
+            right = len(nums) - 1
+            res = -1
+            
+            while left <= right:
+                middle = (left + right) // 2
+                
+                if nums[middle] < target:
+                    left = middle + 1
+                elif target < nums[middle]:
+                    right = middle -1
+                else:
+                    res = middle
+                    
+                    if key == "First Element":
+                        right = middle - 1
+                    else: 
+                        left = middle + 1
+
+            return res
+
+        first = find_extremity("First Element")
+        second = find_extremity("Second Element")
+    
+        return [first, second]
+                
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.searchRange(nums = [5,7,7,8,8,10], target = 8))        # [3,4]
+    print(lc.searchRange(nums = [5,7,7,8,8,10], target = 6))        # [-1,-1]
+    print(lc.searchRange(nums = [], target = 0))                    # [-1,-1]
+
+
+# Runtime: 96 ms, faster than 70.18% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+# Memory Usage: 15.4 MB, less than 94.17% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+
+
+#%%
