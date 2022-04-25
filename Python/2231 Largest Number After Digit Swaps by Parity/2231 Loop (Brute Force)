@@ -62,6 +62,52 @@ if __name__ == "__main__":
 
 class Solution:
     def largestInteger(self, num):
+        evens = []
+        nums = []
+        odds = []
+        res = []
+        
+        for n in list(str(num)):
+            nums.append(int(n))
+
+
+        for n in nums:
+            if n % 2 == 0:
+                evens.append(str(n))
+            else:
+                odds.append(str(n))
+
+
+        evens.sort()
+        odds.sort()
+
+
+        for idx in range(len(nums)):
+            if nums[idx] % 2 == 0:
+                res.append(evens.pop())
+            else:
+                res.append(odds.pop())
+
+
+        return int(''.join(res))
+
+
+if __name__ == "__main__":
+    lc = Solution()
+    print(lc.largestInteger(num = 1234))            # 3412
+    print(lc.largestInteger(num = 65875))           # 87655 
+    print(lc.largestInteger(num = 60))              # 60
+    print(lc.largestInteger(num = 247))             # 427
+
+
+# Runtime: 26 ms, faster than 96.63% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+# Memory Usage: 14 MB, less than 23.58% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+
+
+#%%
+
+class Solution:
+    def largestInteger(self, num):
         num = [int(n) for n in list(str(num))]
 
         evens = sorted([str(n) for n in num if n % 2 == 0], reverse=True)
