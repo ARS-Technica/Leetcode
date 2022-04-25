@@ -1,0 +1,56 @@
+"""
+2231. Largest Number After Digit Swaps by Parity
+Easy
+https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/ 
+
+You are given a positive integer num. You may swap any two digits of num that 
+have the same parity (i.e. both odd digits or both even digits).
+
+Return the largest possible value of num after any number of swaps.
+
+Constraints: 
+1 <= num <= 109
+"""
+
+
+class Solution:
+    def largestInteger(self, num):
+        num = str(num)
+        even = []
+        odd = []
+        res = ""
+        
+        for i in num:
+            if int(i) & 1:
+                odd.append(str(i))
+            else:
+                even.append(str(i))
+
+        even.sort(reverse = True)
+        odd.sort(reverse = True)
+        
+        i = 0
+        j = 0
+
+        for n in num:
+            if int(n) & 1:
+                res += odd[i]
+                i += 1
+            else:
+                res += even[j]
+                j += 1
+
+        return int(res)
+
+
+if __name__ == "__main__":
+    lc = Solution()
+    print(lc.largestInteger(num = 1234))            # 3412
+    print(lc.largestInteger(num = 65875))           # 87655 
+    print(lc.largestInteger(num = 60))              # 60
+    print(lc.largestInteger(num = 247))             # 427
+
+
+# Runtime: 53 ms, faster than 26.39% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+# Memory Usage: 13.8 MB, less than 98.98% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+
