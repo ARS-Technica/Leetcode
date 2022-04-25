@@ -106,6 +106,7 @@ if __name__ == "__main__":
 
 #%%
 
+
 class Solution:
     def largestInteger(self, num):
         num = [int(n) for n in list(str(num))]
@@ -134,6 +135,32 @@ if __name__ == "__main__":
 
 # Runtime: 67 ms, faster than 5.53% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
 # Memory Usage: 13.9 MB, less than 23.58% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+
+
+#%%
+
+
+class Solution:
+    def largestInteger(self, num):
+        num = [int(n) for n in list(str(num))]
+
+        evens = sorted([str(n) for n in num if n % 2 == 0], reverse=True)
+        odds = sorted([str(n) for n in num if n % 2 != 0], reverse=True)
+        res = [evens.pop(0)  if num[idx] % 2 == 0 else odds.pop(0) for idx in range(len(num))]
+
+        return int(''.join(res))
+
+
+if __name__ == "__main__":
+    lc = Solution()
+    print(lc.largestInteger(num = 1234))            # 3412
+    print(lc.largestInteger(num = 65875))           # 87655 
+    print(lc.largestInteger(num = 60))              # 60
+    print(lc.largestInteger(num = 247))             # 427
+
+
+# Runtime: 60 ms, faster than 12.24% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
+# Memory Usage: 13.8 MB, less than 77.98% of Python3 online submissions for Largest Number After Digit Swaps by Parity.
 
 
 #%%
