@@ -15,3 +15,42 @@ Constraints:
 0 <= d <= 100
 """
 
+# Binary Search
+
+
+class Solution:
+    def findTheDistanceValue(self, arr1, arr2, d):
+        count = 0
+        arr2.sort()
+
+        for num in arr1:
+            left = 0
+            right = len(arr2)
+            
+            while left < right:
+                middle = (left + right) // 2
+
+                if abs(arr2[middle] - num) <= d:
+                    count-=1
+                    break
+                elif arr2[middle] > num:
+                    right = middle
+                else:
+                    left = middle + 1
+            count+=1
+
+        return count
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findTheDistanceValue(arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2))                # 2
+    print(lc.findTheDistanceValue(arr1 = [1,4,2,3], arr2 = [-4,-3,6,10,20,30], d = 3))      # 2
+    print(lc.findTheDistanceValue(arr1 = [2,1,100,3], arr2 = [-5,-2,10,-3,7], d = 6))       # 1
+    print(lc.findTheDistanceValue(arr1 = [-8,-7], arr2 = [4,10,-4,5,2], d = 55))            # 0
+
+
+# Runtime: 83 ms, faster than 91.86% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+# Memory Usage: 14 MB, less than 44.46% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+
+
