@@ -54,3 +54,18 @@ if __name__ == "__main__":
 # Memory Usage: 14 MB, less than 44.46% of Python3 online submissions for Find the Distance Value Between Two Arrays.
 
 
+class Solution:
+    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
+        arr2.sort()
+        m = len(arr2)
+        distance_value = 0
+        
+        for a in arr1:
+            index = bisect.bisect_left(arr2, a - d)
+            index = min(m - 1, index)
+            b = arr2[index]
+            
+            if abs(a - b) > d:
+                distance_value += 1
+        
+        return distance_value
