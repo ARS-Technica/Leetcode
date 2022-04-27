@@ -45,6 +45,39 @@ if __name__ == "__main__":
 # Memory Usage: 13.9 MB, less than 61.88% of Python3 online submissions for Largest Number At Least Twice of Others.
 
 
+#%%
 
+
+class Solution:
+    def dominantIndex(self, nums):       
+        if len(nums) == 1: return 0
+
+        res = nums.index(max(nums))
+        nums.sort()
+
+        left = 0
+        right = len(nums) - 1
+
+        while left < right:
+            if nums[left] * 2 > nums[right]:
+                return -1
+            else:
+                left += 1
+
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.dominantIndex(nums = [3,6,1,0]))       # 1
+    print(lc.dominantIndex(nums = [1,2,3,4]))       # -1
+    print(lc.dominantIndex(nums = [1]))             # 0
+
+
+# Runtime: 51 ms, faster than 42.90% of Python3 online submissions for Largest Number At Least Twice of Others.
+# Memory Usage: 13.9 MB, less than 13.44% of Python3 online submissions for Largest Number At Least Twice of Others.
+
+
+#%%
 
 
