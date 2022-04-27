@@ -72,3 +72,26 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Not mine.
+# https://leetcode.com/problems/find-the-distance-value-between-two-arrays/discuss/546731/Python-One-Liner-in-O(n-log-m)-with-Explanation-and-Long-Version
+
+
+class Solution:
+    def findTheDistanceValue(self, arr1, arr2, d):
+        return sum(all(abs(a - b) > d for b in arr2) for a in arr1)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findTheDistanceValue(arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2))                # 2
+    print(lc.findTheDistanceValue(arr1 = [1,4,2,3], arr2 = [-4,-3,6,10,20,30], d = 3))      # 2
+    print(lc.findTheDistanceValue(arr1 = [2,1,100,3], arr2 = [-5,-2,10,-3,7], d = 6))       # 1
+    print(lc.findTheDistanceValue(arr1 = [-8,-7], arr2 = [4,10,-4,5,2], d = 55))            # 0
+
+
+# Runtime: 144 ms, faster than 38.65% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+# Memory Usage: 14.1 MB, less than 9.36% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+
+
+#%%
