@@ -40,5 +40,26 @@ if __name__ == "__main__":
 #%%
 
 
+class Solution:
+    def dominantIndex(self, nums):     
+        if len(nums) == 1: return 0
+        largest_number = max(nums) 
+        if largest_number < (sorted(nums)[-2] * 2): return -1
+        return nums.index(largest_number)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.dominantIndex(nums = [3,6,1,0]))       # 1
+    print(lc.dominantIndex(nums = [1,2,3,4]))       # -1
+    print(lc.dominantIndex(nums = [1]))             # 0
+
+
+# Runtime: 48 ms, faster than 49.46% of Python3 online submissions for Largest Number At Least Twice of Others.
+# Memory Usage: 13.9 MB, less than 61.88% of Python3 online submissions for Largest Number At Least Twice of Others.
+
+
+#%%
+
 
 
