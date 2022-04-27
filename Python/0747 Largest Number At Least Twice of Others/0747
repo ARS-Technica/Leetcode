@@ -1,0 +1,50 @@
+"""
+747. Largest Number At Least Twice of Others
+Easy
+https://leetcode.com/problems/largest-number-at-least-twice-of-others/ 
+
+You are given an integer array nums where the largest integer is unique.
+
+Determine whether the largest element in the array is at least twice as much 
+as every other number in the array. If it is, return the index of the largest 
+element, or return -1 otherwise.
+
+Constraints:
+
+1 <= nums.length <= 50
+0 <= nums[i] <= 100
+The largest element in nums is unique.
+"""
+
+
+class Solution:
+    def dominantIndex(self, nums):
+        res = nums.index(max(nums))
+        nums.sort()
+        
+        left = 0
+        right = len(nums) - 1
+        
+        while left < right:
+            if nums[left] * 2 > nums[right]:
+                return -1
+            else:
+                left += 1
+        
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.dominantIndex(nums = [3,6,1,0]))       # 1
+    print(lc.dominantIndex(nums = [1,2,3,4]))       # -1
+    print(lc.dominantIndex(nums = [1]))             # 0
+
+
+# Runtime: 56 ms, faster than 32.37% of Python3 online submissions for Largest Number At Least Twice of Others.
+# Memory Usage: 13.9 MB, less than 61.88% of Python3 online submissions for Largest Number At Least Twice of Others.
+
+
+
+
+
