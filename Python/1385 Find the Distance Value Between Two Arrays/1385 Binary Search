@@ -54,6 +54,11 @@ if __name__ == "__main__":
 # Memory Usage: 14 MB, less than 44.46% of Python3 online submissions for Find the Distance Value Between Two Arrays.
 
 
+#%%
+
+# Not mine.
+# https://leetcode.com/problems/find-the-distance-value-between-two-arrays/discuss/546731/Python-One-Liner-in-O(n-log-m)-with-Explanation-and-Long-Version
+
 class Solution:
     def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
         arr2.sort()
@@ -69,3 +74,18 @@ class Solution:
                 distance_value += 1
         
         return distance_value
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findTheDistanceValue(arr1 = [4,5,8], arr2 = [10,9,1,8], d = 2))                # 2
+    print(lc.findTheDistanceValue(arr1 = [1,4,2,3], arr2 = [-4,-3,6,10,20,30], d = 3))      # 2
+    print(lc.findTheDistanceValue(arr1 = [2,1,100,3], arr2 = [-5,-2,10,-3,7], d = 6))       # 1
+    print(lc.findTheDistanceValue(arr1 = [-8,-7], arr2 = [4,10,-4,5,2], d = 55))            # 0
+
+
+# Runtime: 139 ms, faster than 41.53% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+# Memory Usage: 14 MB, less than 82.61% of Python3 online submissions for Find the Distance Value Between Two Arrays.
+
+
+#%%
