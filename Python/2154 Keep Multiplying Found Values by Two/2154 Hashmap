@@ -67,3 +67,26 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def findFinalValue(self, nums, original):
+        nums = set(nums)
+        
+        while original in nums:
+            original *= 2
+                
+        return original
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.findFinalValue(nums = [5,3,6,1,12], original = 3))         # 24
+    print(lc.findFinalValue(nums = [2,7,9], original = 4))              # 4 
+
+
+# Runtime: 55 ms, faster than 99.38% of Python3 online submissions for Keep Multiplying Found Values by Two.
+# Memory Usage: 14.1 MB, less than 20.68% of Python3 online submissions for Keep Multiplying Found Values by Two.
+
+
+#%%
