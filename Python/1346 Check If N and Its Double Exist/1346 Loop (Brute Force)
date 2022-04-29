@@ -21,10 +21,15 @@ Constraints:
 
 class Solution:
     def checkIfExist(self, arr):
-        arr.sort(reverse=True)
+        arr.sort(reverse=True) 
 
         for num in arr:
-            if num / 2 in arr:
+            if num == 0:
+                if arr.count(0) >= 2:
+                    return True
+                else:
+                    pass
+            elif num / 2 in arr: 
                 return True
 
         return False
@@ -32,12 +37,16 @@ class Solution:
 
 if __name__ == "__main__":
     lc = Solution() 
-    print(lc.checkIfExist(arr = [10,2,5,3]))        # true
-    print(lc.checkIfExist(arr = [7,1,14,11]))       # true
-    print(lc.checkIfExist(arr = [3,1,7,11]))        # false
+    print(lc.checkIfExist(arr = [10,2,5,3]))                    # true
+    print(lc.checkIfExist(arr = [7,1,14,11]))                   # true
+    print(lc.checkIfExist(arr = [3,1,7,11]))                    # false
+    print(lc.checkIfExist(arr = [-2,0,10,-19,4,6,-8]))          # false
+    print(lc.checkIfExist(arr = [-20,8,-6,-14,0,-19,14,4]))     # true    
+    print(lc.checkIfExist(arr = [0,0]))                         # true  
 
 
-# 
+# Runtime: 84 ms, faster than 39.28% of Python3 online submissions for Check If N and Its Double Exist.
+# Memory Usage: 13.9 MB, less than 56.85% of Python3 online submissions for Check If N and Its Double Exist.
 
 
 #%%
