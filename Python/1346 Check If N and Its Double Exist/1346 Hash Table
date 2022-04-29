@@ -1,0 +1,51 @@
+"""
+1346. Check If N and Its Double Exist
+Easy
+https://leetcode.com/problems/check-if-n-and-its-double-exist/ 
+
+Given an array arr of integers, check if there exists two integers N and M such
+that N is the double of M ( i.e. N = 2 * M).
+
+More formally check if there exists two indices i and j such that :
+
+i != j
+0 <= i, j < arr.length
+arr[i] == 2 * arr[j]
+
+Constraints:
+
+2 <= arr.length <= 500
+-10^3 <= arr[i] <= 10^3
+"""
+
+
+class Solution:
+    def checkIfExist(self, arr):
+        hashmap = {}
+
+        for num in range(len(arr)):
+            if arr[num] / 2 in hashmap:
+                return True
+            elif arr[num] * 2 in hashmap:
+                return True
+            else:
+                hashmap[arr[num]] = num
+
+        return False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.checkIfExist(arr = [10,2,5,3]))                    # true
+    print(lc.checkIfExist(arr = [7,1,14,11]))                   # true
+    print(lc.checkIfExist(arr = [3,1,7,11]))                    # false
+    print(lc.checkIfExist(arr = [-2,0,10,-19,4,6,-8]))          # false
+    print(lc.checkIfExist(arr = [-20,8,-6,-14,0,-19,14,4]))     # true
+    print(lc.checkIfExist(arr = [7,1,14,11]))                   # true
+
+
+# Runtime: 75 ms, faster than 51.62% of Python3 online submissions for Check If N and Its Double Exist.
+# Memory Usage: 13.9 MB, less than 56.74% of Python3 online submissions for Check If N and Its Double Exist.
+
+
+#%%
