@@ -1,0 +1,55 @@
+"""
+1877. Minimize Maximum Pair Sum in Array
+Medium
+https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/ 
+
+The pair sum of a pair (a,b) is equal to a + b. The maximum pair sum is the 
+largest pair sum in a list of pairs.
+
+For example, if we have pairs (1,5), (2,3), and (4,4), the maximum pair sum 
+would be max(1+5, 2+3, 4+4) = max(6, 5, 8) = 8.
+Given an array nums of even length n, pair up the elements of nums into n / 2 
+pairs such that:
+
+Each element of nums is in exactly one pair, and
+The maximum pair sum is minimized.
+Return the minimized maximum pair sum after optimally pairing up the elements.
+
+Constraints:
+
+n == nums.length
+2 <= n <= 105
+n is even.
+1 <= nums[i] <= 105
+"""
+
+
+class Solution:
+    def minPairSum(self, nums): 
+        nums = sorted(nums)
+        res = []
+
+        left = 0
+        right = len(nums) - 1
+
+        while left <= right: 
+            res.append(nums[left] + nums[right])
+            left += 1
+            right -= 1 
+
+        return max(res)
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.minPairSum(nums = [3,5,2,3]))              # 7
+    print(lc.minPairSum(nums = [3,5,4,2,4,6]))          # 8 
+
+
+# Runtime: 1818 ms, faster than 28.82% of Python3 online submissions for Minimize Maximum Pair Sum in Array.
+# Memory Usage: 27.9 MB, less than 30.99% of Python3 online submissions for Minimize Maximum Pair Sum in Array.
+
+
+#%%
+
+
