@@ -49,3 +49,28 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def minPairSum(self, nums): 
+        nums.sort() 
+        res = -99
+
+        for idx in range(len(nums)//2):
+            res = max(res, nums[idx] + nums[-(idx+1)]) 
+
+        return res
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.minPairSum(nums = [3,5,2,3]))              # 7
+    print(lc.minPairSum(nums = [3,5,4,2,4,6]))          # 8 
+    print(lc.minPairSum(nums = [4,1,5,1,2,5,1,5,5,4]))  # 8
+
+
+# Runtime: 1390 ms, faster than 69.01% of Python3 online submissions for Minimize Maximum Pair Sum in Array.
+# Memory Usage: 27.5 MB, less than 87.82% of Python3 online submissions for Minimize Maximum Pair Sum in Array.
+
+
+#%%
