@@ -97,3 +97,31 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Not mine
+# https://leetcode.com/problems/happy-number/discuss/56915/My-Python-Solution
+
+
+class Solution:
+    def isHappy(self, n):
+        seen = set()
+
+        while n not in seen:
+            seen.add(n)
+            n = sum(int(x) **2 for x in str(n))
+
+        return n == 1
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isHappy(n = 19))       # true
+    print(lc.isHappy(n = 2))        # false 
+    print(lc.isHappy(n = 1))        # true
+
+
+# Runtime: 54 ms, faster than 34.94% of Python3 online submissions for Happy Number.
+# Memory Usage: 13.8 MB, less than 61.70% of Python3 online submissions for Happy Number.
+
+
+#%%
