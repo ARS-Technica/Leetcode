@@ -58,3 +58,42 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def isHappy(self, n):
+        res = []
+        
+        if n == 1: return True
+
+        while n != 1:
+            tally = 0
+            nums = [int(i) for i in list(str(n))]
+
+            for digit in nums:
+                tally += (digit**2)
+
+            if tally == 1:
+                return True
+            elif tally not in res:
+                res.append(tally)
+                n = tally
+                tally = 0
+            else:
+                break
+
+        return False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isHappy(n = 19))       # true
+    print(lc.isHappy(n = 2))        # false 
+    print(lc.isHappy(n = 1))        # true
+
+
+# Runtime: 37 ms, faster than 79.13% of Python3 online submissions for Happy Number.
+# Memory Usage: 13.8 MB, less than 61.70% of Python3 online submissions for Happy Number.
+
+
+#%%
