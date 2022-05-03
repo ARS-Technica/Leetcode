@@ -1,0 +1,60 @@
+"""
+202. Happy Number
+Easy
+https://leetcode.com/problems/happy-number/ 
+
+Write an algorithm to determine if a number n is happy.
+
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the 
+squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops 
+endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+Return true if n is a happy number, and false if not.
+
+Constraints:
+
+1 <= n <= 231 - 1
+"""
+
+
+class Solution:
+    def isHappy(self, n):
+        res = []
+
+        if n == 1: return True
+
+        while n != 1:
+            tally = 0
+            
+            digits = list(str(n))
+            
+            for i in digits:
+                tally += (int(i)**2)
+
+            if tally == 1:
+                return True
+            elif tally not in res:
+                res.append(tally)
+                n = tally
+                tally = 0
+            else:
+                break
+
+        return False
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.isHappy(n = 19))       # true
+    print(lc.isHappy(n = 2))        # false 
+    print(lc.isHappy(n = 1))        # true
+
+
+# Runtime: 60 ms, faster than 23.27% of Python3 online submissions for Happy Number.
+# Memory Usage: 13.9 MB, less than 61.70% of Python3 online submissions for Happy Number.
+
+
+#%%
