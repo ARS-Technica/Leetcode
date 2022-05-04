@@ -53,3 +53,57 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def numSpecial(self, mat):
+        ones = []
+        first, second = [], []
+
+        for i in range(len(mat)):
+            for j in range(len(mat[i])): 
+                if mat[i][j] == 1: 
+                    ones.append((i,j))
+                    first.append(i)
+                    second.append(j)
+
+
+        first_counts = []
+        
+        for n in first:
+            if first.count(n) == 1:
+                first_counts.append(n)
+
+
+        second_counts = []
+        
+        for n in second:
+            if second.count(n) == 1:
+                second_counts.append(n)
+
+
+        count = 0        
+
+        for tup in ones:
+            if tup[0] in first_counts and tup[1] in second_counts:
+                count += 1
+                
+        return count
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.numSpecial(mat = [[1,0,0],[0,0,1],[1,0,0]]))   # 1
+    print(lc.numSpecial(mat = [[1,0,0],[0,1,0],[0,0,1]]))   # 3 
+    print(lc.numSpecial(mat = [[0,0,0,0,0,1,0,0],
+                               [0,0,0,0,1,0,0,1],
+                               [0,0,0,0,1,0,0,0],
+                               [1,0,0,0,1,0,0,0],
+                               [0,0,1,1,0,0,0,0]]))         # 1 
+
+
+# Runtime: 3494 ms, faster than 5.23% of Python3 online submissions for Special Positions in a Binary Matrix.
+# Memory Usage: 14.4 MB, less than 30.07% of Python3 online submissions for Special Positions in a Binary Matrix.
+
+
+#%%
