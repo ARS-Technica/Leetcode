@@ -53,3 +53,37 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/sort-colors/discuss/26481/Python-O(n)-1-pass-in-place-solution-with-explanation
+
+
+class Solution:
+    def sortColors(self, nums):
+        red, white, blue = 0, 0, len(nums)-1
+
+        while white <= blue:
+            if nums[white] == 0:
+                nums[red], nums[white] = nums[white], nums[red]
+                white += 1
+                red += 1
+            elif nums[white] == 1:
+                white += 1
+            else:
+                nums[white], nums[blue] = nums[blue], nums[white]
+                blue -= 1
+
+        return nums
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortColors(nums = [2,0,2,1,1,0]))      # [0,0,1,1,2,2]
+    print(lc.sortColors(nums = [2,0,1]))            # [0,1,2] 
+
+
+# Runtime: 59 ms, faster than 21.55% of Python3 online submissions for Sort Colors.
+# Memory Usage: 13.9 MB, less than 65.39% of Python3 online submissions for Sort Colors.
+
+
+#%%
