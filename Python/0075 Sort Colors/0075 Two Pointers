@@ -1,0 +1,55 @@
+"""
+75. Sort Colors
+Medium
+https://leetcode.com/problems/sort-colors/ 
+
+Given an array nums with n objects colored red, white, or blue, sort them 
+in-place so that objects of the same color are adjacent, with the colors in the
+order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and 
+blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+Constraints:
+
+n == nums.length
+1 <= n <= 300
+nums[i] is either 0, 1, or 2.
+"""
+
+
+class Solution:
+    def sortColors(self, nums):
+        left = 0
+        middle = 0
+        right = len(nums) - 1
+
+        while left <= right:
+            if nums[left] == 0:
+                nums[left], nums[middle] = nums[middle], nums[left]                
+                left += 1
+                middle += 1
+
+            elif nums[left] == 2:
+                nums[left], nums[right] = nums[right], nums[left]
+                right -= 1
+
+            else:
+                left += 1
+
+        return nums
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.sortColors(nums = [2,0,2,1,1,0]))      # [0,0,1,1,2,2]
+    print(lc.sortColors(nums = [2,0,1]))            # [0,1,2] 
+
+
+# Runtime: 35 ms, faster than 85.01% of Python3 online submissions for Sort Colors.
+# Memory Usage: 13.8 MB, less than 65.39% of Python3 online submissions for Sort Colors.
+
+
+#%%
