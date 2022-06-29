@@ -1,0 +1,8 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/power-of-two/discuss/919981/python3andc%2B%2B%3A-faster-than-99.93-and-100%3A-COUNT-1
+
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        return n > 0 and bin(n).count('1') == 1
