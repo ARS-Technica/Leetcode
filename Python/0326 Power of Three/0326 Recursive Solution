@@ -1,0 +1,49 @@
+"""
+326. Power of Three
+Easy
+https://leetcode.com/problems/power-of-three/
+
+Given an integer n, return true if it is a power of three. Otherwise, return false.
+
+An integer n is a power of three, if there exists an integer x such that n == 3x.
+
+
+
+Example 1:
+
+Input: n = 27
+Output: true
+
+Example 2:
+
+Input: n = 0
+Output: false
+
+Example 3:
+
+Input: n = 9
+Output: true
+
+
+Constraints:
+-231 <= n <= 231 - 1
+"""
+
+
+class Solution:
+    def isPowerOfThree(n):
+        if n == 0: return False
+        if n == 1: return True
+        elif n%3 != 0: return False
+        return Solution.isPowerOfThree(n/3)
+        #return Solution.isPowerOfThree(self, n/3)
+
+
+if __name__ == "__main__":
+    print(Solution.isPowerOfThree(27))                      # YES
+    print(Solution.isPowerOfThree(0))                       # NO
+    print(Solution.isPowerOfThree(9))                       # YES
+
+
+# Runtime: 73 ms, faster than 97.61% of Python3 online submissions for Power of Three.
+# Memory Usage: 13.9 MB, less than 57.64% of Python3 online submissions for Power of Three.
