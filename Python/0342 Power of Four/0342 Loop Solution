@@ -1,0 +1,19 @@
+
+
+class Solution:
+    def isPowerOfFour(n):
+        while n % 4 == 0 and n >= 16:
+            n = n/16
+
+        while n % 4 == 0 and n >= 4:
+            n = n/4
+
+        if n == 1:
+            return True
+
+
+if __name__ == "__main__":
+    print(Solution.isPowerOfFour(16))                      # YES
+    print(Solution.isPowerOfFour(5))                       # NO
+    print(Solution.isPowerOfFour(1))                       # YES
+
