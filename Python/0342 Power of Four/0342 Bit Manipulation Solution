@@ -1,0 +1,21 @@
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/power-of-four/discuss/1154266/Python-or-Brute-Force-or-Bit-Manipulation-or-Easy-to-Understand-or-No-Loop
+
+
+class Solution:
+    def isPowerOfFour(n):
+        if n == 1:
+            return True
+
+        if n%4 == 0:
+            return ((n-1 & n) == 0) and (n%10 == 4 or n%10 == 6)
+
+        return False
+
+
+if __name__ == "__main__":
+    print(Solution.isPowerOfFour(16))                      # YES
+    print(Solution.isPowerOfFour(5))                       # NO
+    print(Solution.isPowerOfFour(1))                       # YES
+
