@@ -25,3 +25,22 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def majorityElement(self, nums): 
+        return [n for n in set(nums) if nums.count(n) > len(nums)/3]
+
+
+if __name__ == "__main__":
+    lc = Solution()
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([1]))                  # 1 
+    print(lc.majorityElement([1,2]))                # [1,2]  
+
+
+# Runtime: 202 ms, faster than 31.96% of Python3 online submissions for Majority Element II.
+# Memory Usage: 15.3 MB, less than 24.42% of Python3 online submissions for Majority Element II.
+
+
+#%%
