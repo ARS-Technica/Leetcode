@@ -9,6 +9,31 @@ Given an integer array of size n, find all elements that appear more than ⌊ n/
 
 class Solution:
     def majorityElement(self, nums):
+        result = []
+
+        for n in set(nums):
+            if len(nums)/3 < nums.count(n):
+                result.append(n)
+
+        return result
+
+
+if __name__ == "__main__":
+    lc = Solution()
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([1]))                  # 1 
+    print(lc.majorityElement([1,2]))                # [1,2]  
+
+
+# Runtime: 194 ms, faster than 37.28% of Python3 online submissions for Majority Element II.
+# Memory Usage: 15.3 MB, less than 71.53% of Python3 online submissions for Majority Element II.
+
+
+#%%
+
+
+class Solution:
+    def majorityElement(self, nums):
         counts = {i: nums.count(i) for i in set(nums)}
         return [k for k, v in counts.items() if counts[k] > len(nums)/3]
 
