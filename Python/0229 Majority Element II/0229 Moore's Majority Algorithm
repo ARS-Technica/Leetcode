@@ -1,5 +1,57 @@
 
 # Boyer-Moore Vote
+# In order to solve the problem in linear time and in O(1) space
+
+
+class Solution:
+    def majorityElement(self, nums):
+        if not nums:
+            return []
+
+
+        count1, candidate1 = 0, 0
+        count2, candidate2 = 0, 0
+        result = []
+        threshold = len(nums) // 3
+
+
+        for num in nums:
+            if num == candidate1:
+                count1 += 1
+            elif num == candidate2:
+                count2 += 1
+            
+            elif count1 == 0:
+                candidate1 = num
+                count1 += 1
+            elif count2 == 0:
+                candidate2 = num
+                count2 += 1
+
+            else:
+                count1 -= 1
+                count2 -= 1
+
+
+        # return [candidate for candidate in (candidate1, candidate2) if nums.count(candidate) > threshold]
+        return list(set(candidate for candidate in (candidate1, candidate2) if nums.count(candidate) > threshold))
+
+
+if __name__ == "__main__":
+    lc = Solution() 
+    print(lc.majorityElement([3,2,3]))              # 3
+    print(lc.majorityElement([1]))                  # 1 
+    print(lc.majorityElement([1,2]))                # [1,2]  
+    print(lc.majorityElement([0,0,0]))              # [0] 
+    
+
+# Runtime: 224 ms, faster than 17.79% of Python3 online submissions for Majority Element II.
+# Memory Usage: 15.4 MB, less than 24.42% of Python3 online submissions for Majority Element II.
+
+
+#%% 
+
+# Boyer-Moore Vote
 # Better solution. Not mine.
 # https://leetcode.com/problems/majority-element-ii/discuss/1495990/Python3-Two-kind-of-solutions
 
