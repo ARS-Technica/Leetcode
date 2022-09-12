@@ -37,3 +37,30 @@ if __name__ == "__main__":
 # Runtime: 810 ms, faster than 43.29% of Python3 online submissions for Arranging Coins.
 # Memory Usage: 13.9 MB, less than 57.65% of Python3 online submissions for Arranging Coins.
 
+
+#%%
+
+
+# Thought I could speed this up by simplifying my loop.  Nope.
+
+class Solution:
+    def arrangeCoins(self, n):
+        count = 0
+
+        while count <= n:
+            n -= count
+            count += 1
+
+        return count - 1
+
+
+if __name__ == "__main__":
+    print(Solution().arrangeCoins(5))           # 2
+    print(Solution().arrangeCoins(8))           # 3
+    print(Solution().arrangeCoins(1))           # 1
+    print(Solution().arrangeCoins(3))           # 2
+    print(Solution().arrangeCoins(1804289383))  # 60070
+
+# Runtime: 3096 ms, faster than 5.02% of Python3 online submissions for Arranging Coins.
+# Memory Usage: 14 MB, less than 12.14% of Python3 online submissions for Arranging Coins.
+
