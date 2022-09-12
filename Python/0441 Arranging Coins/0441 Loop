@@ -1,0 +1,39 @@
+"""
+441. Arranging Coins
+Easy
+https://leetcode.com/problems/arranging-coins/
+
+You have n coins and you want to build a staircase with these coins. The 
+staircase consists of k rows where the ith row has exactly i coins. The last 
+row of the staircase may be incomplete.
+
+Given the integer n, return the number of complete rows of the staircase you 
+will build.
+"""
+
+
+class Solution:
+    def arrangeCoins(self, n):
+        count = 1
+
+        while n:
+            n -= count
+
+            if n > 0:
+                count += 1
+            elif n == 0:
+                return count
+            else:
+                return count - 1
+
+
+if __name__ == "__main__":
+    print(Solution().arrangeCoins(5))           # 2
+    print(Solution().arrangeCoins(8))           # 3
+    print(Solution().arrangeCoins(1))           # 1
+    print(Solution().arrangeCoins(3))           # 2
+    print(Solution().arrangeCoins(1804289383))  # 60070
+
+# Runtime: 810 ms, faster than 43.29% of Python3 online submissions for Arranging Coins.
+# Memory Usage: 13.9 MB, less than 57.65% of Python3 online submissions for Arranging Coins.
+
