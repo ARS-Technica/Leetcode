@@ -1,0 +1,49 @@
+"""
+3. Longest Substring Without Repeating Characters
+Medium
+https://leetcode.com/problems/longest-substring-without-repeating-characters/ 
+
+Given a string s, find the length of the longest substring without repeating characters.
+"""
+
+# Alternative solution.  Not mine.
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/2423128/Faster-than-99.5-Python-Solution
+
+
+from collections import deque
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        substr = deque()
+        index = set()
+        max_len = 0
+        
+        for char in s:
+            if char not in index:
+                substr.append(char)
+                index.add(char)
+            else:
+                while substr:
+                    c = substr.popleft()
+                    index.remove(c)
+                    if c == char:
+                        substr.append(char)
+                        index.add(char)
+                        break
+            if len(substr) > max_len:
+                max_len = len(substr)
+        return max_len
+
+
+if __name__ == "__main__":
+    print(Solution().lengthOfLongestSubstring(s = "abcabcbb"))              # 3
+    print(Solution().lengthOfLongestSubstring(s = "bbbbb"))                 # 1
+    print(Solution().lengthOfLongestSubstring(s = "pwwkew"))                # 3   
+    print(Solution().lengthOfLongestSubstring(s = ""))                      # 0
+    print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
+
+
+# 
+
+
+#%%
