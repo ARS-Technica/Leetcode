@@ -32,40 +32,7 @@ if __name__ == "__main__":
 # Incorrect for s = "" 
 
 
-#%%
-
-
-class Solution:
-    def lengthOfLongestSubstring(self, s): 
-        left = 0 
-        result = 0
-        window = []
-        
-        if not s or s == '': 
-            return 0
-
-        for right in range(len(s)):
-            if s[right] in window:
-                left += 1
-            window.append(s[right])
-            result = max(result, len(set(s[left:right+1])))           
-            right += 1
-
-        return 1 if result == 0 else result
-
-
-if __name__ == "__main__":
-    print(Solution().lengthOfLongestSubstring(s = "abcabcbb"))              # 3
-    print(Solution().lengthOfLongestSubstring(s = "bbbbb"))                 # 1
-    print(Solution().lengthOfLongestSubstring(s = "pwwkew"))                # 3   
-    print(Solution().lengthOfLongestSubstring(s = ""))                      # 0
-    print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
-
-
-# Incorrect for s = "jbpnbwwd"
-
-
-#%%
+#%% 
 
 
 class Solution:
@@ -93,6 +60,51 @@ if __name__ == "__main__":
 
 # Runtime: 135 ms, faster than 37.62% of Python3 online submissions for Longest Substring Without Repeating Characters.
 # Memory Usage: 14.1 MB, less than 49.64% of Python3 online submissions for Longest Substring Without Repeating Characters.
+
+
+#%%
+
+# Alternative solution.  Not mine.
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/2423128/Faster-than-99.5-Python-Solution
+
+
+from collections import deque
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        substr = deque()
+        index = set()
+        max_len = 0
+        
+        for char in s:
+            if char not in index:
+                substr.append(char)
+                index.add(char)
+            else:
+                while substr:
+                    c = substr.popleft()
+                    index.remove(c)
+                    if c == char:
+                        substr.append(char)
+                        index.add(char)
+                        break
+                    
+            if len(substr) > max_len:
+                max_len = len(substr)
+
+        return max_len
+
+
+if __name__ == "__main__":
+    print(Solution().lengthOfLongestSubstring(s = "abcabcbb"))              # 3
+    print(Solution().lengthOfLongestSubstring(s = "bbbbb"))                 # 1
+    print(Solution().lengthOfLongestSubstring(s = "pwwkew"))                # 3   
+    print(Solution().lengthOfLongestSubstring(s = ""))                      # 0
+    print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
+
+
+# Runtime: 115 ms, faster than 51.17% of Python3 online submissions for Longest Substring Without Repeating Characters.
+# Memory Usage: 14.1 MB, less than 13.81% of Python3 online submissions for Longest Substring Without Repeating Characters.
 
 
 #%%
