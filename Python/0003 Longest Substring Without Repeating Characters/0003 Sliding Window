@@ -66,3 +66,33 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s): 
+        left = 0
+        result = 0
+        window = set()
+
+        for right in range(len(s)):
+            while s[right] in window:
+                window.remove(s[left])
+                left += 1
+            window.add(s[right])
+            result = max(result, right - left + 1)    
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().lengthOfLongestSubstring(s = "abcabcbb"))              # 3
+    print(Solution().lengthOfLongestSubstring(s = "bbbbb"))                 # 1
+    print(Solution().lengthOfLongestSubstring(s = "pwwkew"))                # 3   
+    print(Solution().lengthOfLongestSubstring(s = ""))                      # 0
+    print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
+
+# Runtime: 135 ms, faster than 37.62% of Python3 online submissions for Longest Substring Without Repeating Characters.
+# Memory Usage: 14.1 MB, less than 49.64% of Python3 online submissions for Longest Substring Without Repeating Characters.
+
+
+#%%
