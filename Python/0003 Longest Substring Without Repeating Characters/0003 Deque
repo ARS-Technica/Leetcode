@@ -43,7 +43,6 @@ if __name__ == "__main__":
     print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
 
 
-# 
+# Runtime: 115 ms, faster than 51.17% of Python3 online submissions for Longest Substring Without Repeating Characters.
+# Memory Usage: 14.1 MB, less than 13.81% of Python3 online submissions for Longest Substring Without Repeating Characters.
 
-
-#%%
