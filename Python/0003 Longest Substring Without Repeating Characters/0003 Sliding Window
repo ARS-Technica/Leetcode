@@ -184,3 +184,37 @@ if __name__ == "__main__":
 
 #%%
 
+# Alternative solution.  Not mine.
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/discuss/1731/A-Python-solution-85ms-O(n)
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        left = 0
+        res = 0
+        window = {}
+
+        for right, char in enumerate(s):
+            if char in window and left <= window[char]:
+                left = window[char] + 1
+            else:
+                res = max(res, right - left + 1)
+                
+            window[char] = right
+
+        return res
+
+
+if __name__ == "__main__":
+    print(Solution().lengthOfLongestSubstring(s = "abcabcbb"))              # 3
+    print(Solution().lengthOfLongestSubstring(s = "bbbbb"))                 # 1
+    print(Solution().lengthOfLongestSubstring(s = "pwwkew"))                # 3   
+    print(Solution().lengthOfLongestSubstring(s = ""))                      # 0
+    print(Solution().lengthOfLongestSubstring(s = "jbpnbwwd"))              # 4
+
+
+# Runtime: 55 ms, faster than 98.07% of Python3 online submissions for Longest Substring Without Repeating Characters.
+# Memory Usage: 14.1 MB, less than 13.81% of Python3 online submissions for Longest Substring Without Repeating Characters.
+
+
+#%%
