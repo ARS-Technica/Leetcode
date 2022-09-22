@@ -65,3 +65,41 @@ if __name__ == "__main__":
 
 
 #%% 
+
+# Not mine.
+# https://leetcode.com/problems/substring-with-concatenation-of-all-words/discuss/1805387/Sliding-window-intuitive-Python-solution-with-Counter
+
+
+from collections import Counter
+
+class Solution:
+    def findSubstring(self, s, words):
+        if len(s) == 0 or s is None or words is None:
+            return []
+
+        word_len = len(words[0])
+        counter = Counter(words)
+        window_size = len(words) * word_len
+        ans = []
+
+        for i in range(len(s) - window_size + 1):
+            temp = s[i:i+window_size]
+            temp = [temp[j:j+word_len] for j in range(0, window_size, word_len)]
+            if Counter(temp) == counter:
+                ans.append(i)
+
+        return ans
+
+
+if __name__ == "__main__":
+    print(Solution().findSubstring(s = "abcdef", words = ["ab","cd","ef"]))    # [0]
+    print(Solution().findSubstring(s = "barfoothefoobarman", words = ["foo","bar"]))    # [0,9]
+    print(Solution().findSubstring(s = "wordgoodgoodgoodbestword", words = ["word","good","best","word"]))    # []
+    print(Solution().findSubstring(s = "barfoofoobarthefoobarman", words = ["bar","foo","the"]))    # [6,9,12]
+
+
+# Runtime: 2157 ms, faster than 13.60% of Python3 online submissions for Substring with Concatenation of All Words.
+# Memory Usage: 14.1 MB, less than 75.95% of Python3 online submissions for Substring with Concatenation of All Words.
+
+
+#%% 
