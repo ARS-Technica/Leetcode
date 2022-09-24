@@ -1,0 +1,37 @@
+"""
+219. Contains Duplicate II
+Easy
+https://leetcode.com/problems/contains-duplicate-ii/ 
+
+Given an integer array nums and an integer k, return true if there are two
+distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.
+"""
+
+# Sliding Window
+
+
+class Solution:
+    def containsNearbyDuplicate(self, nums, k):
+        # Failing to check for edge cases results in a Time Limit Exceeded
+        if len(nums == len(set(nums))): return False
+        
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] == nums[j]:
+                    if j - i <= k:
+                        return True
+
+        return False
+
+
+if __name__ == "__main__":
+    print(Solution().containsNearbyDuplicate(nums = [1,2,3,1], k = 3))              # true
+    print(Solution().containsNearbyDuplicate(nums = [1,0,1,1], k = 1))              # true
+    print(Solution().containsNearbyDuplicate(nums = [1,2,3,1,2,3], k = 2))          # false
+
+
+# Runtime: 1703 ms, faster than 5.62% of Python3 online submissions for Contains Duplicate II.
+# Memory Usage: 26.5 MB, less than 83.06% of Python3 online submissions for Contains Duplicate II.
+
+
+#%%
