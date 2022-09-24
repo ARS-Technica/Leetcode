@@ -35,3 +35,29 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def containsNearbyDuplicate(self, nums, k):
+        # Failing to check for edge cases results in a Time Limit Exceeded
+        if len(nums == len(set(nums))): return False
+        
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if nums[i] == nums[j] and j - i <= k:
+                    return True
+
+        return False
+
+
+if __name__ == "__main__":
+    print(Solution().containsNearbyDuplicate(nums = [1,2,3,1], k = 3))              # true
+    print(Solution().containsNearbyDuplicate(nums = [1,0,1,1], k = 1))              # true
+    print(Solution().containsNearbyDuplicate(nums = [1,2,3,1,2,3], k = 2))          # false
+
+
+# Runtime: 1653 ms, faster than 7.36% of Python3 online submissions for Contains Duplicate II.
+# Memory Usage: 26.4 MB, less than 84.53% of Python3 online submissions for Contains Duplicate II.
+
+
+#%%
