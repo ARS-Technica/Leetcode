@@ -1,0 +1,39 @@
+"""
+643. Maximum Average Subarray I
+Easy
+https://leetcode.com/problems/maximum-average-subarray-i/ 
+
+You are given an integer array nums consisting of n elements, and an integer k.
+
+Find a contiguous subarray whose length is equal to k that has the maximum
+average value and return this value. Any answer with a calculation error less
+than 10^-5 will be accepted.
+"""
+
+
+class Solution:
+    def findMaxAverage(self, nums, k):
+        #res = 0
+        # Won't work for negative results unless res is something less than 0
+        res = float("-infinity") 
+
+        # Ensure every term has k digits by limiting range by (k - 1)
+        for i in range(0, len(nums) - (k-1)):
+            # print(nums[i:i+k], sum(nums[i:i+k]), k, sum(nums[i:i+k]) / k)
+
+            average = sum(nums[i:i+k]) / k
+            res = max(res, average)
+
+        return res
+
+
+if __name__ == "__main__":
+    print(Solution().findMaxAverage(nums = [1,12,-5,-6,50,3], k = 4))           # 12.75000
+    print(Solution().findMaxAverage(nums = [5], k = 1))                         # 5.00000
+    print(Solution().findMaxAverage(nums = [-1], k = 1))                        # -1.00000
+
+
+# Time Limit Exceeded
+
+
+#%%
