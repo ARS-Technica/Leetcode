@@ -66,3 +66,35 @@ if __name__ == "__main__":
 
 
 #%%
+
+# Time Complexity: O(N) 
+
+
+class Solution:
+    def findMaxAverage(self, nums, k): 
+        left = 0
+        res = float("-infinity") 
+        window = 0
+
+        for right in range(len(nums)):
+            window += nums[right]
+
+            if right >= k-1:
+                res = max(res, window)
+                window -= nums[left]
+                left += 1
+
+        return res / k 
+
+
+if __name__ == "__main__":
+    print(Solution().findMaxAverage(nums = [1,12,-5,-6,50,3], k = 4))           # 12.75000
+    print(Solution().findMaxAverage(nums = [5], k = 1))                         # 5.00000
+    print(Solution().findMaxAverage(nums = [-1], k = 1))                        # -1.00000
+
+
+# Runtime: 1344 ms, faster than 90.26% of Python3 online submissions for Maximum Average Subarray I.
+# Memory Usage: 25.6 MB, less than 95.71% of Python3 online submissions for Maximum Average Subarray I.
+
+
+#%%
