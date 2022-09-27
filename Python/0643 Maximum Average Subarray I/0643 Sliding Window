@@ -37,3 +37,32 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def findMaxAverage(self, nums, k): 
+        # Won't work for negative results unless res is something less than 0
+        res = sum(nums[:k])
+        # window = 0
+        window = res
+        # window can't be set to 0 because first window may be negative
+
+        for i in range(k, len(nums)):
+            window += nums[i]
+            window -= nums[i - k]
+            res = max(res, window)
+
+        return res / k          # You only need to calculate the average once
+
+
+if __name__ == "__main__":
+    print(Solution().findMaxAverage(nums = [1,12,-5,-6,50,3], k = 4))           # 12.75000
+    print(Solution().findMaxAverage(nums = [5], k = 1))                         # 5.00000
+    print(Solution().findMaxAverage(nums = [-1], k = 1))                        # -1.00000
+
+
+# Runtime: 1774 ms, faster than 71.32% of Python3 online submissions for Maximum Average Subarray I.
+# Memory Usage: 26.2 MB, less than 41.16% of Python3 online submissions for Maximum Average Subarray I.
+
+
+#%%
