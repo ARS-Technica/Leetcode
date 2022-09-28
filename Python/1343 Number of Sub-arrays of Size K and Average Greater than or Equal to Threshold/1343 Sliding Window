@@ -20,7 +20,7 @@ class Solution:
         while right < len(s):
             window.append(s[right])
 
-            while right >= 2:
+            if right >= 2:
                 if len(set(window)) == 3:        
                     res += 1
                 
@@ -41,4 +41,3 @@ if __name__ == "__main__":
 
 
 #%%
-
