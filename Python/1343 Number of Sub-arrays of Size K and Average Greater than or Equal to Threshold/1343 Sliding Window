@@ -68,3 +68,35 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def numOfSubarrays(self, arr, k, threshold):  
+        res = 0
+        window = 0
+
+        for i in range(0, k-1):
+            window += arr[i] 
+
+        for i in range(k-1, len(arr)):
+            window += arr[i]
+
+            if (window / k) >= threshold:
+                res += 1
+
+            window -= arr[i - k + 1]
+
+        return res
+
+
+if __name__ == "__main__":
+    print(Solution().numOfSubarrays(arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4))             # 3
+    print(Solution().numOfSubarrays(arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5))   # 6 
+    print(Solution().numOfSubarrays(arr = [1,1,1,1,1], k = 1, threshold = 0))                   # 5
+
+
+# Runtime: 1210 ms, faster than 43.51% of Python3 online submissions for Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold.
+# Memory Usage: 27.3 MB, less than 25.08% of Python3 online submissions for Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold.
+
+
+#%%
