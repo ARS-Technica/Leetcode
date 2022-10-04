@@ -1,0 +1,47 @@
+"""
+523. Continuous Subarray Sum
+Medium
+https://leetcode.com/problems/continuous-subarray-sum/ 
+
+Given an integer array nums and an integer k, return true if nums has a
+continuous subarray of size at least two whose elements sum up to a multiple
+of k, or false otherwise.
+
+An integer x is a multiple of k if there exists an integer n such that
+x = n * k. 0 is always a multiple of k.
+"""
+
+
+class Solution:
+    def checkSubarraySum(self, nums, k): 
+        hashmap = {0: -1}
+        window_sum = 0
+
+        for idx, val in enumerate(nums):
+            window_sum += val
+            res = window_sum % k
+
+            if res in hashmap and idx - hashmap[res] >= 2:
+                return True
+
+            if res not in hashmap:
+                hashmap[res] = idx
+
+        return False
+
+
+if __name__ == "__main__":
+    print(Solution().checkSubarraySum(nums = [23,2,4,6,7], k = 6))              # True
+    print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 6))              # True
+    print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 13))             # False
+    print(Solution().checkSubarraySum(nums = [0], k = 1))                       # False
+    print(Solution().checkSubarraySum(nums = [1,0], k = 2))                     # False    
+    print(Solution().checkSubarraySum(nums = [5,0,0,0], k = 3))                 # True
+    print(Solution().checkSubarraySum(nums = [23,2,4,6,6], k = 7))              # True
+
+
+# Runtime: 1036 ms, faster than 96.88% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 33.3 MB, less than 38.92% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
