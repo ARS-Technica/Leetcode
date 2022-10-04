@@ -76,3 +76,39 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def checkSubarraySum(self, nums, k): 
+        left = 0
+        window_len = 0
+        window_sum = 0    
+    
+        for right in range(len(nums)):
+            window_len += 1
+            window_sum += nums[right] 
+
+            while window_sum % k != 0: 
+                window_sum -= nums[left]
+                left += 1
+                
+            if window_sum % k == 0:
+                if window_len >= 2:
+                    return True
+    
+        return False 
+
+
+if __name__ == "__main__":
+    print(Solution().checkSubarraySum(nums = [23,2,4,6,7], k = 6))              # True
+    print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 6))              # True
+    print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 13))             # False
+    print(Solution().checkSubarraySum(nums = [0], k = 1))                       # False
+    print(Solution().checkSubarraySum(nums = [1,0], k = 2))                     # False    
+    print(Solution().checkSubarraySum(nums = [5,0,0,0], k = 3))                 # True
+
+
+# 
+
+
+#%%
