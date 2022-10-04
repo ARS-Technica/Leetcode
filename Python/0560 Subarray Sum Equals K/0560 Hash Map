@@ -1,0 +1,40 @@
+"""
+560. Subarray Sum Equals K
+Medium
+https://leetcode.com/problems/subarray-sum-equals-k/ 
+
+Given an array of integers nums and an integer k, return the total number of
+subarrays whose sum equals to k.
+
+A subarray is a contiguous non-empty sequence of elements within an array.
+"""
+
+
+class Solution:
+    def subarraySum(self, nums, k):
+        prefixSums = {0 : 1}
+        res = 0 
+        window_sum = 0
+
+        for n in nums:
+            window_sum += n
+            diff = window_sum - k
+
+            res += prefixSums.get(diff, 0)
+            prefixSums[window_sum] = 1 + prefixSums.get(window_sum, 0)
+
+        return res 
+
+
+if __name__ == "__main__":
+    print(Solution().subarraySum(nums = [1,1,1], k = 2))                    # 2
+    print(Solution().subarraySum(nums = [1,2,3], k = 3))                    # 2
+    print(Solution().subarraySum(nums = [100,1,2,3,4], k = 3))              # 2 
+    print(Solution().subarraySum(nums = [100,1,2,3,100,1,2,3,4], k = 3))    # 4 
+
+
+# Runtime: 872 ms, faster than 7.20% of Python3 online submissions for Subarray Sum Equals K.
+# Memory Usage: 16.7 MB, less than 33.71% of Python3 online submissions for Subarray Sum Equals K.
+
+
+#%%
