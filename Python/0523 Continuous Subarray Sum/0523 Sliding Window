@@ -12,19 +12,33 @@ x = n * k. 0 is always a multiple of k.
 
 
 class Solution:
-    def checkSubarraySum(self, nums: List[int], k: int) -> bool:
+    def checkSubarraySum(self, nums, k): 
+        # Iterate over elements in our input
+        for left in range(len(nums)):
+            window = 0
 
-        return res
+            # Expand the window 
+            for right in range(left, len(nums)): 
+                # Process the current window 
+                window += nums[right] 
+
+                if window % k == 0 and window != 0:
+                    return True
+
+        return False
 
 
 if __name__ == "__main__":
     print(Solution().checkSubarraySum(nums = [23,2,4,6,7], k = 6))              # True
     print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 6))              # True
     print(Solution().checkSubarraySum(nums = [23,2,6,4,7], k = 13))             # False
+    print(Solution().checkSubarraySum(nums = [0], k = 1))                       # False
+    print(Solution().checkSubarraySum(nums = [1,0], k = 2))                     # False    
+    print(Solution().checkSubarraySum(nums = [5,0,0,0], k = 3))                 # True
 
 
-# 
-# 
+# Failed
+# Forgot "continuous subarray of size at least two" condition
 
 
-#%%
+#%% 
