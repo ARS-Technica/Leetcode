@@ -37,3 +37,35 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def subarraySum(self, nums, k):
+        left = 0 
+        res = 0
+
+        for left in range(len(nums)):
+            window_sum = nums[left]
+
+            for right in range(left + 1, len(nums)):
+                window_sum += nums[right]
+
+                if window_sum == k:
+                    res += 1
+
+        res += nums.count(k)
+
+        return res 
+
+
+if __name__ == "__main__":
+    print(Solution().subarraySum(nums = [1,1,1], k = 2))                    # 2
+    print(Solution().subarraySum(nums = [1,2,3], k = 3))                    # 2
+    print(Solution().subarraySum(nums = [100,1,2,3,4], k = 3))              # 2 
+    print(Solution().subarraySum(nums = [100,1,2,3,100,1,2,3,4], k = 3))    # 4 
+
+
+# Time Limit Exceeded
+
+
+#%%
