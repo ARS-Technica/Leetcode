@@ -1,0 +1,41 @@
+"""
+1358. Number of Substrings Containing All Three Characters
+Medium
+https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/ 
+
+Given a string s consisting only of characters a, b and c.
+
+Return the number of substrings containing at least one occurrence of all these
+characters a, b and c.
+"""
+
+
+class Solution:
+    def numberOfSubstrings(self, s): 
+        window = {char : 0 for char in 'abc'}
+        left = -1
+        res = 0
+
+        for right, char in enumerate(s):
+            window[char] += 1
+
+            while all(window.values()):
+                left += 1
+                res += len(s) - right
+                window[s[left]] -= 1
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().numberOfSubstrings(s = "abcabc"))                  # 10
+    print(Solution().numberOfSubstrings(s = "aaacb"))                   # 3
+    print(Solution().numberOfSubstrings(s = "abc"))                     # 1
+    print(Solution().numberOfSubstrings(s = "acbbcac"))                 # 11
+
+
+# Runtime: 663 ms, faster than 23.81% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+# Memory Usage: 14.4 MB, less than 29.92% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+ 
+
+#%%
