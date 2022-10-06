@@ -126,3 +126,92 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Time Complexity: O(N) | Space Complexity: O(1)
+
+
+class Solution:
+    def numberOfSubstrings(self, s):
+        left, right = 0, 0        # Intialize our window's bound
+        res = 0
+        window = []
+
+        # Iterate over elements in our input
+        while right < len(s):
+            window.append(s[right])
+            
+            # Expand the window 
+            if right >= 2:            
+
+                # Process the current window
+                if len(set(window)) == 3:        
+                    res += 1
+                # Contract the window
+                del window[0]
+                left += 1
+
+            right += 1
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().numberOfSubstrings(s = "abcabc"))                  # 10
+    print(Solution().numberOfSubstrings(s = "aaacb"))                   # 3
+    print(Solution().numberOfSubstrings(s = "abc"))                     # 1
+    print(Solution().numberOfSubstrings(s = "acbbcac"))                 # 11
+
+
+# Does not work
+"""
+4
+1
+1
+2
+"""
+
+
+#%% 
+
+
+class Solution:
+    def numberOfSubstrings(self, s):
+        left, right = 0, 0        # Intialize our window's bound
+        res = 0
+        window = dict()
+
+        # Iterate over elements in our input
+        while right < len(s): 
+            window[s[right]] = window.get(s[right], 0) + 1
+
+            # Expand the window 
+            while len(window) == 3 and left < right:
+
+                # Process the current window 
+                res += len(s) - right
+                window[s[left]] -= 1
+
+                if window[s[left]] == 0:        
+                    window.pop(s[left])
+                    
+                # Contract the window 
+                left += 1
+
+            right += 1
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().numberOfSubstrings(s = "abcabc"))                  # 10
+    print(Solution().numberOfSubstrings(s = "aaacb"))                   # 3
+    print(Solution().numberOfSubstrings(s = "abc"))                     # 1
+    print(Solution().numberOfSubstrings(s = "acbbcac"))                 # 11
+
+
+# Runtime: 582 ms, faster than 32.82% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+# Memory Usage: 14.2 MB, less than 77.75% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+
+
+#%% 
