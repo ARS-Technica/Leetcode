@@ -91,3 +91,38 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Dynamic Sliding Window
+# Naive Solution O(N^2)
+
+
+class Solution:
+    def numberOfSubstrings(self, s): 
+        res = 0
+
+        for i in range(len(s)):
+            window = set()
+            window.add(s[i])
+
+            for j in range(i, len(s)):
+                window.add(s[j])
+
+                if len(window) == 3:
+                    res += 1
+                    # window.remove(s[i]) 
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().numberOfSubstrings(s = "abcabc"))                  # 10
+    print(Solution().numberOfSubstrings(s = "aaacb"))                   # 3
+    print(Solution().numberOfSubstrings(s = "abc"))                     # 1
+    print(Solution().numberOfSubstrings(s = "acbbcac"))                 # 11
+
+
+# Time Limit Exceeded 
+
+
+#%%
