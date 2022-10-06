@@ -70,3 +70,36 @@ if __name__ == '__main__':
  
 
 #%%
+
+
+class Solution:
+    def numberOfSubstrings(self, s): 
+        window = {char : 0 for char in 'abc'}
+        left = 0
+        res = 0
+
+        for right in range(0, len(s)):
+            rightChar = s[right]
+            window[rightChar] += 1
+
+            while all(window.values()) and left <= right: 
+                leftChar = s[left]
+                window[leftChar] -= 1
+                res += len(s) - right
+                left += 1
+
+        return res  
+
+
+if __name__ == '__main__':
+    print(Solution().numberOfSubstrings(s = "abcabc"))                  # 10
+    print(Solution().numberOfSubstrings(s = "aaacb"))                   # 3
+    print(Solution().numberOfSubstrings(s = "abc"))                     # 1
+    print(Solution().numberOfSubstrings(s = "acbbcac"))                 # 11
+
+
+# Runtime: 505 ms, faster than 42.72% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+# Memory Usage: 14.2 MB, less than 96.89% of Python3 online submissions for Number of Substrings Containing All Three Characters.
+ 
+
+#%%
