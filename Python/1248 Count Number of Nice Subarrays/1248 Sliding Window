@@ -50,3 +50,47 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def numberOfSubarrays(self, nums, k):
+        left, right = 0, 0
+        odd = 0 
+        res = 0
+        window = 0
+
+        def isOdd(n):
+            return  n & 1 != 0
+
+        for right in range(len(nums)):
+            rightchar = nums[right]
+
+            if isOdd(rightchar): 
+                odd += 1
+                window = 0
+
+            while odd == k:
+                leftchar = nums[left]
+
+                if isOdd(leftchar):
+                    odd -= 1
+                
+                window += 1
+                left += 1
+
+            res += window
+
+        return res
+
+
+if __name__ == "__main__":
+    print(Solution().numberOfSubarrays(nums = [1,1,2,1,1], k = 3))              # 2
+    print(Solution().numberOfSubarrays(nums = [2,4,6], k = 1))                  # 0
+    print(Solution().numberOfSubarrays(nums = [2,2,2,1,2,2,1,2,2,2], k = 2))    # 16  
+
+
+# Runtime: 2204 ms, faster than 19.63% of Python3 online submissions for Count Number of Nice Subarrays.
+# Memory Usage: 20.7 MB, less than 50.88% of Python3 online submissions for Count Number of Nice Subarrays.
+
+
+#%%
