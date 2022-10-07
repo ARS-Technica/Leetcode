@@ -94,3 +94,28 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/2283302/Python-or-5-Liner
+
+
+class Solution:
+    def numberOfSubarrays(self, nums, k):
+        d, su, count = dict(), 0, 0
+
+        for i in nums:
+            su += i%2
+            count += (su==k) + d.get(su-k,0)
+            d[su] = d.get(su,0) + 1
+
+        return count        
+
+
+if __name__ == "__main__":
+    print(Solution().numberOfSubarrays(nums = [1,1,2,1,1], k = 3))              # 2
+    print(Solution().numberOfSubarrays(nums = [2,4,6], k = 1))                  # 0
+    print(Solution().numberOfSubarrays(nums = [2,2,2,1,2,2,1,2,2,2], k = 2))    # 16  
+
+
+#%%
