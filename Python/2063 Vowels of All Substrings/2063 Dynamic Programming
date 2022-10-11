@@ -1,0 +1,38 @@
+"""
+2063. Vowels of All Substrings
+Medium
+https://leetcode.com/problems/vowels-of-all-substrings/ 
+
+Given a string word, return the sum of the number of vowels ('a', 'e', 'i', 'o', and 'u')
+in every substring of word.
+
+A substring is a contiguous (non-empty) sequence of characters within a string.
+
+Note: Due to the large constraints, the answer may not fit in a signed 32-bit
+integer. Please be careful during the calculations.
+"""
+
+
+class Solution:
+  def countVowels(self, word: str) -> int:
+    # Running count of the number of vowels of word[:i] 
+    count = [0] * (len(word) + 1)
+
+    for idx, char in enumerate(word):
+      count[idx + 1] = count[idx] + (char in 'AEIOUSaeiou') * (idx + 1)
+
+    #print(count)
+    return sum(count)
+
+
+if __name__ == "__main__":
+    print(Solution().countVowels(word = "aba"))         # 6
+    print(Solution().countVowels(word = "abc"))         # 3 
+    print(Solution().countVowels(word = "ltcd"))        # 0
+
+
+# Runtime: 763 ms, faster than 5.14% of Python3 online submissions for Vowels of All Substrings.
+# Memory Usage: 19.7 MB, less than 5.91% of Python3 online submissions for Vowels of All Substrings.
+
+
+#%%
