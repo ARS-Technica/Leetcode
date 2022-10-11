@@ -37,3 +37,27 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def countVowels(self, word):
+        count = ''
+
+        for i in range(len(word)):            
+            for j in range(i+1, len(word) + 1):
+                count += word[i:j]
+
+
+        return len([char for char in count if char in 'AEIOUaeiou'])
+
+
+if __name__ == "__main__":
+    print(Solution().countVowels(word = "aba"))         # 6
+    print(Solution().countVowels(word = "abc"))         # 3 
+    print(Solution().countVowels(word = "ltcd"))        # 0
+
+
+# Time Limit Exceeded
+
+
+#%%
