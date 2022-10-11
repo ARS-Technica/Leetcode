@@ -36,3 +36,23 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+  def countVowels(self, word: str) -> int:
+    # Running count of the number of vowels of word[:i] 
+    word_len = len(word) 
+    return sum( (idx + 1) * (word_len - idx) for idx, char in enumerate(word) if char in 'AEIOUSaeiou' )
+
+
+if __name__ == "__main__":
+    print(Solution().countVowels(word = "aba"))         # 6
+    print(Solution().countVowels(word = "abc"))         # 3 
+    print(Solution().countVowels(word = "ltcd"))        # 0
+
+
+# Runtime: 213 ms, faster than 64.52% of Python3 online submissions for Vowels of All Substrings.
+# Memory Usage: 14.9 MB, less than 89.46% of Python3 online submissions for Vowels of All Substrings.
+
+
+#%%
