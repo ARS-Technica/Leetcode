@@ -46,6 +46,33 @@ if __name__ == "__main__":
 #%%
 
 
+class Solution:
+    def digitSum(self, s, k):
+        # Edge case: What if the length of s is less than k
+        # if n < k: return s 
+        # Unnecessary if using len(s) in the while loop
+
+        while len(s) > k: 
+            # Convert string into an array of integers 
+            # Divide string into an array of subarrays of size k 
+            # Join the array of integers back into a string
+            s = ''.join([ str(x) for x in [sum(map(int, s[i:i+k])) for i in range(0, len(s), k)] ])
+
+        return s
+
+
+if __name__ == "__main__":
+    print(Solution().digitSum(s = "11111222223", k = 3))        # "135" 
+    print(Solution().digitSum(s = "00000000",  k = 3))          # "000"
+
+
+# Runtime: 55 ms, faster than 57.39% of Python3 online submissions for Calculate Digit Sum of a String.
+# Memory Usage: 14 MB, less than 20.90% of Python3 online submissions for Calculate Digit Sum of a String.
+
+
+#%%
+
+
 # Not mine.
 # https://doocs.github.io/leetcode/#/solution/2200-2299/2243.Calculate%20Digit%20Sum%20of%20a%20String/README_EN
 
