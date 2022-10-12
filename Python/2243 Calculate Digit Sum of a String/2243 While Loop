@@ -18,6 +18,57 @@ Return s after all rounds have been completed.
 """
 
 
+# How many bites DOES it take to get to the center of a Tootsie Pop?
+
+
+class Solution:
+    def digitSum(self, s, k):
+        counter = k
+        n = len(s)
+        
+        # Edge case: What if the length of s is less than k
+        if n < k: return s
+        
+        # Convert string into an array of integers 
+        # Divide string into an array of subarrays of size k 
+        
+        # return [ s[i:i+k] for i in range(0, n, k) ]
+        # ['111', '112', '222', '23']
+        
+        # return [ list(s[i:i+k]) for i in range(0, n, k) ]
+        # [['1', '1', '1'], ['1', '1', '2'], ['2', '2', '2'], ['2', '3']]
+        
+        # s = [ list(s[i:i+k]) for i in range(0, n, k) ]
+        # return [ int(j) for i in s for j in i] 
+        # [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3]
+        
+        # s = [int(i) for i in s]
+        # return s
+        # [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3]
+        
+        # s = [int(i) for i in s]
+        # return [ list(s[i:i+k]) for i in range(0, n, k) ]
+        # [[1, 1, 1], [1, 1, 2], [2, 2, 2], [2, 3]]
+        
+        # return [ list(map(int, s[i:i+k])) for i in range(0, n, k) ]
+        # [[1, 1, 1], [1, 1, 2], [2, 2, 2], [2, 3]]
+        
+        # s = [ list(map(int, s[i:i+k])) for i in range(0, n, k) ]
+        # return [sum(i) for i in s]
+        # [3, 4, 6, 5]
+        
+        return [ sum(map(int, s[i:i+k])) for i in range(0, n, k) ]
+        # [3, 4, 6, 5]
+        
+
+if __name__ == "__main__":
+    print(Solution().digitSum(s = "11111222223", k = 3))        # "135" 
+    print(Solution().digitSum(s = "00000000",  k = 3))          # "000"
+
+
+#%%
+
+
 class Solution:
     def digitSum(self, s, k):
         counter = k - 1
