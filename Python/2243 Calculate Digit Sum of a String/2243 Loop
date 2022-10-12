@@ -16,3 +16,33 @@ Merge consecutive groups together to form a new string. If the length of the
 string is greater than k, repeat from step 1.
 Return s after all rounds have been completed.
 """
+
+
+# Not mine.
+# https://doocs.github.io/leetcode/#/solution/2200-2299/2243.Calculate%20Digit%20Sum%20of%20a%20String/README_EN
+
+
+class Solution:
+    def digitSum(self, s, k):
+        if len(s) <= k: return s
+
+        res = []
+
+        while s:
+            res.append(str(sum(int(i) for i in s[:k])))
+            s = s[k:]
+            print(res)
+
+        return self.digitSum(''.join(res), k)
+
+
+if __name__ == "__main__":
+    print(Solution().digitSum(s = "11111222223", k = 3))        # "135" 
+    print(Solution().digitSum(s = "00000000",  k = 3))          # "000"
+
+
+# Runtime: 56 ms, faster than 54.41% of Python3 online submissions for Calculate Digit Sum of a String.
+# Memory Usage: 13.8 MB, less than 69.61% of Python3 online submissions for Calculate Digit Sum of a String. 
+
+
+#%%
