@@ -20,6 +20,35 @@ Return s after all rounds have been completed.
 
 class Solution:
     def digitSum(self, s, k):
+        counter = k - 1
+        n = len(s)
+
+        # Edge case: What if the length of s is less than k
+        if n < k: return s 
+
+        while counter > 0: 
+            # Convert string into an array of integers 
+            # Divide string into an array of subarrays of size k
+            s = [ sum(map(int, s[i:i+k])) for i in range(0, n, k) ][:n] 
+            counter -= 1
+            n = round(n/2)
+
+        return ''.join([str(i) for i in s])
+
+
+if __name__ == "__main__":
+    print(Solution().digitSum(s = "11111222223", k = 3))        # "135" 
+    print(Solution().digitSum(s = "00000000",  k = 3))          # "000"
+
+
+# Failed for s = "00000000"
+
+
+#%%
+
+
+class Solution:
+    def digitSum(self, s, k):
         # Edge case: What if the length of s is less than k
         # if n < k: return s 
         # Unnecessary if using len(s) in the while loop
