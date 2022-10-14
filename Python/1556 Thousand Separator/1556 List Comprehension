@@ -23,3 +23,20 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def thousandSeparator(self, n):
+        return (lambda s:'.'.join([s[i:i+3] for i in range(0, len(s), 3)]))(str(n)[::-1])[::-1]
+
+
+if __name__ == '__main__':
+    print(Solution().thousandSeparator(987))
+    print(Solution().thousandSeparator(1234))
+
+
+# Runtime: 70 ms, faster than 5.33% of Python3 online submissions for Thousand Separator.
+# Memory Usage: 13.8 MB, less than 58.64% of Python3 online submissions for Thousand Separator.
+
+
+#%% 
