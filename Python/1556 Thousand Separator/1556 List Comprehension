@@ -1,0 +1,25 @@
+"""
+1556. Thousand Separator
+Easy
+https://leetcode.com/problems/thousand-separator/
+
+Given an integer n, add a dot (".") as the thousands separator and return it in string format.
+"""
+
+
+class Solution:
+    def thousandSeparator(self, n):
+        n = str(n)[::-1]
+        return '.'.join([ (n[i:i+3]) for i in range(0, len(n), 3) ])[::-1]
+
+
+if __name__ == '__main__':
+    print(Solution().thousandSeparator(987))
+    print(Solution().thousandSeparator(1234))
+
+
+# Runtime: 36 ms, faster than 85.11% of Python3 online submissions for Thousand Separator.
+# Memory Usage: 13.9 MB, less than 11.03% of Python3 online submissions for Thousand Separator.
+
+
+#%%
