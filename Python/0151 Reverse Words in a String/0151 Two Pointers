@@ -1,0 +1,45 @@
+"""
+151. Reverse Words in a String
+Medium
+https://leetcode.com/problems/reverse-words-in-a-string/ 
+
+Given an input string s, reverse the order of the words.
+
+A word is defined as a sequence of non-space characters. The words in s will be
+separated by at least one space.
+
+Return a string of the words in reverse order concatenated by a single space.
+
+Note that s may contain leading or trailing spaces or multiple spaces between
+two words. The returned string should only have a single space separating the
+words. Do not include any extra spaces.
+"""
+
+
+class Solution:
+    def reverseWords(self, s):
+        res = []
+        temp = ''
+
+        for idx in (s + ' '):
+            if idx == ' ':
+                if temp != '':
+                    res.append(temp)
+                    temp = ''
+            else:
+                temp += idx
+
+        return " ".join(res[::-1])
+
+
+if __name__ == '__main__':
+    print(Solution().reverseWords(s = "the sky is blue"))       # "blue is sky the"
+    print(Solution().reverseWords(s = "  hello world  "))       # "world hello"
+    print(Solution().reverseWords(s = "a good   example"))      # "example good a"
+
+
+# Runtime: 91 ms, faster than 10.95% of Python3 online submissions for Reverse Words in a String.
+# Memory Usage: 14.1 MB, less than 16.04% of Python3 online submissions for Reverse Words in a String.
+
+
+#%% 
