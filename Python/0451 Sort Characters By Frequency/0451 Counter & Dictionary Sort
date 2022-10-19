@@ -64,3 +64,32 @@ sorted(numbers, key=lambda i:(-numbers.count(i),numbers.index(i)))
 #%% 
 
 
+# Time Complexity O(N^2) 
+# It's a very bad idea to call count on every element of the list 
+
+
+class Solution:
+    def frequencySort(self, s):
+        print(Counter(s))         # Counter({'e': 4, 'l': 2, 'o': 2, 'v': 1, 't': 1, 'c': 1, 'd': 1})
+        # frequency = Counter(s)
+        # sorted_chars = sorted(s, key=lambda i: (s.count(i)), reverse=True)       
+        # ['e', 'e', 'e', 'e', 'l', 'o', 'l', 'o', 'v', 't', 'c', 'd']
+        # sorted_chars = sorted(s, key=lambda i: (-s.count(i), i))
+        # ['e', 'e', 'e', 'e', 'l', 'l', 'o', 'o', 'c', 'd', 't', 'v']
+        sorted_chars = sorted(s, key=lambda i: (-s.count(i), s.index(i))))
+
+        print(sorted_chars)
+        return ''.join(sorted_chars)
+
+
+if __name__ == '__main__':
+    #print(Solution().frequencySort(s = "tree"))             # "eert"
+    #print(Solution().frequencySort(s = "cccaaa"))           # "aaaccc"
+    #print(Solution().frequencySort(s = "Aabb"))             # "bbAa"
+    print(Solution().frequencySort(s = "loveleetcode"))      # "eeeeoollvtdc"
+
+
+# Time Limit Exceeded
+
+
+#%% 
