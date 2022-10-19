@@ -93,3 +93,21 @@ if __name__ == '__main__':
 
 
 #%% 
+
+
+class Solution:
+    def frequencySort(self, s): 
+        return ''.join(sorted(s, key=lambda i: (-s.count(i), s.index(i)))
+
+
+if __name__ == '__main__':
+    print(Solution().frequencySort(s = "tree"))             # "eert"
+    print(Solution().frequencySort(s = "cccaaa"))           # "aaaccc"
+    print(Solution().frequencySort(s = "Aabb"))             # "bbAa"
+    print(Solution().frequencySort(s = "loveleetcode"))      # "eeeeoollvtdc"
+
+
+# Time Limit Exceeded
+
+
+#%% 
