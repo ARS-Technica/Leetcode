@@ -32,3 +32,35 @@ if __name__ == '__main__':
 
 #%% 
 
+
+# https://stackoverflow.com/questions/58992422/frequency-sorting-problem-python-sorted-does-not-give-what-i-would-expect
+
+
+"""
+'l' and 'o' have the same count, and that's the only sorting key you use.
+Your expected output seems to show that you want to use a second key, but you didn't make it explicit. 
+
+Sorts are guaranteed to be stable, which means that if some items have the same
+key value, their original order is retained.
+ 
+So you need to specify that the key of the order is not only the number of equal
+elements, but the the number of equal elements (with higher importance) and the
+element itself (if you want this). So if you want a reverse order for number of
+equal elements and (then) an order for the elements value you could just use:
+
+sorted(numbers, key=lambda i:(-numbers.count(i),i))
+
+or equally
+
+sorted(numbers, key=lambda i:(numbers.count(i),-i),reverse=True)
+
+You could want the order to be by number of elements and (then) first appearance
+of the element, in this case you can use:
+
+sorted(numbers, key=lambda i:(-numbers.count(i),numbers.index(i)))
+"""
+
+
+#%% 
+
+
