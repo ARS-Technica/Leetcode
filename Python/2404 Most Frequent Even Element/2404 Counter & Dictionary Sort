@@ -31,3 +31,26 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def mostFrequentEven(self, nums):
+        nums = sorted(nums)
+        evens = (i for i in nums if not i & 1)
+        frequency = Counter(evens)
+        res = sorted(frequency, key=lambda i: (-frequency[i], nums.index(i)))
+        return res[0] if res else -1
+
+
+if __name__ == '__main__':
+    print(Solution().mostFrequentEven(nums = [0,1,2,2,4,4,1]))              # 2
+    print(Solution().mostFrequentEven(nums = [4,4,4,9,2,4]))                # 4
+    print(Solution().mostFrequentEven(nums = [29,47,21,41,13,37,25,7]))     # -1
+    print(Solution().mostFrequentEven(nums = [8154,9139,8194,3346,5450,9190,133,8239,4606,8671,8412,6290]))     # 3346
+
+
+# Runtime: 1200 ms, faster than 11.22% of Python3 online submissions for Most Frequent Even Element.
+# Memory Usage: 14.5 MB, less than 25.20% of Python3 online submissions for Most Frequent Even Element.
+
+
+#%%
