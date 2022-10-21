@@ -1,0 +1,50 @@
+"""
+2404. Most Frequent Even Element
+Easy
+https://leetcode.com/problems/most-frequent-even-element/ 
+
+Given an integer array nums, return the most frequent even element.
+
+If there is a tie, return the smallest one. If there is no such element, return -1.
+"""
+
+
+# Runtime Complexity: O(N) | Space Complexity: O(N)
+
+
+class Solution:
+    def mostFrequentEven(self, nums):
+        evens = {}
+        maxCount = float('-inf')
+        res = -1
+
+        for n in nums:
+            if not n & 1:
+                if n in evens:
+                    evens[n] += 1
+                else:
+                    evens[n] = 1
+
+        for key in evens.keys():
+            if maxCount < evens[key]:                
+                maxCount =  evens[key]                
+                res = key
+
+            elif maxCount == evens[key]:
+                  res = min(res, key)
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().mostFrequentEven(nums = [0,1,2,2,4,4,1]))              # 2
+    print(Solution().mostFrequentEven(nums = [4,4,4,9,2,4]))                # 4
+    print(Solution().mostFrequentEven(nums = [29,47,21,41,13,37,25,7]))     # -1
+    print(Solution().mostFrequentEven(nums = [8154,9139,8194,3346,5450,9190,133,8239,4606,8671,8412,6290]))     # 3346
+
+
+# Runtime: 664 ms, faster than 57.96% of Python3 online submissions for Most Frequent Even Element.
+# Memory Usage: 14.1 MB, less than 97.77% of Python3 online submissions for Most Frequent Even Element.
+
+
+#%%
