@@ -76,3 +76,30 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/most-frequent-even-element/discuss/2581151/Python-3-oror-2-lines-Counter-oror-TM%3A-9586
+
+
+from collections import Counter
+
+
+class Solution:
+    def mostFrequentEven(self, nums):
+        ctr = Counter(nums)
+        return max([c for c in ctr if not c%2], key = lambda x:(ctr[x], -x), default = -1)
+
+
+if __name__ == '__main__':
+    print(Solution().mostFrequentEven(nums = [0,1,2,2,4,4,1]))              # 2
+    print(Solution().mostFrequentEven(nums = [4,4,4,9,2,4]))                # 4
+    print(Solution().mostFrequentEven(nums = [29,47,21,41,13,37,25,7]))     # -1
+    print(Solution().mostFrequentEven(nums = [8154,9139,8194,3346,5450,9190,133,8239,4606,8671,8412,6290]))     # 3346
+
+
+# Runtime: 298 ms, faster than 93.65% of Python3 online submissions for Most Frequent Even Element.
+# Memory Usage: 14.4 MB, less than 25.24% of Python3 online submissions for Most Frequent Even Element.
+
+
+#%%
