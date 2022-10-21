@@ -136,6 +136,31 @@ if __name__ == '__main__':
 
 class Solution:
     def frequencySort(self, s):
+    	frequency = Counter(s)
+    	result = []
+
+    	for key, value in sorted(frequency.items(), key=lambda x: x[1], reverse=True):
+    		result.append(key * value)
+
+    	return ''.join(result)
+
+
+if __name__ == '__main__':
+    print(Solution().frequencySort(s = "tree"))             # "eert"
+    print(Solution().frequencySort(s = "cccaaa"))           # "aaaccc"
+    print(Solution().frequencySort(s = "Aabb"))             # "bbAa"
+    print(Solution().frequencySort(s = "loveleetcode"))      # "eeeeoollvtdc"
+
+
+# Runtime: 84 ms, faster than 58.49% of Python3 online submissions for Sort Characters By Frequency.
+# Memory Usage: 15.2 MB, less than 81.09% of Python3 online submissions for Sort Characters By Frequency.
+
+
+#%% 
+
+
+class Solution:
+    def frequencySort(self, s):
         result = ''
 
         for char, count in Counter(s).most_common():
