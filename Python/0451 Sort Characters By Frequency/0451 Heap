@@ -1,0 +1,45 @@
+"""
+451. Sort Characters By Frequency
+Medium
+https://leetcode.com/problems/sort-characters-by-frequency/ 
+
+Given a string s, sort it in decreasing order based on the frequency of the
+characters. The frequency of a character is the number of times it appears in
+the string.
+
+Return the sorted string. If there are multiple answers, return any of them.
+"""
+
+
+# Better solution.  Not mine.
+# https://leetcode.com/problems/sort-characters-by-frequency/discuss/1892719/Easy-python-solution-with-step-by-step-explanation.
+
+
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        #creating a dictionary for storing the number of occurences of various alphabets in 's'
+        mydict = {}
+        for i in s:
+            if i in mydict:
+                mydict[i] += 1
+            else:
+                mydict[i] = 1
+        heap = []
+        heapify(heap)
+        #creating a max heap with the alphabets and its occurences 
+        for key,value in mydict.items():
+            heappush(heap,(-1*value,key))
+            
+        res = ''
+        #finally adding the keys(alphabets) for values(occurences) number of times into the result
+        while len(heap):
+            value,key = heappop(heap)
+            res += key * (-1*value)
+        return res
+
+
+# Runtime: 133 ms, faster than 21.47% of Python3 online submissions for Sort Characters By Frequency.
+# Memory Usage: 15.3 MB, less than 81.09% of Python3 online submissions for Sort Characters By Frequency.
+
+
+#%%
