@@ -43,3 +43,26 @@ class Solution:
 
 
 #%%
+ 
+
+# Better solution.  Not mine.
+# https://leetcode.com/problems/sort-characters-by-frequency/discuss/700068/Python-3-Beats-99.5.-Sort-Characters-By-Frequency.-Very-Easy.-2-solutions.
+
+
+class Solution:
+    def frequencySort(self, s):
+        cnt = collections.Counter(s)        
+        hq = heapq.nlargest(len(cnt),cnt,key=cnt.get)        
+        return "".join([i*cnt.get(i) for i in hq])
+
+
+if __name__ == '__main__':
+    print(Solution().frequencySort(s = "tree"))             # "eert"
+    print(Solution().frequencySort(s = "cccaaa"))           # "aaaccc"
+    print(Solution().frequencySort(s = "Aabb"))             # "bbAa"
+    print(Solution().frequencySort(s = "loveleetcode"))     # "eeeeoollvtdc"
+
+
+# Runtime: 101 ms, faster than 42.49% of Python3 online submissions for Sort Characters By Frequency.
+# Memory Usage: 15.3 MB, less than 81.09% of Python3 online submissions for Sort Characters By Frequency.
+
