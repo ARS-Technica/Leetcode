@@ -1,0 +1,30 @@
+"""
+2418. Sort the People
+Easy
+https://leetcode.com/problems/sort-the-people/
+
+You are given an array of strings names, and an array heights that consists of
+distinct positive integers. Both arrays are of length n.
+
+For each index i, names[i] and heights[i] denote the name and height of the ith
+person.
+
+Return names sorted in descending order by the people's heights.
+"""
+
+
+class Solution:
+    def sortPeople(self, names, heights):
+        zipped_lists = sorted(zip(heights, names), reverse=True)
+        return [name for height, name in zipped_lists]
+
+if __name__ == '__main__':
+    print(Solution().sortPeople(names = ["Mary","John","Emma"], heights = [180,165,170]))       # ["Mary","Emma","John"]
+    print(Solution().sortPeople(names = ["Alice","Bob","Bob"], heights = [155,185,150]))        # ["Bob","Alice","Bob"]  
+
+
+# Runtime: 113 ms, faster than 98.53% of Python3 online submissions for Sort the People.
+# Memory Usage: 14.4 MB, less than 46.79% of Python3 online submissions for Sort the People.
+
+
+#%%
