@@ -44,3 +44,20 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def sortPeople(self, names, heights):
+        zipped_lists = zip(heights, names)
+        return [name for height, name in sorted(zipped_lists, reverse=True)]
+
+if __name__ == '__main__':
+    print(Solution().sortPeople(names = ["Mary","John","Emma"], heights = [180,165,170]))       # ["Mary","Emma","John"]
+    print(Solution().sortPeople(names = ["Alice","Bob","Bob"], heights = [155,185,150]))        # ["Bob","Alice","Bob"]  
+
+
+# Runtime: 247 ms, faster than 61.81% of Python3 online submissions for Sort the People.
+# Memory Usage: 14.5 MB, less than 11.11% of Python3 online submissions for Sort the People.
+
+
+#%%    
