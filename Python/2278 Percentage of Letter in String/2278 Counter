@@ -25,3 +25,37 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def percentageLetter(self, s: str, letter: str) -> int:
+        return int(s.count(letter) / len(s) * 100)
+
+
+if __name__ == '__main__':
+    print(Solution().percentageLetter(s = "foobar", letter = "o"))      # 33     
+    print(Solution().percentageLetter(s = "jjjj", letter = "k"))        # 0         
+
+
+# Runtime: 58 ms, faster than 36.54% of Python3 online submissions for Percentage of Letter in String.
+# Memory Usage: 13.8 MB, less than 55.73% of Python3 online submissions for Percentage of Letter in String.
+
+
+#%%
+
+
+class Solution:
+    def percentageLetter(self, s: str, letter: str) -> int:
+        return (s.count(letter)* 100) // len(s)
+
+
+if __name__ == '__main__':
+    print(Solution().percentageLetter(s = "foobar", letter = "o"))      # 33     
+    print(Solution().percentageLetter(s = "jjjj", letter = "k"))        # 0         
+
+
+# Runtime: 72 ms, faster than 5.05% of Python3 online submissions for Percentage of Letter in String.
+# Memory Usage: 13.9 MB, less than 9.56% of Python3 online submissions for Percentage of Letter in String.
+
+
+#%%
