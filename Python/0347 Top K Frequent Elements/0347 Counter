@@ -1,0 +1,28 @@
+"""
+347. Top K Frequent Elements
+Medium
+https://leetcode.com/problems/top-k-frequent-elements/ 
+
+Given an integer array nums and an integer k, return the k most frequent
+elements. You may return the answer in any order.
+"""
+
+
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, nums, k):
+        return [num for num, _ in Counter(nums).most_common(k)]
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(nums = [1,1,1,2,2,3], k = 2))                 # [1,2]
+    print(Solution().topKFrequent(nums = [1], k = 1))                           # [1]
+
+
+# Runtime: 266 ms, faster than 21.63% of Python3 online submissions for Top K Frequent Elements.
+# Memory Usage: 18.7 MB, less than 71.49% of Python3 online submissions for Top K Frequent Elements.
+
+
+#%%
