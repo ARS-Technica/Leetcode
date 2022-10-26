@@ -26,3 +26,25 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, nums, k):
+        frequency = Counter(nums)
+        res = sorted(frequency, key=lambda i: -frequency[i]) 
+        return res[0:k]
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(nums = [1,1,1,2,2,3], k = 2))                 # [1,2]
+    print(Solution().topKFrequent(nums = [1], k = 1))                           # [1]
+
+
+# Runtime: 239 ms, faster than 38.80% of Python3 online submissions for Top K Frequent Elements.
+# Memory Usage: 18.5 MB, less than 91.69% of Python3 online submissions for Top K Frequent Elements.
+
+
+#%%
