@@ -1,0 +1,58 @@
+"""
+347. Top K Frequent Elements
+Medium
+https://leetcode.com/problems/top-k-frequent-elements/ 
+
+Given an integer array nums and an integer k, return the k most frequent
+elements. You may return the answer in any order.
+"""
+
+
+# Heap
+# Not mine.
+# https://leetcode.com/problems/top-k-frequent-elements/discuss/81697/Python-O(n)-solution-without-sort-without-heap-without-quickselect
+
+
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        if len(nums) == 1:
+                    return [nums[0]]
+
+        # freq dict
+        frequency = {}
+
+        for num in nums:
+        	if num in frequency:
+        		frequency[num] += 1
+        	else:
+        		frequency[num] = 1
+
+        # Insert k items into heap O(nlog(k))
+        h = []
+
+        from heapq import heappush, heappop
+
+        for key in frequency: # O(N)
+        	heappush(h, (frequency[key], key))     # freq, item - O(log(k))
+        	if len(h) > k:
+        		heappop(h)
+        
+        res = []
+
+        while h: # O(k)
+        	frq, item = heappop(h)                 # O(logk)
+        	res.append(item)
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(nums = [1,1,1,2,2,3], k = 2))                 # [1,2]
+    print(Solution().topKFrequent(nums = [1], k = 1))                           # [1]
+
+
+# Runtime: 112 ms, faster than 90.84% of Python3 online submissions for Top K Frequent Elements.
+# Memory Usage: 18.6 MB, less than 91.69% of Python3 online submissions for Top K Frequent Elements.
+
+
+#%%
