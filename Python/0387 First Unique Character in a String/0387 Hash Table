@@ -1,0 +1,40 @@
+"""
+387. First Unique Character in a String
+Easy
+https://leetcode.com/problems/first-unique-character-in-a-string/
+
+Given a string s, find the first non-repeating character in it and return its
+index. If it does not exist, return -1.
+"""
+
+
+from collections import Counter
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        frequency = dict()
+
+        for char in s:
+            if char in frequency:
+                frequency[char] += 1
+            else:
+                frequency[char] = 1
+
+        for char in s:
+            if frequency[char] == 1:
+                return s.index(char)
+
+        return -1
+
+
+if __name__ == '__main__':
+    print(Solution().firstUniqChar(s = "leetcode"))         # 0
+    print(Solution().firstUniqChar(s = "loveleetcode"))     # 2
+    print(Solution().firstUniqChar(s = "aabb"))             # -1
+
+
+# Runtime: 115 ms, faster than 88.87% of Python3 online submissions for First Unique Character in a String.
+# Memory Usage: 14.2 MB, less than 18.21% of Python3 online submissions for First Unique Character in a String.
+
+
+#%%
