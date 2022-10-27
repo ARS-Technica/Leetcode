@@ -9,7 +9,44 @@ elements. You may return the answer in any order.
 
 
 # Heap
-# Not mine.
+# Better solution. Not mine.
+# https://leetcode.com/problems/top-k-frequent-elements/discuss/81697/Python-O(n)-solution-without-sort-without-heap-without-quickselect
+
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+            hashmap = {}
+            for num in nums:
+                if num in hashmap:
+                    hashmap[num] += 1
+                else:
+                    hashmap[num] = 1
+            heap = []
+            for key in hashmap:
+                heapq.heappush(heap, (-hashmap[key], key))
+
+            res = []
+            for _ in range(k):
+                popped = heapq.heappop(heap)
+                res.append(popped[1])
+
+            return res
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(nums = [1,1,1,2,2,3], k = 2))                 # [1,2]
+    print(Solution().topKFrequent(nums = [1], k = 1))                           # [1]
+
+
+# Runtime: 187 ms, faster than 67.61% of Python3 online submissions for Top K Frequent Elements.
+# Memory Usage: 18.9 MB, less than 35.05% of Python3 online submissions for Top K Frequent Elements.
+
+
+#%%
+ 
+ 
+# Heap
+# Better solution. Not mine.
 # https://leetcode.com/problems/top-k-frequent-elements/discuss/81697/Python-O(n)-solution-without-sort-without-heap-without-quickselect
 
 
