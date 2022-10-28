@@ -28,3 +28,97 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        frequency = set()
+
+        for char in s:
+            if char in frequency:
+                return char                    
+            else:
+                frequency.add(char)
+
+
+if __name__ == '__main__':
+    print(Solution().repeatedCharacter(s = "abccbaacz"))    # "c"
+    print(Solution().repeatedCharacter(s = "abcdd"))        # "d"
+
+
+# Runtime: 63 ms, faster than 18.73% of Python3 online submissions for First Letter to Appear Twice.
+# Memory Usage: 13.8 MB, less than 50.86% of Python3 online submissions for First Letter to Appear Twice.
+
+
+#%%
+
+
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        frequency = set()
+
+        for char in s:
+            if char in frequency:
+                return char                    
+            frequency.add(char)
+
+
+if __name__ == '__main__':
+    print(Solution().repeatedCharacter(s = "abccbaacz"))    # "c"
+    print(Solution().repeatedCharacter(s = "abcdd"))        # "d"
+
+
+# Runtime: 62 ms, faster than 21.76% of Python3 online submissions for First Letter to Appear Twice.
+# Memory Usage: 13.8 MB, less than 94.38% of Python3 online submissions for First Letter to Appear Twice.
+
+
+#%%
+
+
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        frequency = []
+
+        for char in s:
+            if char in frequency:
+                return char                    
+            else:
+                frequency.append(char)
+
+
+if __name__ == '__main__':
+    print(Solution().repeatedCharacter(s = "abccbaacz"))    # "c"
+    print(Solution().repeatedCharacter(s = "abcdd"))        # "d"
+
+
+# Runtime: 35 ms, faster than 86.86% of Python3 online submissions for First Letter to Appear Twice.
+# Memory Usage: 13.8 MB, less than 50.86% of Python3 online submissions for First Letter to Appear Twice.
+
+
+#%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def repeatedCharacter(self, s: str) -> str:
+        frequency = Counter()
+
+        for char in s:
+            frequency[char] += 1
+
+            if frequency[char] == 2:
+                return char
+
+
+if __name__ == '__main__':
+    print(Solution().repeatedCharacter(s = "abccbaacz"))    # "c"
+    print(Solution().repeatedCharacter(s = "abcdd"))        # "d"
+
+
+# Runtime: 74 ms, faster than 5.30% of Python3 online submissions for First Letter to Appear Twice.
+# Memory Usage: 13.9 MB, less than 50.86% of Python3 online submissions for First Letter to Appear Twice.
+
+
+#%%
