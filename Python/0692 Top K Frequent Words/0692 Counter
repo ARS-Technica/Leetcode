@@ -31,3 +31,25 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/top-k-frequent-words/discuss/2723753/Python-one-line-(beats-85)
+
+
+class Solution:
+    def topKFrequent(self, words, k):
+        return next(zip(*Counter(sorted(words)).most_common(k)))
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Runtime: 133 ms, faster than 26.14% of Python3 online submissions for Top K Frequent Words.
+# Memory Usage: 14 MB, less than 62.61% of Python3 online submissions for Top K Frequent Words.
+
+
+#%%
