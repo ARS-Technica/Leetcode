@@ -1,0 +1,99 @@
+"""
+692. Top K Frequent Words
+Medium
+https://leetcode.com/problems/top-k-frequent-words/
+
+Given an array of strings words and an integer k, return the k most frequent strings.
+
+Return the answer sorted by the frequency from highest to lowest. Sort the
+words with the same frequency by their lexicographical order.
+"""
+
+
+from heapq import heappush, heappop
+
+
+class Solution:
+    def topKFrequent(self, words, k): 
+        frequency = dict()
+        result = []
+
+        if len(words) == 1:
+            return [words[0]]
+
+        for word in words:
+            if word in frequency:
+                frequency[word] += 1
+            else:
+                frequency[word] = 1
+
+        h = []
+
+        for key in frequency:
+        	heappush(h, (frequency[key], key)) 
+
+        	if len(h) > k:
+        		heappop(h) 
+
+        while h:
+        	frq, item = heappop(h) 
+        	result.append(item)            
+
+        return result[::-1]
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Failed for words = ["i","love","leetcode","i","love","coding"], k = 3
+
+
+#%%
+
+
+from heapq import heappush, heappop
+
+
+class Solution:
+    def topKFrequent(self, words, k): 
+        frequency = dict()
+        result = []
+
+        if len(words) == 1:
+            return [words[0]]
+
+        for word in words:
+            if word in frequency:
+                frequency[word] += 1
+            else:
+                frequency[word] = 1
+
+        max_heap = []
+
+        for word, freq in frequency.items():
+        	heappush(max_heap, (-1 * freq, word)) 
+
+        # Top k element from the min_heap as max_heap
+        for i in range(k):
+            pop = heappop(max_heap)
+            result.append(pop)
+
+        result.sort() # for alpabatical sort
+
+        return [key[1] for key in result] # returning the word
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Runtime: 49 ms, faster than 99.56% of Python3 online submissions for Top K Frequent Words.
+# Memory Usage: 14.1 MB, less than 25.18% of Python3 online submissions for Top K Frequent Words.
+
+
+#%%
