@@ -1,0 +1,43 @@
+"""
+692. Top K Frequent Words
+Medium
+https://leetcode.com/problems/top-k-frequent-words/ 
+
+Given an array of strings words and an integer k, return the k most frequent strings.
+
+Return the answer sorted by the frequency from highest to lowest. Sort the
+words with the same frequency by their lexicographical order.
+"""
+
+
+class Solution:
+    def topKFrequent(self, words, k):
+        frequency = dict()
+        result = []
+
+        for word in words:
+            if word in frequency:
+                frequency[word] += 1
+            else:
+                frequency[word] = 1
+
+        ordered = sorted(frequency.items(), key=lambda i: (-i[1], i[0]))
+
+        for idx, tup in enumerate(ordered):
+            if idx < k:
+                result.append(tup[0])
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Runtime: 125 ms, faster than 41.25% of Python3 online submissions for Top K Frequent Words.
+# Memory Usage: 13.9 MB, less than 62.61% of Python3 online submissions for Top K Frequent Words.
+
+
+#%%
