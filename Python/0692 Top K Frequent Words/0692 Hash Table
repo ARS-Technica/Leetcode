@@ -85,3 +85,50 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def topKFrequent(self, words, k):
+        count = dict()
+        frequency = dict()
+        result = []
+
+        for word in words:
+            if word in frequency:
+                frequency[word] += 1
+            else:
+                frequency[word] = 1
+
+        for key, value in frequency.items():
+            if value in count:
+                count[value].append(key)
+            else:
+                count[value] = [key]          
+
+        counter = 0
+
+        for x in range(len(words), 0, -1):
+            if x in count:
+
+                count[x].sort()
+                for n in count[x]:
+                    if counter < k:
+                        result.append(n)
+                        counter += 1
+                    else:
+                        return result  
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Runtime: 94 ms, faster than 74.02% of Python3 online submissions for Top K Frequent Words.
+# Memory Usage: 13.9 MB, less than 62.61% of Python3 online submissions for Top K Frequent Words.
+
+
+#%%
