@@ -1,0 +1,35 @@
+"""
+2206. Divide Array Into Equal Pairs
+Easy
+https://leetcode.com/problems/divide-array-into-equal-pairs/ 
+
+You are given an integer array nums consisting of 2 * n integers.
+
+You need to divide nums into n pairs such that:
+
+Each element belongs to exactly one pair.
+The elements present in a pair are equal.
+
+Return true if nums can be divided into n pairs, otherwise return false.
+"""
+
+
+# Not mine
+# https://leetcode.com/problems/divide-array-into-equal-pairs/discuss/2072603/Python-Easy-1-liner-using-set-operation
+
+
+class Solution:
+    def divideArray(self, nums):
+        return not reduce(lambda x,elem: x ^ {elem}, nums, set())
+
+
+if __name__ == '__main__':
+    print(Solution().divideArray(nums = [3,2,3,2,2,2]))     # True
+    print(Solution().divideArray(nums = [1,2,3,4]))         # False
+
+
+# Runtime: 467 ms, faster than 10.07% of Python3 online submissions for Divide Array Into Equal Pairs.
+# Memory Usage: 14.1 MB, less than 63.31% of Python3 online submissions for Divide Array Into Equal Pairs.
+
+
+#%%
