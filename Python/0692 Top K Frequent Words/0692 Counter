@@ -10,6 +10,63 @@ words with the same frequency by their lexicographical order.
 """
 
 
+# Failed
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, words, k):
+        frequency = Counter(words).most_common(k)     # [('i', 2), ('love', 2)]
+        return [idx[0] for idx in frequency]
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Doesn't work for words = ["i","love","leetcode","i","love","coding"], k = 3
+# Output: ["i","love","leetcode"]
+# Expected: ["i","love","coding"]
+
+
+#%%
+
+
+# Failed
+from collections import Counter
+
+
+class Solution:
+    def topKFrequent(self, words, k):
+        frequency = Counter(words)      
+        # Counter({'i': 2, 'love': 2, 'leetcode': 1, 'coding': 1})
+        
+        # return sorted(frequency, key=lambda i: -frequency[i])   
+        # ['i', 'love', 'leetcode', 'coding']
+        
+        # return sorted(frequency.items(), key=lambda i: (i[1], i[0]), reverse=True) 
+        # [('love', 2), ('i', 2), ('leetcode', 1), ('coding', 1)]
+        
+        return sorted(frequency.items(), key=lambda i: (-i[1], i[0]))
+        # [('i', 2), ('love', 2), ('coding', 1), ('leetcode', 1)]
+
+
+if __name__ == '__main__':
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 2))   # ["i","love"]
+    print(Solution().topKFrequent(words = ["the","day","is","sunny","the","the","the","sunny","is","is"], k = 4))   # ["the","is","sunny","day"]
+    print(Solution().topKFrequent(words = ["i","love","leetcode","i","love","coding"], k = 3))   # ["i","love","coding"]
+
+
+# Doesn't work for words = ["i","love","leetcode","i","love","coding"], k = 3
+# Output: ["i","love","leetcode"]
+# Expected: ["i","love","coding"]
+
+
+#%%
+
+
 from collections import Counter
 
 
