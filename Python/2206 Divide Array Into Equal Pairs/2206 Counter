@@ -32,3 +32,23 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def divideArray(self, nums):
+        return all(n & 1 == 0 for n in Counter(nums).values())
+
+
+if __name__ == '__main__':
+    print(Solution().divideArray(nums = [3,2,3,2,2,2]))     # True
+    print(Solution().divideArray(nums = [1,2,3,4]))         # False
+
+
+# Runtime: 194 ms, faster than 54.59% of Python3 online submissions for Divide Array Into Equal Pairs.
+# Memory Usage: 14.1 MB, less than 63.31% of Python3 online submissions for Divide Array Into Equal Pairs.
+
+
+#%%
