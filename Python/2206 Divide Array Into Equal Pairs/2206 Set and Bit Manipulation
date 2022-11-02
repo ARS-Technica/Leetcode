@@ -33,3 +33,24 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def divideArray(self, nums):
+        not_a_pair = set()
+
+        for x in nums:
+            if x not in not_a_pair:
+                not_a_pair.add(x)
+            else:
+                not_a_pair.remove(x)
+
+        return not not_a_pair
+
+
+if __name__ == '__main__':
+    print(Solution().divideArray(nums = [3,2,3,2,2,2]))     # True
+    print(Solution().divideArray(nums = [1,2,3,4]))         # False
+
+
+#%%
