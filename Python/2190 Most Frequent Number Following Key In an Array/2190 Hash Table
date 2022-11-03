@@ -68,3 +68,31 @@ if __name__ == '__main__':
 
 #%%
 
+
+# Removing the reversal of the final sorting improves efficency
+
+
+class Solution:
+    def mostFrequent(self, nums, key):
+        frequency = dict()
+
+        for idx, num in enumerate(nums):
+            if num == key and idx < len(nums) - 1:
+                if nums[idx + 1] in frequency:
+                    frequency[nums[idx + 1]] += 1
+                else:
+                    frequency[nums[idx + 1]] = 1
+
+        return sorted(frequency.items(), key=lambda i: -i[1])[0][0]
+
+
+if __name__ == '__main__':
+    print(Solution().mostFrequent(nums = [1,100,200,1,100], key = 1))       # 100
+    print(Solution().mostFrequent(nums = [2,2,2,2,3], key = 2))             # 2  
+
+
+# Runtime: 145 ms, faster than 71.81% of Python3 online submissions for Most Frequent Number Following Key In an Array.
+# Memory Usage: 14.2 MB, less than 43.39% of Python3 online submissions for Most Frequent Number Following Key In an Array.
+
+
+#%%
