@@ -1,0 +1,41 @@
+"""
+414. Third Maximum Number
+Easy
+https://leetcode.com/problems/third-maximum-number/ 
+
+Given an integer array nums, return the third distinct maximum number in this
+array. If the third maximum does not exist, return the maximum number.
+"""
+
+
+class Solution:
+    def thirdMax(self, nums):
+        count = 0
+        unique = set(nums)
+        # print(unique)
+
+        if len(unique) < 3:
+            return max(nums)
+
+        while count < 2:
+                # print(max(unique))
+                unique.remove(max(unique))
+                count += 1
+
+        return max(unique)
+
+
+if __name__ == '__main__':
+    print(Solution().thirdMax(nums = [3,2,1]))          # 1
+    print(Solution().thirdMax(nums = [1,2]))            # 2   
+    print(Solution().thirdMax(nums = [2,2,3,1]))        # 1
+    print(Solution().thirdMax(nums = [1,1,2]))          # 2
+    print(Solution().thirdMax(nums = [5,2,2]))          # 5
+    print(Solution().thirdMax(nums = [1,2,2,5,3,5]))    # 2
+
+
+# Runtime: 91 ms, faster than 73.76% of Python3 online submissions for Third Maximum Number.
+# Memory Usage: 15.5 MB, less than 22.55% of Python3 online submissions for Third Maximum Number.
+
+
+#%%
