@@ -69,3 +69,44 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def getFolderNames(self, names):
+        result = []
+        unique = {}
+        
+        for name in names:
+            if name in unique:
+                n = unique[name]
+                temp = name + '('+ str(n) + ')'
+
+                while temp in unique:
+                    n += 1
+                    temp = name + '(' + str(n) + ')'
+
+                result.append(temp)
+                unique[temp] = 1
+                unique[name] += 1
+
+            else :
+                unique[name] = 1
+                result.append(name)
+                    
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().getFolderNames(names = ["pes","fifa","gta","pes(2019)"]))  # ["pes","fifa","gta","pes(2019)"]
+    print(Solution().getFolderNames(names = ["gta","gta(1)","gta","avalon"]))   # ["gta","gta(1)","gta(2)","avalon"]
+    print(Solution().getFolderNames(["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece"]))     # ["onepiece","onepiece(1)","onepiece(2)","onepiece(3)","onepiece(4)"]
+
+
+# Runtime: 1044 ms, faster than 27.92% of Python3 online submissions for Making File Names Unique.
+# Memory Usage: 27.3 MB, less than 69.41% of Python3 online submissions for Making File Names Unique.
+
+
+#%%
+
+
+
