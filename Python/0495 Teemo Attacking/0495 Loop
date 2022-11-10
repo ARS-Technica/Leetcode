@@ -54,3 +54,31 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Variation on Problem 252 Meeting Rooms
+
+
+class Solution:
+    def findPoisonedDuration(self, timeSeries, duration):
+        n = len(timeSeries)
+        result = n * duration
+
+        for idx in range(n - 1):
+            if timeSeries[idx] + duration > timeSeries[idx + 1]:
+                overlap = (timeSeries[idx] + duration) - timeSeries[idx + 1]
+                result -= overlap
+
+        return result     
+        
+
+if __name__ == '__main__':
+    print(Solution().findPoisonedDuration(timeSeries = [1,4], duration = 2))    # 4
+    print(Solution().findPoisonedDuration(timeSeries = [1,2], duration = 2))    # 3    
+
+
+# Runtime: 611 ms, faster than 51.79% of Python3 online submissions for Teemo Attacking.
+# Memory Usage: 15.5 MB, less than 37.80% of Python3 online submissions for Teemo Attacking.
+
+
+#%%
