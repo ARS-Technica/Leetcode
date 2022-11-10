@@ -37,3 +37,20 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def findPoisonedDuration(self, timeSeries, duration):
+        poisoned = set(num for idx in timeSeries for num in range(idx, idx + duration)) 
+        return len(poisoned)
+        
+
+if __name__ == '__main__':
+    print(Solution().findPoisonedDuration(timeSeries = [1,4], duration = 2))    # 4
+    print(Solution().findPoisonedDuration(timeSeries = [1,2], duration = 2))    # 3    
+
+
+# Time Limit Exceeded
+
+
+#%%
