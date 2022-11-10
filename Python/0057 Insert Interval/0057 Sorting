@@ -245,3 +245,35 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def insert(self, intervals, newInterval):
+        intervals.append(newInterval)
+
+        intervals = sorted(intervals, key = lambda x: x[0]) 
+        res = [intervals[0]] 
+
+        for current in intervals[1:]: 
+            if current[0] <= res[-1][1]: 
+                res[-1][1] = max(current[1], res[-1][1]) 
+            else: 
+                res.append(current)
+
+        return res 
+
+
+if __name__ == '__main__':
+    print(Solution().insert(intervals = [[1,3],[6,9]], newInterval = [2,5]))                        # [[1,5],[6,9]]
+    print(Solution().insert(intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]))   # [[1,2],[3,10],[12,16]]
+    print(Solution().insert(intervals = [], newInterval = [5,7]))                                   # [5,7]
+    print(Solution().insert(intervals = [[1,5]], newInterval = [6,8]))                              # [[1,5],[6,8]]
+
+
+# Recycling the optimal code for Problem 56 is surprisingly less efficent
+
+# Runtime: 187 ms, faster than 40.74% of Python3 online submissions for Insert Interval.
+# Memory Usage: 17.4 MB, less than 53.30% of Python3 online submissions for Insert Interval.
+
+
+#%%
