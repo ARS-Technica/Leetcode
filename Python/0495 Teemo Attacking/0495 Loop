@@ -110,3 +110,23 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Alternate solution
+# https://leetcode.com/problems/teemo-attacking/discuss/306546/1-line-python
+
+
+class Solution:
+    def findPoisonedDuration(self, timeSeries, duration):
+        return len(timeSeries) and sum(min(timeSeries[i] - timeSeries[i-1], duration) for i in range(1, len(timeSeries))) + duration
+
+if __name__ == '__main__':
+    print(Solution().findPoisonedDuration(timeSeries = [1,4], duration = 2))    # 4
+    print(Solution().findPoisonedDuration(timeSeries = [1,2], duration = 2))    # 3    
+
+
+# Runtime: 681 ms, faster than 35.94% of Python3 online submissions for Teemo Attacking.
+# Memory Usage: 15.6 MB, less than 37.80% of Python3 online submissions for Teemo Attacking.
+
+
+#%%
