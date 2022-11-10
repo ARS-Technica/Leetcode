@@ -99,3 +99,36 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/merge-intervals/discuss/738403/Python3-Solution-with-a-Detailed-Explanation
+
+
+class Solution:
+    def merge(self, intervals):
+        if len(intervals) == 0: #1
+            return []
+        
+        intervals = sorted(intervals, key = lambda x: x[0]) #2
+        res = [intervals[0]] #3
+        
+        for current in intervals[1:]: #4
+            if current[0] <= res[-1][1]: #5
+                res[-1][1] = max(current[1], res[-1][1]) #6
+            else: 
+                res.append(current) #7
+        return res #1
+
+
+if __name__ == '__main__':
+    print(Solution().merge(intervals = [[1,3],[2,6],[8,10],[15,18]]))           # [[1,6],[8,10],[15,18]]
+    print(Solution().merge(intervals = [[1,4],[4,5]]))                          # [[1,5]]
+    print(Solution().merge(intervals = [[1,4],[0,4]]))                          # [[0,4]]
+
+
+# Runtime: 149 ms, faster than 95.87% of Python3 online submissions for Merge Intervals.
+# Memory Usage: 18 MB, less than 85.28% of Python3 online submissions for Merge Intervals.
+
+
+#%%
