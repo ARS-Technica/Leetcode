@@ -1,0 +1,31 @@
+"""
+252. Meeting Rooms
+Easy
+https://leetcode.com/problems/meeting-rooms/
+Created on Thu Nov 10 04:03:39 2022
+
+Given an array of meeting time intervals where intervals[i] = [starti, endi],
+determine if a person could attend all meetings.
+"""
+
+
+class Solution:
+    def canAttendMeetings(self, intervals):
+        intervals.sort(key=lambda x: x[0])
+        n = len(intervals)
+
+        for idx in range(n - 1):
+            if intervals[idx][1] > intervals[idx + 1][0]:
+                return False
+            
+        return True
+
+if __name__ == '__main__':
+    print(Solution().canAttendMeetings(intervals = [[0,30],[5,10],[15,20]]))    # False
+    print(Solution().canAttendMeetings(intervals = [[7,10],[2,4]]))             #True 
+
+
+# Locked.  Can't test. 
+
+
+#%%
