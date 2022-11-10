@@ -1,0 +1,39 @@
+"""
+495. Teemo Attacking
+Easy
+https://leetcode.com/problems/teemo-attacking/
+
+Our hero Teemo is attacking an enemy Ashe with poison attacks! When Teemo
+attacks Ashe, Ashe gets poisoned for a exactly duration seconds. More formally,
+an attack at second t will mean Ashe is poisoned during the inclusive time
+interval [t, t + duration - 1]. If Teemo attacks again before the poison effect
+ends, the timer for it is reset, and the poison effect will end duration seconds
+after the new attack.
+
+You are given a non-decreasing integer array timeSeries, where timeSeries[i]
+denotes that Teemo attacks Ashe at second timeSeries[i], and an integer duration.
+
+Return the total number of seconds that Ashe is poisoned.
+"""
+
+
+class Solution:
+    def findPoisonedDuration(self, timeSeries, duration):
+        poisoned = set()
+
+        for idx in timeSeries:
+            for num in range(idx, idx + duration):
+                poisoned.add(num)
+
+        return len(poisoned)
+
+
+if __name__ == '__main__':
+    print(Solution().findPoisonedDuration(timeSeries = [1,4], duration = 2))    # 4
+    print(Solution().findPoisonedDuration(timeSeries = [1,2], duration = 2))    # 3    
+
+
+# Time Limit Exceeded
+
+
+#%%
