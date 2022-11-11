@@ -1,0 +1,44 @@
+"""
+763. Partition Labels
+Medium
+https://leetcode.com/problems/partition-labels/
+
+You are given a string s. We want to partition the string into as many parts
+as possible so that each letter appears in at most one part.
+
+Note that the partition is done so that after concatenating all the parts in
+order, the resultant string should be s.
+
+Return a list of integers representing the size of these parts.
+"""
+
+
+# Sliding Window
+
+
+class Solution:
+    def partitionLabels(self, s):    
+        lastIndex = {c:i for i,c in enumerate(s)}
+        left, right = 0, 0
+        result = []
+
+        for idx, letter in enumerate(s):
+            right = max(right, lastIndex[letter])
+
+            if idx == right:
+                result.append(right - left + 1)
+                left = idx + 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().partitionLabels(s = "ababcbacadefegdehijhklij"))       # [9,7,8]   
+    print(Solution().partitionLabels(s = "eccbbbbdec"))                     # [10]
+
+
+# Runtime: 60 ms, faster than 78.38% of Python3 online submissions for Partition Labels.
+# Memory Usage: 13.8 MB, less than 68.73% of Python3 online submissions for Partition Labels.
+
+
+#%%
