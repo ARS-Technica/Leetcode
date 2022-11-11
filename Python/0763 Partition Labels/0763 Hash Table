@@ -82,3 +82,47 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def partitionLabels(self, s):    
+        indexes = dict()
+        result = []
+
+        for idx, letter in enumerate(s):
+            if letter in indexes:
+                indexes[letter].append(idx)
+            else:
+                indexes[letter] = [idx]
+
+        intervals = [[min(i), max(i)] for i in list(indexes.values())]
+
+        # Solution to Problem 56: Merge Intervals 
+        intervals = sorted(intervals, key = lambda x: x[0]) 
+
+        start, stop = intervals[0]
+
+        for next_start, next_stop in intervals[1:]:
+            if stop < next_start:               # If there's no overlap
+                result.append([start, stop])
+                start, stop = next_start, next_stop
+            else:
+                stop = max(stop, next_stop)     # Find the highest number
+
+        result.append([start, stop])
+        # Take the length of each interval (adding one for zero-index)
+        intervalLengths = [interval[1] - interval[0] + 1 for interval in result]
+
+        return intervalLengths
+
+
+if __name__ == '__main__':
+    print(Solution().partitionLabels(s = "ababcbacadefegdehijhklij"))       # [9,7,8]   
+    print(Solution().partitionLabels(s = "eccbbbbdec"))                     # [10]
+
+
+# Runtime: 70 ms, faster than 69.94% of Python3 online submissions for Partition Labels.
+# Memory Usage: 13.8 MB, less than 68.73% of Python3 online submissions for Partition Labels.
+
+
+#%%
