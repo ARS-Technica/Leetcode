@@ -46,3 +46,37 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def canPlaceFlowers(self, flowerbed, n):
+        length = len(flowerbed)
+        flowerbed = [0] + flowerbed + [0]
+
+        for i in range(1, length+1):
+            if flowerbed[i] == flowerbed[i-1] == flowerbed[i+1] == 0:
+                flowerbed[i] = 1
+                n -= 1
+
+        return n <= 0
+
+
+if __name__ == '__main__':
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1], n = 1))           # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1], n = 2))           # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,1,0,1], n = 1))           # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1,0,0], n = 2))       # True
+    print(Solution().canPlaceFlowers(flowerbed = [1], n = 0))                   # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0], n = 1))                 # False
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,0,0,1], n = 2))       # True
+    print(Solution().canPlaceFlowers(flowerbed = [0,0], n = 2))                 # False 
+    print(Solution().canPlaceFlowers(flowerbed = [1], n = 1))                   # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,0,0], n = 3))             # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,0,0,0], n = 3))           # True
+
+
+# Runtime: 371 ms, faster than 53.69% of Python3 online submissions for Can Place Flowers.
+# Memory Usage: 14.4 MB, less than 30.87% of Python3 online submissions for Can Place Flowers.
+
+
+#%%
