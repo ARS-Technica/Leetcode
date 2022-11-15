@@ -1,0 +1,50 @@
+
+
+from itertools import groupby
+
+class Solution:
+    def canPlaceFlowers(self, flowerbed, n):
+        count = 0
+        groups = [list(g) for k, g in groupby(flowerbed)]
+
+        if flowerbed and n == 0: return True
+
+        if len(groups) == 1 and 0 in groups[0]:
+            if len(groups[0]) & 1 == 0:         # Even
+                count += len(groups[0]) // 2
+            else:                               # Odd
+                count += (len(groups[0]) // 2) + 1
+            
+        else:
+            if 0 in groups[0]: count += len(groups[0]) // 2
+
+            if 0 in groups[-1]: count += len(groups[-1]) // 2
+
+            for group in groups[1:-1]:
+                if len(group) == 3:
+                    count += 1
+                elif len(group) > 3:
+                    count += ((len(group) - 3) // 2) + 1
+
+        return count >= n
+
+
+if __name__ == '__main__':
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1], n = 1))           # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1], n = 2))           # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,1,0,1], n = 1))           # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,1,0,0], n = 2))       # True
+    print(Solution().canPlaceFlowers(flowerbed = [1], n = 0))                   # True
+    print(Solution().canPlaceFlowers(flowerbed = [1,0], n = 1))                 # False
+    print(Solution().canPlaceFlowers(flowerbed = [1,0,0,0,0,0,1], n = 2))       # True
+    print(Solution().canPlaceFlowers(flowerbed = [0,0], n = 2))                 # False 
+    print(Solution().canPlaceFlowers(flowerbed = [1], n = 1))                   # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,0,0], n = 3))             # False
+    print(Solution().canPlaceFlowers(flowerbed = [0,0,0,0,0], n = 3))           # True
+
+
+# Runtime: 176 ms, faster than 90.41% of Python3 online submissions for Can Place Flowers.
+# Memory Usage: 15.5 MB, less than 5.94% of Python3 online submissions for Can Place Flowers.
+
+
+#%%
