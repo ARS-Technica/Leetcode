@@ -12,6 +12,7 @@ in the flowerbed without violating the no-adjacent-flowers rule.
 """
 
 
+# Since we really only care about zeroes, why not seperate them out?
 from itertools import groupby
 
 class Solution:
@@ -21,13 +22,15 @@ class Solution:
 
         if flowerbed and n == 0: return True
 
+        # If there's only one group of zeroes
         if len(groups) == 1 and 0 in groups[0]:
             if len(groups[0]) & 1 == 0:         # Even
                 count += len(groups[0]) // 2
             else:                               # Odd
                 count += (len(groups[0]) // 2) + 1
-            
+
         else:
+            # The first group and the last group need fewer zeroes
             if 0 in groups[0]: count += len(groups[0]) // 2
 
             if 0 in groups[-1]: count += len(groups[-1]) // 2
@@ -37,6 +40,7 @@ class Solution:
                     count += 1
                 elif len(group) > 3:
                     count += ((len(group) - 3) // 2) + 1
+                # Not additions to count if the number of zeroes < 3
 
         return count >= n
 
