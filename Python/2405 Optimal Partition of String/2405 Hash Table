@@ -15,6 +15,34 @@ Note that each character should belong to exactly one substring in a partition.
 
 class Solution:
     def partitionString(self, s):
+        frequency = dict()
+        result = 1
+
+        for char in s:
+            if char in frequency:
+                frequency.clear()
+                frequency[char] = 1
+                result += 1
+            else:
+                frequency[char] = 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().partitionString(s = "abacaba"))            # 4
+    print(Solution().partitionString(s = "ssssss"))             # 6
+
+
+# Runtime: 183 ms, faster than 79.30% of Python3 online submissions for Optimal Partition of String.
+# Memory Usage: 14.5 MB, less than 99.63% of Python3 online submissions for Optimal Partition of String. 
+
+
+#%%
+
+
+class Solution:
+    def partitionString(self, s):
         frequency = set()
         result = 1
 
