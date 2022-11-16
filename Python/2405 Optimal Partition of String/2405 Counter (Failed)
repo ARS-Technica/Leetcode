@@ -1,0 +1,40 @@
+"""
+2405. Optimal Partition of String
+Medium
+https://leetcode.com/problems/optimal-partition-of-string/
+
+Given a string s, partition the string into one or more substrings such that
+the characters in each substring are unique. That is, no letter appears in a
+single substring more than once.
+
+Return the minimum number of substrings in such a partition.
+
+Note that each character should belong to exactly one substring in a partition.
+"""
+
+
+# Failed
+from collections import Counter
+
+
+class Solution:
+    def partitionString(self, s): 
+        count = Counter(s)
+        result = max([n for n in count.values()]) 
+        return result
+
+if __name__ == '__main__':
+    print(Solution().partitionString(s = "abacaba"))            # 4
+    print(Solution().partitionString(s = "ssssss"))             # 6
+    print(Solution().partitionString(s = "hdklqkcssgxlvehva"))  # 4
+
+
+# Does not work for s = "hdklqkcssgxlvehva"
+# Output: 2
+# Expected: 4
+
+
+#%%
+
+# The thinking here was that the string wouldn't need to be divided into more segments
+# than the number of the most frequently occuring character.  Turns out, I was wrong.
