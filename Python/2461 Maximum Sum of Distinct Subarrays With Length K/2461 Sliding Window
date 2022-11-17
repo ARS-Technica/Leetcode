@@ -20,6 +20,50 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 """
 
 
+# Sliding Window
+
+
+class Solution:
+    def maximumSubarraySum(self, nums, k):
+        if len(set(nums)) < k: return 0
+
+        left = 0
+        result = 0
+        window = set(nums[:k])
+
+        for right in range((k-1), len(nums)):            
+            window.add(nums[right])
+            total = sum(nums[left : right+1])          
+
+            if len(window) == k:
+                result = max(result, total)
+                window.remove(nums[left])
+                left += 1
+
+            else:
+                left += 1
+                window = set(nums[left : right+1])
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maximumSubarraySum(nums = [1,5,4,2,9,9,9], k = 3))            # 15
+    print(Solution().maximumSubarraySum(nums = [4,4,4], k = 3))                    # 0
+    print(Solution().maximumSubarraySum(nums = [1,2,2], k = 2))                    # 3
+    print(Solution().maximumSubarraySum(nums = [1,1,1,7,8,9], k = 3))              # 24
+    print(Solution().maximumSubarraySum(nums = [9,9,9,1,2,3], k = 3))              # 12
+
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+# Sliding Window
+
+
 class Solution:
     def maximumSubarraySum(self, nums, k):
         if len(set(nums)) < k: return 0
