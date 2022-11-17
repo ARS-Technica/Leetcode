@@ -99,3 +99,45 @@ if __name__ == '__main__':
 
 
 #%% 
+
+
+# Sliding Window
+
+
+class Solution:
+    def maximumSubarraySum(self, nums, k):
+        left = 0
+        length = len(nums)
+        result = 0
+        total = 0
+        window  = set()
+
+        for right in range(length):
+            total += nums[right]
+
+            while nums[right] in window or right + 1 - left > k:
+                window.remove(nums[left])
+                total -= nums[left]
+                left += 1
+
+            window.add(nums[right])
+
+            if right+1-left == k:
+                result = max(result, total)
+
+        return result or 0
+
+
+if __name__ == '__main__':
+    print(Solution().maximumSubarraySum(nums = [1,5,4,2,9,9,9], k = 3))            # 15
+    print(Solution().maximumSubarraySum(nums = [4,4,4], k = 3))                    # 0
+    print(Solution().maximumSubarraySum(nums = [1,2,2], k = 2))                    # 3
+    print(Solution().maximumSubarraySum(nums = [1,1,1,7,8,9], k = 3))              # 24
+    print(Solution().maximumSubarraySum(nums = [9,9,9,1,2,3], k = 3))              # 12
+
+
+# Runtime: 2394 ms, faster than 18.50% of Python3 online submissions for Maximum Sum of Distinct Subarrays With Length K.
+# Memory Usage: 28.8 MB, less than 96.45% of Python3 online submissions for Maximum Sum of Distinct Subarrays With Length K.
+
+
+#%%
