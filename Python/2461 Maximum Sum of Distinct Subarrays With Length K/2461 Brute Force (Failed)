@@ -57,3 +57,30 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Brute Force
+
+
+class Solution:
+    def maximumSubarraySum(self, nums, k):
+        length = len(nums)
+        result = 0
+
+        for idx in range(length - k+1):
+            window = nums[idx : idx+k]
+            if len(window) == len(set(window)):
+                result = max(result, sum(window))
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maximumSubarraySum(nums = [1,5,4,2,9,9,9], k = 3))            # 15
+    print(Solution().maximumSubarraySum(nums = [4,4,4], k = 3))                    # 0
+
+
+# Time Limit Exceeded 
+
+
+#%%
