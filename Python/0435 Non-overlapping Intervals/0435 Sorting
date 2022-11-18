@@ -32,4 +32,9 @@ if __name__ == '__main__':
     print(Solution().eraseOverlapIntervals(intervals = [[1,2],[2,3]]))                          # 0
 
 
+#Doesn't work for intervals = [[1,100],[11,22],[1,11],[2,12]]
+
+
+#%%
+
 #%%
