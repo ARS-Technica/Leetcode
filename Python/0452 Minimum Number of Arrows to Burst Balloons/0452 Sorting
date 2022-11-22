@@ -46,3 +46,29 @@ if __name__ == '__main__':
 #%%
 
 
+class Solution:
+    def findMinArrowShots(self, points):
+        # points.sort(key=lambda i: i[1])
+        points = sorted(points, key=lambda i: i[1])
+        previous_end = points[0][1]
+        result = 1
+
+        for start, end in points:
+            if start > previous_end:
+                previous_end = end
+                result += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().findMinArrowShots(points = [[10,16],[2,8],[1,6],[7,12]]))              # 2
+    print(Solution().findMinArrowShots(points = [[1,2],[3,4],[5,6],[7,8]]))                 # 4
+    print(Solution().findMinArrowShots(points = [[1,2],[2,3],[3,4],[4,5]]))                 # 2
+
+
+# Runtime: 3024 ms, faster than 50.44% of Python3 online submissions for Minimum Number of Arrows to Burst Balloons.
+# Memory Usage: 59.9 MB, less than 34.51% of Python3 online submissions for Minimum Number of Arrows to Burst Balloons.
+
+
+#%% 
