@@ -74,6 +74,9 @@ if __name__ == '__main__':
 #%% 
 
 
+# Time Complexity: O(NLogN) | Space Complexity: O(1)
+
+
 class Solution:
     def findMinArrowShots(self, points):
         points = sorted(points, key=lambda i: i[1])
