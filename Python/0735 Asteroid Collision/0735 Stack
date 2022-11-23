@@ -48,3 +48,43 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Better solution.  Not mine.
+#  https://leetcode.com/problems/asteroid-collision/discuss/904401/Python-Fastest-Solution-Explained-(video-%2B-code)-(beats-100)
+
+
+class Solution:
+    def asteroidCollision(self, asteroids):
+        res = []
+
+        for x in asteroids:
+            while len(res) and x < 0 and res[-1] > 0:
+
+                if (res[-1] + x) == 0:
+                    res.pop()
+                    break
+
+                elif abs(x) < res[-1]:
+                    break
+
+                else:
+                    res.pop()
+                    continue
+            else:
+                res.append(x)
+
+        return res
+
+
+if __name__ == '__main__':
+    print(Solution().asteroidCollision(asteroids = [5,10,-5]))      # [5,10]
+    print(Solution().asteroidCollision(asteroids = [8,-8]))         # []    
+    print(Solution().asteroidCollision(asteroids = [10,2,-5]))      # [10]
+
+
+# Runtime: 98 ms, faster than 95.75% of Python3 online submissions for Asteroid Collision.
+# Memory Usage: 15.1 MB, less than 73.48% of Python3 online submissions for Asteroid Collision.
+
+
+#%%
