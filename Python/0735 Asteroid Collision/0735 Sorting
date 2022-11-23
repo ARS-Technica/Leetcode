@@ -14,3 +14,53 @@ the smaller one will explode. If both are the same size, both will explode.
 Two asteroids moving in the same direction will never meet.
 """
 
+
+# Failed
+
+
+class Solution:
+    def asteroidCollision(self, asteroids):
+        destroyed = False
+        previous = 0
+        result = []
+
+        for idx in range(len(asteroids), 0, -1):
+            # print(asteroids[idx-1])
+            asteroid = asteroids[idx-1]
+            
+            # Positive values
+            if asteroid > 0:
+                if destroyed == True:
+                    destroyed = False
+                else:
+                    result.insert(0, asteroid)
+                
+            # Negative values                
+            else:
+                if idx == len(asteroids):
+                    previous = asteroid * -1
+                
+                else:                
+                    if asteroid > previous:
+                        result.insert(0, asteroid)
+                    elif asteroid == previous:
+                        destroyed = True
+                        previous = 0                    
+                    else: # asteroid < previous
+                        # print(asteroids[idx-2])
+                        destroyed = True 
+                        previous = asteroid * -1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().asteroidCollision(asteroids = [5,10,-5]))      # [5,10]
+    print(Solution().asteroidCollision(asteroids = [8,-8]))         # []    
+    print(Solution().asteroidCollision(asteroids = [10,2,-5]))      # [10]
+
+
+# Failed
+
+
+#%%
