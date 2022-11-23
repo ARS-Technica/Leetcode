@@ -15,41 +15,24 @@ Two asteroids moving in the same direction will never meet.
 """
 
 
-# Failed
-
-
 class Solution:
     def asteroidCollision(self, asteroids):
-        destroyed = False
-        previous = 0
         result = []
 
-        for idx in range(len(asteroids), 0, -1):
-            # print(asteroids[idx-1])
-            asteroid = asteroids[idx-1]
-            
+        for asteroid in asteroids:
             # Positive values
             if asteroid > 0:
-                if destroyed == True:
-                    destroyed = False
-                else:
-                    result.insert(0, asteroid)
-                
-            # Negative values                
+                result.append(asteroid)
+            
+            # Negative values
             else:
-                if idx == len(asteroids):
-                    previous = asteroid * -1
-                
-                else:                
-                    if asteroid > previous:
-                        result.insert(0, asteroid)
-                    elif asteroid == previous:
-                        destroyed = True
-                        previous = 0                    
-                    else: # asteroid < previous
-                        # print(asteroids[idx-2])
-                        destroyed = True 
-                        previous = asteroid * -1
+                while result and 0 < result[-1] < -asteroid:
+                    result.pop()
+
+                if result and result[-1] == -asteroid:
+                    result.pop()
+                elif not result or result[-1] < -asteroid:
+                    result.append(asteroid)
 
         return result
 
@@ -60,7 +43,8 @@ if __name__ == '__main__':
     print(Solution().asteroidCollision(asteroids = [10,2,-5]))      # [10]
 
 
-# Failed
+# Runtime: 218 ms, faster than 51.92% of Python3 online submissions for Asteroid Collision.
+# Memory Usage: 15.1 MB, less than 94.48% of Python3 online submissions for Asteroid Collision. 
 
 
 #%%
