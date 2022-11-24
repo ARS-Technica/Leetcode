@@ -40,3 +40,32 @@ if __name__ == '__main__':
 # The simpliest and most straightforward solution leaves little to improve upon in terms of efficency
 
 #%%
+
+
+from itertools import accumulate
+
+
+class Solution:
+    def asteroidsDestroyed(self, mass, asteroids):
+        asteroids = sorted(asteroids)
+        planet = [mass] + asteroids
+        planet = list(accumulate(planet))
+
+        for i in range(len(asteroids)):
+            if planet[i] < asteroids[i]:
+                return False
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().asteroidsDestroyed(mass = 10, asteroids = [3,9,19,5,21]))      # true
+    print(Solution().asteroidsDestroyed(mass = 5, asteroids = [4,9,23,4]))          # false
+
+
+# Runtime: 1208 ms, faster than 81.05% of Python3 online submissions for Destroying Asteroids.
+# Memory Usage: 27.8 MB, less than 39.74% of Python3 online submissions for Destroying Asteroids.
+
+# Using accumulate improves efficency 
+
+#%%
