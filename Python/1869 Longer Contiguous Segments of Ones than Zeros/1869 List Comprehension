@@ -1,0 +1,63 @@
+"""
+1869. Longer Contiguous Segments of Ones than Zeros
+Easy
+https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
+
+Given a binary string s, return true if the longest contiguous segment of 1's
+is strictly longer than the longest contiguous segment of 0's in s, or return
+false otherwise.
+
+For example, in s = "110100010" the longest continuous segment of 1s has length
+2, and the longest continuous segment of 0s has length 3.
+
+Note that if there are no 0's, then the longest continuous segment of 0's is
+considered to have a length 0. The same applies if there is no 1's.
+"""
+
+
+class Solution:
+    def checkZeroOnes(self, s): 
+        ones = max([len(n) for n in s.split('0') if n])
+        zeroes = max([len(n) for n in s.split('1') if n])
+
+        return ones > zeroes
+
+
+if __name__ == '__main__':
+    print(Solution().checkZeroOnes(s = "1101"))             # true
+    print(Solution().checkZeroOnes(s = "111000"))           # false
+    print(Solution().checkZeroOnes(s = "1"))                # true
+
+
+# Does not work for s = "1" because there is no value for zeroes
+
+
+#%%
+
+
+class Solution:
+    def checkZeroOnes(self, s):
+        if '1' in s:
+            ones = max([len(n) for n in s.split('0') if n])
+        else:
+            return False
+
+        if '0' in s:
+            zeroes = max([len(n) for n in s.split('1') if n])
+        else:
+            zeroes = 0
+
+        return ones > zeroes
+
+
+if __name__ == '__main__':
+    print(Solution().checkZeroOnes(s = "1101"))             # true
+    print(Solution().checkZeroOnes(s = "111000"))           # false
+    print(Solution().checkZeroOnes(s = "1"))                # true
+
+
+# Runtime: 30 ms, faster than 96.84% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+# Memory Usage: 13.8 MB, less than 64.35% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+
+
+#%%
