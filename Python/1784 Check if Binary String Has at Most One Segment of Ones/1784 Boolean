@@ -42,3 +42,29 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def checkOnesSegment(self, s):
+        result = True
+
+        for char in s:
+            if not result and char == "1":
+                return False
+            elif result and char == "0":
+                result = False
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().checkOnesSegment(s = "1001"))             # false
+    print(Solution().checkOnesSegment(s = "110"))              # true
+    print(Solution().checkOnesSegment(s = "1000"))             # true
+
+
+# Runtime: 41 ms, faster than 78.97% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
+# Memory Usage: 13.8 MB, less than 54.94% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
+
+
+#%%
