@@ -1,0 +1,49 @@
+"""
+1869. Longer Contiguous Segments of Ones than Zeros
+Easy
+https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
+
+Given a binary string s, return true if the longest contiguous segment of 1's
+is strictly longer than the longest contiguous segment of 0's in s, or return
+false otherwise.
+
+For example, in s = "110100010" the longest continuous segment of 1s has length
+2, and the longest continuous segment of 0s has length 3.
+
+Note that if there are no 0's, then the longest continuous segment of 0's is
+considered to have a length 0. The same applies if there is no 1's.
+"""
+
+
+# Not mine
+# https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/discuss/1240243/Easy-solution-in-Python-using-Regular-Expressions
+
+
+from re import findall
+
+
+class Solution:
+    def checkZeroOnes(self, s):
+        o = 0
+        z = 0
+
+        try:
+            o = len(max(findall("11*",s)))
+            z = len(max(findall("00*",s)))
+        except:
+            None
+
+        return True if o>z else False
+
+
+if __name__ == '__main__':
+    print(Solution().checkZeroOnes(s = "1101"))             # true
+    print(Solution().checkZeroOnes(s = "111000"))           # false
+    print(Solution().checkZeroOnes(s = "1"))                # true
+
+
+# Runtime: 63 ms, faster than 37.34% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+# Memory Usage: 13.9 MB, less than 14.14% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+
+
+#%%
