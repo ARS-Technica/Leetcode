@@ -1,0 +1,26 @@
+"""
+1784. Check if Binary String Has at Most One Segment of Ones
+Easy
+https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/
+
+Given a binary string s without leading zeros, return true​​​ if s contains at
+most one contiguous segment of ones. Otherwise, return false.
+"""
+
+
+class Solution:
+    def checkOnesSegment(self, s):
+        return len(list(i for i in s.split('0') if i)) < 2
+
+
+if __name__ == '__main__':
+    print(Solution().checkOnesSegment(s = "1001"))             # false
+    print(Solution().checkOnesSegment(s = "110"))              # true
+    print(Solution().checkOnesSegment(s = "1000"))             # true
+
+
+# Runtime: 66 ms, faster than 14.81% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
+# Memory Usage: 13.9 MB, less than 54.94% of Python3 online submissions for Check if Binary String Has at Most One Segment of Ones.
+
+
+#%%
