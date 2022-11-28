@@ -57,6 +57,27 @@ if __name__ == '__main__':
 
 
 class Solution:
+    def checkZeroOnes(self, s): 
+        ones = len(max(s.split('0'), key=len))
+        zeroes = len(max(s.split('1'), key=len))
+
+        return ones > zeroes
+
+
+if __name__ == '__main__':
+    print(Solution().checkZeroOnes(s = "1101"))             # true
+    print(Solution().checkZeroOnes(s = "111000"))           # false
+    print(Solution().checkZeroOnes(s = "1"))                # true
+
+
+# Runtime: 53 ms, faster than 66.67% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+# Memory Usage: 13.9 MB, less than 14.14% of Python3 online submissions for Longer Contiguous Segments of Ones than Zeros.
+
+
+#%%
+
+
+class Solution:
     def checkZeroOnes(self, s):
         if '1' in s:
             ones = max([len(n) for n in s.split('0') if n])
