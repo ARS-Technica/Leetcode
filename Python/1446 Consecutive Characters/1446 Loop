@@ -37,3 +37,31 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def maxPower(self, s):
+        count = 0
+        result = 0
+
+        for idx, char in enumerate(s):
+            if idx == 0 or char == s[idx - 1]:
+                count += 1
+            else:
+                count = 1
+
+            result = max(count, result)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxPower(s = "leetcode"))                          # 2
+    print(Solution().maxPower(s = "abbcccddddeeeeedcba"))               # 5 
+
+
+# Runtime: 94 ms, faster than 41.29% of Python3 online submissions for Consecutive Characters.
+# Memory Usage: 13.9 MB, less than 13.68% of Python3 online submissions for Consecutive Characters.
+
+
+#%%
