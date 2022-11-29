@@ -1,0 +1,49 @@
+"""
+1446. Consecutive Characters
+Easy
+https://leetcode.com/problems/consecutive-characters/ 
+
+The power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+Given a string s, return the power of s.
+"""
+
+
+# Sliding Window.  Not mine.
+# https://leetcode.com/problems/consecutive-characters/discuss/1626218/Python-Sliding-window-or-Explained
+
+
+class Solution:
+    def maxPower(self, s):
+        left = 0
+        length = len(s)
+        result = 0
+        right = 0
+
+        previous = s[right]
+
+        while right < length:
+            current = s[right]
+
+            if current != previous:
+                previous = current
+                left = right
+                continue
+            else:
+                result = max(result, (right - left) + 1)
+                right += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxPower(s = "leetcode"))                          # 2
+    print(Solution().maxPower(s = "abbcccddddeeeeedcba"))               # 5 
+    print(Solution().maxPower(s = "j"))                                 # 1
+
+
+# Runtime: 85 ms, faster than 54.73% of Python3 online submissions for Consecutive Characters.
+# Memory Usage: 13.9 MB, less than 62.44% of Python3 online submissions for Consecutive Characters.
+
+
+#%%
