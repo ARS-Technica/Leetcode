@@ -65,3 +65,38 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Time Complexity O(N) | Space Complexity: O(1)
+
+
+class Solution:
+    def maxPower(self, s):
+        count = 1 
+        length = len(s)
+        result = 0
+
+        if length == 1: return 1
+
+        for idx in range(0, length - 1):
+            if s[idx] == s[idx + 1]:
+                count += 1
+            else:
+                count = 1
+
+            result = max(count, result)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxPower(s = "leetcode"))                          # 2
+    print(Solution().maxPower(s = "abbcccddddeeeeedcba"))               # 5 
+    print(Solution().maxPower(s = "j"))                                 # 1
+
+
+# Runtime: 73 ms, faster than 70.15% of Python3 online submissions for Consecutive Characters.
+# Memory Usage: 13.8 MB, less than 96.89% of Python3 online submissions for Consecutive Characters.
+
+
+#%%
