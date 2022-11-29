@@ -28,3 +28,28 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from itertools import groupby
+
+
+class Solution:
+    def maxPower(self, s):
+        result = 0
+
+        for idx, count in groupby(s):
+            result = max(len(list(count)), result)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxPower(s = "leetcode"))                          # 2
+    print(Solution().maxPower(s = "abbcccddddeeeeedcba"))               # 5 
+
+
+# Runtime: 128 ms, faster than 8.71% of Python3 online submissions for Consecutive Characters.
+# Memory Usage: 13.8 MB, less than 62.44% of Python3 online submissions for Consecutive Characters.
+
+
+#%%
