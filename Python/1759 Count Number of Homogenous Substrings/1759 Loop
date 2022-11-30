@@ -1,0 +1,41 @@
+"""
+1759. Count Number of Homogenous Substrings
+Medium
+https://leetcode.com/problems/count-number-of-homogenous-substrings/
+
+Given a string s, return the number of homogenous substrings of s. Since the
+answer may be too large, return it modulo 109 + 7.
+
+A string is homogenous if all the characters of the string are the same.
+
+A substring is a contiguous sequence of characters within a string.
+"""
+
+
+class Solution:
+    def countHomogenous(self, s):
+        count = 0
+        result = 0
+
+        for idx in range(len(s)):
+            if s[idx] == s[idx-1]:
+                count += 1
+            else:
+                count = 1
+
+            result += count
+
+        return result % (10**9+7)
+
+
+if __name__ == '__main__':
+    print(Solution().countHomogenous(s = "abbcccaa"))                           # 13
+    print(Solution().countHomogenous(s = "xy"))                                 # 2 
+    print(Solution().countHomogenous(s = "zzzzz"))                              # 15
+
+
+# Runtime: 417 ms, faster than 42.49% of Python3 online submissions for Count Number of Homogenous Substrings.
+# Memory Usage: 14.8 MB, less than 72.84% of Python3 online submissions for Count Number of Homogenous Substrings.
+
+
+#%%
