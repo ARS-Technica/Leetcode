@@ -72,3 +72,24 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from itertools import groupby
+
+
+class Solution:
+    def countHomogenous(self, s): 
+        return sum((num + 1) * num // 2 for num in [len(list(group)) for key, group in groupby(s)]) % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().countHomogenous(s = "abbcccaa"))                           # 13
+    print(Solution().countHomogenous(s = "xy"))                                 # 2 
+    print(Solution().countHomogenous(s = "zzzzz"))                              # 15
+
+
+# Runtime: 180 ms, faster than 82.75% of Python3 online submissions for Count Number of Homogenous Substrings.
+# Memory Usage: 15.4 MB, less than 7.67% of Python3 online submissions for Count Number of Homogenous Substrings.
+
+
+#%%
