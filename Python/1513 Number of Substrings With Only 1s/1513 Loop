@@ -36,3 +36,19 @@ if __name__ == '__main__':
 #%%
 
 
+class Solution:
+    def numSub(self, s):
+        return sum(num * (num + 1) // 2 for num in (len(n) for n in s.split('0') if n)) % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().numSub(s = "0110111"))                             # 9
+    print(Solution().numSub(s = "101"))                                 # 2
+    print(Solution().numSub(s = "111111"))                              # 21
+
+
+# Runtime: 67 ms, faster than 86.36% of Python3 online submissions for Number of Substrings With Only 1s.
+# Memory Usage: 15.3 MB, less than 17.91% of Python3 online submissions for Number of Substrings With Only 1s.
+
+
+#%%
