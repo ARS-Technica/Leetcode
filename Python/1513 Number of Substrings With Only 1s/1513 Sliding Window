@@ -1,0 +1,40 @@
+"""
+1513. Number of Substrings With Only 1s
+Medium
+https://leetcode.com/problems/number-of-substrings-with-only-1s/
+
+Given a binary string s, return the number of substrings with all characters 1's.
+Since the answer may be too large, return it modulo 109 + 7.
+"""
+
+
+# Sliding Window
+
+
+class Solution:
+    def numSub(self, s):
+        mod = 10**9 + 7
+        result = 0
+        left = 0
+
+        for end in range(len(s)):
+            right = int(s[end])
+
+			# if right element is 0, move left pointer 
+            if right != 1: left = end + 1
+            result += end - left + 1
+
+        return result % mod
+
+
+if __name__ == '__main__':
+    print(Solution().numSub(s = "0110111"))                             # 9
+    print(Solution().numSub(s = "101"))                                 # 2
+    print(Solution().numSub(s = "111111"))                              # 21
+
+
+# Runtime: 424 ms, faster than 5.61% of Python3 online submissions for Number of Substrings With Only 1s.
+# Memory Usage: 14.7 MB, less than 67.11% of Python3 online submissions for Number of Substrings With Only 1s.
+
+
+#%%
