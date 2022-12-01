@@ -52,3 +52,35 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Better solution. Not mine.
+# https://leetcode.com/problems/number-of-substrings-with-only-1s/discuss/731558/Python-Easy-readable-code!
+
+
+class Solution:
+    def numSub(self, s):
+        count = 0
+        result = 0 
+
+        for digit in s:
+            if digit == '0':
+                count = 0
+            else:
+                count += 1 
+                result += count
+
+        return result % (10**9+7)
+
+
+if __name__ == '__main__':
+    print(Solution().numSub(s = "0110111"))                             # 9
+    print(Solution().numSub(s = "101"))                                 # 2
+    print(Solution().numSub(s = "111111"))                              # 21
+
+
+# Runtime: 74 ms, faster than 82.89% of Python3 online submissions for Number of Substrings With Only 1s.
+# Memory Usage: 14.6 MB, less than 67.11% of Python3 online submissions for Number of Substrings With Only 1s.
+
+
+#%% 
