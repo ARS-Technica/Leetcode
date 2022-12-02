@@ -32,3 +32,37 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def sumSubarrayMins(self, arr):
+        length = len(arr)
+        mod = 10**9 + 7
+        return sum(min(arr[i:j]) for i in range(length) for j in range(i + 1, length + 1)) % mod
+
+
+if __name__ == '__main__':
+    print(Solution().sumSubarrayMins(arr = [3,1,2,4]))              # 17
+    print(Solution().sumSubarrayMins(arr = [11,81,94,43,3]))        # 444
+
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
+    def sumSubarrayMins(self, arr):
+        return sum(min(arr[i:j]) for i in range(len(arr)) for j in range(i + 1, len(arr) + 1)) % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().sumSubarrayMins(arr = [3,1,2,4]))              # 17
+    print(Solution().sumSubarrayMins(arr = [11,81,94,43,3]))        # 444
+
+
+# Time Limit Exceeded
+
+
+#%%
