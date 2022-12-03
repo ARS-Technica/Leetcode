@@ -41,3 +41,24 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/count-collisions-on-a-road/discuss/1865694/One-liner-in-Python
+
+
+class Solution:
+    def countCollisions(self, directions):
+        return sum(d!='S' for d in directions.lstrip('L').rstrip('R'))
+
+
+if __name__ == '__main__':
+    print(Solution().countCollisions(directions = "RLRSLL"))         # 5
+    print(Solution().countCollisions(directions = "LLRR"))           # 0
+
+
+# Runtime: 165 ms, faster than 89.92% of Python3 online submissions for Count Collisions on a Road.
+# Memory Usage: 15 MB, less than 66.53% of Python3 online submissions for Count Collisions on a Road.
+
+
+#%%
