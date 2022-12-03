@@ -27,6 +27,40 @@ Return the total number of collisions that will happen on the road.
 
 class Solution:
     def countCollisions(self, directions):
+        result = 0
+
+        left_count = 0
+        right_count = 0
+
+        for char in directions:
+            if char == "L":
+                result += left_count
+            else:
+                left_count = 1
+
+        for char in directions[::-1]:
+            if char == "R":
+                result += right_count
+            else:
+                right_count = 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().countCollisions(directions = "RLRSLL"))         # 5
+    print(Solution().countCollisions(directions = "LLRR"))           # 0
+
+
+# Runtime: 197 ms, faster than 84.68% of Python3 online submissions for Count Collisions on a Road.
+# Memory Usage: 15.1 MB, less than 66.53% of Python3 online submissions for Count Collisions on a Road.
+
+
+#%%
+
+
+class Solution:
+    def countCollisions(self, directions):
         directions = directions.lstrip('L').rstrip('R')
         return len(directions) - directions.count('S')
 
