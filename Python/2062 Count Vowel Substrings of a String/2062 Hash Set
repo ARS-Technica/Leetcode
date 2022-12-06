@@ -37,3 +37,24 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def countVowelSubstrings(self, word):
+        length = len(word)
+        vowels = {'a', 'e', 'i', 'o', 'u'}
+
+        return sum(set(word[i:j]) == vowels for i in range(length) for j in range(i + 1, length + 1))
+
+
+if __name__ == '__main__':
+    print(Solution().countVowelSubstrings(word = "aeiouu"))                     # 2
+    print(Solution().countVowelSubstrings(word = "unicornarihan"))              # 0
+    print(Solution().countVowelSubstrings(word = "cuaieuouac"))                 # 7
+
+
+# Runtime: 515 ms, faster than 15.63% of Python3 online submissions
+# Memory Usage: 14 MB, less than 19.49% of Python3 online submissions
+
+
+#%%
