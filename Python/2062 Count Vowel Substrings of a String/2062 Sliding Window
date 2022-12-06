@@ -1,0 +1,75 @@
+"""
+2062. Count Vowel Substrings of a String
+Easy
+https://leetcode.com/problems/count-vowel-substrings-of-a-string/
+
+A substring is a contiguous (non-empty) sequence of characters within a string.
+
+A vowel substring is a substring that only consists of vowels ('a', 'e', 'i', 'o', and 'u')
+and has all five vowels present in it.
+
+Given a string word, return the number of vowel substrings in word.
+"""
+
+
+# Sliding Window
+# Similar to Exercise 992
+
+# Time Complexity: O(N) | Space Complexity: 
+
+
+class Solution:
+    def countVowelSubstrings(self, word):
+        length = len(word)
+        result = 0
+        right = 0
+
+        def count(s):
+            counter = {}
+            left = 0
+            length = len(s)
+            result = 0
+            right = 0
+
+            if length < 5: return 0
+
+            for right, char in enumerate(s):
+                counter[char] = counter.get(char, 0) + 1
+
+                while len(counter) == 5:
+                    result += length - right
+                    counter[s[left]] -= 1
+
+                    if counter[s[left]] == 0:
+                        del counter[s[left]]
+
+                    left += 1
+
+            return result
+
+        vowels = {"a", "e", "i", "o", "u"}
+
+        while right < length:
+            left = right
+
+            while right < length and word[right] in vowels:
+                right += 1
+
+            result += count(word[left: right])
+            right += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().countVowelSubstrings(word = "aeiouu"))                     # 2
+    print(Solution().countVowelSubstrings(word = "unicornarihan"))              # 0
+    print(Solution().countVowelSubstrings(word = "cuaieuouac"))                 # 7
+
+
+# Runtime: 58 ms, faster than 85.65% of Python3 online submissions
+# Memory Usage: 14 MB, less than 19.49% of Python3 online submissions
+
+
+#%%
+
