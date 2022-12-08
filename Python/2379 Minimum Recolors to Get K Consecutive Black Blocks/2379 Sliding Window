@@ -1,0 +1,69 @@
+"""
+2379. Minimum Recolors to Get K Consecutive Black Blocks
+Easy
+https://leetcode.com/problems/minimum-recolors-to-get-k-consecutive-black-blocks/description/
+
+You are given a 0-indexed string blocks of length n, where blocks[i] is either
+'W' or 'B', representing the color of the ith block. The characters 'W' and 'B'
+denote the colors white and black, respectively.
+
+You are also given an integer k, which is the desired number of consecutive black blocks.
+
+In one operation, you can recolor a white block such that it becomes a black block.
+
+Return the minimum number of operations needed such that there is at least one
+occurrence of k consecutive black blocks.
+"""
+
+
+class Solution:
+    def minimumRecolors(self, blocks, k):
+        counts = []
+        length = len(blocks)
+
+        if length == k: return blocks.count('W')
+
+        for idx in range(0, length - k):
+            counts.append(blocks[idx : idx + k].count('W'))
+
+        return min(counts)
+
+
+if __name__ == '__main__':
+    print(Solution().minimumRecolors(blocks = "WBBWWBBWBW", k = 7))                 # 3
+    print(Solution().minimumRecolors(blocks = "WBWBBBW", k = 2))                    # 0 
+    print(Solution().minimumRecolors(blocks = "BWWWBB", k = 6))                     # 0
+    print(Solution().minimumRecolors(blocks = "WWBBBWBBBBBWWBWWWB", k = 16))        # 6    
+
+
+# Doesn't work for blocks = "WWBBBWBBBBBWWBWWWB", k = 16
+
+
+#%%
+
+
+class Solution:
+    def minimumRecolors(self, blocks, k):
+        counts = []
+        length = len(blocks)
+
+        if length == k: return blocks.count('W')
+
+        for idx in range(0, length - (k - 1)):
+            counts.append(blocks[idx : idx + k].count('W'))
+
+        return min(counts)
+
+
+if __name__ == '__main__':
+    print(Solution().minimumRecolors(blocks = "WBBWWBBWBW", k = 7))                 # 3
+    print(Solution().minimumRecolors(blocks = "WBWBBBW", k = 2))                    # 0 
+    print(Solution().minimumRecolors(blocks = "BWWWBB", k = 6))                     # 0
+    print(Solution().minimumRecolors(blocks = "WWBBBWBBBBBWWBWWWB", k = 16))        # 6    
+
+
+# Runtime: 50 ms, faster than 72.68% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 70.39% of Python3 online submissions
+
+
+#%%
