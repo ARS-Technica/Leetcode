@@ -129,3 +129,35 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Similar to problem 1456
+
+
+class Solution:
+    def minimumRecolors(self, blocks, k):
+        window = blocks[:k].count('W')
+        result = window
+        length = len(blocks)
+
+        for idx in range(k, length):
+            if blocks[idx] == 'W': window += 1
+            if blocks[idx - k] == 'W': window -= 1
+
+            result = min(result, window)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().minimumRecolors(blocks = "WBBWWBBWBW", k = 7))                 # 3
+    print(Solution().minimumRecolors(blocks = "WBWBBBW", k = 2))                    # 0 
+    print(Solution().minimumRecolors(blocks = "BWWWBB", k = 6))                     # 0
+    print(Solution().minimumRecolors(blocks = "WWBBBWBBBBBWWBWWWB", k = 16))        # 6 
+
+
+# Runtime: 59 ms, faster than 57.3% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 23.33% of Python3 online submissions
+
+
+#%%
