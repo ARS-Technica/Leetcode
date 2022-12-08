@@ -43,3 +43,32 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def maxVowels(self, s, k):
+        length = len(s)
+        vowels = set('aeiou')
+        window = sum(char in vowels for char in s[:k])
+        result = window
+
+        for idx in range(k, length):
+            if s[idx] in vowels: window += 1
+            if s[idx - k] in vowels: window -= 1
+
+            result = max(result, window)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxVowels(s = "abciiidef", k = 3))             # 3
+    print(Solution().maxVowels(s = "aeiou", k = 2))                 # 2
+    print(Solution().maxVowels(s = "leetcode", k = 3))              # 2
+
+
+# Runtime: 156 ms, faster than 98.3% of Python3 online submissions for Consecutive Characters.
+# Memory Usage: 14.8 MB, less than 80.5% of Python3 online submissions for Consecutive Characters.
+
+
+#%%
