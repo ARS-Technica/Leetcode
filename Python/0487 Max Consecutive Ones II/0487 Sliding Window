@@ -38,3 +38,37 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Time Complexity: O(N) | Space Complexity: O(1)
+
+
+class Solution:
+    def findMaxConsecutiveOnes(self, nums):
+        left = -1
+        result = 0
+        right = 0
+
+        for num in nums:
+            if num == 1:
+                right += 1
+
+            else:
+                result = max(result, left + right + 1)
+                left, right = right, 0
+
+        return max(result, left + right + 1)
+
+
+if __name__ == '__main__':
+    print(Solution().findMaxConsecutiveOnes(nums = [1,1,1,0,0,0,1,1,1,1,0]))                    # 5
+    print(Solution().findMaxConsecutiveOnes(nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]))    # 6
+    print(Solution().findMaxConsecutiveOnes(nums = [0,1,1,1,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]))# 6
+    print(Solution().findMaxConsecutiveOnes(nums = [1,1,1]))                                    # 3
+    print(Solution().findMaxConsecutiveOnes(nums = [0]))                                        # 1
+
+
+# Locked.  Can't be tested.
+
+
+#%%
