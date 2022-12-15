@@ -14,20 +14,15 @@ array if you can flip at most one 0.
 class Solution:
     def findMaxConsecutiveOnes(self, nums):
         left = 0
-        k = 1
-        right = 0
+        result = 0
 
-        while right < len(nums):
-            if nums[right] == 0:
-                k -= 1
+        for right, num in enumerate(nums):
+            if num == 0:
+                left = right + 1
+            
+            result = max(result, right - left + 1)
 
-            if k < 0:
-                if nums[left] == 0:
-                    k += 1
-                left += 1
-            right += 1
-
-        return right - left
+        return result
 
 
 if __name__ == '__main__':
@@ -39,7 +34,7 @@ if __name__ == '__main__':
 
 
 # Locked.  Can't be tested.
-# Failed.  Doesn't work for groups of ones seperated by a single zero
+# Failed
 
 
 #%%
