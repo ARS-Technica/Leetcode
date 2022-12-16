@@ -1,0 +1,55 @@
+"""
+1004. Max Consecutive Ones III
+Medium
+https://leetcode.com/problems/max-consecutive-ones-iii/
+
+Given a binary array nums and an integer k, return the maximum number of consecutive 1's
+in the array if you can flip at most k 0's.
+"""
+
+
+# Deque solution. Not mine.
+# https://leetcode.com/problems/max-consecutive-ones-iii/solutions/922450/python-solution-using-deque/
+
+
+import collections
+
+
+class Solution:
+    def longestOnes(self, nums, k):
+        if len(nums) == 0:
+            return 0
+
+        q = collections.deque()
+        curr = 0
+        res = 0
+        curr_sum = 0
+
+        for num in nums:
+            if num == 1:
+                curr += 1
+            else:
+                res = max(res, curr_sum+curr)
+
+                if k>0:
+                    if len(q) == k:
+                        curr_sum -= q.popleft()
+
+                    q.append(curr+1)
+                    curr_sum += curr+1
+                curr = 0
+
+        return max(res, curr_sum + curr)
+
+
+if __name__ == '__main__':
+    print(Solution().longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2))                    # 6
+    print(Solution().longestOnes(nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3))    # 10    
+    print(Solution().longestOnes(nums = [0,0,0,1], k = 4))                                  # 4
+
+
+# Runtime: 623 ms, faster than 93.6% of Python3 online submissions for Max Consecutive Ones.
+# Memory Usage: 14.7 MB, less than 61.76% of Python3 online submissions for Max Consecutive Ones.
+
+
+#%%
