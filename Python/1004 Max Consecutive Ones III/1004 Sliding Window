@@ -1,0 +1,46 @@
+"""
+1004. Max Consecutive Ones III
+Medium
+https://leetcode.com/problems/max-consecutive-ones-iii/
+
+Given a binary array nums and an integer k, return the maximum number of consecutive 1's
+in the array if you can flip at most k 0's.
+"""
+
+
+# Sliding Window
+# Similar to exercise number 487. Max Consecutive Ones II
+
+
+class Solution:
+    def longestOnes(self, nums, k):
+        left = -1
+        length = len(nums)
+        right = -1
+
+        while right < length - 1:
+            right += 1
+
+            if nums[right] == 0:
+                k -= 1
+
+            if k < 0:
+                left += 1
+
+                if nums[left] == 0:
+                    k += 1
+
+        return right - left
+
+
+if __name__ == '__main__':
+    print(Solution().longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2))                    # 6
+    print(Solution().longestOnes(nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3))    # 10    
+    print(Solution().longestOnes(nums = [0,0,0,1], k = 4))                                  # 4
+
+
+# Runtime: 591 ms, faster than 95.60% of Python3 online submissions for Max Consecutive Ones.
+# Memory Usage: 14.5 MB, less than 95.15% of Python3 online submissions for Max Consecutive Ones.
+
+
+#%%
