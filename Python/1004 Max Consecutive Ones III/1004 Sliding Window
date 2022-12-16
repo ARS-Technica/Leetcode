@@ -44,3 +44,46 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Sliding Window
+# Similar to exercise number 487. Max Consecutive Ones II
+
+
+class Solution:
+    def longestOnes(self, nums, k):
+        count = 0
+        left = 0
+        length = len(nums)
+        right = 0
+        result = 0
+
+        while right < length:
+            if nums[right] == 0:
+                count += 1
+
+                if count > k:
+
+                    while nums[left] != 0:
+                        left += 1
+
+                    left += 1
+                    count -= 1
+
+            result = max(result, right + 1 - left)
+            right += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().longestOnes(nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2))                    # 6
+    print(Solution().longestOnes(nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3))    # 10    
+    print(Solution().longestOnes(nums = [0,0,0,1], k = 4))                                  # 4
+
+
+# Runtime: 602 ms, faster than 94.78% of Python3 online submissions for Max Consecutive Ones.
+# Memory Usage: 14.6 MB, less than 61.76% of Python3 online submissions for Max Consecutive Ones.
+
+
+#%%
