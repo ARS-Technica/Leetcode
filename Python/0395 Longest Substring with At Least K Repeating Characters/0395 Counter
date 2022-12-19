@@ -33,6 +33,32 @@ if __name__ == '__main__':
 #%%
 
 
+from collections import Counter
+
+
+class Solution:
+    def longestSubstring(self, s, k):
+        frequency = Counter(s) 
+
+        insufficent = set(key for key, count in frequency.items() if count < k)
+        sufficent = ''.join(('0' if char in insufficent else char for char in s))
+
+        result = [len(substring) for substring in sufficent.split('0') if substring and min(Counter(substring).values()) >= k]
+        return result[0] if result else 0 
+
+
+if __name__ == '__main__':
+    print(Solution().longestSubstring(s = "aaabb", k = 3))                  # 3
+    print(Solution().longestSubstring(s = "ababbc", k = 2))                 # 5
+    print(Solution().longestSubstring(s = "ababacb", k = 3))                # 0
+
+
+# Failed
+
+
+#%%
+
+
 # Not mine.
 # https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/solutions/1601863/recursive-8-lines-codes/
 
