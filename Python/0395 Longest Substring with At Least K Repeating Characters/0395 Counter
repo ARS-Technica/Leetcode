@@ -10,6 +10,38 @@ than or equal to k.
 
 
 # Not mine.
+# https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/solutions/1601863/recursive-8-lines-codes/
+
+
+from collections import Counter
+
+
+class Solution:
+    def longestSubstring(self, s, k):
+        if not s or len(s) < k: return 0 
+
+        for char in set(s):
+            if s.count(char) < k:
+                return max([self.longestSubstring(substring, k) for substring in s.split(char)])
+
+        return len(s)
+
+
+
+if __name__ == '__main__':
+    print(Solution().longestSubstring(s = "aaabb", k = 3))                   # 3
+    print(Solution().longestSubstring(s = "ababbc", k = 2))                  # 5
+    print(Solution().longestSubstring(s = "ababacb", k = 3))                # 0
+
+
+# Runtime: 61 ms, faster than 77.82% of Python3 online submissions 
+# Memory Usage: 13.9 MB, less than 90.65% of Python3 online submissions 
+
+
+#%%
+
+
+# Not mine.
 # https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/solutions/1215967/split-string-by-eliminating-less-frequent-characters-99-8-speed/
 
 
