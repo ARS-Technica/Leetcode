@@ -9,6 +9,30 @@ than or equal to k.
 """
 
 
+from collections import Counter
+
+
+class Solution:
+    def longestSubstring(self, s, k):
+        frequency = Counter(s) 
+        insufficent = set(key for key, count in frequency.items() if count < k)
+        sufficent = ''.join(('0' if char in insufficent else char for char in s)) 
+        substrings = (len(chars) for chars in list(sufficent.split('0'))) 
+        return max(substrings)
+
+
+if __name__ == '__main__':
+    print(Solution().longestSubstring(s = "aaabb", k = 3))                  # 3
+    print(Solution().longestSubstring(s = "ababbc", k = 2))                 # 5
+    print(Solution().longestSubstring(s = "ababacb", k = 3))                # 0
+
+
+# Doesn't work for s = "ababacb" 
+
+
+#%%
+
+
 # Not mine.
 # https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/solutions/1601863/recursive-8-lines-codes/
 
