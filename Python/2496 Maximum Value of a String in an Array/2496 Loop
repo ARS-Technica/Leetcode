@@ -1,0 +1,38 @@
+"""
+2496. Maximum Value of a String in an Array
+Easy
+https://leetcode.com/problems/maximum-value-of-a-string-in-an-array/description/ 
+
+The value of an alphanumeric string can be defined as:
+
+The numeric representation of the string in base 10, if it comprises of digits only.
+
+The length of the string, otherwise.
+
+Given an array strs of alphanumeric strings, return the maximum value of any string in strs.
+"""
+
+
+class Solution:
+    def maximumValue(self, strs):
+        result = []
+
+        for idx in strs:
+            try:
+                result.append(int(idx))
+            except:
+                result.append(len(idx))
+
+        return max(result)
+
+
+if __name__ == '__main__':
+    print(Solution().maximumValue(strs = ["alic3","bob","3","4","00000"]))      # 5
+    print(Solution().maximumValue(strs = ["1","01","001","0001"]))              # 1
+
+
+# Runtime: 36 ms, faster than 83.73% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 13.11% of Python3 online submissions
+
+
+#%%
