@@ -61,3 +61,28 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def maximumValue(self, strs):
+        result = []
+
+        for idx in strs:
+            if idx.isnumeric():
+                result.append(int(idx))
+            else:
+                result.append(len(idx))
+
+        return max(result)
+
+
+if __name__ == '__main__':
+    print(Solution().maximumValue(strs = ["alic3","bob","3","4","00000"]))      # 5
+    print(Solution().maximumValue(strs = ["1","01","001","0001"]))              # 1
+
+
+# Runtime: 86 ms, faster than 5.18% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 13.11% of Python3 online submissions
+
+
+#%%
