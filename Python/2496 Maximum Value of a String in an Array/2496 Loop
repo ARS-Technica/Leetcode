@@ -111,3 +111,20 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def maximumValue(self, strs):
+        return max(map(lambda idx: int(idx) if idx.isnumeric() else len(idx), strs))
+
+
+if __name__ == '__main__':
+    print(Solution().maximumValue(strs = ["alic3","bob","3","4","00000"]))      # 5
+    print(Solution().maximumValue(strs = ["1","01","001","0001"]))              # 1
+
+
+# Runtime: 69 ms, faster than 21.17% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 59.81% of Python3 online submissions
+
+
+#%%
