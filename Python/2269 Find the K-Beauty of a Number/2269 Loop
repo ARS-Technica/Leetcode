@@ -1,0 +1,44 @@
+"""
+2269. Find the K-Beauty of a Number
+Easy
+https://leetcode.com/problems/find-the-k-beauty-of-a-number/
+
+The k-beauty of an integer num is defined as the number of substrings of num
+when it is read as a string that meet the following conditions:
+
+It has a length of k.
+It is a divisor of num.
+
+Given integers num and k, return the k-beauty of num.
+
+Notes:
+Leading zeros are allowed.
+0 is not a divisor of any value.
+A substring is a contiguous sequence of characters in a string.
+"""
+
+
+class Solution:
+    def divisorSubstrings(self, num, k):
+        number = str(num)
+        result = 0
+
+        for idx in range(len(number) - k + 1):
+            divisor = int(number[idx : idx + k])
+
+            if divisor and num % divisor == 0:
+                result += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().divisorSubstrings(num = 240, k = 2))                   # 2
+    print(Solution().divisorSubstrings(num = 430043, k = 2))                # 2
+
+
+# Runtime: 61 ms, faster than 27.20% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 16.68% of Python3 online submissions
+
+
+#%%
