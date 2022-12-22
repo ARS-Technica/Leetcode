@@ -14,20 +14,20 @@ matching cards, return -1.
 
 class Solution:
     def minimumCardPickup(self, cards):
-      dicts = {}
       left = 0
-      length = len(cards)      
+      length = len(cards)
+      pairs = {}
       result = float('inf')
 
       while left < length:
         target = cards[left]
 
-        if target in dicts:
-            result = min(result, left - dicts[target])
-            dicts[target] = left
+        if target in pairs:
+            result = min(result, left - pairs[target])
+            pairs[target] = left
 
         else:
-            dicts[target] = left
+            pairs[target] = left
 
         left += 1
 
