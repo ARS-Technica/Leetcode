@@ -45,3 +45,30 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def distinctAverages(self, nums):
+        averages = set()
+
+        while nums:
+            maximum = max(nums)
+            nums.remove(maximum)
+            minimum = min(nums)
+            nums.remove(minimum)
+
+            averages.add( (maximum + minimum) / 2)
+
+        return len(averages)
+
+
+if __name__ == '__main__':
+    print(Solution().distinctAverages(nums = [4,1,4,0,3,5]))                # 2
+    print(Solution().distinctAverages(nums = [1,100]))                      # 1
+
+
+# Runtime: 34 ms, faster than 91.65% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 97.50% of Python3 online submissions
+
+
+#%%
