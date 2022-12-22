@@ -12,6 +12,9 @@ matching cards, return -1.
 """
 
 
+# Time Complexity: O(N) | Space Complexity: O(N)
+
+
 class Solution:
     def minimumCardPickup(self, cards):
         pairs = {}
