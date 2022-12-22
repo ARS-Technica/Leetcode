@@ -1,0 +1,47 @@
+"""
+2465. Number of Distinct Averages
+Easy
+https://leetcode.com/problems/number-of-distinct-averages/description/
+
+You are given a 0-indexed integer array nums of even length.
+
+As long as nums is not empty, you must repetitively:
+
+Find the minimum number in nums and remove it.
+Find the maximum number in nums and remove it.
+Calculate the average of the two removed numbers.
+The average of two numbers a and b is (a + b) / 2.
+
+For example, the average of 2 and 3 is (2 + 3) / 2 = 2.5.
+Return the number of distinct averages calculated using the above process.
+
+Note that when there is a tie for a minimum or maximum number, any can be removed.
+"""
+
+
+class Solution:
+    def distinctAverages(self, nums):
+        averages = set()
+
+        while nums:
+            maximum = max(nums)
+            minimum = min(nums)
+
+            averages.add( (maximum + minimum) / 2)
+
+            nums.remove(maximum)
+            nums.remove(minimum)
+
+        return len(averages)
+
+
+if __name__ == '__main__':
+    print(Solution().distinctAverages(nums = [4,1,4,0,3,5]))                # 2
+    print(Solution().distinctAverages(nums = [1,100]))                      # 1
+
+
+# Runtime: 39 ms, faster than 82.16% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 59.76% of Python3 online submissions
+
+
+#%%
