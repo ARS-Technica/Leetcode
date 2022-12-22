@@ -34,3 +34,23 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def countConsistentStrings(self, allowed, words):
+        allowed = set(allowed)
+        consistent = [all(char in allowed for char in word) for word in words]
+        return sum(consistent)
+
+
+if __name__ == '__main__':
+    print(Solution().countConsistentStrings(allowed = "ab", words = ["ad","bd","aaab","baa","badab"]))              # 2
+    print(Solution().countConsistentStrings(allowed = "abc", words = ["a","b","c","ab","ac","bc","abc"]))           # 7
+    print(Solution().countConsistentStrings(allowed = "cad", words = ["cc","acd","b","ba","bac","bad","ac","d"]))   # 4
+
+
+# Runtime: 272 ms, faster than 81.36% of Python3 online submissions
+# Memory Usage: 16 MB, less than 84.34% of Python3 online submissions
+
+
+#%%
