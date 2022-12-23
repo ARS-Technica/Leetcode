@@ -72,3 +72,46 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Hash Table
+
+
+class Solution:
+    def similarPairs(self, words):
+        lengths = dict()
+        result = 0
+        words = (set(word) for word in words)
+
+        for chars in words:
+            length = len(chars)
+            if length not in lengths:
+                lengths[len(chars)] = []
+                lengths[len(chars)].append(chars)
+            else:
+                lengths[len(chars)].append(chars)
+
+        # print(lengths)
+
+        for key, value in lengths.items():
+            # print(key, value)
+            length = len(value)
+            for i in range(length):
+                for j in range(i + 1, length):
+                    if value[i] == value[j]:
+                        result += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().similarPairs(words = ["aba","aabb","abcd","bac","aabc"]))  # 2
+    print(Solution().similarPairs(words = ["aabb","ab","ba"]))                  # 3
+    print(Solution().similarPairs(words = ["nba","cba","dba"]))                 # 0
+
+
+# Runtime: 77 ms, faster than 90.14% of Python3 online submissions
+# Memory Usage: 14.1 MB, less than 40.36% of Python3 online submissions
+
+
+#%%
