@@ -43,3 +43,32 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Brute Force
+
+
+class Solution:
+    def similarPairs(self, words):
+        length = len(words)
+        result = 0
+
+        for i in range(length):
+            for j in range(i + 1, length):
+                if set(words[i]) == set(words[j]):
+                    result += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().similarPairs(words = ["aba","aabb","abcd","bac","aabc"]))  # 2
+    print(Solution().similarPairs(words = ["aabb","ab","ba"]))                  # 3
+    print(Solution().similarPairs(words = ["nba","cba","dba"]))                 # 0
+
+
+# Runtime: 454 ms, faster than 37.50% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 73.31% of Python3 online submissions
+
+
+#%%
