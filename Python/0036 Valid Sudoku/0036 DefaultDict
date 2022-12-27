@@ -1,0 +1,120 @@
+"""
+36. Valid Sudoku
+Medium
+https://leetcode.com/problems/valid-sudoku/
+
+Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be
+validated according to the following rules:
+
+Each row must contain the digits 1-9 without repetition.
+Each column must contain the digits 1-9 without repetition.
+Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+Note:
+
+A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+Only the filled cells need to be validated according to the mentioned rules.
+"""
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def isValidSudoku(self, board):
+        column_freq = defaultdict(int)
+        grid_freq = defaultdict(int)
+        row_freq = defaultdict(int)
+
+
+        for row in range(0, 9): 
+            #print(board[row])            
+            for column in range(0, 9):
+                cell = board[row][column]
+                if cell.isnumeric(): 
+                    row_freq[cell] += 1
+                    #print(cell, row_freq[cell])
+                    if row_freq[cell] > 1:
+                        return False
+
+            row_freq.clear()
+
+
+        for column in range(0, 9):       
+            for row in range(0, 9):
+                cell = board[row][column]
+                if cell.isnumeric(): 
+                    column_freq[cell] += 1
+                    #print(cell, column_freq[cell])
+                    if column_freq[cell] > 1:
+                        return False
+
+            column_freq.clear()
+
+
+        for i in range(0, 9, 3):
+          for j in range(0, 9, 3):
+
+              for cell in board[i][j:j+3]:
+                  if cell.isnumeric(): 
+                    grid_freq[cell] += 1
+                    if grid_freq[cell] > 1:
+                        return False
+
+              for cell in board[i+1][j:j+3]:
+                  if cell.isnumeric(): 
+                    grid_freq[cell] += 1
+                    if grid_freq[cell] > 1:
+                        return False                    
+
+              for cell in board[i+2][j:j+3]:
+                  if cell.isnumeric(): 
+                    grid_freq[cell] += 1
+                    if grid_freq[cell] > 1:
+                        return False
+
+              grid_freq.clear()
+
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().isValidSudoku(board = 
+[["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]))              # True
+
+    print(Solution().isValidSudoku(board = 
+[["8","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]))               # False 
+
+    print(Solution().isValidSudoku(board =
+[[".",".",".",".","5",".",".","1","."]
+ ,[".","4",".","3",".",".",".",".","."]
+ ,[".",".",".",".",".","3",".",".","1"]
+ ,["8",".",".",".",".",".",".","2","."]
+ ,[".",".","2",".","7",".",".",".","."]
+ ,[".","1","5",".",".",".",".",".","."]
+ ,[".",".",".",".",".","2",".",".","."]
+ ,[".","2",".","9",".",".",".",".","."]
+ ,[".",".","4",".",".",".",".",".","."]]))               # False 
+
+
+# Runtime: 93 ms, faster than 96.75% of Python3 online submissions
+# Memory Usage: 14 MB, less than 6.44% of Python3 online submissions
+
+
+#%%
