@@ -1,0 +1,42 @@
+"""
+271. Encode and Decode Strings
+Medium
+Locked: https://leetcode.com/problems/encode-and-decode-strings/
+https://www.lintcode.com/problem/659/
+
+Design an algorithm to encode a list of strings to a string. The encoded string
+is then sent over the network and is decoded back to the original list of strings.
+"""
+
+
+class Codec:
+    def encode(self, strs):
+        return ''.join(str(len(s)) + '/' + s for s in strs)
+
+
+    def decode(self, s):
+        left = 0
+        length = len(s)
+        result = []
+
+        while left < length:
+          slash = s.find('/', left)
+          size = int(s[left : slash])
+          left = slash + size + 1
+
+          result.append(s[slash + 1 : left])
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Codec().encode(strs = ["lint","code","love","you"]))
+    print(Codec().encode(strs = ["we", "say", ":", "yes"]))
+    print(Codec().decode(Codec().encode(strs = ["lint","code","love","you"])))
+    print(Codec().decode(Codec().encode(strs = ["we", "say", ":", "yes"])))
+
+
+# Locked.  Cannot test.
+
+
+#%% 
