@@ -12,6 +12,9 @@ return true if grid is an X-Matrix. Otherwise, return false.
 """
 
 
+# Similar to exercise 1572. Matrix Diagonal Sum
+
+
 class Solution:
     def checkXMatrix(self, grid):
         length = len(grid)
@@ -61,6 +64,32 @@ if __name__ == '__main__':
 
 # Runtime: 271 ms, faster than 96.42% of Python3 online submissions
 # Memory Usage: 15 MB, less than 20.34% of Python3 online submissions
+
+
+#%%
+
+
+class Solution:
+    def checkXMatrix(self, grid):
+        length = len(grid)
+
+        for row in range(length):
+            for column in range(length):
+                if row == column or column == length - row - 1:
+                    if grid[row][column] == 0: return False
+                else:
+                    if grid[row][column] != 0: return False
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().checkXMatrix(grid = [[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]))    # True
+    print(Solution().checkXMatrix(grid = [[5,7,0],[0,3,1],[0,5,0]]))                    # False
+
+
+# Runtime: 289 ms, faster than 83.24% of Python3 online submissions
+# Memory Usage: 15 MB, less than 58.19% of Python3 online submissions
 
 
 #%%
