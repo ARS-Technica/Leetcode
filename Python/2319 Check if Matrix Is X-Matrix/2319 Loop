@@ -38,3 +38,29 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def checkXMatrix(self, grid):
+        length = len(grid)
+
+        for i, row in enumerate(grid):
+            for j, column in enumerate(row):
+                if i == j or i == length - j - 1:
+                    if column == 0: return False
+                elif column != 0:
+                    return False
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().checkXMatrix(grid = [[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]))    # True
+    print(Solution().checkXMatrix(grid = [[5,7,0],[0,3,1],[0,5,0]]))                    # False
+
+
+# Runtime: 271 ms, faster than 96.42% of Python3 online submissions
+# Memory Usage: 15 MB, less than 20.34% of Python3 online submissions
+
+
+#%%
