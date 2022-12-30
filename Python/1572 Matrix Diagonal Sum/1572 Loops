@@ -1,0 +1,47 @@
+"""
+1572. Matrix Diagonal Sum
+Easy
+https://leetcode.com/problems/matrix-diagonal-sum/description/
+
+Given a square matrix mat, return the sum of the matrix diagonals.
+
+Only include the sum of all the elements on the primary diagonal and all the
+elements on the secondary diagonal that are not part of the primary diagonal.
+"""
+
+
+class Solution:
+    def diagonalSum(self, mat):
+        left_diagonal = []
+        right_diagonal = []
+
+        length = len(mat)
+
+        for num in range(length): 
+            # print(mat[num][num])
+            left_diagonal.append(mat[num][num])
+
+        for num in range(length):
+            # print(num, (length - 1) - num)
+            right_diagonal.append(mat[num][(length - 1) - num])
+
+        # print(left_diagonal, right_diagonal)
+        if length & 1 != 0: del right_diagonal[length//2]
+        return sum(left_diagonal) + sum(right_diagonal)
+
+
+if __name__ == '__main__':
+    print(Solution().diagonalSum(mat = [[1,2,3],
+              [4,5,6],
+              [7,8,9]]))        # 25
+    print(Solution().diagonalSum(mat = [[1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1]]))        # 8
+
+
+# Runtime: 123 ms, faster than 69.26% of Python3 online submissions
+# Memory Usage: 14.3 MB, less than 16.89% of Python3 online submissions
+
+
+#%%
