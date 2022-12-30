@@ -88,3 +88,21 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def checkValid(self, matrix):
+        return all(min(len(set(row)), len(set(col))) == len(matrix)
+                   for row, col in zip(matrix, zip(*matrix)))
+
+
+if __name__ == '__main__':
+    print(Solution().checkValid(matrix = [[1,2,3],[3,1,2],[2,3,1]]))        # True
+    print(Solution().checkValid(matrix = [[1,1,1],[1,2,3],[1,2,3]]))        # False
+
+
+# Runtime: 774 ms, faster than 93.55% of Python3 online submissions
+# Memory Usage: 14.3 MB, less than 87.43% of Python3 online submissions
+
+
+#%%
