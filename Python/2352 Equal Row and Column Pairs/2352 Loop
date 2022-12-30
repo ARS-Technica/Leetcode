@@ -35,3 +35,58 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/equal-row-and-column-pairs/solutions/2328801/python-2-lines/
+
+
+from collections import Counter
+
+
+class Solution:
+    def equalPairs(self, grid):
+        colCounter = Counter(zip(*grid))
+        return sum(colCounter[row] for row in map(tuple, grid))
+
+
+if __name__ == '__main__':
+    print(Solution().equalPairs(grid = [[3,2,1],[1,7,6],[2,7,7]]))                      # 1
+    print(Solution().equalPairs(grid = [[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]))      # 3
+
+
+# Runtime: 493 ms, faster than 98.94% of Python3 online submissions
+# Memory Usage: 19 MB, less than 30.34% of Python3 online submissions
+
+
+#%%
+
+
+from itertools import combinations
+
+
+class Solution:
+    def equalPairs(self, grid):
+        length = len(grid)
+        subsets = [] + grid
+        
+        for column in range(length):
+            subset = []
+            for row in range(length):
+                subset.append(grid[row][column])
+            subsets.append(subset)
+
+        return sum(x == y for x, y in combinations(subsets, 2)) 
+            
+
+
+if __name__ == '__main__':
+    print(Solution().equalPairs(grid = [[3,2,1],[1,7,6],[2,7,7]]))                      # 1
+    print(Solution().equalPairs(grid = [[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]))      # 3
+
+
+# Runtime: 289 ms, faster than 83.24% of Python3 online submissions
+# Memory Usage: 15 MB, less than 58.19% of Python3 online submissions
+
+
+#%%
