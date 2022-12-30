@@ -106,3 +106,24 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers/solutions/1676835/python3-1-line/
+
+
+class Solution:
+    def checkValid(self, matrix):
+        return all(len(set(x)) == len(matrix) for x in matrix + list(zip(*matrix)))
+
+
+if __name__ == '__main__':
+    print(Solution().checkValid(matrix = [[1,2,3],[3,1,2],[2,3,1]]))        # True
+    print(Solution().checkValid(matrix = [[1,1,1],[1,2,3],[1,2,3]]))        # False
+
+
+# Runtime: 745 ms, faster than 98.10% of Python3 online submissions
+# Memory Usage: 14.5 MB, less than 49.5% of Python3 online submissions
+
+
+#%%
