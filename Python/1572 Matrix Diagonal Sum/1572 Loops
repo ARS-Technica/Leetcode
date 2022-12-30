@@ -77,3 +77,31 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def diagonalSum(self, mat):
+        length = len(mat)
+        left_diagonal = sum([mat[num][num] for num in range(length)])
+        right_diagonal = sum([mat[num][(length - 1) - num] for num in range(length)])
+        result = left_diagonal + right_diagonal
+
+        if length & 1 != 0: result -= mat[length//2][length//2]
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().diagonalSum(mat = [[1,2,3],
+              [4,5,6],
+              [7,8,9]]))        # 25
+    print(Solution().diagonalSum(mat = [[1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1]]))        # 8
+
+
+# Runtime: 110 ms, faster than 91.99% of Python3 online submissions
+# Memory Usage: 14.1 MB, less than 54.20% of Python3 online submissions
+
+
+#%%
