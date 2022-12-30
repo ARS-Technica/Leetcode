@@ -1,0 +1,37 @@
+"""
+2352. Equal Row and Column Pairs
+Medium
+https://leetcode.com/problems/equal-row-and-column-pairs/description/
+
+Given a 0-indexed n x n integer matrix grid, return the number of pairs (ri, cj)
+such that row ri and column cj are equal.
+
+A row and column pair is considered equal if they contain the same elements in
+the same order (i.e., an equal array).
+"""
+
+
+class Solution:
+    def equalPairs(self, grid):
+        length = len(grid)
+        subsets = []
+
+        for column in range(length):
+            subset = []
+            for row in range(length):
+                subset.append(grid[row][column])
+            subsets.append(subset)
+
+        return sum(row == col for row in grid for col in subsets)
+
+
+if __name__ == '__main__':
+    print(Solution().equalPairs(grid = [[3,2,1],[1,7,6],[2,7,7]]))                      # 1
+    print(Solution().equalPairs(grid = [[3,1,2,2],[1,4,4,5],[2,4,2,2],[2,4,2,2]]))      # 3
+
+
+# Runtime: 802 ms, faster than 70.90% of Python3 online submissions
+# Memory Usage: 18.9 MB, less than 56.26% of Python3 online submissions
+
+
+#%%
