@@ -73,3 +73,20 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def deleteGreatestValue(self, grid):
+        return sum(map(max, zip(*map(sorted, grid))))
+
+
+if __name__ == '__main__':
+    print(Solution().deleteGreatestValue(grid = [[1,2,4],[3,3,1]]))             # 8
+    print(Solution().deleteGreatestValue(grid = [[10]]))                        # 10
+
+
+# Runtime: 110 ms, faster than 76.55% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 92.87% of Python3 online submissions
+
+
+#%%
