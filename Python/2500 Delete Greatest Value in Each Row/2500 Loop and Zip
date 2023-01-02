@@ -1,0 +1,40 @@
+"""
+2500. Delete Greatest Value in Each Row
+Easy
+https://leetcode.com/problems/delete-greatest-value-in-each-row/description/
+
+You are given an m x n matrix grid consisting of positive integers.
+
+Perform the following operation until grid becomes empty:
+
+Delete the element with the greatest value from each row. If multiple such
+elements exist, delete any of them.
+Add the maximum of deleted elements to the answer.
+Note that the number of columns decreases by one after each operation.
+
+Return the answer after performing the operations described above.
+"""
+
+
+class Solution:
+    def deleteGreatestValue(self, grid):
+        result = 0
+
+        for row in grid: row.sort()
+
+        for column in zip(*grid):
+            result += max(column)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().deleteGreatestValue(grid = [[1,2,4],[3,3,1]]))             # 8
+    print(Solution().deleteGreatestValue(grid = [[10]]))                        # 10
+
+
+# Runtime: 216 ms, faster than 41.21% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 92.87% of Python3 online submissions
+
+
+#%%  
