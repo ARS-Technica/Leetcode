@@ -43,3 +43,61 @@ if __name__ == '__main__':
 
 
 #%%  
+
+
+class Solution:
+    def longestSquareStreak(self, nums):
+        nums = list(set(nums))
+        nums.sort() 
+        result = 0
+
+        for idx in range(len(nums)-1):
+            square = nums[idx]**2
+            streak = 0
+            while square in nums:
+                streak += 1
+                square *= square
+            else:
+                result = max(result, streak)
+
+        return -1 if result == 0 else result + 1
+
+
+if __name__ == '__main__':
+    print(Solution().longestSquareStreak(nums = [4,3,6,16,8,2]))        # 3
+    print(Solution().longestSquareStreak(nums = [2,3,5,6,7]))           # -1
+
+
+# Time Limit Exceeded
+
+
+#%%
+
+
+class Solution:
+    def longestSquareStreak(self, nums):
+        candidates = set(nums)
+        result = -1
+
+        for num in nums:
+            streak = 0
+            while num in candidates:
+                streak += 1
+                num *= num
+
+            # result = max(result, streak)
+            if streak > 1: result = max(result, streak)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().longestSquareStreak(nums = [4,3,6,16,8,2]))        # 3
+    print(Solution().longestSquareStreak(nums = [2,3,5,6,7]))           # -1
+
+
+# Runtime: 2582 ms, faster than 25.93% of Python3 online submissions
+# Memory Usage: 28.9 MB, less than 84.18% of Python3 online submissions
+
+
+#%%
