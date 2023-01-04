@@ -44,3 +44,38 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def isNStraightHand(self, hand, groupSize): 
+        if len(hand) % groupSize != 0: return False 
+
+        deck = Counter(hand)
+        cards = sorted(deck.keys())
+
+        for card in cards:
+            deal = deck[card]
+
+            if deal != 0:
+                for num in range(1, groupSize):
+                    if deck[card + num] < deal:
+                        return False
+
+                    deck[card + num] -= deal
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().isNStraightHand(hand = [1,2,3,6,2,3,4,7,8], groupSize = 3))        # True
+    print(Solution().isNStraightHand(hand = [1,2,3,4,5], groupSize = 4))                # False
+
+
+# Runtime: 350 ms, faster than 58.7% of Python3 online submissions
+# Memory Usage: 15.6 MB, less than 74% of Python3 online submissions
+
+
+#%%
