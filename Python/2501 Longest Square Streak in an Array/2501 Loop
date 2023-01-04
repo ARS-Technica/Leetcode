@@ -101,3 +101,71 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Better solution.  Not mine.
+# https://leetcode.com/problems/longest-square-streak-in-an-array/solutions/2905642/python-3-11-lines-mathematics-w-brief-comments-t-m-97-68/
+
+
+class Solution:
+    def longestSquareStreak(self, nums):
+        candidates = set(nums)
+        nums = sorted(candidates)
+        result = 0
+
+        # candidates = {n for n in candidates if n%4 < 2}
+
+        for num in nums:
+            square = num**2
+            streak = 1
+            while square in candidates:
+                streak += 1
+                square *= square
+
+            if streak > 1: result = max(result, streak)
+
+        return -1 if result == 0 else result
+
+
+if __name__ == '__main__':
+    print(Solution().longestSquareStreak(nums = [4,3,6,16,8,2]))        # 3
+    print(Solution().longestSquareStreak(nums = [2,3,5,6,7]))           # -1
+
+
+# Runtime: 936 ms, faster than 94.26% of Python3 online submissions
+# Memory Usage: 28.9 MB, less than 84.18% of Python3 online submissions
+
+
+#%% 
+
+
+class Solution:
+    def longestSquareStreak(self, nums):
+        candidates = set(nums)
+        nums = sorted(candidates)
+        result = 0
+
+        candidates = {n for n in candidates if n%4 < 2}
+
+        for num in nums:
+            square = num**2
+            streak = 1
+            while square in candidates:
+                streak += 1
+                square *= square
+
+            if streak > 1: result = max(result, streak)
+
+        return -1 if result == 0 else result
+
+
+if __name__ == '__main__':
+    print(Solution().longestSquareStreak(nums = [4,3,6,16,8,2]))        # 3
+    print(Solution().longestSquareStreak(nums = [2,3,5,6,7]))           # -1
+
+
+# Runtime: 912 ms, faster than 96.39% of Python3 online submissions
+# Memory Usage: 29.3 MB, less than 67.6% of Python3 online submissions
+
+
+#%% 
