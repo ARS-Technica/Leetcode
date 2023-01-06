@@ -26,3 +26,21 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def lengthOfLastWord(self, s):
+        return len(s.split()[-1])
+
+
+if __name__ == '__main__':
+    print(Solution().lengthOfLastWord(s = "Hello World"))                       # 5
+    print(Solution().lengthOfLastWord(s = "   fly me   to   the moon  "))       # 4
+    print(Solution().lengthOfLastWord(s = "luffy is still joyboy"))             # 6
+
+
+# Runtime: 33 ms, faster than 79.64% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 79.3% of Python3 online submissions
+
+
+#%%
