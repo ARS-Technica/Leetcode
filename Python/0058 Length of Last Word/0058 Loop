@@ -1,0 +1,36 @@
+"""
+58. Length of Last Word
+Easy
+https://leetcode.com/problems/length-of-last-word/
+
+Given a string s consisting of words and spaces, return the length of the last word in the string.
+
+A word is a maximal substring consisting of non-space characters only.
+"""
+
+
+class Solution:
+    def lengthOfLastWord(self, s):
+        counter = 0
+
+        for idx in range(len(s)):
+            if s[idx] == " ":
+                counter = 0
+            else:
+                counter += 1
+                result = counter
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().lengthOfLastWord(s = "Hello World"))                       # 5
+    print(Solution().lengthOfLastWord(s = "   fly me   to   the moon  "))       # 4
+    print(Solution().lengthOfLastWord(s = "luffy is still joyboy"))             # 6
+
+
+# Runtime: 40 ms, faster than 61.23% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 79.3% of Python3 online submissions
+
+
+#%%
