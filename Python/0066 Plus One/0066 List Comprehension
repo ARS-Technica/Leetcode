@@ -50,3 +50,21 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def plusOne(self, digits):
+        return [int(n) for n in list(str(int(''.join((str(n) for n in digits))) + 1))]
+
+
+if __name__ == '__main__':
+    print(Solution().plusOne(digits = [1,2,3]))                     # [1,2,4]
+    print(Solution().plusOne(digits = [4,3,2,1]))                   # [4,3,2,2]
+    print(Solution().plusOne(digits = [9]))                         # [1,0]
+
+
+# Runtime: 39 ms, faster than 71.18% of Python3 online submissions
+# Memory Usage: 14 MB, less than 11.36% of Python3 online submissions
+
+
+#%%
