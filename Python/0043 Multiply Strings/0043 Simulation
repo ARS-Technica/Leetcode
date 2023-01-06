@@ -1,0 +1,45 @@
+"""
+43. Multiply Strings
+Medium
+https://leetcode.com/problems/multiply-strings/description/
+
+Given two non-negative integers num1 and num2 represented as strings, return
+the product of num1 and num2, also represented as a string.
+
+Note: You must not use any built-in BigInteger library or convert the inputs to
+integer directly.
+"""
+
+
+# Simulation algorithm
+# https://leetcode.com/problems/multiply-strings/solutions/2902378/standard-python-simulation-algorithm-also-fast-with-explaination/
+
+
+class Solution:
+    def multiply(self, num1, num2):
+        if num1 == "0" or num2 == "0": return "0"
+
+        map = {"1":1, "2":2, "3":3, "4":4, "5":5, "6":6, "7":7, "8":8, "9":9, "0":0}
+
+        value1 = 0
+        res = 0
+
+        for i in num1:
+            value1 = value1 * 10 + map[i]
+
+        for i in num2:
+            res = res * 10 + value1 * map[i]
+
+        return str(res)
+
+
+if __name__ == '__main__':
+    print(Solution().multiply(num1 = "2", num2 = "3"))              # "6"
+    print(Solution().multiply(num1 = "123", num2 = "456"))          # "56088" 
+
+
+# Runtime: 72 ms, faster than 51.21% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 71.35% of Python3 online submissions
+
+
+#%%
