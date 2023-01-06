@@ -54,3 +54,38 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/merge-sorted-array/solutions/1176400/best-python-solution-faster-than-99-one-loop-no-splicing-no-special-case-loop/
+
+
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        i, j, write_index = m-1, n-1, m + n - 1
+
+        while j >= 0:
+            if i >= 0 and nums1[i] > nums2[j]:
+                nums1[write_index] = nums1[i]
+                i -= 1
+            else:
+                nums1[write_index] = nums2[j]
+                j -= 1
+
+            write_index -= 1
+
+
+if __name__ == '__main__':
+    print(Solution().merge(nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3))              
+    # [1,2,2,3,5,6]
+    print(Solution().merge(nums1 = [1], m = 1, nums2 = [], n = 0))          
+    # [1]
+    print(Solution().merge(nums1 = [0], m = 0, nums2 = [1], n = 1))          
+    # [1]  
+
+
+# Runtime: 67 ms, faster than 45.10% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 84.50% of Python3 online submissions
+
+
+#%%
