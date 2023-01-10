@@ -41,3 +41,30 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import Counter
+
+class Solution:
+    def uncommonFromSentences(self, s1, s2):
+        words = (s1.split() + s2.split())
+        frequency = Counter(words) 
+        result = [word for word, count in frequency.items() if count == 1]        
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().uncommonFromSentences(s1 = "this apple is sweet", s2 = "this apple is sour"))    
+    # ["sweet","sour"]
+    print(Solution().uncommonFromSentences(s1 = "apple apple", s2 = "banana"))          
+    # ["banana"]
+    print(Solution().uncommonFromSentences(s1 = "s z z z s", s2 = "s z ejt"))          
+    # ["ejt"]
+
+
+# Runtime: 37 ms, faster than 70.1% of Python3 online submissions
+# Memory Usage: 14 MB, less than 17.68% of Python3 online submissions
+
+
+#%%
