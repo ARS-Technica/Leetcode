@@ -46,3 +46,41 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Inspired by:
+# https://leetcode.com/problems/uncommon-words-from-two-sentences/solutions/2963830/beats-92/
+
+
+class Solution:
+    def uncommonFromSentences(self, s1, s2):
+        frequency = {}
+        result = []
+        words = s1.split() + s2.split()
+
+        for word in words:
+            if word not in frequency:
+                frequency[word] = True
+            else:
+                frequency[word] = False
+
+        for word, count in frequency.items():
+            if count: result.append(word)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().uncommonFromSentences(s1 = "this apple is sweet", s2 = "this apple is sour"))    
+    # ["sweet","sour"]
+    print(Solution().uncommonFromSentences(s1 = "apple apple", s2 = "banana"))          
+    # ["banana"]
+    print(Solution().uncommonFromSentences(s1 = "s z z z s", s2 = "s z ejt"))          
+    # ["ejt"]
+
+
+# Runtime: 31 ms, faster than 88.88% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 17.68% of Python3 online submissions
+
+
+#%%
