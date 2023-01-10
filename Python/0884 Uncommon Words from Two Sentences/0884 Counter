@@ -1,0 +1,43 @@
+"""
+884. Uncommon Words from Two Sentences
+Easy
+https://leetcode.com/problems/uncommon-words-from-two-sentences/
+
+A sentence is a string of single-space separated words where each word consists
+only of lowercase letters.
+
+A word is uncommon if it appears exactly once in one of the sentences, and does
+not appear in the other sentence.
+
+Given two sentences s1 and s2, return a list of all the uncommon words. You may
+return the answer in any order.
+"""
+
+
+from collections import Counter
+
+class Solution:
+    def uncommonFromSentences(self, s1, s2):
+        s1_freq = Counter(s1.split())
+        s2_freq = Counter(s2.split())
+
+        frequency = s1_freq + s2_freq
+        result = [word for word, count in frequency.items() if count == 1]        
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().uncommonFromSentences(s1 = "this apple is sweet", s2 = "this apple is sour"))    
+    # ["sweet","sour"]
+    print(Solution().uncommonFromSentences(s1 = "apple apple", s2 = "banana"))          
+    # ["banana"]
+    print(Solution().uncommonFromSentences(s1 = "s z z z s", s2 = "s z ejt"))          
+    # ["ejt"]
+
+
+# Runtime: 32 ms, faster than 85.80% of Python3 online submissions
+# Memory Usage: 14 MB, less than 17.68% of Python3 online submissions
+
+
+#%%
