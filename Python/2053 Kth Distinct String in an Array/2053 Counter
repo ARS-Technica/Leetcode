@@ -44,3 +44,40 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def kthDistinct(self, arr, k):
+        counter = 0
+        frequency = {}
+
+        for word in arr:
+            if word not in frequency:
+                frequency[word] = 1
+            else:
+                frequency[word] += 1
+
+        for word, count in frequency.items():
+            if frequency[word] == 1:
+                counter += 1
+
+            if counter == k:
+                return word
+
+        return ""
+
+
+if __name__ == '__main__':
+    print(Solution().kthDistinct(arr = ["d","b","c","b","c","a"], k = 2))    # "a"
+    print(Solution().kthDistinct(arr = ["aaa","aa","a"], k = 1))             # "aaa"
+    print(Solution().kthDistinct(arr = ["a","b","a"], k = 3))                # ""
+
+
+# Runtime: 72 ms, faster than 86.72% of Python3 online submissions
+# Memory Usage: 14 MB, less than 94.59% of Python3 online submissions
+
+
+#%%
