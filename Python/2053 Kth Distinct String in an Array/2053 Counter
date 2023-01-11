@@ -1,0 +1,46 @@
+"""
+2053. Kth Distinct String in an Array
+Easy
+https://leetcode.com/problems/kth-distinct-string-in-an-array/description/
+
+A distinct string is a string that is present only once in an array.
+
+Given an array of strings arr, and an integer k, return the kth distinct string
+present in arr. If there are fewer than k distinct strings, return an empty string "".
+
+Note that the strings are considered in the order in which they appear in the array.
+"""
+
+
+# Time Complexity: O(N) | Space Complexity: O(N)
+
+
+from collections import Counter
+
+
+class Solution:
+    def kthDistinct(self, arr, k):
+        counter = 0
+        frequency = Counter(arr)
+
+        for word, count in frequency.items():
+            if frequency[word] == 1:
+                counter += 1
+
+            if counter == k:
+                return word
+
+        return ""
+
+
+if __name__ == '__main__':
+    print(Solution().kthDistinct(arr = ["d","b","c","b","c","a"], k = 2))    # "a"
+    print(Solution().kthDistinct(arr = ["aaa","aa","a"], k = 1))             # "aaa"
+    print(Solution().kthDistinct(arr = ["a","b","a"], k = 3))                # ""
+
+
+# Runtime: 59 ms, faster than 99.63% of Python3 online submissions
+# Memory Usage: 14.1 MB, less than 94.59% of Python3 online submissions
+
+
+#%%
