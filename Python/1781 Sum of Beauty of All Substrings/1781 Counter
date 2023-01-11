@@ -1,0 +1,84 @@
+"""
+1781. Sum of Beauty of All Substrings
+Medium
+https://leetcode.com/problems/sum-of-beauty-of-all-substrings/
+
+The beauty of a string is the difference in frequencies between the most frequent
+and least frequent characters.
+
+For example, the beauty of "abaacc" is 3 - 1 = 2.
+Given a string s, return the sum of beauty of all of its substrings.
+"""
+
+
+from collections import Counter
+
+
+class Solution:
+    def beautySum(self, s):
+        result = 0
+        substrings = []
+
+        for i in range(len(s) - 2):
+            for j in range(2, len(s) + 1):
+                substring = s[i : i+j]
+                if len(set(substring)) > 1:
+                    substrings.append(Counter(s[i : i+j]))
+                    
+                    
+        for count in substrings:
+            frequencies = []
+            for letter, count in count.items():
+                frequencies.append(count)
+
+            result += max(frequencies) - min(frequencies) 
+
+        return result        
+
+
+if __name__ == '__main__':
+    print(Solution().beautySum(s = "aabcb"))                    # 5
+    #print(Solution().beautySum(s = "aabcbaa"))                 # 17
+
+
+# Creates duplicate substrings
+
+
+#%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def beautySum(self, s):
+        result = 0
+        substrings = []
+
+        for i in range(len(s) - 2):
+            for j in range(2, len(s) + 1):
+                substring = s[i : i+j]
+                if len(set(substring)) > 1:
+                    substrings.append(s[i : i+j])
+
+        substrings = list(set(substrings))
+
+        for substring in substrings:
+            frequencies = Counter(substring)
+            result += max(frequencies.values()) - min(frequencies.values())
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().beautySum(s = "aabcb"))                    # 5
+    print(Solution().beautySum(s = "aabcbaa"))                  # 17
+    print(Solution().beautySum(s = "woqrqcvfdgkrafoqdktsfpeygawfpdlvaylgpxhufpvucmmztjoqmxhegdpeczbtvwrmnwrvlptscwwqbjstanyqbgoagxopvgtlyzsemgktcgciualltsquepotmtszbmejbwbtzlavpxnujdsdyrypfcfcfwdidglybzvzuznytwndidzumoekzuukxtpouudsfcohapfcjjmqwjgcvalzarugmzucheydwsncxgyojnfvgroihfckmbtqewxhuqihplprgyeaqhocivaupdfokwpliziwcmuxnebxeszxbsrmffwwdz"))
+    # 293232
+
+
+# Failed
+
+
+#%%
+
