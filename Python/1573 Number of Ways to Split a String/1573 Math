@@ -92,6 +92,36 @@ if __name__ == '__main__':
 #%%
 
 
+# Time Complexity: O(N) | Space Complexity: O(N)
 
 
+class Solution:
+    def numWays(self, s):  
+        length = len(s)
+        ones = [ i for i in range(length) if s[i] == '1' ]
+        count = len(ones)
 
+        if count == 0: return ((length - 1) * (length - 2) // 2) % (10**9 + 7)
+        if count % 3 != 0: return 0
+
+        count = count // 3
+        result = (ones[count] - ones[count - 1]) * (ones[2 * count] - ones[2 * count - 1])
+
+        return result % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().numWays(s = "10101"))              # 4
+    print(Solution().numWays(s = "1001"))               # 0
+    print(Solution().numWays(s = "100100010100110"))    # 12
+    print(Solution().numWays(s = "0000"))               # 3
+    print(Solution().numWays(s = "111"))                # 1
+    print(Solution().numWays(s = "00000000"))           # 21
+    print(Solution().numWays(s = "101100111111"))       # 3
+
+
+# Runtime: 108 ms, faster than 90.32% of Python3 online submissions
+# Memory Usage: 15.2 MB, less than 41.40% of Python3 online submissions
+
+
+#%%
