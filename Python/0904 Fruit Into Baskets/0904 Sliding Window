@@ -57,3 +57,44 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def totalFruit(self, fruits):
+        freq = defaultdict(int)
+        left = 0
+        length = len(fruits)
+        result = 0
+
+        if len(Counter(fruits)) < 3: return length
+
+        for right in range(length):
+            freq[fruits[right]] += 1
+
+            while len(freq) > 2:
+                freq[fruits[left]] -= 1
+
+                if freq[fruits[left]] == 0:
+                    del freq[fruits[left]]
+
+                left += 1
+
+            result = max(result, right - left + 1)
+
+        return max(result, length - left)
+ 
+
+if __name__ == '__main__':
+    print(Solution().totalFruit(fruits = [1,2,1]))          # 3
+    print(Solution().totalFruit(fruits = [0,1,2,2]))        # 3
+    print(Solution().totalFruit(fruits = [1,2,3,2,2]))      # 4
+
+
+# Runtime: 1006 ms, faster than 78.50% of Python3 online submissions
+# Memory Usage: 20 MB, less than 77.45% of Python3 online submissions
+
+
+#%%
