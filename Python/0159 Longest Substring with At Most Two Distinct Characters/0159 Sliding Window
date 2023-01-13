@@ -1,0 +1,44 @@
+"""
+159. Longest Substring with At Most Two Distinct Characters
+Medium
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/ 
+
+Given a string s, return the length of the longest substring that contains at
+most two distinct characters.
+"""
+
+
+from collections import Counter
+
+
+class Solution:
+    def lengthOfLongestSubstringTwoDistinct(self, s):
+        freq = Counter()
+        result = 0
+        right = 0
+
+        for left, char in enumerate(s):
+            freq[char] += 1
+
+            while len(freq) > 2:
+                freq[s[right]] -= 1
+
+                if freq[s[right]] == 0:
+                    freq.pop(s[right])
+
+                right += 1
+
+            result = max(result, left - right + 1)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().lengthOfLongestSubstringTwoDistinct(s = "eceba"))          # 3
+    print(Solution().lengthOfLongestSubstringTwoDistinct(s = "ccaabbb"))        # 5                         # 1
+
+
+# Locked.  Can't be tested.
+
+
+#%%
