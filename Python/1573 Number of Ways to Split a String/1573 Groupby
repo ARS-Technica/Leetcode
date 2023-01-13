@@ -9,3 +9,170 @@ and s3 where s1 + s2 + s3 = s.
 Return the number of ways s can be split such that the number of ones is the
 same in s1, s2, and s3. Since the answer may be too large, return it modulo 109 + 7.
 """
+
+
+from itertools import groupby
+
+
+class Solution:
+    def numWays(self, s):
+        frequency = groupby(list(s))
+        length = len(s)
+        ones = s.count('1')
+        result = 0
+        zeroes = s.count('0')        
+
+        if ones == 0: return ((length - 1) * (length - 2) // 2) % (10**9 + 7)
+        if ones == 3 and zeroes == 0: return 1
+        if ones % 3 != 0: return 0
+
+        count = 0
+        divisions = ones // 3  
+
+        for key, group in frequency:
+            if key == '1':
+                count += 1
+
+            else:
+                if count == divisions:
+                    if result:
+                        result *= (len(list(group)) + 1)
+                    else:
+                        result = len(list(group)) + 1
+
+                    count = 0
+
+        return result % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().numWays(s = "10101"))              # 4
+    print(Solution().numWays(s = "1001"))               # 0
+    print(Solution().numWays(s = "100100010100110"))    # 12
+    print(Solution().numWays(s = "0000"))               # 3
+    print(Solution().numWays(s = "111"))                # 1
+    print(Solution().numWays(s = "00000000"))           # 21
+    print(Solution().numWays(s = "101100111111"))       # 3
+
+
+# Doesn't work for s = "101100111111"
+# Because it count each group of 1's as a single 1
+
+
+#%%
+
+
+from itertools import groupby
+
+
+class Solution:
+    def numWays(self, s):
+        frequency = groupby(list(s))
+        length = len(s)
+        ones = s.count('1')
+        result = 0
+        zeroes = s.count('0')   
+        
+        #print(ones, ' ones')
+        #print('  ')
+
+        if ones == 0: return ((length - 1) * (length - 2) // 2) % (10**9 + 7)
+        if ones == 3 and zeroes == 0: return 1
+        if ones % 3 != 0: return 0
+
+        count = 0
+        divisions = ones // 3
+
+        for key, group in frequency:
+            #print(key, len(list(group)))
+            #print('Key: ', key, 'Len: ', len(list(group)), 'Count: ', count)
+            #print(' ')
+
+            if key == '1':
+                count += len(list(group)) 
+                #print('Adding ', len(list(group)), 'to count ', count)
+
+            else:
+                if count == divisions:
+                    if result == 0:
+                        result = len(list(group)) + 1
+                        #print('Result: ', result)
+                        #print('')
+                    else:
+                        result *= len(list(group)) + 1 
+                        #print('Result: ', result)
+                        #print('')
+
+                    count = 0
+                    
+        return result % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    print(Solution().numWays(s = "10101"))              # 4
+    print(Solution().numWays(s = "1001"))               # 0
+    print(Solution().numWays(s = "100100010100110"))    # 12
+    print(Solution().numWays(s = "0000"))               # 3
+    print(Solution().numWays(s = "111"))                # 1
+    print(Solution().numWays(s = "00000000"))           # 21
+    print(Solution().numWays(s = "101100111111"))       # 3
+
+
+# Doesn't work for s = "100100010100110"
+
+
+#%%
+
+
+from itertools import groupby
+
+
+class Solution:
+    def numWays(self, s):
+        frequency = groupby(list(s))
+        length = len(s)
+        ones = s.count('1')
+        result = 0
+        zeroes = s.count('0')        
+
+        if ones == 0: return ((length - 1) * (length - 2) // 2) % (10**9 + 7)
+        if ones == 3 and zeroes == 0: return 1
+        if ones % 3 != 0: return 0
+
+        count = 0
+        divisions = ones // 3  
+        print(divisions)
+
+        for key, group in frequency:
+            if key == '1':
+                count += 1                     # Doesn't work for s = "101100111111"
+                #count += len(list(group))       # Doesn't work for s = "100100010100110"
+                print( len(list(group)) )
+
+            else:
+                if count == divisions:
+                    if result:
+                        result *= (len(list(group)) + 1)
+                    else:
+                        result = len(list(group)) + 1
+
+                    count = 0
+
+        return result % (10**9 + 7)
+
+
+if __name__ == '__main__':
+    #print(Solution().numWays(s = "10101"))              # 4
+    #print(Solution().numWays(s = "1001"))               # 0
+    print(Solution().numWays(s = "100100010100110"))    # 12
+    #print(Solution().numWays(s = "0000"))               # 3
+    #print(Solution().numWays(s = "111"))                # 1
+    #print(Solution().numWays(s = "00000000"))           # 21
+    #print(Solution().numWays(s = "101100111111"))       # 3
+
+
+# Doesn't work for s = "101100111111"
+# Doesn't work for s = "100100010100110"
+
+
+#%%
