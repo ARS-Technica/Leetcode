@@ -83,3 +83,71 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def medianSlidingWindow(self, nums, k):
+        result = []
+
+        if k == 1: return nums
+
+        for idx in range(0, len(nums) - (k - 1)):
+            window = sorted(nums[idx : idx + k])
+            window.sort()
+
+            if k % 2 == 0:
+                median = (window[k // 2] + window[k // 2 - 1]) / 2
+            else:
+                median = window[k // 2]
+
+            result.append(float(median))
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().medianSlidingWindow(nums = [1,3,-1,-3,5,3,6,7], k = 3))          
+    # [1.00000,-1.00000,-1.00000,3.00000,5.00000,6.00000]
+    print(Solution().medianSlidingWindow(nums = [1,2,3,4,2,3,1,4,2], k = 3))        
+    # [2.00000,3.00000,3.00000,3.00000,2.00000,3.00000,2.00000]
+
+
+# Runtime: 5289 ms, faster than 13.25% of Python3 online submissions
+# Memory Usage: 15.6 MB, less than 98.78% of Python3 online submissions
+
+
+#%%
+
+
+class Solution:
+    def medianSlidingWindow(self, nums, k):
+        result = []
+
+        if k == 1: return nums
+
+        for idx in range(0, len(nums) - (k - 1)):
+            midpoint = k // 2
+            window = sorted(nums[idx : idx + k])
+
+            if k % 2 == 0:                
+                median = (window[midpoint] + window[midpoint - 1]) / 2
+            else:
+                median = window[midpoint]
+
+            result.append(float(median))
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().medianSlidingWindow(nums = [1,3,-1,-3,5,3,6,7], k = 3))          
+    # [1.00000,-1.00000,-1.00000,3.00000,5.00000,6.00000]
+    print(Solution().medianSlidingWindow(nums = [1,2,3,4,2,3,1,4,2], k = 3))        
+    # [2.00000,3.00000,3.00000,3.00000,2.00000,3.00000,2.00000]
+
+
+# Runtime: 5373 ms, faster than 10.45% of Python3 online submissions
+# Memory Usage: 15.6 MB, less than 95.86% of Python3 online submissions
+
+
+#%%
