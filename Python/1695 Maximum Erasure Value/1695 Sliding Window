@@ -49,3 +49,38 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def maximumUniqueSubarray(self, nums):
+        left = 0
+        result = 0
+        right = 0
+        used = set()
+        window = 0
+
+        while right < len(nums):
+
+            while nums[right] in used:
+                used.remove(nums[left])
+                window -= nums[left]
+                left += 1
+
+            used.add(nums[right])
+            window += nums[right]
+            result = max(result, window)
+            right += 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maximumUniqueSubarray(nums = [4,2,4,5,6]))                 # 17
+    print(Solution().maximumUniqueSubarray(nums = [5,2,1,2,5,2,1,2,5]))         # 8
+
+
+# Runtime: 1411 ms, faster than 61.18% of Python3 online submissions
+# Memory Usage: 27.4 MB, less than 72.49% of Python3 online submissions
+
+
+#%%
