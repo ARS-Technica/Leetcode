@@ -116,3 +116,52 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/2957904/don-t-know-how-but-it-beats-100-of-solutions/
+
+
+def longestSubarray(self, nums):
+        if 0 not in nums: return len(nums) - 1
+
+        nums = [0] + nums + [0]
+
+        cnt = 0
+        result = 0
+
+        flag_1 = 0
+        flag_2 = 0
+
+
+        for i, num in enumerate(nums):
+            if num == 0:
+                cnt += 1
+
+                if cnt == 1:
+                    flag_1 = i
+                elif cnt == 2:
+                    flag_2 = i
+                elif cnt == 3:
+                    if result < i - flag_1 - 2:
+                        result = i - flag_1 - 2
+                    cnt = 2
+                    flag_1 = flag_2
+                    flag_2 = i
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().longestSubarray(nums = [1,1,0,1]))                         # 3
+    print(Solution().longestSubarray(nums = [0,1,1,1,0,1,1,0,1]))               # 5
+    print(Solution().longestSubarray(nums = [1,1,1]))                           # 2
+    print(Solution().longestSubarray(nums = [1,0,0,0,0]))                       # 1
+    print(Solution().longestSubarray(nums = [1,0,1,1,1,1,1,1,0,1,1,1,1,1]))     # 11
+
+
+# Runtime: 328 ms, faster than 99.88% of Python3 online submissions
+# Memory Usage: 16.6 MB, less than 41.43% of Python3 online submissions
+
+
+#%%
