@@ -32,3 +32,50 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/isomorphic-strings/solutions/1337259/2-liner-with-99-efficiency-and-explanation/
+
+
+class Solution:
+    def isIsomorphic(self, s, t):
+        zipped_set = set(zip(s, t))
+        return len(zipped_set) == len(set(s)) == len(set(t))
+
+
+if __name__ == '__main__':
+    print(Solution().isIsomorphic(s = "egg", t = "add"))        # true
+    print(Solution().isIsomorphic(s = "foo", t = "bar"))        # false
+
+
+# Runtime: 29 ms, faster than 99.10% of Python3 online submissions
+# Memory Usage: 14.2 MB, less than 42.90% of Python3 online submissions
+
+
+#%%
+
+
+# Not mine.
+# https://leetcode.com/problems/isomorphic-strings/solutions/3040513/python3-runtime-95-84-memory-87-46/
+
+
+class Solution:
+    def isIsomorphic(self, s, t):
+        for word in s:
+            if (len(set(t))==len(set(s)) and len({(a,b) for a,b in zip(s,t)})==len(set(s))):
+                return True
+
+            return False
+
+
+if __name__ == '__main__':
+    print(Solution().isIsomorphic(s = "egg", t = "add"))        # true
+    print(Solution().isIsomorphic(s = "foo", t = "bar"))        # false
+
+
+# Runtime: 39 ms, faster than 85.99% of Python3 online submissions
+# Memory Usage: 14.2 MB, less than 85.32% of Python3 online submissions
+
+
+#%%
