@@ -1,0 +1,49 @@
+"""
+205. Isomorphic Strings
+Easy
+https://leetcode.com/problems/isomorphic-strings/
+
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while
+preserving the order of characters. No two characters may map to the same
+character, but a character may map to itself.
+"""
+
+
+# Based on my solution to exercse 890
+
+
+class Solution:
+    def isIsomorphic(self, s, t):
+        def encode(word):                
+            cypher = {}
+            count = 0
+            new_word = []
+
+            for char in word:
+                if char not in cypher:
+                    cypher[char] = chr(count + 97)
+                    new_word.append(chr(count + 97))
+                    count += 1
+                else:
+                    new_word.append(cypher[char])
+                    count += 1
+
+            return ''.join(new_word)      
+
+        return encode(s) == encode(t)
+
+
+if __name__ == '__main__':
+    print(Solution().isIsomorphic(s = "egg", t = "add"))        # true
+    print(Solution().isIsomorphic(s = "foo", t = "bar"))        # false
+
+
+# Runtime: 44 ms, faster than 70.27% of Python3 online submissions
+# Memory Usage: 14.3 MB, less than 20.57% of Python3 online submissions
+
+
+#%%
