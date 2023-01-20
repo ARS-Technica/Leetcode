@@ -32,6 +32,55 @@ class Solution:
 
             return ''.join(new_word)      
 
+        indexes = []
+        pattern = encode(pattern)
+
+        for idx, word in enumerate(words):           
+            encoded = encode(word)
+
+            if encoded == pattern: 
+                indexes.append(idx)
+
+        results = []
+
+        for n in indexes:
+            results.append(words[n])
+
+        return results
+
+
+if __name__ == '__main__':
+    print(Solution().findAndReplacePattern(words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"))
+    # ["mee","aqq"]
+    print(Solution().findAndReplacePattern(words = ["a","b","c"], pattern = "a"))
+    # ["a","b","c"]
+
+
+# Runtime: 29 ms, faster than 94.83% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 23.40% of Python3 online submissions
+
+
+#%%
+
+
+class Solution:
+    def findAndReplacePattern(self, words, pattern):
+        def encode(word):                
+            cypher = {}
+            count = 0
+            new_word = []
+
+            for char in word:
+                if char not in cypher:
+                    cypher[char] = chr(count + 97)
+                    new_word.append(chr(count + 97))
+                    count += 1
+                else:
+                    new_word.append(cypher[char])
+                    count += 1
+
+            return ''.join(new_word)      
+
 
         indexes = []
         pattern = encode(pattern)
