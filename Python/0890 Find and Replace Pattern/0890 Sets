@@ -41,3 +41,22 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def findAndReplacePattern(self, words, pattern):
+        return [i for i in words if len(set(zip(i, pattern))) == len(set(i)) == len(set(pattern))]
+
+
+if __name__ == '__main__':
+    print(Solution().findAndReplacePattern(words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"))
+    # ["mee","aqq"]
+    print(Solution().findAndReplacePattern(words = ["a","b","c"], pattern = "a"))
+    # ["a","b","c"]
+
+
+# Runtime: 33 ms, faster than 84.63% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 23.40% of Python3 online submissions
+
+
+#%%
