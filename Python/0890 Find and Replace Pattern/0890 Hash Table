@@ -59,3 +59,41 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def findAndReplacePattern(self, words, pattern):
+        def encode(word):                
+            cypher = {}
+            count = 0
+            new_word = []
+
+            for char in word:
+                if char not in cypher:
+                    cypher[char] = chr(count + 97)
+                    new_word.append(chr(count + 97))
+                    count += 1
+                else:
+                    new_word.append(cypher[char])
+                    count += 1
+
+            return ''.join(new_word)    
+
+
+        pattern = encode(pattern)
+        results = [words[idx] for idx, word in enumerate(words) if encode(word) == pattern] 
+        return results
+
+
+if __name__ == '__main__':
+    print(Solution().findAndReplacePattern(words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"))
+    # ["mee","aqq"]
+    print(Solution().findAndReplacePattern(words = ["a","b","c"], pattern = "a"))
+    # ["a","b","c"]
+
+
+# Runtime: 39 ms, faster than 55.78% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 70.20% of Python3 online submissions
+
+
+#%%
