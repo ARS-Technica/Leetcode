@@ -1,0 +1,61 @@
+"""
+890. Find and Replace Pattern
+Medium
+https://leetcode.com/problems/find-and-replace-pattern/description/
+
+Given a list of strings words and a string pattern, return a list of words[i]
+that match pattern. You may return the answer in any order.
+
+A word matches the pattern if there exists a permutation of letters p so that
+after replacing every letter x in the pattern with p(x), we get the desired word.
+
+Recall that a permutation of letters is a bijection from letters to letters:
+every letter maps to another letter, and no two letters map to the same letter.
+"""
+
+
+class Solution:
+    def findAndReplacePattern(self, words, pattern):
+        def encode(word):                
+            cypher = {}
+            count = 0
+            new_word = []
+
+            for char in word:
+                if char not in cypher:
+                    cypher[char] = chr(count + 97)
+                    new_word.append(chr(count + 97))
+                    count += 1
+                else:
+                    new_word.append(cypher[char])
+                    count += 1
+
+            return ''.join(new_word)      
+
+
+        indexes = []
+        pattern = encode(pattern)
+
+
+        for idx, word in enumerate(words):           
+            encoded = encode(word)
+
+            if encoded == pattern: 
+                indexes.append(idx)
+
+        results = [words[n] for n in indexes] 
+        return results
+
+
+if __name__ == '__main__':
+    print(Solution().findAndReplacePattern(words = ["abc","deq","mee","aqq","dkd","ccc"], pattern = "abb"))
+    # ["mee","aqq"]
+    print(Solution().findAndReplacePattern(words = ["a","b","c"], pattern = "a"))
+    # ["a","b","c"]
+
+
+# Runtime: 34 ms, faster than 80.14% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 98.23% of Python3 online submissions
+
+
+#%%
