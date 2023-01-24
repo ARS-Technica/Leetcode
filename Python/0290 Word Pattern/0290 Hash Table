@@ -1,0 +1,47 @@
+"""
+290. Word Pattern
+Easy
+https://leetcode.com/problems/word-pattern/
+
+Given a pattern and a string s, find if s follows the same pattern.
+
+Here follow means a full match, such that there is a bijection between a letter
+in pattern and a non-empty word in s.
+"""
+
+
+# Not mine.
+# https://leetcode.com/problems/word-pattern/solutions/2979616/python-solution-beats-97-10-ms/
+
+
+class Solution:
+    def wordPattern(self, pattern, s):
+        l = s.split()
+
+        if len(pattern) != len(l):
+            return False
+
+        hash = {}
+
+        for key in range(len(pattern)):
+            if pattern[key] not in hash and l[key] in hash.values():
+                return False
+            if pattern[key] not in hash:
+                hash[pattern[key]] = l[key]
+            elif hash[pattern[key]] != l[key]:
+                return False
+
+        return True
+
+
+if __name__ == '__main__':
+    print(Solution().wordPattern(pattern = "abba", s = "dog cat cat dog"))          # true
+    print(Solution().wordPattern(pattern = "abba", s = "dog cat cat fish"))         # false
+    print(Solution().wordPattern(pattern = "aba", s = "cat cat cat dog"))           # false
+
+
+# Runtime: 28 ms, faster than 85.67% of Python3 online submissions
+# Memory Usage: 14 MB, less than 13.23% of Python3 online submissions
+
+
+#%%
