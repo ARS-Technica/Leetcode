@@ -1,0 +1,43 @@
+"""
+152. Maximum Product Subarray
+Medium
+https://leetcode.com/problems/maximum-product-subarray/description/
+
+Given an integer array nums, find a subarray that has the largest product, and return the product.
+
+The test cases are generated so that the answer will fit in a 32-bit integer.
+"""
+
+
+class Solution:
+    def maxProduct(self, nums):
+        length = len(nums)
+        product = 1
+        results = []
+
+        for i in range(0, length):
+            for j in range(i, length): 
+                for k in range(i, j + 1):
+                    product *= nums[k]
+
+                results.append(product)
+                product = 1
+
+        # print(results)
+        return max(results)
+
+
+if __name__ == '__main__':
+    print(Solution().maxProduct(nums = [2,3,-2,4]))     # 6
+    print(Solution().maxProduct(nums = [-2,0,-1]))      # 0
+    print(Solution().maxProduct(nums = [-2]))           # -2
+    print(Solution().maxProduct(nums = [-4,-3]))        # 12
+    print(Solution().maxProduct(nums = [0,2]))          # 2
+    print(Solution().maxProduct(nums = [3,-1,4]))       # 4
+    print(Solution().maxProduct(nums = [-2,3,-4]))      # 24
+
+
+# Time Limit Exceeded
+
+
+#%%
