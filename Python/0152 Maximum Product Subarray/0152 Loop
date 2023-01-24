@@ -76,3 +76,40 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# Neetcode: https://www.youtube.com/watch?v=lXVy6YWFcRM
+
+
+class Solution:
+    def maxProduct(self, nums):
+        curMax = 1
+        curMin = 1
+        result = max(nums)
+
+        for num in nums:
+            tmp = curMax * num
+
+            curMax = max(tmp, num * curMin, num)
+            curMin = min(tmp, num * curMin, num)
+            result = max(result, curMax)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxProduct(nums = [2,3,-2,4]))     # 6
+    print(Solution().maxProduct(nums = [-2,0,-1]))      # 0
+    print(Solution().maxProduct(nums = [-2]))           # -2
+    print(Solution().maxProduct(nums = [-4,-3]))        # 12
+    print(Solution().maxProduct(nums = [0,2]))          # 2
+    print(Solution().maxProduct(nums = [3,-1,4]))       # 4
+    print(Solution().maxProduct(nums = [-2,3,-4]))      # 24
+
+
+# Runtime: 227 ms, faster than 8.57% of Python3 online submissions
+# Memory Usage: 14.4 MB, less than 74.99% of Python3 online submissions
+
+
+#%%
