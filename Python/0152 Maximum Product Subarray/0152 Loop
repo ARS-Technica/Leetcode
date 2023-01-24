@@ -40,3 +40,39 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/maximum-product-subarray/solutions/1608907/python3-dynamic-programming-explained/
+
+
+class Solution:
+    def maxProduct(self, nums):
+        curMax = 1
+        curMin = 1
+        result = nums[0]
+
+        for num in nums:
+            vals = (num, num * curMax, num * curMin)
+            curMax, curMin = max(vals), min(vals)
+
+            result = max(result, curMax)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().maxProduct(nums = [2,3,-2,4]))     # 6
+    print(Solution().maxProduct(nums = [-2,0,-1]))      # 0
+    print(Solution().maxProduct(nums = [-2]))           # -2
+    print(Solution().maxProduct(nums = [-4,-3]))        # 12
+    print(Solution().maxProduct(nums = [0,2]))          # 2
+    print(Solution().maxProduct(nums = [3,-1,4]))       # 4
+    print(Solution().maxProduct(nums = [-2,3,-4]))      # 24
+
+
+# Runtime: 86 ms, faster than 80.77% of Python3 online submissions
+# Memory Usage: 14.3 MB, less than 74.99% of Python3 online submissions
+
+
+#%%
