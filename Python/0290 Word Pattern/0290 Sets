@@ -61,3 +61,29 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/word-pattern/solutions/2977027/python-3-2-lines-w-explanation-t-m-98-100/
+
+
+from itertools import zip_longest
+
+
+class Solution:
+    def wordPattern(self, pattern, s):
+        s = s.split()
+        return (len(set(pattern)) == len(set(s)) == len(set(zip_longest(pattern,s))))
+
+
+if __name__ == '__main__':
+    print(Solution().wordPattern(pattern = "abba", s = "dog cat cat dog"))          # true
+    print(Solution().wordPattern(pattern = "abba", s = "dog cat cat fish"))         # false
+    print(Solution().wordPattern(pattern = "aba", s = "cat cat cat dog"))           # false
+
+
+# Runtime: 54 ms, faster than 9.52% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 61.59% of Python3 online submissions
+
+
+#%%
