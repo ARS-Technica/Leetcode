@@ -1,0 +1,39 @@
+"""
+713. Subarray Product Less Than K
+Medium
+https://leetcode.com/problems/subarray-product-less-than-k/description/
+
+Given an array of integers nums and an integer k, return the number of contiguous
+subarrays where the product of all the elements in the subarray is strictly less
+than k.
+"""
+
+
+class Solution:
+    def numSubarrayProductLessThanK(self, nums, k):
+        left = 0
+        product = 1
+        result = 0
+
+        for right, num in enumerate(nums):
+            product *= num
+
+            while left <= right and product >= k:
+                product //= nums[left]
+                left += 1
+
+            result += right - left + 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().numSubarrayProductLessThanK(nums = [10,5,2,6], k = 100))           # 8
+    print(Solution().numSubarrayProductLessThanK(nums = [1,2,3], k = 0))                # 0
+
+
+# Runtime: 1233 ms, faster than 29.16% of Python3 online submissions
+# Memory Usage: 16.6 MB, less than 66.16% of Python3 online submissions
+
+
+#%%
