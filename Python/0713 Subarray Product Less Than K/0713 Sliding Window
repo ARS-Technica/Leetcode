@@ -46,8 +46,36 @@ if __name__ == '__main__':
 #%%
 
 
+# Better solution. Not mine.
+# https://leetcode.com/problems/subarray-product-less-than-k/solutions/868985/python-simple-solution-explained-video-code-fastest/
 
 
+class Solution:
+    def numSubarrayProductLessThanK(self, nums, k):
+        left = 0
+        product = 1
+        result = 0
+
+        for right in range(len(nums)):
+            product *= nums[right]
+
+            if product >= k:
+                while left <= right and product >= k:
+                    product /= nums[left]
+                    left += 1
+
+            result += right - left + 1
+
+        return result
 
 
+if __name__ == '__main__':
+    print(Solution().numSubarrayProductLessThanK(nums = [10,5,2,6], k = 100))           # 8
+    print(Solution().numSubarrayProductLessThanK(nums = [1,2,3], k = 0))                # 0
 
+
+# Runtime: 746 ms, faster than 58.52% of Python3 online submissions
+# Memory Usage: 16.5 MB, less than 66.16% of Python3 online submissions
+
+
+#%%
