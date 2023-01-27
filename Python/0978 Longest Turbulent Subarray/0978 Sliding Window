@@ -1,0 +1,61 @@
+"""
+978. Longest Turbulent Subarray
+Medium
+https://leetcode.com/problems/longest-turbulent-subarray/
+
+Given an integer array arr, return the length of a maximum size turbulent subarray of arr.
+
+A subarray is turbulent if the comparison sign flips between each adjacent pair
+of elements in the subarray.
+
+More formally, a subarray [arr[i], arr[i + 1], ..., arr[j]] of arr is said to be
+turbulent if and only if:
+
+For i <= k < j:
+    arr[k] > arr[k + 1] when k is odd, and
+    arr[k] < arr[k + 1] when k is even.
+
+Or, for i <= k < j:
+    arr[k] > arr[k + 1] when k is even, and
+    arr[k] < arr[k + 1] when k is odd.    
+"""
+
+
+# Time Complexity: O(N) | Space Complexity: O(1)
+
+
+class Solution:
+    def maxTurbulenceSize(self, arr):
+        n = len(arr)  
+        if n == 1: return 1
+        result = 0
+
+        left = 0
+        right = 0
+
+        while right < n:
+            while right < (n-1) and (arr[right-1] > arr[right] < arr[right+1] or arr[right-1] < arr[right] > arr[right+1]):
+                right += 1
+
+            while left < right and arr[left]==arr[left+1]:
+                left += 1
+
+            result = max(result, right-left + 1)
+
+            left = right
+            right += 1
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().maxTurbulenceSize(arr = [9,4,2,10,7,8,8,1,9]))         # 5
+    print(Solution().maxTurbulenceSize(arr = [4,8,12,16]))                  # 2
+    print(Solution().maxTurbulenceSize(arr = [100]))                        # 1
+
+
+# Runtime: 1013 ms, faster than 24.47% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 17.6 MB, less than 94.30% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
