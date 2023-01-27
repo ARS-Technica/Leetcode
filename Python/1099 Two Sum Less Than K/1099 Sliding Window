@@ -1,0 +1,41 @@
+"""
+1099. Two Sum Less Than K
+Easy
+https://leetcode.com/problems/two-sum-less-than-k/
+
+Given an array nums of integers and integer k, return the maximum sum such that
+there exists i < j with nums[i] + nums[j] = sum and sum < k. If no i, j exist
+satisfying this equation, return -1.
+"""
+
+
+class Solution:
+    def twoSumLessThanK(self, nums, k):
+        nums.sort()
+        
+        left = 0
+        result = float('-inf')
+        right = len(nums) - 1
+        
+        while left < right:
+            total = nums[left] + nums[right]
+            
+            if total < k:
+                result = max(result, total)
+                left += 1
+            else:
+                right -= 1
+
+        return result if result > 0 else -1
+
+
+if __name__ == '__main__':
+    print(Solution().twoSumLessThanK(nums = [34,23,1,24,75,33,54,8], k = 60))           # 58
+    print(Solution().twoSumLessThanK(nums = [10,20,30], k = 15))                        # -1
+
+
+# Runtime: 746 ms, faster than 58.52% of Python3 online submissions
+# Memory Usage: 16.5 MB, less than 66.16% of Python3 online submissions
+
+
+#%%
