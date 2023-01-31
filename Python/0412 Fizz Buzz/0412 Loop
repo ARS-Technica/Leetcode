@@ -88,3 +88,29 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def fizzBuzz(self, n):       
+        result = [str(i + 1) for i in range(n)]
+
+        for i in range(2, n, 3): result[i] = "Fizz"
+
+        for i in range(4, n, 5): result[i] = "Buzz"
+
+        for i in range(14, n, 15): result[i] = "FizzBuzz"
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().fizzBuzz(n = 3))    # ["1","2","Fizz"]
+    print(Solution().fizzBuzz(n = 5))    # ["1","2","Fizz","4","Buzz"]
+    print(Solution().fizzBuzz(n = 15))   # ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
+
+
+# Runtime: 45 ms, faster than 70.70% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 15 MB, less than 36.38% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
