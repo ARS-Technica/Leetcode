@@ -82,3 +82,33 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/categorize-box-according-to-criteria/solutions/3014976/c-java-python3-if-else/
+
+# Placing the boolean evalutions in the variables looks slick, but again, results in slower performance.
+
+
+class Solution:
+    def categorizeBox(self, length, width, height, mass):
+        bulky = max(length, width, height) >= 10000 or length*width*height >= 1000000000
+        heavy = mass >= 100 
+
+        if bulky and heavy: return "Both"
+        if bulky: return "Bulky"
+        if heavy: return "Heavy"
+
+        return "Neither"
+
+
+if __name__ == "__main__":
+    print(Solution().categorizeBox(length = 1000, width = 35, height = 700, mass = 300))    # "Heavy"
+    print(Solution().categorizeBox(length = 200, width = 50, height = 800, mass = 50))      # "Neither"
+
+
+# Runtime: 34 ms, faster than 48.25% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 14 MB, less than 15.69% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
