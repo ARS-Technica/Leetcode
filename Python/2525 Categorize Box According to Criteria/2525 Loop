@@ -18,6 +18,9 @@ Note that the volume of the box is the product of its length, width and height.
 """
 
 
+# There are more sophisticated ways of doing this, but the simplist seem to be most efficent.
+
+
 class Solution:
     def categorizeBox(self, length, width, height, mass):
         bulky = False
@@ -47,6 +50,35 @@ if __name__ == "__main__":
 
 # Runtime: 24 ms, faster than 95.27% of Python3 online submissions for Continuous Subarray Sum.
 # Memory Usage: 13.9 MB, less than 67.52% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
+
+
+# Grouping booleans for easier reading leads to less efficent run time.
+
+
+class Solution:
+    def categorizeBox(self, length, width, height, mass):
+        volume = height * length * width
+
+        if (volume >= 10**9 or height >= 10**4 or width >= 10**4 or length >= 10**4) and mass >=100:
+            return "Both"
+        elif (volume < 10**9 or height < 10**4 or width < 10**4 or length < 10**4) and mass >=100:
+            return "Heavy"
+        elif (volume >= 10**9 or height >= 10**4 or width >= 10**4 or length >= 10**4) and mass <100:
+            return "Bulky"
+        else:
+            return "Neither"
+
+
+if __name__ == "__main__":
+    print(Solution().categorizeBox(length = 1000, width = 35, height = 700, mass = 300))    # "Heavy"
+    print(Solution().categorizeBox(length = 200, width = 50, height = 800, mass = 50))      # "Neither"
+
+
+# Runtime: 30 ms, faster than 74.85% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 14 MB, less than 15.69% of Python3 online submissions for Continuous Subarray Sum. 
 
 
 #%%
