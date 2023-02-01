@@ -112,3 +112,28 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/categorize-box-according-to-criteria/solutions/3015443/python-3-2-lines-w-explanation-t-m-100-100/
+
+
+class Solution:
+    def categorizeBox(self, length: int, width: int, height: int, mass: int) -> str:
+
+        idx = int(length >= 10000 or width >= 10000 or height >= 10000 or 
+               length * width * height >= 10**9) + 2*(mass >= 100)
+
+        return ("Neither", "Bulky", "Heavy", "Both")[idx]
+
+
+if __name__ == "__main__":
+    print(Solution().categorizeBox(length = 1000, width = 35, height = 700, mass = 300))    # "Heavy"
+    print(Solution().categorizeBox(length = 200, width = 50, height = 800, mass = 50))      # "Neither"
+
+
+# Runtime: 39 ms, faster than 13.77% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 14 MB, less than 15.69% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
