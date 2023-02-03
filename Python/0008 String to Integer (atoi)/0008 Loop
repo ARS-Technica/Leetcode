@@ -130,3 +130,54 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def myAtoi(self, s):
+        maximum = 2147483647
+        minimum = -2147483648
+        pointer = 0
+        result = 0
+        sign = 1
+
+        s = s.strip() 
+        if not s: return 0
+
+        if s[pointer] == '-':
+            sign = -1
+            pointer += 1
+        elif s[pointer] == '+':
+            pointer += 1
+
+        length =  len(s)
+
+        while pointer < length:
+            if not s[pointer].isdigit(): break            
+            result = result * 10 + ord(s[pointer]) - ord('0')
+            if result > maximum: break      # Adding break line reduce Runtime
+            pointer += 1
+
+        result = result * sign
+
+        if result < minimum:
+            return minimum
+        elif result > maximum:
+            return maximum
+        else:
+            return result
+
+
+if __name__ == "__main__":
+    print(Solution().myAtoi(s = "42"))                  # 42
+    print(Solution().myAtoi(s = "   -42"))              # -42
+    print(Solution().myAtoi(s = "4193 with words"))     # 4193
+    print(Solution().myAtoi(s = "words and 987"))       # 0
+    print(Solution().myAtoi(s = "-91283472332"))        # -2147483648
+    print(Solution().myAtoi(s = ""))                    # 0
+
+
+# Runtime: 27 ms, faster than 98.34% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
