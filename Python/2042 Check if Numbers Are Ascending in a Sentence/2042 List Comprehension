@@ -59,3 +59,22 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def areNumbersAscending(self, s):
+        numbers = [int(n) for n in s.split() if n.isdigit()]
+        return all(numbers[i-1] < numbers[i] for i in range(1, len(numbers)))
+
+
+if __name__ == "__main__":
+    print(Solution().areNumbersAscending(s = "1 box has 3 blue 4 red 6 green and 12 yellow marbles"))                  # True
+    print(Solution().areNumbersAscending(s = "hello world 5 x 5"))                                                     # False
+    print(Solution().areNumbersAscending(s = "sunset is at 7 51 pm overnight lows will be in the low 50 and 60 s"))    # False
+
+
+# Runtime: 41 ms, faster than 31.89% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 9.77% of Python3 online submissions
+
+
+#%%
