@@ -97,3 +97,25 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+from re import findall
+
+
+class Solution:
+    def areNumbersAscending(self, s):
+        numbers = list(map(int, findall(r"\b\d+\b", s)))
+        return len(numbers) < 2 or all(n2 > n1 for n1, n2 in zip(numbers, numbers[1:]))
+
+
+if __name__ == "__main__":
+    print(Solution().areNumbersAscending(s = "1 box has 3 blue 4 red 6 green and 12 yellow marbles"))                  # True
+    print(Solution().areNumbersAscending(s = "hello world 5 x 5"))                                                     # False
+    print(Solution().areNumbersAscending(s = "sunset is at 7 51 pm overnight lows will be in the low 50 and 60 s"))    # False
+
+
+# Runtime: 33 ms, faster than 65.54% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 9.77% of Python3 online submissions
+
+
+#%%
