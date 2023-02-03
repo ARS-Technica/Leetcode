@@ -235,3 +235,54 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def myAtoi(self, s):
+        mapping = {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5,
+                   "6": 6, "7": 7, "8": 8, "9": 9, "0": 0,}
+
+        s = s.lstrip(' ')
+        if not s: return 0
+
+        sign = -1 if s[0] == "-" else 1
+        if sign != 1 or s[0] == "+": s = s[1:]
+
+        result = 0
+
+        for char in s:
+            if char not in mapping:
+                return self.limit(result * sign)
+
+            result *= 10
+            result += mapping[char]
+
+        return self.limit(result * sign)
+
+
+    def limit(self, n):
+        maximum = 2147483647
+        minimum = -2147483648
+
+        if n > maximum:
+            return maximum
+        if n < minimum:
+            return minimum
+
+        return n
+
+
+if __name__ == "__main__":
+    print(Solution().myAtoi(s = "42"))                  # 42
+    print(Solution().myAtoi(s = "   -42"))              # -42
+    print(Solution().myAtoi(s = "4193 with words"))     # 4193
+    print(Solution().myAtoi(s = "words and 987"))       # 0
+    print(Solution().myAtoi(s = "-91283472332"))        # -2147483648
+    print(Solution().myAtoi(s = ""))                    # 0
+
+
+# Runtime: 39 ms, faster than 63.73% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
