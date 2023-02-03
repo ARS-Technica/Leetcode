@@ -35,8 +35,8 @@ if __name__ == "__main__":
     print(Solution().fizzBuzz(n = 15))   # ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 
-# Runtime: 43 ms, faster than 79.78% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 14.9 MB, less than 78.91% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 43 ms, faster than 79.78% of Python3 online submissions
+# Memory Usage: 14.9 MB, less than 78.91% of Python3 online submissions
 
 
 #%%
@@ -65,8 +65,8 @@ if __name__ == "__main__":
     print(Solution().fizzBuzz(n = 15))   # ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 
-# Runtime: 50 ms, faster than 47.71% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 14.9 MB, less than 78.91% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 50 ms, faster than 47.71% of Python3 online submissions
+# Memory Usage: 14.9 MB, less than 78.91% of Python3 online submissions
 
 
 #%%
@@ -83,8 +83,8 @@ if __name__ == "__main__":
     print(Solution().fizzBuzz(n = 15))   # ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 
-# Runtime: 43 ms, faster than 79.78% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 15 MB, less than 78.91% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 43 ms, faster than 79.78% of Python3 online submissions
+# Memory Usage: 15 MB, less than 78.91% of Python3 online submissions
 
 
 #%%
@@ -109,8 +109,8 @@ if __name__ == "__main__":
     print(Solution().fizzBuzz(n = 15))   # ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzBuzz"]
 
 
-# Runtime: 45 ms, faster than 70.70% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 15 MB, less than 36.38% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 45 ms, faster than 70.70% of Python3 online submissions
+# Memory Usage: 15 MB, less than 36.38% of Python3 online submissions
 
 
 #%%
