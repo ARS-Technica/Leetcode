@@ -396,3 +396,37 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+# Alternative solution. Not mine.
+# https://leetcode.com/problems/string-to-integer-atoi/solutions/1688546/python3-5-lines-faster-100-explained/
+
+
+def myAtoi(self, s: str) -> int:
+    length, i, sign, res = len(s), 0, +1, ''
+    
+    while i < length and s[i] == ' ': i = i + 1
+        
+    if i < length and s[i] in ('-', '+'): 
+        sign, i = -1 if s[i] == '-' else +1, i + 1
+        
+    while i < length and s[i].isdigit(): 
+        res, i = res + s[i], i + 1
+    
+    return max( -2**31, min( sign * int(res or 0), 2**31 - 1 ) )
+
+
+if __name__ == "__main__":
+    print(Solution().myAtoi(s = "42"))                  # 42
+    print(Solution().myAtoi(s = "   -42"))              # -42
+    print(Solution().myAtoi(s = "4193 with words"))     # 4193
+    print(Solution().myAtoi(s = "words and 987"))       # 0
+    print(Solution().myAtoi(s = "-91283472332"))        # -2147483648
+    print(Solution().myAtoi(s = ""))                    # 0
+
+
+# Runtime: 35 ms, faster than 81.54% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
