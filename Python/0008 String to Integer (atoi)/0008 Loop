@@ -74,8 +74,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 40 ms, faster than 58.19% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 40 ms, faster than 58.19% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
@@ -125,8 +125,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 38 ms, faster than 68.66% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.8 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 38 ms, faster than 68.66% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
@@ -176,8 +176,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 27 ms, faster than 98.34% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 27 ms, faster than 98.34% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions 
 
 
 #%%
@@ -281,8 +281,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 39 ms, faster than 63.73% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 39 ms, faster than 63.73% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
@@ -337,8 +337,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 46 ms, faster than 36.17% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.8 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 46 ms, faster than 36.17% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
@@ -391,8 +391,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 36 ms, faster than 76.84% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 36 ms, faster than 76.84% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
@@ -425,8 +425,8 @@ if __name__ == "__main__":
     print(Solution().myAtoi(s = ""))                    # 0
 
 
-# Runtime: 35 ms, faster than 81.54% of Python3 online submissions for Continuous Subarray Sum.
-# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+# Runtime: 35 ms, faster than 81.54% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 72.67% of Python3 online submissions
 
 
 #%%
