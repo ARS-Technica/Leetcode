@@ -79,3 +79,54 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def myAtoi(self, s):
+        maximum = 2147483647
+        minimum = -2147483648
+        negative = False
+        result = ''
+        s = list(s.strip())
+
+        if not s: return 0
+
+        if s[0] == '-':
+            negative = True
+            s.pop(0)
+        elif s[0] == '+':
+            s.pop(0)
+
+        for char in s:
+            if not char.isnumeric():
+                break
+            else:
+                result += char
+
+        if result:
+            result = int(result) if negative == False else -int(result)
+        else:
+            result = 0
+
+        if result < minimum:
+            return minimum
+        elif result > maximum:
+            return maximum
+        else:
+            return result
+
+
+if __name__ == "__main__":
+    print(Solution().myAtoi(s = "42"))                  # 42
+    print(Solution().myAtoi(s = "   -42"))              # -42
+    print(Solution().myAtoi(s = "4193 with words"))     # 4193
+    print(Solution().myAtoi(s = "words and 987"))       # 0
+    print(Solution().myAtoi(s = "-91283472332"))        # -2147483648
+    print(Solution().myAtoi(s = ""))                    # 0
+
+
+# Runtime: 38 ms, faster than 68.66% of Python3 online submissions for Continuous Subarray Sum.
+# Memory Usage: 13.8 MB, less than 72.67% of Python3 online submissions for Continuous Subarray Sum. 
+
+
+#%%
