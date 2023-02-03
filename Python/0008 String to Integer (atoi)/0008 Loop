@@ -181,3 +181,57 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def myAtoi(self, s):
+        if not s: return 0        
+
+        length = len(s)        
+        maximum = 2147483647
+        minimum = -2147483648
+        pointer = 0
+        result = 0
+        sign = 1
+
+        while pointer < length:
+            if s[pointer] == ' ':
+                pointer += 1
+            elif s[pointer] == '+':
+                pointer += 1
+            elif s[pointer] == '-':
+                sign = -1
+                pointer += 1
+            elif s[pointer].isdigit():
+                # result = result * 10 + ord(s[pointer]) - ord('0')
+                result = result * 10 + int(s[pointer])
+                pointer += 1
+            elif not s[pointer].isdigit():
+                break            
+            elif result > maximum:
+                break
+
+        result = result * sign
+
+        if result < minimum:
+            return minimum
+        elif result > maximum:
+            return maximum
+        else:
+            return result
+
+
+if __name__ == "__main__":
+    print(Solution().myAtoi(s = "42"))                  # 42
+    print(Solution().myAtoi(s = "   -42"))              # -42
+    print(Solution().myAtoi(s = "4193 with words"))     # 4193
+    print(Solution().myAtoi(s = "words and 987"))       # 0
+    print(Solution().myAtoi(s = "-91283472332"))        # -2147483648
+    print(Solution().myAtoi(s = ""))                    # 0
+    print(Solution().myAtoi(s = "+-12"))                # 0
+
+
+# Does not work for s = "+-12" 
+
+
+#%%
