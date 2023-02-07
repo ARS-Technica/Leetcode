@@ -39,8 +39,8 @@ if __name__ == "__main__":
     print(Solution().sortSentence(s = "Myself2 Me1 I4 and3"))           # "Me Myself and I" 
 
 
-# Runtime: 44 ms, faster than 32.19% of Python3 online submissions
-# Memory Usage: 13.8 MB, less than 95.17% of Python3 online submissions
+# Runtime: 23 ms, faster than 97.83% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 50.35% of Python3 online submissions
 
 
 #%%
