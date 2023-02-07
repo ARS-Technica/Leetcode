@@ -1,0 +1,46 @@
+"""
+1859. Sorting the Sentence
+Easy
+https://leetcode.com/problems/sorting-the-sentence/description/ 
+
+A sentence is a list of words that are separated by a single space with no
+leading or trailing spaces. Each word consists of lowercase and uppercase English letters.
+
+A sentence can be shuffled by appending the 1-indexed word position to each word
+then rearranging the words in the sentence.
+
+For example, the sentence "This is a sentence" can be shuffled as "sentence4 a3
+is2 This1" or "is2 sentence4 This1 a3".
+
+Given a shuffled sentence s containing no more than 9 words, reconstruct and
+return the original sentence.
+"""
+
+
+class Solution:
+    def sortSentence(self, s):
+        indexes = {}
+        s = list(s.split())
+
+        for word in s:
+            indexes[int(word[-1])] = word[0:-1]
+
+        length = len(s)
+        result = '' + indexes[1]
+
+        for idx in range(2, length + 1):
+            result += ' ' + indexes[idx]
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().sortSentence(s = "is2 sentence4 This1 a3"))        # "This is a sentence"
+    print(Solution().sortSentence(s = "Myself2 Me1 I4 and3"))           # "Me Myself and I" 
+
+
+# Runtime: 44 ms, faster than 32.19% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 95.17% of Python3 online submissions
+
+
+#%%
