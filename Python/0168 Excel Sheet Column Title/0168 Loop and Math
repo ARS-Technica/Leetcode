@@ -33,14 +33,78 @@ if __name__ == "__main__":
 #%%
 
 
+class Solution:
+    def convertToTitle(self, columnNumber):
+        result = []
+
+        while columnNumber:
+            columnNumber -= 1
+            result.append(chr(ord('A') + columnNumber % 26))
+            columnNumber //= 26
+
+        return ''.join(result[::-1])
 
 
+if __name__ == "__main__":
+    print(Solution().convertToTitle(columnNumber = 1))              # "A"
+    print(Solution().convertToTitle(columnNumber = 28))             # "AB"
+    print(Solution().convertToTitle(columnNumber = 701))            # "ZY"
+    print(Solution().convertToTitle(columnNumber = 2147483647))     # "ZY"
 
 
+# Runtime: 27 ms, faster than 89.27% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 94.46% of Python3 online submissions
 
 
+#%%
 
 
+class Solution:
+    def convertToTitle(self, columnNumber):
+        result = ''
+
+        while columnNumber:
+            columnNumber -= 1
+            result += chr(ord('A') + columnNumber % 26)
+            columnNumber //= 26
+
+        return result[::-1]
 
 
+if __name__ == "__main__":
+    print(Solution().convertToTitle(columnNumber = 1))              # "A"
+    print(Solution().convertToTitle(columnNumber = 28))             # "AB"
+    print(Solution().convertToTitle(columnNumber = 701))            # "ZY"
+    print(Solution().convertToTitle(columnNumber = 2147483647))     # "ZY"
 
+
+# Runtime: 36 ms, faster than 43.88% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 50.80% of Python3 online submissions
+
+
+#%%
+
+
+class Solution:
+    def convertToTitle(self, columnNumber):
+        result = ''
+
+        while columnNumber:
+            columnNumber -= 1
+            result += chr(columnNumber % 26 + 65)
+            columnNumber //= 26
+
+        return result[::-1]
+
+
+if __name__ == "__main__":
+    print(Solution().convertToTitle(columnNumber = 1))              # "A"
+    print(Solution().convertToTitle(columnNumber = 28))             # "AB"
+    print(Solution().convertToTitle(columnNumber = 701))            # "ZY"
+    print(Solution().convertToTitle(columnNumber = 2147483647))     # "ZY"
+
+# Runtime: 20 ms, faster than 99.20% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 50.80% of Python3 online submissions
+
+
+#%%
