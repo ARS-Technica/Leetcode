@@ -1,0 +1,31 @@
+"""
+171. Excel Sheet Column Number
+Easy
+https://leetcode.com/problems/excel-sheet-column-number/description/
+
+Given a string columnTitle that represents the column title as appears in an
+Excel sheet, return its corresponding column number.
+"""
+
+
+class Solution:
+    def titleToNumber(self, columnTitle):
+        result = 0
+
+        for letter in columnTitle:
+            result = (ord(letter) - 64) + (result * 26)
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().titleToNumber(columnTitle = "A"))              # 1
+    print(Solution().titleToNumber(columnTitle = "AB"))             # 28
+    print(Solution().titleToNumber(columnTitle = "ZY"))             # 701
+
+
+# Runtime: 36 ms, faster than 63.60% of Python3 online submissions
+# Memory Usage: 14 MB, less than 7.84% of Python3 online submissions
+
+
+#%%
