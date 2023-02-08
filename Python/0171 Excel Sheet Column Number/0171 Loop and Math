@@ -52,3 +52,21 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+class Solution:
+    def titleToNumber(self, columnTitle):
+        return sum([(ord(char) - 64) * (26**(len(columnTitle)-1 - idx)) for idx, char in enumerate(columnTitle)])
+
+
+if __name__ == "__main__":
+    print(Solution().titleToNumber(columnTitle = "A"))              # 1
+    print(Solution().titleToNumber(columnTitle = "AB"))             # 28
+    print(Solution().titleToNumber(columnTitle = "ZY"))             # 701
+
+
+# Runtime: 33 ms, faster than 77.13% of Python3 online submissions
+# Memory Usage: 13.8 MB, less than 48.86% of Python3 online submissions
+
+
+#%%
