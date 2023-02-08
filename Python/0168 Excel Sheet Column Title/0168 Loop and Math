@@ -1,0 +1,46 @@
+"""
+168. Excel Sheet Column Title
+Easy
+https://leetcode.com/problems/excel-sheet-column-title/description/
+
+Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+"""
+
+
+class Solution:
+    def convertToTitle(self, columnNumber):
+        result = []
+
+        while columnNumber:
+            columnNumber -= 1
+            result.append(chr(ord('A') + columnNumber % 26))
+            columnNumber //= 26
+
+        return ''.join(result[::-1])
+
+
+if __name__ == "__main__":
+    print(Solution().convertToTitle(columnNumber = 1))              # "A"
+    print(Solution().convertToTitle(columnNumber = 28))             # "AB"
+    print(Solution().convertToTitle(columnNumber = 701))            # "ZY"
+    print(Solution().convertToTitle(columnNumber = 2147483647))     # "ZY"
+
+
+# Runtime: 29 ms, faster than 81.47% of Python3 online submissions
+# Memory Usage: 13.9 MB, less than 7.62% of Python3 online submissions
+
+
+#%%
+
+
+
+
+
+
+
+
+
+
+
+
+
