@@ -36,3 +36,26 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+from collections import Counter
+
+
+class Solution:
+    def sumOfUnique(self, nums):
+        freq = Counter(nums)
+        result = sum(key for key, value in freq.items() if value == 1)
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().sumOfUnique(nums = [1,2,3,2]))                 # 4
+    print(Solution().sumOfUnique(nums = [1,1,1,1,1]))               # 0
+    print(Solution().sumOfUnique(nums = [1,2,3,4,5]))               # 15
+
+
+# Runtime: 41 ms, faster than 38.69% of Python3 online submissions
+# Memory Usage: 13.7 MB, less than 93.91% of Python3 online submissions
+
+
+#%%
