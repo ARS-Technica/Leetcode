@@ -28,6 +28,55 @@ the grid is initially empty, and A will play first.
 
 
 class Solution:
+    def tictactoe(self, moves):      
+        # Players
+        A = set(tuple(step) for step in moves[::2])
+        B = set(tuple(step) for step in moves[1::2])        
+        
+
+        # Victory Conditions
+
+        victory = [ [(0, 0), (1, 0), (2, 0)], [(0, 1), (1, 1), (2, 1)], 
+                    [(0, 2), (1, 2), (2, 2)], [(0, 0), (0, 1), (0, 2)],
+                    [(1, 0), (1, 1), (1, 2)], [(2, 0), (2, 1), (2, 2)],
+                    [(0, 0), (1, 1), (2, 2)], [(0, 2), (1, 1), (2, 0)]  ]
+
+
+        for condition in victory:
+            if condition[0] in A and condition[1] in A and condition[2] in A:
+                print(A)
+                return 'A'
+            if condition[0] in B and condition[1] in B and condition[2] in B:
+                print(B)
+                return 'B'
+
+
+        # No winners
+
+        if len(moves) == 9:
+            return 'Draw'
+        else:
+            return 'Pending'
+
+
+if __name__ == "__main__":
+    print(Solution().tictactoe(moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]))                            # "A"
+    print(Solution().tictactoe(moves = [[0,0],[1,1],[0,1],[0,2],[1,0],[2,0]]))                      # "B"
+    print(Solution().tictactoe(moves = [[0,0],[1,1],[2,0],[1,0],[1,2],[2,1],[0,1],[0,2],[2,2]]))    # "Draw"
+    print(Solution().tictactoe(moves = [[0,0],[1,1]]))                                              # "Pending"
+    print(Solution().tictactoe(moves = [[0,2],[2,0],[2,1],[0,1],[1,2]]))                            # "Pending"
+    print(Solution().tictactoe(moves = [[0,2],[0,1],[2,1]]))                                        # "Pending"
+    print(Solution().tictactoe(moves = [[2,2],[0,1],[2,1],[0,0],[0,2]]))                            # "Pending"
+
+
+# Runtime: 28 ms, faster than 94.42% of Python3 online submissions
+# Memory Usage: 14 MB, less than 30.52% of Python3 online submissions
+
+
+#%%
+
+
+class Solution:
     def tictactoe(self, moves):
         n = len(moves)
         counter = [0] * 8
