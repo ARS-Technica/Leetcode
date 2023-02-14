@@ -50,8 +50,45 @@ if __name__ == "__main__":
     print(Solution().convert(s = "A", numRows = 1))                   # "A"
 
 
-# Runtime: 65 ms, faster than 46.30% of Python3 online submissions
-# Memory Usage: 14.3 MB, less than 16.22% of Python3 online submissions
+# Runtime: 64 ms, faster than 48.68% of Python3 online submissions
+# Memory Usage: 14.2 MB, less than 27.6% of Python3 online submissions
+
+
+#%%
+
+
+# Time Complexity: O(N) | Space Complexity: O(N)
+
+
+class Solution:
+    def convert(self, s, numRows):
+        rows = [''] * numRows
+        s = list(s)
+
+        while s:
+            for idx in range(numRows):
+                try:
+                    rows[idx] += s.pop(0)
+                except:
+                    break
+
+            for row in range(numRows - 1, 1, -1):
+                try:
+                    rows[row-1] += s.pop(0)
+                except:
+                    break
+
+        return ''.join(rows)
+
+
+if __name__ == "__main__":
+    print(Solution().convert(s = "PAYPALISHIRING", numRows = 3))      # "PAHNAPLSIIGYIR"
+    print(Solution().convert(s = "PAYPALISHIRING", numRows = 4))      # "PINALSIGYAHRPI"
+    print(Solution().convert(s = "A", numRows = 1))                   # "A"
+
+
+# Runtime: 51 ms, faster than 88.36% of Python3 online submissions
+# Memory Usage: 14.1 MB, less than 45.78% of Python3 online submissions
 
 
 #%%
