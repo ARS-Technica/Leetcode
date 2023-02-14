@@ -1,0 +1,57 @@
+"""
+6. Zigzag Conversion
+Medium
+https://leetcode.com/problems/zigzag-conversion/
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of
+rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string s, int numRows);
+"""
+
+
+class Solution:
+    def convert(self, s, numRows):
+        rows = []
+        s = list(s)
+
+        for row in range(numRows):
+            rows.append([])
+
+        while s:
+            for idx in range(numRows):
+                try:
+                    rows[idx].append(s.pop(0))
+                except:
+                    break
+
+            for row in range(numRows - 1, 1, -1):
+                try:
+                    rows[row-1].append(s.pop(0))
+                except:
+                    break
+
+        result = ''.join((j for i in rows for j in i))
+
+        return result
+
+
+if __name__ == "__main__":
+    print(Solution().convert(s = "PAYPALISHIRING", numRows = 3))      # "PAHNAPLSIIGYIR"
+    print(Solution().convert(s = "PAYPALISHIRING", numRows = 4))      # "PINALSIGYAHRPI"
+    print(Solution().convert(s = "A", numRows = 1))                   # "A"
+
+
+# Runtime: 65 ms, faster than 46.30% of Python3 online submissions
+# Memory Usage: 14.3 MB, less than 16.22% of Python3 online submissions
+
+
+#%%
