@@ -44,3 +44,37 @@ if __name__ == "__main__":
 
 
 #%%
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def findTargetSumWays(self, nums, target):
+        if not nums or sum(nums)< target: return 0
+
+        result = {0:1}
+
+        for i in range(len(nums)):
+            temp_dic = defaultdict(int)
+
+            for k in result:
+                temp_dic[k+nums[i]] += result[k]
+                temp_dic[k-nums[i]] += result[k]
+
+            result = temp_dic
+
+        return result[target]
+
+
+if __name__ == "__main__":
+    print(Solution().findTargetSumWays(nums = [1,1,1,1,1], target = 3))         # 5
+    print(Solution().findTargetSumWays(nums = [1], target = 1))                 # 1
+    print(Solution().findTargetSumWays(nums = [1,0], target = 1))               # 2
+
+
+# Runtime: 213 ms, faster than 82.41% of Python3 online submissions
+# Memory Usage: 14.1 MB, less than 77.80% of Python3 online submissions
+
+
+#%%
