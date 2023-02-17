@@ -63,3 +63,27 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def minimumDeletions(self, s):
+        result = 0 
+
+        while 'ba' in s:
+            characters = s.split('ba')
+            result += len(characters) - 1
+            s = ''.join(characters)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().minimumDeletions(s = "aababbab"))                          # 2
+    print(Solution().minimumDeletions(s = "bbaaaaabb"))                         # 2
+
+
+# Runtime: 160 ms, faster than 99.77% of Python3 online submissions
+# Memory Usage: 16.6 MB less than 38% of Python3 online submissions
+
+
+#%%
