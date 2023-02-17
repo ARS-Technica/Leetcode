@@ -36,3 +36,30 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def minimumDeletions(self, s):
+        count = 0
+        result = 0
+
+        for character in s:
+            if character == 'b':
+                count += 1
+            elif count:
+                result += 1
+                count -= 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().minimumDeletions(s = "aababbab"))                          # 2
+    print(Solution().minimumDeletions(s = "bbaaaaabb"))                         # 2
+
+
+# Runtime: 228 ms, faster than 97.44% of Python3 online submissions
+# Memory Usage: 15.3 MB less than 80.42% of Python3 online submissions
+
+
+#%%
