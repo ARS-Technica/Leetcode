@@ -38,3 +38,31 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def minFlipsMonoIncr(self, s):
+        count = 0
+        result = 0
+
+        for number in s:
+            if number == '1':
+                count += 1
+            elif count:
+                result += 1
+                count -= 1
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().minFlipsMonoIncr(s = "00110"))            # 1
+    print(Solution().minFlipsMonoIncr(s = "010110"))           # 2
+    print(Solution().minFlipsMonoIncr(s = "00011000"))         # 2
+
+
+# Runtime: 94 ms, faster than 90.29% of Python3 online submissions
+# Memory Usage: 14.9 MB less than 57.58% of Python3 online submissions
+
+
+#%%
