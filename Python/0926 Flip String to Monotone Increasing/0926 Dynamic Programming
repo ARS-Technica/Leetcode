@@ -1,0 +1,40 @@
+"""
+926. Flip String to Monotone Increasing
+Medium
+https://leetcode.com/problems/flip-string-to-monotone-increasing/
+
+A binary string is monotone increasing if it consists of some number of 0's
+(possibly none), followed by some number of 1's (also possibly none).
+
+You are given a binary string s. You can flip s[i] changing it from 0 to 1 or from 1 to 0.
+
+Return the minimum number of flips to make s monotone increasing.
+"""
+
+
+# Similar to Exercise 1653: Minimum Deletions to Make String Balanced
+
+
+class Solution:
+    def minFlipsMonoIncr(self, s):
+        result = 0 
+
+        while '10' in s:
+            characters = s.split('10')
+            result += len(characters) - 1
+            s = ''.join(characters)
+
+        return result
+
+
+if __name__ == '__main__':
+    print(Solution().minFlipsMonoIncr(s = "00110"))            # 1
+    print(Solution().minFlipsMonoIncr(s = "010110"))           # 2
+    print(Solution().minFlipsMonoIncr(s = "00011000"))         # 2
+
+
+# Runtime: 82 ms, faster than 98.88% of Python3 online submissions
+# Memory Usage: 16.5 MB less than 22.84% of Python3 online submissions
+
+
+#%%
