@@ -48,3 +48,32 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def oddString(self, words):
+        frequency = defaultdict(list)
+        length = len(words[0])
+
+        for word in words:
+            difference_integer_array = [(ord(word[character + 1]) - ord(word[character])) for character in range(0, length - 1)]
+            frequency[tuple(difference_integer_array)].append(word)
+
+        return next(value[0] for value in frequency.values() if len(value) == 1)
+
+
+if __name__ == '__main__':
+    print(Solution().oddString(words = ["adc","wzy","abc"]))                # "abc"
+    print(Solution().oddString(words = ["aaa","bob","ccc","ddd"]))          # "bob" 
+    print(Solution().oddString(words = ["nnnmmmnnmmmmmmmmmmnm","iiihhhiihhhhhhhhhhih","aaaabbbbbbaaabaaaabb","qqqpppqqppppppppppqp","eeedddeedddddddddded","eeedddeedddddddddded","iiihhhiihhhhhhhhhhih","lllkkkllkkkkkkkkkklk","sssrrrssrrrrrrrrrrsr","sssrrrssrrrrrrrrrrsr","jjjiiijjiiiiiiiiiiji","nnnmmmnnmmmmmmmmmmnm","xxxwwwxxwwwwwwwwwwxw","eeedddeedddddddddded","zzzyyyzzyyyyyyyyyyzy","wwwvvvwwvvvvvvvvvvwv","cccbbbccbbbbbbbbbbcb","xxxwwwxxwwwwwwwwwwxw","cccbbbccbbbbbbbbbbcb","yyyxxxyyxxxxxxxxxxyx","hhhggghhgggggggggghg"]))
+    # "aaaabbbbbbaaabaaaabb"
+
+
+# Runtime: 37 ms, faster than 64.45% of Python3 online submissions
+# Memory Usage: 13.9 MB less than 70.1% of Python3 online submissions
+
+
+#%%
