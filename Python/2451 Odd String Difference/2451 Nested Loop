@@ -121,3 +121,33 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+class Solution:
+    def oddString(self, words):
+        length = len(words[0])
+        results = []
+
+        for word in words:
+            difference_integer_array = [(ord(word[character + 1]) - ord(word[character])) for character in range(0, length - 1)]
+            results.append(difference_integer_array)
+
+        # print(results)
+
+        for idx in range(len(results)):
+            if results.count(results[idx]) == 1:
+                return words[idx]
+
+
+if __name__ == '__main__':
+    print(Solution().oddString(words = ["adc","wzy","abc"]))                # "abc"
+    print(Solution().oddString(words = ["aaa","bob","ccc","ddd"]))          # "bob" 
+    print(Solution().oddString(words = ["nnnmmmnnmmmmmmmmmmnm","iiihhhiihhhhhhhhhhih","aaaabbbbbbaaabaaaabb","qqqpppqqppppppppppqp","eeedddeedddddddddded","eeedddeedddddddddded","iiihhhiihhhhhhhhhhih","lllkkkllkkkkkkkkkklk","sssrrrssrrrrrrrrrrsr","sssrrrssrrrrrrrrrrsr","jjjiiijjiiiiiiiiiiji","nnnmmmnnmmmmmmmmmmnm","xxxwwwxxwwwwwwwwwwxw","eeedddeedddddddddded","zzzyyyzzyyyyyyyyyyzy","wwwvvvwwvvvvvvvvvvwv","cccbbbccbbbbbbbbbbcb","xxxwwwxxwwwwwwwwwwxw","cccbbbccbbbbbbbbbbcb","yyyxxxyyxxxxxxxxxxyx","hhhggghhgggggggggghg"]))
+    # "aaaabbbbbbaaabaaaabb"
+
+
+# Runtime: 36 ms, faster than 69.20% of Python3 online submissions
+# Memory Usage: 13.9 MB less than 70.1% of Python3 online submissions
+
+
+#%%
