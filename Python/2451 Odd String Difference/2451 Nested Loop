@@ -151,3 +151,35 @@ if __name__ == '__main__':
 
 
 #%%
+
+
+# Not mine.
+# https://leetcode.com/problems/odd-string-difference/solutions/2868121/python-faster-than-90-54-memory-beats-78-47/
+
+
+class Solution:
+    def oddString(self, words):
+        difference = []
+        alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+        for word in words:
+            diff = []
+            for char in range(len(word) - 1):
+                diff.append(alphabet.index(word[char+1]) - alphabet.index(word[char]))
+            difference.append(diff)
+
+        return [ words[d] for d in range(len(difference)) if difference.count(difference[d]) == 1 ][0]
+
+
+if __name__ == '__main__':
+    print(Solution().oddString(words = ["adc","wzy","abc"]))                # "abc"
+    print(Solution().oddString(words = ["aaa","bob","ccc","ddd"]))          # "bob" 
+    print(Solution().oddString(words = ["nnnmmmnnmmmmmmmmmmnm","iiihhhiihhhhhhhhhhih","aaaabbbbbbaaabaaaabb","qqqpppqqppppppppppqp","eeedddeedddddddddded","eeedddeedddddddddded","iiihhhiihhhhhhhhhhih","lllkkkllkkkkkkkkkklk","sssrrrssrrrrrrrrrrsr","sssrrrssrrrrrrrrrrsr","jjjiiijjiiiiiiiiiiji","nnnmmmnnmmmmmmmmmmnm","xxxwwwxxwwwwwwwwwwxw","eeedddeedddddddddded","zzzyyyzzyyyyyyyyyyzy","wwwvvvwwvvvvvvvvvvwv","cccbbbccbbbbbbbbbbcb","xxxwwwxxwwwwwwwwwwxw","cccbbbccbbbbbbbbbbcb","yyyxxxyyxxxxxxxxxxyx","hhhggghhgggggggggghg"]))
+    # "aaaabbbbbbaaabaaaabb"
+
+
+# Runtime: 44 ms, faster than 35.55% of Python3 online submissions
+# Memory Usage: 13.8 MB less than 98.51% of Python3 online submissions
+
+
+#%%
